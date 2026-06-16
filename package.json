@@ -1,0 +1,14 @@
+{
+  "name": "patientpath-landing",
+  "version": "1.0.0",
+  "description": "Visually captivating, high-converting landing page for PatientPath built with GSAP and Three.js.",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "dev": "python3 -m http.server 8080"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "three": "^0.160.0"
+  }
+}

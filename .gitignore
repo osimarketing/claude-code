@@ -1,0 +1,9 @@
+# Dependencies (libraries are vendored into assets/js/vendor/)
+node_modules/
+
+# Verification screenshots
+.verify/
+
+# OS / editor
+.DS_Store
+*.log

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 480" role="img" aria-label="Healthcare practice growth illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b424d"/>
+      <stop offset="1" stop-color="#14323b"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#207e9a"/>
+      <stop offset="1" stop-color="#2b93b0"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0a843"/>
+      <stop offset="1" stop-color="#eb9b3e"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <rect width="600" height="480" rx="18" fill="url(#bg)"/>
+
+  <!-- decorative brand ring -->
+  <circle cx="470" cy="120" r="92" fill="none" stroke="url(#gold)" stroke-width="10" opacity="0.28"/>
+  <circle cx="556" cy="58" r="20" fill="url(#gold)" opacity="0.4"/>
+  <circle cx="120" cy="400" r="150" fill="#2b93b0" opacity="0.12"/>
+
+  <!-- growth bars -->
+  <g>
+    <rect x="120" y="300" width="46" height="90"  rx="8" fill="url(#bar)" opacity="0.85"/>
+    <rect x="186" y="250" width="46" height="140" rx="8" fill="url(#bar)" opacity="0.9"/>
+    <rect x="252" y="200" width="46" height="190" rx="8" fill="url(#bar)"/>
+    <rect x="318" y="150" width="46" height="240" rx="8" fill="url(#gold)"/>
+  </g>
+
+  <!-- baseline -->
+  <line x1="104" y1="392" x2="496" y2="392" stroke="#ffffff" stroke-opacity="0.2" stroke-width="2"/>
+
+  <!-- heartbeat / pulse line over the bars -->
+  <path d="M96 170 H190 l22 -54 28 96 24 -120 26 150 22 -56 H520"
+        fill="none" stroke="url(#gold)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#soft)" opacity="0.55"/>
+  <path d="M96 170 H190 l22 -54 28 96 24 -120 26 150 22 -56 H520"
+        fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- rising trend arrow -->
+  <g stroke="#eb9b3e" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M150 350 L240 300 L300 320 L420 210"/>
+    <path d="M392 210 H422 V240"/>
+  </g>
+  <circle cx="150" cy="350" r="6" fill="#fff"/>
+  <circle cx="240" cy="300" r="6" fill="#fff"/>
+  <circle cx="300" cy="320" r="6" fill="#fff"/>
+  <circle cx="420" cy="210" r="7" fill="#eb9b3e"/>
+</svg>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#14323b" />
+  <title>PatientPath — Your Healthcare Growth Partner</title>
+  <meta name="description" content="PatientPath helps healthcare providers attract more patients, streamline operations, and scale with confidence through marketing and revenue cycle management." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PatientPath — Your Healthcare Growth Partner" />
+  <meta property="og:description" content="More than marketers — your complete growth engine. Marketing + Revenue Cycle Management for modern healthcare practices." />
+  <meta property="og:type" content="website" />
+
+  <!-- Preconnect / Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <!-- Page load preloader -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__mark">
+      <span class="preloader__ring"></span>
+      <span class="preloader__dot"></span>
+    </div>
+    <div class="preloader__bar"><span></span></div>
+  </div>
+
+  <!-- Three.js canvas (fixed, behind everything) -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Scroll progress indicator -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav">
+      <a href="#top" class="brand" aria-label="PatientPath home">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="34" height="34">
+            <circle cx="20" cy="20" r="13" fill="none" stroke="var(--gold)" stroke-width="4"/>
+            <circle cx="29" cy="11" r="4.5" fill="var(--gold)"/>
+          </svg>
+        </span>
+        <span class="brand__text">patient<strong>path</strong></span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#marketing">Marketing</a>
+        <a href="#rcm">RCM</a>
+        <a href="#impact">Our Impact</a>
+        <a href="#contact">Contact</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact" class="nav__cta">Book a Call</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="container hero__inner">
+        <p class="hero__eyebrow reveal">Marketing &nbsp;•&nbsp; Revenue Cycle Management</p>
+        <h1 class="hero__title">
+          <span class="line"><span>Your Healthcare</span></span>
+          <span class="line"><span>Growth <em>Partner</em></span></span>
+        </h1>
+        <p class="hero__lead reveal">
+          At PatientPath, we help healthcare providers attract more patients, streamline their
+          operations, and scale with confidence. Through a powerful combination of
+          <strong>marketing and revenue cycle management</strong>, we support both sides of your
+          practice — growth and financial performance.
+        </p>
+        <p class="hero__sub reveal">We're more than marketers — we're your <strong>complete growth engine.</strong></p>
+        <div class="hero__actions reveal">
+          <a href="#contact" class="btn btn--primary">Book a Free Strategy Call</a>
+          <a href="#services" class="btn btn--ghost">See How It Works</a>
+        </div>
+      </div>
+      <div class="hero__scrollcue" aria-hidden="true">
+        <span>Scroll</span>
+        <span class="hero__scrollcue-line"></span>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE / TRUST ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Physical Therapy</span><i>◦</i>
+        <span>Dental</span><i>◦</i>
+        <span>Dermatology</span><i>◦</i>
+        <span>Behavioral Health</span><i>◦</i>
+        <span>Orthopedics</span><i>◦</i>
+        <span>Primary Care</span><i>◦</i>
+        <span>Med Spa</span><i>◦</i>
+        <span>Chiropractic</span><i>◦</i>
+        <!-- duplicate for seamless loop -->
+        <span>Physical Therapy</span><i>◦</i>
+        <span>Dental</span><i>◦</i>
+        <span>Dermatology</span><i>◦</i>
+        <span>Behavioral Health</span><i>◦</i>
+        <span>Orthopedics</span><i>◦</i>
+        <span>Primary Care</span><i>◦</i>
+        <span>Med Spa</span><i>◦</i>
+        <span>Chiropractic</span><i>◦</i>
+      </div>
+    </div>
+
+    <!-- ============ PATH TO SUCCESS ============ -->
+    <section class="success" id="marketing">
+      <div class="container success__grid">
+        <div class="success__media reveal-left">
+          <div class="success__media-frame">
+            <div class="success__media-img"></div>
+            <div class="success__badge">
+              <span class="success__badge-num" data-count="100">0</span>
+              <span class="success__badge-label">% focused on your growth</span>
+            </div>
+          </div>
+        </div>
+        <div class="success__copy">
+          <h2 class="section-title reveal">Your Path to Success<br/>Starts Here.</h2>
+          <p class="reveal">You didn't open your practice to get buried in admin work — you opened it to make a difference. That's where we come in.</p>
+          <p class="reveal">At PatientPath, we take both <strong>marketing and revenue management</strong> off your plate. Our team helps you attract more patients while optimizing billing, collections, and financial workflows so your practice runs smoothly and profitably.</p>
+          <p class="reveal">You focus on patient care. <strong>We'll handle the growth and the revenue.</strong></p>
+          <a href="#services" class="btn btn--primary reveal">Explore Our Services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES / PILLARS ============ -->
+    <section class="services" id="services">
+      <div class="container">
+        <p class="section-eyebrow reveal">What We Do</p>
+        <h2 class="section-title section-title--center reveal">Four Pillars of a Thriving Practice</h2>
+
+        <div class="pillars">
+          <article class="pillar" tabindex="0">
+            <span class="pillar__icon">
+              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+            </span>
+            <h3>Build Awareness</h3>
+            <p>Targeted digital and social campaigns that get your practice seen by the right patients.</p>
+          </article>
+
+          <article class="pillar" tabindex="0">
+            <span class="pillar__icon">
+              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l13-5v12L3 13z"/><path d="M16 8a3 3 0 010 6"/><path d="M6 13v4a2 2 0 002 2h1"/></svg>
+            </span>
+            <h3>Attract &amp; Educate</h3>
+            <p>An eye-catching, conversion-focused website that turns web visitors into loyal patients.</p>
+          </article>
+
+          <article class="pillar" tabindex="0">
+            <span class="pillar__icon">
+              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h11a2 2 0 012 2v6a2 2 0 01-2 2H9l-4 3v-3H4a1 1 0 01-1-1V6a1 1 0 011-1z"/><path d="M9 9.5a1.6 1.6 0 013 .8c0 1.2-1.5 1.8-1.5 1.8"/></svg>
+            </span>
+            <h3>Keep &amp; Retain</h3>
+            <p>Content and engagement tools that keep patients connected and maximize lifetime value.</p>
+          </article>
+
+          <article class="pillar" tabindex="0">
+            <span class="pillar__icon">
+              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 13a9 4 0 0018 0"/><path d="M12 3v8"/><circle cx="12" cy="12" r="2"/><path d="M11 7h2M10.5 9h3"/></svg>
+            </span>
+            <h3>Optimize Revenue</h3>
+            <p>Efficient billing, claims management, and revenue cycle support to capture every dollar you earn.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RCM SPLIT ============ -->
+    <section class="rcm" id="rcm">
+      <div class="container rcm__grid">
+        <div class="rcm__copy">
+          <p class="section-eyebrow reveal">Revenue Cycle Management</p>
+          <h2 class="section-title reveal">Get paid faster.<br/>Leak less revenue.</h2>
+          <p class="reveal">From eligibility checks to clean-claim submission and denial recovery, we plug the gaps that quietly drain your bottom line — so more of what you earn actually lands in your account.</p>
+          <ul class="rcm__list">
+            <li class="reveal">Eligibility &amp; benefits verification</li>
+            <li class="reveal">Clean-claim submission &amp; scrubbing</li>
+            <li class="reveal">Denial management &amp; appeals</li>
+            <li class="reveal">Patient billing &amp; collections</li>
+            <li class="reveal">Transparent monthly reporting</li>
+          </ul>
+        </div>
+        <div class="rcm__panel reveal-right">
+          <div class="rcm__stat">
+            <span class="rcm__stat-num" data-count="98" data-suffix="%">0</span>
+            <span class="rcm__stat-label">Clean-claim rate</span>
+          </div>
+          <div class="rcm__stat">
+            <span class="rcm__stat-num" data-count="31" data-suffix="%">0</span>
+            <span class="rcm__stat-label">Avg. revenue lift</span>
+          </div>
+          <div class="rcm__stat">
+            <span class="rcm__stat-num" data-count="12" data-suffix=" days">0</span>
+            <span class="rcm__stat-label">Faster reimbursement</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ IMPACT / STATS ============ -->
+    <section class="impact" id="impact">
+      <div class="container">
+        <p class="section-eyebrow section-eyebrow--light reveal">Our Impact</p>
+        <h2 class="section-title section-title--center section-title--light reveal">Numbers that move practices forward</h2>
+        <div class="impact__grid">
+          <div class="impact__item reveal">
+            <span class="impact__num" data-count="240" data-suffix="+">0</span>
+            <span class="impact__label">Practices supported</span>
+          </div>
+          <div class="impact__item reveal">
+            <span class="impact__num" data-count="3.4" data-suffix="x" data-decimals="1">0</span>
+            <span class="impact__label">Average patient growth</span>
+          </div>
+          <div class="impact__item reveal">
+            <span class="impact__num" data-count="64" data-suffix="M" data-prefix="$">0</span>
+            <span class="impact__label">Revenue recovered</span>
+          </div>
+          <div class="impact__item reveal">
+            <span class="impact__num" data-count="4.9" data-suffix="/5" data-decimals="1">0</span>
+            <span class="impact__label">Client satisfaction</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIAL ============ -->
+    <section class="quote" id="blog">
+      <div class="container quote__inner reveal">
+        <span class="quote__mark" aria-hidden="true">&ldquo;</span>
+        <blockquote>
+          PatientPath rebuilt our website, took over our billing, and within two quarters our new-patient
+          bookings doubled while our collections climbed by a third. They genuinely feel like part of our team.
+        </blockquote>
+        <div class="quote__author">
+          <span class="quote__avatar" aria-hidden="true">DR</span>
+          <div>
+            <strong>Dr. Renee Alvarez</strong>
+            <span>Owner, Coastline Physical Therapy</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta" id="contact">
+      <div class="container cta__inner">
+        <h2 class="reveal">Ready to build your<br/><em>complete growth engine?</em></h2>
+        <p class="reveal">Book a free strategy call and we'll map the fastest path to more patients and more revenue — no pressure, no jargon.</p>
+        <form class="cta__form reveal" id="ctaForm" novalidate>
+          <input type="text" name="name" placeholder="Your name" aria-label="Your name" required />
+          <input type="email" name="email" placeholder="Work email" aria-label="Work email" required />
+          <button type="submit" class="btn btn--primary">Book a Free Strategy Call</button>
+        </form>
+        <p class="cta__note reveal" id="ctaNote">We'll reply within one business day.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#top" class="brand">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" width="30" height="30">
+              <circle cx="20" cy="20" r="13" fill="none" stroke="var(--gold)" stroke-width="4"/>
+              <circle cx="29" cy="11" r="4.5" fill="var(--gold)"/>
+            </svg>
+          </span>
+          <span class="brand__text">patient<strong>path</strong></span>
+        </a>
+        <p>Your complete growth engine for modern healthcare practices.</p>
+      </div>
+      <nav class="footer__col" aria-label="Services">
+        <h4>Services</h4>
+        <a href="#marketing">Marketing</a>
+        <a href="#rcm">Revenue Cycle</a>
+        <a href="#services">Web &amp; Brand</a>
+        <a href="#impact">Patient Retention</a>
+      </nav>
+      <nav class="footer__col" aria-label="Company">
+        <h4>Company</h4>
+        <a href="#impact">Our Impact</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+        <a href="#top">Careers</a>
+      </nav>
+      <div class="footer__col">
+        <h4>Get in touch</h4>
+        <a href="mailto:hello@yourpatientpath.com">hello@yourpatientpath.com</a>
+        <a href="tel:+18005551234">(800) 555-1234</a>
+      </div>
+    </div>
+    <div class="container footer__bar">
+      <span>© <span id="year"></span> PatientPath. All rights reserved.</span>
+      <span class="footer__built">Crafted with GSAP &amp; Three.js</span>
+    </div>
+  </footer>
+
+  <!-- ============ SCRIPTS (vendored locally — no CDN dependency) ============ -->
+  <script src="assets/js/vendor/gsap.min.js"></script>
+  <script src="assets/js/vendor/ScrollTrigger.min.js"></script>
+  <script type="importmap">
+    { "imports": { "three": "./assets/js/vendor/three.module.js" } }
+  </script>
+  <script type="module" src="assets/js/three-scene.js"></script>
+  <script defer src="assets/js/main.js"></script>
+</body>
+</html>
