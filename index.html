@@ -3,45 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#14323b" />
-  <title>PatientPath — Find Your Path to Growth</title>
-  <meta name="description" content="PatientPath helps healthcare providers grow with marketing, revenue cycle management, procurement, and consulting — supporting every side of your practice." />
+  <meta name="theme-color" content="#102a31" />
+  <title>PatientPath — Healthcare Growth &amp; Operations Consulting</title>
+  <meta name="description" content="PatientPath is the consulting partner for healthcare practices. We diagnose what's holding you back and build the path to grow, save, optimize, and prepare — tailored to your specialty." />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="PatientPath — Find Your Path to Growth" />
-  <meta property="og:description" content="There's more than one path to growth. We built them all — marketing, revenue cycle management, procurement, and consulting for modern healthcare practices." />
+  <meta property="og:title" content="PatientPath — Healthcare Growth & Operations Consulting" />
+  <meta property="og:description" content="The right path depends on where you're headed. Outcome-focused consulting for orthopedics, dental, med spa, and physical therapy practices." />
   <meta property="og:type" content="website" />
 
-  <!-- Preconnect / Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/site.css" />
 </head>
 <body>
-  <!-- Page load preloader -->
-  <div class="preloader" id="preloader" aria-hidden="true">
-    <div class="preloader__mark">
-      <span class="preloader__ring"></span>
-      <span class="preloader__dot"></span>
-    </div>
-    <div class="preloader__bar"><span></span></div>
-  </div>
-
-  <!-- Three.js canvas (fixed, behind everything) -->
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
-
-  <!-- Scroll progress indicator -->
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-  <!-- ============ HEADER / NAV ============ -->
+  <!-- ============ HEADER ============ -->
   <header class="site-header" id="siteHeader">
     <div class="container nav">
       <a href="#top" class="brand" aria-label="PatientPath home">
         <span class="brand__mark" aria-hidden="true">
-          <svg class="brand__svg" viewBox="0 0 120 140" width="30" height="35" fill="none">
+          <svg class="brand__svg" viewBox="0 0 120 140" width="28" height="33" fill="none">
             <g stroke="var(--gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
               <path d="M34 108 V46 Q34 16 66 16 Q102 16 102 52 Q102 86 68 86 H34"/>
               <rect x="45" y="45" width="31" height="31" rx="11"/>
@@ -54,12 +40,11 @@
       </a>
 
       <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="#services">Services</a>
-        <a href="#work">Our Work</a>
-        <a href="#impact">Our Impact</a>
+        <a href="#what">What We Do</a>
+        <a href="#problems">Problems We Solve</a>
+        <a href="#industries">Industries</a>
         <a href="#insights">Insights</a>
-        <a href="#contact">Contact</a>
-        <a href="#contact" class="nav__cta">Start Your Path</a>
+        <a href="#contact" class="nav__cta">Book a Consultation</a>
       </nav>
 
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
@@ -72,343 +57,223 @@
     <!-- ============ HERO ============ -->
     <section class="hero" id="hero">
       <div class="container hero__inner">
-        <div class="hero__copy">
-          <p class="hero__eyebrow reveal">Find your path to growth</p>
-          <h1 class="hero__title">
-            <span class="line"><span>There's more than</span></span>
-            <span class="line"><span>one path to growth.</span></span>
-            <span class="line"><span><em>We built them all.</em></span></span>
-          </h1>
-          <p class="hero__lead reveal">
-            At PatientPath, we help healthcare providers attract more patients, streamline their
-            operations, and scale with confidence. Through a powerful combination of
-            <strong>marketing, revenue cycle management, procurement, and consulting</strong>, we
-            support every side of your practice — growth, financial performance, cost savings, and
-            operational efficiency.
-          </p>
-          <div class="hero__actions reveal">
-            <a href="#contact" class="btn btn--primary">Start Your Growth Path</a>
-            <a href="#services" class="btn btn--ghost">Explore Services</a>
-          </div>
-        </div>
-
-        <div class="hero__visual" aria-hidden="true">
-          <svg class="pmotif" viewBox="0 0 440 470" fill="none">
-            <path class="pmotif__track" d="M120 440 V160 Q120 64 232 64 Q368 64 368 196 Q368 312 236 312 H120"/>
-            <path class="pmotif__draw" pathLength="1" d="M120 440 V160 Q120 64 232 64 Q368 64 368 196 Q368 312 236 312 H120"/>
-            <rect class="pmotif__node" x="150" y="150" width="92" height="92" rx="28"/>
-            <circle class="pmotif__node" cx="120" cy="440" r="32"/>
-            <circle class="pmotif__pulse" cx="120" cy="440" r="10"/>
-          </svg>
+        <p class="hero__eyebrow reveal">Healthcare Growth &amp; Operations Consulting</p>
+        <h1 class="hero__title">
+          <span class="line"><span>The right path depends</span></span>
+          <span class="line"><span>on where you're <em>headed.</em></span></span>
+        </h1>
+        <p class="hero__lead reveal">
+          PatientPath is the consulting partner for healthcare practices. We diagnose what's holding
+          you back and build the path to <strong>grow, save, optimize, and prepare</strong> for what's
+          next — tailored to your specialty, never a one-size template.
+        </p>
+        <div class="hero__actions reveal">
+          <a href="#contact" class="btn btn--primary">Book a Consultation</a>
+          <a href="#how" class="btn btn--ghost">How We Work</a>
         </div>
       </div>
-      <div class="hero__scrollcue" aria-hidden="true">
-        <span>Scroll</span>
-        <span class="hero__scrollcue-line"></span>
+
+      <div class="container hero__trust reveal">
+        <span class="hero__trust-label">Trusted by 240+ practices across</span>
+        <ul class="hero__trust-list">
+          <li>Orthopedics</li><li>Dental</li><li>Med Spa</li><li>Physical Therapy</li>
+        </ul>
       </div>
     </section>
 
-    <!-- ============ MARQUEE / TRUST ============ -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Physical Therapy</span><i>◦</i>
-        <span>Dental</span><i>◦</i>
-        <span>Dermatology</span><i>◦</i>
-        <span>Behavioral Health</span><i>◦</i>
-        <span>Orthopedics</span><i>◦</i>
-        <span>Primary Care</span><i>◦</i>
-        <span>Med Spa</span><i>◦</i>
-        <span>Chiropractic</span><i>◦</i>
-        <!-- duplicate for seamless loop -->
-        <span>Physical Therapy</span><i>◦</i>
-        <span>Dental</span><i>◦</i>
-        <span>Dermatology</span><i>◦</i>
-        <span>Behavioral Health</span><i>◦</i>
-        <span>Orthopedics</span><i>◦</i>
-        <span>Primary Care</span><i>◦</i>
-        <span>Med Spa</span><i>◦</i>
-        <span>Chiropractic</span><i>◦</i>
-      </div>
-    </div>
-
-    <!-- ============ WHY PATIENTPATH (the journey) ============ -->
-    <section class="why" id="why">
-      <div class="container why__grid">
-        <div class="why__copy">
-          <p class="section-eyebrow section-eyebrow--gold reveal">Why PatientPath</p>
-          <h2 class="section-title section-title--light reveal">One partner for the<br/>whole patient journey.</h2>
-          <p class="why__lead reveal">At PatientPath, we take both <strong>marketing and revenue management</strong> off your plate. Our team helps you attract more patients, optimize billing and collections, reduce supply costs through smarter procurement, and improve practice efficiency — so your practice runs smoothly and profitably.</p>
-          <p class="why__lead reveal">You focus on patient care. <strong>We'll handle the growth and the revenue.</strong></p>
-
-          <div class="journey">
-            <div class="journey__step reveal">
-              <span class="journey__node">1</span>
-              <div class="journey__text">
-                <h3>Attract the Right Patients</h3>
-                <p>Your next patient is already searching. We help your practice stand out with marketing that gets you seen and chosen.</p>
-              </div>
-            </div>
-            <div class="journey__step reveal">
-              <span class="journey__node">2</span>
-              <div class="journey__text">
-                <h3>Turn Interest Into Appointments</h3>
-                <p>From websites to advertising campaigns, we create patient experiences designed to turn clicks into scheduled visits.</p>
-              </div>
-            </div>
-            <div class="journey__step reveal">
-              <span class="journey__node">3</span>
-              <div class="journey__text">
-                <h3>Keep Patients Engaged</h3>
-                <p>Strong patient relationships lead to long-term growth. We help practices stay connected and keep patients coming back.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="why__visual reveal-right" aria-hidden="true">
-          <svg class="pmotif pmotif--ink" viewBox="0 0 440 470" fill="none">
-            <path class="pmotif__track" d="M120 440 V160 Q120 64 232 64 Q368 64 368 196 Q368 312 236 312 H120"/>
-            <path class="pmotif__draw" pathLength="1" d="M120 440 V160 Q120 64 232 64 Q368 64 368 196 Q368 312 236 312 H120"/>
-            <rect class="pmotif__node" x="150" y="150" width="92" height="92" rx="28"/>
-            <circle class="pmotif__node" cx="120" cy="440" r="32"/>
-          </svg>
-          <div class="why__badge">
-            <span class="why__badge-num" data-count="100">0</span>
-            <span class="why__badge-label">% focused on your growth</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ SERVICES ============ -->
-    <section class="services" id="services">
+    <!-- ============ WHAT WE DO ============ -->
+    <section class="what" id="what">
       <div class="container">
-        <p class="section-eyebrow section-eyebrow--center reveal">What We Do</p>
-        <h2 class="section-title section-title--center reveal">Four paths. One growth engine.</h2>
-        <p class="services__intro reveal">A complete service line that supports every side of your practice — pick one path or run them all together.</p>
+        <div class="section-head">
+          <p class="eyebrow reveal"><span class="eyebrow__num">01</span> What We Do</p>
+          <h2 class="section-title reveal">Four levers. One trusted partner.</h2>
+          <p class="section-intro reveal">Most practices don't need every service — they need the right ones, in the right order. We work across four levers and tailor the mix to where you are.</p>
+        </div>
 
-        <div class="pillars">
-          <article class="pillar" tabindex="0">
-            <span class="pillar__icon">
-              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l13-5v12L3 13z"/><path d="M16 8a3 3 0 010 6"/><path d="M6 13v4a2 2 0 002 2h1"/></svg>
-            </span>
-            <h3>Marketing</h3>
-            <p>Targeted campaigns, brand, and conversion-focused websites that get your practice seen and chosen by the right patients.</p>
+        <div class="levers">
+          <article class="lever reveal">
+            <span class="lever__idx">01</span>
+            <h3>Grow</h3>
+            <p>Attract more of the right patients and expand revenue across your locations.</p>
           </article>
-
-          <article class="pillar" tabindex="0">
-            <span class="pillar__icon">
-              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h4l2 5 4-12 2 7h6"/></svg>
-            </span>
-            <h3>Revenue Cycle Management</h3>
-            <p>Billing, claims, denials, and collections optimized end-to-end, so you get paid faster and leak less revenue.</p>
+          <article class="lever reveal">
+            <span class="lever__idx">02</span>
+            <h3>Save</h3>
+            <p>Reduce costs across procurement, staffing, and the day-to-day cost of running care.</p>
           </article>
-
-          <article class="pillar" tabindex="0">
-            <span class="pillar__icon">
-              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>
-            </span>
-            <h3>Procurement</h3>
-            <p>Smarter sourcing and supply management that cuts costs without compromising the quality of care you deliver.</p>
+          <article class="lever reveal">
+            <span class="lever__idx">03</span>
+            <h3>Optimize</h3>
+            <p>Tighten billing, the revenue cycle, and the workflows that keep your practice moving.</p>
           </article>
-
-          <article class="pillar" tabindex="0">
-            <span class="pillar__icon">
-              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2.2 4.8-4.8 2.2 2.2-4.8 4.8-2.2z"/></svg>
-            </span>
-            <h3>Consulting</h3>
-            <p>Operational strategy and workflow expertise that helps your practice run efficiently and scale with confidence.</p>
+          <article class="lever reveal">
+            <span class="lever__idx">04</span>
+            <h3>Prep</h3>
+            <p>Get ready for what's next — a sale, a transition, or your next location.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ RCM SPLIT ============ -->
-    <section class="rcm" id="rcm">
-      <div class="container rcm__grid">
-        <div class="rcm__copy">
-          <p class="section-eyebrow reveal">Revenue Cycle Management</p>
-          <h2 class="section-title reveal">Get paid faster.<br/>Leak less revenue.</h2>
-          <p class="reveal">From eligibility checks to clean-claim submission and denial recovery, we plug the gaps that quietly drain your bottom line — so more of what you earn actually lands in your account.</p>
-          <ul class="rcm__list">
-            <li class="reveal">Eligibility &amp; benefits verification</li>
-            <li class="reveal">Clean-claim submission &amp; scrubbing</li>
-            <li class="reveal">Denial management &amp; appeals</li>
-            <li class="reveal">Patient billing &amp; collections</li>
-            <li class="reveal">Transparent monthly reporting</li>
-          </ul>
-        </div>
-        <div class="rcm__panel reveal-right">
-          <div class="rcm__stat">
-            <span class="rcm__stat-num" data-count="98" data-suffix="%">0</span>
-            <span class="rcm__stat-label">Clean-claim rate</span>
-          </div>
-          <div class="rcm__stat">
-            <span class="rcm__stat-num" data-count="31" data-suffix="%">0</span>
-            <span class="rcm__stat-label">Avg. revenue lift</span>
-          </div>
-          <div class="rcm__stat">
-            <span class="rcm__stat-num" data-count="12" data-suffix=" days">0</span>
-            <span class="rcm__stat-label">Faster reimbursement</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ OUR WORK ============ -->
-    <section class="work" id="work">
+    <!-- ============ PROBLEMS WE SOLVE ============ -->
+    <section class="psolve" id="problems">
       <div class="container">
-        <div class="work__head">
-          <div>
-            <p class="section-eyebrow reveal">Our Work</p>
-            <h2 class="section-title reveal">Paths we've paved for<br/>practices like yours.</h2>
-          </div>
-          <a href="#contact" class="btn btn--ghost btn--dark reveal">Start your project</a>
+        <div class="section-head">
+          <p class="eyebrow eyebrow--light reveal"><span class="eyebrow__num">02</span> Problems We Solve</p>
+          <h2 class="section-title section-title--light reveal">Where are you on your path?</h2>
+          <p class="section-intro section-intro--light reveal">Start with the problem in front of you. We'll bring the right levers to bear — and skip the ones you don't need.</p>
         </div>
 
-        <div class="work__grid">
-          <article class="work-card reveal">
-            <div class="work-card__thumb work-card__thumb--1">
-              <span class="work-card__tag">Marketing</span>
-              <span class="work-card__glyph" aria-hidden="true">↗</span>
-            </div>
-            <div class="work-card__body">
-              <h3>Coastline Physical Therapy</h3>
-              <p>New website and multi-channel patient acquisition campaign.</p>
-              <span class="work-card__result">+212% new-patient bookings</span>
-            </div>
-          </article>
+        <div class="psolve__layout reveal">
+          <div class="psolve__tabs" role="tablist" aria-label="Problems we solve">
+            <button class="psolve__tab is-active" role="tab" aria-selected="true" id="ptab-0" data-i="0">
+              <span class="psolve__tab-num">01</span> Preparing for a sale
+            </button>
+            <button class="psolve__tab" role="tab" aria-selected="false" id="ptab-1" data-i="1">
+              <span class="psolve__tab-num">02</span> Growing an existing location
+            </button>
+            <button class="psolve__tab" role="tab" aria-selected="false" id="ptab-2" data-i="2">
+              <span class="psolve__tab-num">03</span> Launching a new location
+            </button>
+            <button class="psolve__tab" role="tab" aria-selected="false" id="ptab-3" data-i="3">
+              <span class="psolve__tab-num">04</span> Implementing best practices
+            </button>
+          </div>
 
-          <article class="work-card reveal">
-            <div class="work-card__thumb work-card__thumb--2">
-              <span class="work-card__tag">Revenue Cycle</span>
-              <span class="work-card__glyph" aria-hidden="true">↗</span>
-            </div>
-            <div class="work-card__body">
-              <h3>BrightSmile Dental Group</h3>
-              <p>Full RCM takeover across claims, denials, and collections.</p>
-              <span class="work-card__result">98% clean-claim rate</span>
-            </div>
-          </article>
+          <div class="psolve__stage">
+            <article class="psolve__panel is-active" role="tabpanel" aria-labelledby="ptab-0" data-i="0">
+              <p class="psolve__kicker">The situation</p>
+              <h3 class="psolve__headline">Maximize valuation and walk into diligence with nothing to hide.</h3>
+              <p class="psolve__copy">When you're preparing to sell, clean books and predictable performance are everything. We get the financials, margins, and growth story in shape so buyers compete for your practice.</p>
+              <ul class="psolve__list">
+                <li>Financial clean-up &amp; revenue-cycle optimization</li>
+                <li>Cost structure &amp; margin improvement</li>
+                <li>Growth narrative &amp; diligence-ready documentation</li>
+              </ul>
+              <div class="psolve__outcome"><span class="psolve__outcome-num" data-count="100" data-suffix="%">0</span><span>of prep work aimed at a stronger multiple</span></div>
+            </article>
 
-          <article class="work-card reveal">
-            <div class="work-card__thumb work-card__thumb--3">
-              <span class="work-card__tag">Procurement</span>
-              <span class="work-card__glyph" aria-hidden="true">↗</span>
-            </div>
-            <div class="work-card__body">
-              <h3>Summit Orthopedics</h3>
-              <p>Supply-chain audit and vendor consolidation program.</p>
-              <span class="work-card__result">$480K annual savings</span>
-            </div>
-          </article>
+            <article class="psolve__panel" role="tabpanel" aria-labelledby="ptab-1" data-i="1" hidden>
+              <p class="psolve__kicker">The situation</p>
+              <h3 class="psolve__headline">Fill the schedule and lift revenue without adding overhead.</h3>
+              <p class="psolve__copy">You have capacity and a great team — you need more of the right patients and a tighter path from interest to appointment. We focus on demand, conversion, and retention.</p>
+              <ul class="psolve__list">
+                <li>Patient acquisition &amp; local marketing</li>
+                <li>Conversion, scheduling &amp; retention</li>
+                <li>Revenue-cycle tune-up to keep what you earn</li>
+              </ul>
+              <div class="psolve__outcome"><span class="psolve__outcome-num" data-count="3.4" data-suffix="x" data-decimals="1">0</span><span>average patient growth</span></div>
+            </article>
 
-          <article class="work-card reveal">
-            <div class="work-card__thumb work-card__thumb--4">
-              <span class="work-card__tag">Consulting</span>
-              <span class="work-card__glyph" aria-hidden="true">↗</span>
-            </div>
-            <div class="work-card__body">
-              <h3>Lakeside Behavioral Health</h3>
-              <p>Operational redesign and intake-workflow overhaul.</p>
-              <span class="work-card__result">2.4× patient capacity</span>
-            </div>
-          </article>
+            <article class="psolve__panel" role="tabpanel" aria-labelledby="ptab-2" data-i="2" hidden>
+              <p class="psolve__kicker">The situation</p>
+              <h3 class="psolve__headline">Open strong with a proven playbook instead of guesswork.</h3>
+              <p class="psolve__copy">A new location is a bet. We de-risk it — validating the market, building demand before you open, and standing up operations so day one runs like day one hundred.</p>
+              <ul class="psolve__list">
+                <li>Market &amp; site demand analysis</li>
+                <li>Pre-launch marketing &amp; patient pipeline</li>
+                <li>Operations, staffing &amp; systems setup</li>
+              </ul>
+              <div class="psolve__outcome"><span class="psolve__outcome-num" data-count="2" data-suffix="x" data-decimals="0">0</span><span>faster ramp to profitability</span></div>
+            </article>
+
+            <article class="psolve__panel" role="tabpanel" aria-labelledby="ptab-3" data-i="3" hidden>
+              <p class="psolve__kicker">The situation</p>
+              <h3 class="psolve__headline">Adopt what already works — don't start from scratch.</h3>
+              <p class="psolve__copy">High-performing practices have already solved most of your problems. We bring those playbooks to your team and implement them, so improvement takes weeks, not years.</p>
+              <ul class="psolve__list">
+                <li>Operational diagnostics &amp; benchmarking</li>
+                <li>Best-practice playbooks for your specialty</li>
+                <li>Team enablement &amp; change management</li>
+              </ul>
+              <div class="psolve__outcome"><span class="psolve__outcome-num" data-count="90" data-suffix="%">0</span><span>of best practices ready to implement on day one</span></div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ IMPACT / STATS ============ -->
-    <section class="impact" id="impact">
+    <!-- ============ HOW WE WORK ============ -->
+    <section class="how" id="how">
       <div class="container">
-        <p class="section-eyebrow section-eyebrow--gold section-eyebrow--center reveal">Our Impact</p>
-        <h2 class="section-title section-title--center section-title--light reveal">Numbers that move practices forward</h2>
-        <div class="impact__grid">
-          <div class="impact__item reveal">
-            <span class="impact__num" data-count="240" data-suffix="+">0</span>
-            <span class="impact__label">Practices supported</span>
-          </div>
-          <div class="impact__item reveal">
-            <span class="impact__num" data-count="3.4" data-suffix="x" data-decimals="1">0</span>
-            <span class="impact__label">Average patient growth</span>
-          </div>
-          <div class="impact__item reveal">
-            <span class="impact__num" data-count="64" data-suffix="M" data-prefix="$">0</span>
-            <span class="impact__label">Revenue recovered</span>
-          </div>
-          <div class="impact__item reveal">
-            <span class="impact__num" data-count="4.9" data-suffix="/5" data-decimals="1">0</span>
-            <span class="impact__label">Client satisfaction</span>
-          </div>
+        <div class="section-head">
+          <p class="eyebrow reveal"><span class="eyebrow__num">03</span> How We Work</p>
+          <h2 class="section-title reveal">A clear path, not a black box.</h2>
+          <p class="section-intro reveal">A disciplined consulting process that shows its work at every step — so you always know why we're doing what we're doing.</p>
         </div>
+
+        <ol class="steps">
+          <li class="step reveal"><span class="step__num">01</span><h3>Diagnose</h3><p>We assess your practice, market, and numbers to find what's really limiting growth.</p></li>
+          <li class="step reveal"><span class="step__num">02</span><h3>Prioritize</h3><p>We build the path — the few moves that will matter most, sequenced for impact.</p></li>
+          <li class="step reveal"><span class="step__num">03</span><h3>Execute</h3><p>We do the work alongside your team, from marketing to revenue cycle to operations.</p></li>
+          <li class="step reveal"><span class="step__num">04</span><h3>Measure</h3><p>We track outcomes transparently and adjust — accountable to results, not activity.</p></li>
+        </ol>
       </div>
     </section>
 
-    <!-- ============ TESTIMONIAL ============ -->
-    <section class="quote">
-      <div class="container quote__inner reveal">
-        <span class="quote__mark" aria-hidden="true">&ldquo;</span>
-        <blockquote>
-          PatientPath rebuilt our website, took over our billing, and within two quarters our new-patient
-          bookings doubled while our collections climbed by a third. They genuinely feel like part of our team.
-        </blockquote>
-        <div class="quote__author">
-          <span class="quote__avatar" aria-hidden="true">DR</span>
-          <div>
-            <strong>Dr. Renee Alvarez</strong>
-            <span>Owner, Coastline Physical Therapy</span>
-          </div>
+    <!-- ============ INDUSTRIES ============ -->
+    <section class="industries" id="industries">
+      <div class="container industries__grid">
+        <div class="industries__copy">
+          <p class="eyebrow reveal"><span class="eyebrow__num">04</span> Industries</p>
+          <h2 class="section-title reveal">Your path changes by specialty.</h2>
+          <p class="section-intro reveal">Not every practice needs every service — and never in the same order. We tailor the mix, the language, and the playbook to your vertical.</p>
+          <a href="#contact" class="btn btn--ghost btn--dark reveal">Talk to a specialist</a>
         </div>
+        <ul class="industries__list">
+          <li class="industries__item reveal"><span>Orthopedics</span><em>Referral growth, ASC economics, payer mix</em></li>
+          <li class="industries__item reveal"><span>Dental</span><em>Case acceptance, membership plans, multi-op scheduling</em></li>
+          <li class="industries__item reveal"><span>Med Spa</span><em>Brand, demand generation, retail &amp; retention</em></li>
+          <li class="industries__item reveal"><span>Physical Therapy</span><em>Volume, authorization, visit utilization</em></li>
+        </ul>
       </div>
     </section>
 
-    <!-- ============ INSIGHTS / BLOG ============ -->
+    <!-- ============ PROOF / IMPACT ============ -->
+    <section class="proof" id="impact">
+      <div class="container">
+        <div class="proof__stats">
+          <div class="proof__stat reveal"><span class="proof__num" data-count="240" data-suffix="+">0</span><span class="proof__label">Practices advised</span></div>
+          <div class="proof__stat reveal"><span class="proof__num" data-count="3.4" data-suffix="x" data-decimals="1">0</span><span class="proof__label">Avg. patient growth</span></div>
+          <div class="proof__stat reveal"><span class="proof__num" data-count="64" data-prefix="$" data-suffix="M">0</span><span class="proof__label">Revenue recovered</span></div>
+          <div class="proof__stat reveal"><span class="proof__num" data-count="4.9" data-suffix="/5" data-decimals="1">0</span><span class="proof__label">Client satisfaction</span></div>
+        </div>
+        <figure class="proof__quote reveal">
+          <blockquote>They acted like owners, not vendors. They diagnosed the real bottleneck, sequenced the fixes, and two quarters later our bookings had doubled and collections were up a third.</blockquote>
+          <figcaption><span class="proof__avatar" aria-hidden="true">DR</span><span><strong>Dr. Renee Alvarez</strong><em>Owner, Coastline Physical Therapy</em></span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ INSIGHTS ============ -->
     <section class="insights" id="insights">
       <div class="container">
         <div class="insights__head">
           <div>
-            <p class="section-eyebrow reveal">Insights</p>
-            <h2 class="section-title reveal">Ideas to help you<br/>find your path.</h2>
+            <p class="eyebrow reveal"><span class="eyebrow__num">05</span> Insights</p>
+            <h2 class="section-title reveal">Thinking that moves practices forward.</h2>
           </div>
-          <a href="#insights" class="btn btn--ghost btn--dark reveal">View all articles</a>
+          <a href="#insights" class="btn btn--ghost btn--dark reveal">View all insights</a>
         </div>
-
         <div class="posts">
-          <article class="post reveal">
-            <a class="post__link" href="#insights">
-              <div class="post__img post__img--1" aria-hidden="true"></div>
-              <div class="post__body">
-                <span class="post__cat">Revenue Cycle</span>
-                <h3>5 silent revenue leaks hiding in your billing workflow</h3>
-                <p>How small denial-management gaps quietly compound into six-figure losses — and the fastest way to plug them.</p>
-                <div class="post__meta"><span>Jun 2026</span><span>5 min read</span></div>
-              </div>
-            </a>
-          </article>
-
-          <article class="post reveal">
-            <a class="post__link" href="#insights">
-              <div class="post__img post__img--2" aria-hidden="true"></div>
-              <div class="post__body">
-                <span class="post__cat">Marketing</span>
-                <h3>The patient journey starts on Google: a local SEO playbook</h3>
-                <p>A practical, step-by-step framework for getting your practice found by patients actively searching nearby.</p>
-                <div class="post__meta"><span>May 2026</span><span>7 min read</span></div>
-              </div>
-            </a>
-          </article>
-
-          <article class="post reveal">
-            <a class="post__link" href="#insights">
-              <div class="post__img post__img--3" aria-hidden="true"></div>
-              <div class="post__body">
-                <span class="post__cat">Procurement</span>
-                <h3>Cut supply costs 20% without cutting care quality</h3>
-                <p>Where the savings actually hide in medical procurement, and how to capture them without disrupting care.</p>
-                <div class="post__meta"><span>Apr 2026</span><span>4 min read</span></div>
-              </div>
-            </a>
-          </article>
+          <article class="post reveal"><a class="post__link" href="#insights">
+            <span class="post__cat">Practice Sales</span>
+            <h3>What buyers actually look for in a practice (and how to be ready)</h3>
+            <p>The five diligence questions that quietly decide your multiple — and how to answer them long before you go to market.</p>
+            <span class="post__meta">Jun 2026 · 6 min read</span>
+          </a></article>
+          <article class="post reveal"><a class="post__link" href="#insights">
+            <span class="post__cat">Growth</span>
+            <h3>The patient journey starts on Google: a local demand playbook</h3>
+            <p>A practical framework for getting found by the patients already searching for what you do, nearby, today.</p>
+            <span class="post__meta">May 2026 · 7 min read</span>
+          </a></article>
+          <article class="post reveal"><a class="post__link" href="#insights">
+            <span class="post__cat">Operations</span>
+            <h3>Cut supply costs 20% without cutting the quality of care</h3>
+            <p>Where the savings really hide in medical procurement — and how to capture them without disrupting clinicians.</p>
+            <span class="post__meta">Apr 2026 · 4 min read</span>
+          </a></article>
         </div>
       </div>
     </section>
@@ -416,12 +281,13 @@
     <!-- ============ CTA ============ -->
     <section class="cta" id="contact">
       <div class="container cta__inner">
-        <h2 class="reveal">Ready to <em>find your path</em><br/>to growth?</h2>
-        <p class="reveal">Book a free strategy call and we'll map the fastest path to more patients, lower costs, and more revenue — no pressure, no jargon.</p>
+        <p class="eyebrow eyebrow--light reveal">Start the conversation</p>
+        <h2 class="reveal">Let's find your path<br/>to what's next.</h2>
+        <p class="cta__lead reveal">Book a free, no-pressure consultation. We'll pressure-test where you are, where you want to go, and the fastest path between the two.</p>
         <form class="cta__form reveal" id="ctaForm" novalidate>
           <input type="text" name="name" placeholder="Your name" aria-label="Your name" required />
           <input type="email" name="email" placeholder="Work email" aria-label="Work email" required />
-          <button type="submit" class="btn btn--primary">Start Your Growth Path</button>
+          <button type="submit" class="btn btn--primary">Book a Consultation</button>
         </form>
         <p class="cta__note reveal" id="ctaNote">We'll reply within one business day.</p>
       </div>
@@ -434,7 +300,7 @@
       <div class="footer__brand">
         <a href="#top" class="brand">
           <span class="brand__mark" aria-hidden="true">
-            <svg class="brand__svg" viewBox="0 0 120 140" width="26" height="30" fill="none">
+            <svg class="brand__svg" viewBox="0 0 120 140" width="24" height="28" fill="none">
               <g stroke="var(--gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M34 108 V46 Q34 16 66 16 Q102 16 102 52 Q102 86 68 86 H34"/>
                 <rect x="45" y="45" width="31" height="31" rx="11"/>
@@ -445,21 +311,21 @@
           </span>
           <span class="brand__text">patient<strong>path</strong></span>
         </a>
-        <p>Find your path to growth. One partner for marketing, revenue, procurement, and consulting.</p>
+        <p>Healthcare growth &amp; operations consulting. We help practices grow, save, optimize, and prepare for what's next.</p>
       </div>
-      <nav class="footer__col" aria-label="Services">
-        <h4>Services</h4>
-        <a href="#services">Marketing</a>
-        <a href="#rcm">Revenue Cycle</a>
-        <a href="#services">Procurement</a>
-        <a href="#services">Consulting</a>
-      </nav>
-      <nav class="footer__col" aria-label="Company">
-        <h4>Company</h4>
-        <a href="#work">Our Work</a>
+      <nav class="footer__col" aria-label="Firm">
+        <h4>Firm</h4>
+        <a href="#what">What We Do</a>
+        <a href="#problems">Problems We Solve</a>
+        <a href="#how">How We Work</a>
         <a href="#impact">Our Impact</a>
+      </nav>
+      <nav class="footer__col" aria-label="Explore">
+        <h4>Explore</h4>
+        <a href="#industries">Industries</a>
         <a href="#insights">Insights</a>
         <a href="#contact">Contact</a>
+        <a href="#top">Careers</a>
       </nav>
       <div class="footer__col">
         <h4>Get in touch</h4>
@@ -469,17 +335,16 @@
     </div>
     <div class="container footer__bar">
       <span>© <span id="year"></span> PatientPath. All rights reserved.</span>
-      <span class="footer__built">Crafted with GSAP &amp; Three.js</span>
+      <span class="footer__built">Healthcare growth, the consulting way.</span>
     </div>
   </footer>
 
-  <!-- ============ SCRIPTS (vendored locally — no CDN dependency) ============ -->
   <script src="assets/js/vendor/gsap.min.js"></script>
   <script src="assets/js/vendor/ScrollTrigger.min.js"></script>
   <script type="importmap">
     { "imports": { "three": "./assets/js/vendor/three.module.js" } }
   </script>
-  <script type="module" src="assets/js/three-scene.js"></script>
-  <script defer src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/hero-scene.js"></script>
+  <script defer src="assets/js/site.js"></script>
 </body>
 </html>
