@@ -9,8 +9,8 @@
   --navy-2:     #163a43;
   --navy-deep:  #0b2026;
   --blue:       #2b93b0;
-  --gold:       #e89f4c;   /* brand orange (from logo) */
-  --gold-soft:  #f0ad60;
+  --gold:       #eea541;   /* brand orange (from logo) */
+  --gold-soft:  #f2b35e;
   --ink:        #16282d;
   --muted:      #5d7076;
   --paper:      #f6f3ec;   /* warm cream */
@@ -89,6 +89,8 @@ main, .site-header, .footer { position: relative; z-index: 2; }
 .nav { display: flex; align-items: center; justify-content: space-between; padding-block: 1.1rem; }
 .brand { display: inline-flex; align-items: center; gap: .55rem; }
 .brand__text { font-family: var(--sans); font-weight: 600; font-size: 1.3rem; color: #fff; letter-spacing: -.01em; }
+.brand__logo { display: block; height: 32px; width: auto; }
+.footer .brand__logo { height: 26px; }
 .brand__text strong { font-weight: 700; color: var(--gold); }
 .nav__links { display: flex; align-items: center; gap: 2.1rem; }
 .nav__links a { color: rgba(255,255,255,.82); font-weight: 500; font-size: .95rem; position: relative; }
