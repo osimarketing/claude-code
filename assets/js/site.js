@@ -53,6 +53,7 @@
     }
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
     tl.from(".hero__title .line > span", { yPercent: 115, opacity: 0, duration: 1, stagger: 0.12 })
+      .to(".hero__media", { opacity: 1, y: 0, duration: 0.9 }, "-=0.85")
       .to(".hero__eyebrow", { opacity: 1, y: 0, duration: 0.7 }, "-=0.8")
       .to(".hero__lead", { opacity: 1, y: 0, duration: 0.7 }, "-=0.55")
       .to(".hero__actions", { opacity: 1, y: 0, duration: 0.7 }, "-=0.55")
