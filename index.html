@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
-  <link rel="stylesheet" href="assets/css/site.css" />
+  <link rel="stylesheet" href="assets/css/site.css?v=3" />
 </head>
 <body>
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
@@ -116,89 +116,70 @@
           <p class="section-intro section-intro--light reveal">Start with the problem in front of you. We'll bring the right levers to bear, and skip the ones you don't need.</p>
         </div>
 
-        <div class="psolve__accordion reveal" id="psolveAccordion">
-          <div class="psolve__item is-active" data-i="0">
-            <button class="psolve__head" id="ptab-0" aria-expanded="true" aria-controls="ppanel-0">
-              <span class="psolve__tab-num">01</span>
-              <span class="psolve__head-label">Preparing for a sale</span>
-              <span class="psolve__chev" aria-hidden="true"></span>
+        <div class="psolve__layout reveal">
+          <div class="psolve__tabs" role="tablist" aria-label="Problems we solve">
+            <button class="psolve__tab is-active" role="tab" aria-selected="true" id="ptab-0" data-i="0">
+              <span class="psolve__tab-num">01</span> Preparing for a sale
             </button>
-            <div class="psolve__panel" id="ppanel-0" role="region" aria-labelledby="ptab-0">
-              <div class="psolve__panel-inner">
-                <p class="psolve__kicker">The situation</p>
-                <h3 class="psolve__headline">Maximize valuation and walk into diligence with nothing to hide.</h3>
-                <p class="psolve__copy">When you're preparing to sell, clean books and predictable performance are everything. We get the financials, margins, and growth story in shape so buyers compete for your practice.</p>
-                <ul class="psolve__list">
-                  <li>Financial clean-up &amp; revenue-cycle optimization</li>
-                  <li>Cost structure &amp; margin improvement</li>
-                  <li>Growth narrative &amp; diligence-ready documentation</li>
-                </ul>
-                <div class="psolve__outcome"><span class="psolve__outcome-num" data-count="100" data-suffix="%">0</span><span>of prep work aimed at a stronger multiple</span></div>
-              </div>
-            </div>
+            <button class="psolve__tab" role="tab" aria-selected="false" id="ptab-1" data-i="1">
+              <span class="psolve__tab-num">02</span> Growing an existing location
+            </button>
+            <button class="psolve__tab" role="tab" aria-selected="false" id="ptab-2" data-i="2">
+              <span class="psolve__tab-num">03</span> Launching a new location
+            </button>
+            <button class="psolve__tab" role="tab" aria-selected="false" id="ptab-3" data-i="3">
+              <span class="psolve__tab-num">04</span> Implementing best practices
+            </button>
           </div>
 
-          <div class="psolve__item" data-i="1">
-            <button class="psolve__head" id="ptab-1" aria-expanded="false" aria-controls="ppanel-1">
-              <span class="psolve__tab-num">02</span>
-              <span class="psolve__head-label">Growing an existing location</span>
-              <span class="psolve__chev" aria-hidden="true"></span>
-            </button>
-            <div class="psolve__panel" id="ppanel-1" role="region" aria-labelledby="ptab-1">
-              <div class="psolve__panel-inner">
-                <p class="psolve__kicker">The situation</p>
-                <h3 class="psolve__headline">Fill the schedule and lift revenue without adding overhead.</h3>
-                <p class="psolve__copy">You have capacity and a great team, and you need more of the right patients and a tighter path from interest to appointment. We focus on demand, conversion, and retention.</p>
-                <ul class="psolve__list">
-                  <li>Patient acquisition &amp; local marketing</li>
-                  <li>Conversion, scheduling &amp; retention</li>
-                  <li>Revenue-cycle tune-up to keep what you earn</li>
-                </ul>
-                <div class="psolve__outcome"><span class="psolve__outcome-num" data-count="35" data-suffix="%">0</span><span>increase in new patient calls</span></div>
-              </div>
-            </div>
-          </div>
+          <div class="psolve__stage">
+            <article class="psolve__panel is-active" role="tabpanel" aria-labelledby="ptab-0" data-i="0">
+              <p class="psolve__kicker">The situation</p>
+              <h3 class="psolve__headline">Maximize valuation and walk into diligence with nothing to hide.</h3>
+              <p class="psolve__copy">When you're preparing to sell, clean books and predictable performance are everything. We get the financials, margins, and growth story in shape so buyers compete for your practice.</p>
+              <ul class="psolve__list">
+                <li>Financial clean-up &amp; revenue-cycle optimization</li>
+                <li>Cost structure &amp; margin improvement</li>
+                <li>Growth narrative &amp; diligence-ready documentation</li>
+              </ul>
+              <div class="psolve__outcome"><span class="psolve__outcome-num" data-count="100" data-suffix="%">0</span><span>of prep work aimed at a stronger multiple</span></div>
+            </article>
 
-          <div class="psolve__item" data-i="2">
-            <button class="psolve__head" id="ptab-2" aria-expanded="false" aria-controls="ppanel-2">
-              <span class="psolve__tab-num">03</span>
-              <span class="psolve__head-label">Launching a new location</span>
-              <span class="psolve__chev" aria-hidden="true"></span>
-            </button>
-            <div class="psolve__panel" id="ppanel-2" role="region" aria-labelledby="ptab-2">
-              <div class="psolve__panel-inner">
-                <p class="psolve__kicker">The situation</p>
-                <h3 class="psolve__headline">Open strong with a proven playbook instead of guesswork.</h3>
-                <p class="psolve__copy">A new location is a bet. We de-risk it by validating the market, building demand before you open, and standing up operations so day one runs like day one hundred.</p>
-                <ul class="psolve__list">
-                  <li>Market &amp; site demand analysis</li>
-                  <li>Pre-launch marketing &amp; patient pipeline</li>
-                  <li>Operations, staffing &amp; systems setup</li>
-                </ul>
-                <div class="psolve__outcome"><span class="psolve__outcome-num" data-count="2" data-suffix="x" data-decimals="0">0</span><span>faster ramp to profitability</span></div>
-              </div>
-            </div>
-          </div>
+            <article class="psolve__panel" role="tabpanel" aria-labelledby="ptab-1" data-i="1" hidden>
+              <p class="psolve__kicker">The situation</p>
+              <h3 class="psolve__headline">Fill the schedule and lift revenue without adding overhead.</h3>
+              <p class="psolve__copy">You have capacity and a great team, and you need more of the right patients and a tighter path from interest to appointment. We focus on demand, conversion, and retention.</p>
+              <ul class="psolve__list">
+                <li>Patient acquisition &amp; local marketing</li>
+                <li>Conversion, scheduling &amp; retention</li>
+                <li>Revenue-cycle tune-up to keep what you earn</li>
+              </ul>
+              <div class="psolve__outcome"><span class="psolve__outcome-num" data-count="35" data-suffix="%">0</span><span>increase in new patient calls</span></div>
+            </article>
 
-          <div class="psolve__item" data-i="3">
-            <button class="psolve__head" id="ptab-3" aria-expanded="false" aria-controls="ppanel-3">
-              <span class="psolve__tab-num">04</span>
-              <span class="psolve__head-label">Implementing best practices</span>
-              <span class="psolve__chev" aria-hidden="true"></span>
-            </button>
-            <div class="psolve__panel" id="ppanel-3" role="region" aria-labelledby="ptab-3">
-              <div class="psolve__panel-inner">
-                <p class="psolve__kicker">The situation</p>
-                <h3 class="psolve__headline">Adopt what already works instead of starting from scratch.</h3>
-                <p class="psolve__copy">High-performing practices have already solved most of your problems. We bring those playbooks to your team and implement them, so improvement takes weeks, not years.</p>
-                <ul class="psolve__list">
-                  <li>Operational diagnostics &amp; benchmarking</li>
-                  <li>Best-practice playbooks for your specialty</li>
-                  <li>Team enablement &amp; change management</li>
-                </ul>
-                <div class="psolve__outcome"><span class="psolve__outcome-num" data-count="90" data-suffix="%">0</span><span>of best practices ready to implement on day one</span></div>
-              </div>
-            </div>
+            <article class="psolve__panel" role="tabpanel" aria-labelledby="ptab-2" data-i="2" hidden>
+              <p class="psolve__kicker">The situation</p>
+              <h3 class="psolve__headline">Open strong with a proven playbook instead of guesswork.</h3>
+              <p class="psolve__copy">A new location is a bet. We de-risk it by validating the market, building demand before you open, and standing up operations so day one runs like day one hundred.</p>
+              <ul class="psolve__list">
+                <li>Market &amp; site demand analysis</li>
+                <li>Pre-launch marketing &amp; patient pipeline</li>
+                <li>Operations, staffing &amp; systems setup</li>
+              </ul>
+              <div class="psolve__outcome"><span class="psolve__outcome-num" data-count="2" data-suffix="x" data-decimals="0">0</span><span>faster ramp to profitability</span></div>
+            </article>
+
+            <article class="psolve__panel" role="tabpanel" aria-labelledby="ptab-3" data-i="3" hidden>
+              <p class="psolve__kicker">The situation</p>
+              <h3 class="psolve__headline">Adopt what already works instead of starting from scratch.</h3>
+              <p class="psolve__copy">High-performing practices have already solved most of your problems. We bring those playbooks to your team and implement them, so improvement takes weeks, not years.</p>
+              <ul class="psolve__list">
+                <li>Operational diagnostics &amp; benchmarking</li>
+                <li>Best-practice playbooks for your specialty</li>
+                <li>Team enablement &amp; change management</li>
+              </ul>
+              <div class="psolve__outcome"><span class="psolve__outcome-num" data-count="90" data-suffix="%">0</span><span>of best practices ready to implement on day one</span></div>
+            </article>
           </div>
         </div>
       </div>
@@ -411,6 +392,6 @@
     { "imports": { "three": "./assets/js/vendor/three.module.js" } }
   </script>
   <script type="module" src="assets/js/hero-scene.js"></script>
-  <script defer src="assets/js/site.js"></script>
+  <script defer src="assets/js/site.js?v=3"></script>
 </body>
 </html>

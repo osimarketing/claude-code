@@ -105,32 +105,35 @@
     document.querySelectorAll("[data-count]").forEach(animateCount);
   }
 
-  /* Problems We Solve — tabs (desktop) / accordion (mobile) */
-  const psItems = Array.from(document.querySelectorAll(".psolve__item"));
-  const psCounted = new Set();
-  function selectProblem(i) {
-    psItems.forEach((it, k) => {
+  /* Problems We Solve — tabs */
+  const tabs = Array.from(document.querySelectorAll(".psolve__tab"));
+  const panels = Array.from(document.querySelectorAll(".psolve__panel"));
+  const counted = new Set();
+  function selectTab(i) {
+    tabs.forEach((t, k) => {
       const active = k === i;
-      it.classList.toggle("is-active", active);
-      const head = it.querySelector(".psolve__head");
-      if (head) head.setAttribute("aria-expanded", String(active));
+      t.classList.toggle("is-active", active);
+      t.setAttribute("aria-selected", String(active));
+    });
+    panels.forEach((p, k) => {
+      const active = k === i;
       if (active) {
-        const inner = it.querySelector(".psolve__panel-inner");
-        if (hasGSAP && !reduced && inner) gsap.fromTo(inner, { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.out" });
+        p.hidden = false;
+        if (hasGSAP && !reduced) gsap.fromTo(p, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" });
         // run the outcome counter the first time this panel opens
-        const num = it.querySelector("[data-count]");
-        if (num && !psCounted.has(num)) { psCounted.add(num); animateCount(num); }
+        const num = p.querySelector("[data-count]");
+        if (num && !counted.has(num)) { counted.add(num); animateCount(num); }
+      } else {
+        p.hidden = true;
       }
     });
   }
-  psItems.forEach((it) => {
-    const head = it.querySelector(".psolve__head");
-    const i = parseInt(it.dataset.i, 10);
-    if (!head) return;
-    head.addEventListener("click", () => selectProblem(i));
-    head.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowDown" || e.key === "ArrowRight") { e.preventDefault(); const n = (i + 1) % psItems.length; psItems[n].querySelector(".psolve__head").focus(); selectProblem(n); }
-      if (e.key === "ArrowUp" || e.key === "ArrowLeft") { e.preventDefault(); const n = (i - 1 + psItems.length) % psItems.length; psItems[n].querySelector(".psolve__head").focus(); selectProblem(n); }
+  tabs.forEach((t) => {
+    t.addEventListener("click", () => selectTab(parseInt(t.dataset.i, 10)));
+    t.addEventListener("keydown", (e) => {
+      const i = parseInt(t.dataset.i, 10);
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") { e.preventDefault(); const n = (i + 1) % tabs.length; tabs[n].focus(); selectTab(n); }
+      if (e.key === "ArrowUp" || e.key === "ArrowLeft") { e.preventDefault(); const n = (i - 1 + tabs.length) % tabs.length; tabs[n].focus(); selectTab(n); }
     });
   });
 
