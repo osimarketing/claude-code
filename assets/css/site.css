@@ -108,8 +108,8 @@ main, .site-header, .footer { position: relative; z-index: 2; }
    Hero
    ========================================================= */
 .hero {
-  min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
-  padding: 10rem 0 2.5rem; position: relative;
+  min-height: auto; display: flex; flex-direction: column; justify-content: center;
+  padding: 6.5rem 0 3rem; position: relative;
   background:
     radial-gradient(1000px 620px at 78% 30%, rgba(43,147,176,.16), transparent 62%),
     linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
@@ -127,7 +127,7 @@ main, .site-header, .footer { position: relative; z-index: 2; }
 .hero__lead strong { color: #fff; font-weight: 600; }
 .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-.hero__trust { display: flex; align-items: center; gap: 1.6rem; margin-top: clamp(3rem, 8vh, 6rem); padding-top: 1.6rem; border-top: 1px solid var(--line-light); flex-wrap: wrap; }
+.hero__trust { display: flex; align-items: center; gap: 1.6rem; margin-top: clamp(1.8rem, 4vh, 3rem); padding-top: 1.6rem; border-top: 1px solid var(--line-light); flex-wrap: wrap; }
 .hero__trust-label { color: rgba(255,255,255,.55); font-size: .82rem; letter-spacing: .04em; }
 .hero__trust-list { display: flex; gap: 1.8rem; list-style: none; flex-wrap: wrap; }
 .hero__trust-list li { color: rgba(255,255,255,.85); font-weight: 500; font-size: .95rem; position: relative; }
