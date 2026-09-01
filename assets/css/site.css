@@ -114,11 +114,11 @@ main, .site-header, .footer { position: relative; z-index: 2; }
     radial-gradient(1000px 620px at 78% 30%, rgba(43,147,176,.16), transparent 62%),
     linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
 }
-.hero__inner { max-width: 980px; }
+.hero__inner { max-width: none; }
 .hero__eyebrow { color: var(--gold); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; font-size: .78rem; margin-bottom: 1.8rem; }
 .hero__title { font-family: var(--display); font-weight: 500; color: #fff; font-size: clamp(2.6rem, 6.4vw, 5rem); line-height: 1.04; letter-spacing: -.025em; margin-bottom: 1.8rem; }
 .hero__title em { color: var(--gold); font-style: normal; }
-.hero__title .line { display: block; overflow: hidden; }
+.hero__title .line { display: block; overflow: hidden; padding-bottom: .14em; margin-bottom: -.14em; }
 .hero__title .line > span { display: inline-block; }
 .hero__lead { color: rgba(255,255,255,.8); font-size: clamp(1.05rem, 1.6vw, 1.25rem); max-width: 720px; line-height: 1.65; margin-bottom: 2.3rem; }
 .hero__lead strong { color: #fff; font-weight: 600; }
@@ -145,24 +145,24 @@ main, .site-header, .footer { position: relative; z-index: 2; }
    Problems We Solve — tabs
    ========================================================= */
 .psolve { background: var(--navy); color: #fff; padding: clamp(4.5rem, 9vw, 8rem) 0; }
-.psolve__layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
-.psolve__tabs { display: flex; flex-direction: column; gap: .2rem; }
-.psolve__tab {
-  display: flex; align-items: center; gap: 1rem; text-align: left; cursor: pointer;
+/* Desktop: heads stack on the left, active panel sits in the right column */
+.psolve__accordion { position: relative; min-height: 560px; }
+.psolve__item { display: block; }
+.psolve__head {
+  display: flex; align-items: center; gap: 1rem; width: 42%; text-align: left; cursor: pointer;
   background: none; border: 0; border-top: 1px solid var(--line-light);
   color: rgba(255,255,255,.62); font-family: var(--display); font-size: 1.3rem; font-weight: 500;
   padding: 1.25rem 0; transition: color .3s, padding .3s var(--ease); letter-spacing: -.01em;
 }
-.psolve__tab:last-child { border-bottom: 1px solid var(--line-light); }
-.psolve__tab-num { font-family: var(--sans); font-size: .72rem; font-weight: 600; letter-spacing: .1em; color: rgba(255,255,255,.4); transition: color .3s; }
-.psolve__tab:hover { color: rgba(255,255,255,.9); }
-.psolve__tab.is-active { color: #fff; padding-left: 1rem; }
-.psolve__tab.is-active .psolve__tab-num { color: var(--gold); }
-.psolve__tab.is-active { box-shadow: inset 3px 0 0 var(--gold); }
-
-.psolve__stage { position: relative; min-height: 360px; }
-.psolve__panel { }
-.psolve__panel[hidden] { display: none; }
+.psolve__item:last-child .psolve__head { border-bottom: 1px solid var(--line-light); }
+.psolve__head-label { flex: 1 1 auto; }
+.psolve__head:hover { color: rgba(255,255,255,.9); }
+.psolve__item.is-active .psolve__head { color: #fff; padding-left: 1rem; box-shadow: inset 3px 0 0 var(--gold); }
+.psolve__tab-num { font-family: var(--sans); font-size: .72rem; font-weight: 600; letter-spacing: .1em; color: rgba(255,255,255,.4); transition: color .3s; flex: 0 0 auto; }
+.psolve__item.is-active .psolve__tab-num { color: var(--gold); }
+.psolve__chev { display: none; }
+.psolve__panel { position: absolute; top: 0; right: 0; width: 54%; display: none; }
+.psolve__item.is-active .psolve__panel { display: block; }
 .psolve__kicker { color: var(--gold); font-size: .74rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 1.1rem; }
 .psolve__headline { font-family: var(--display); font-weight: 500; font-size: clamp(1.5rem, 2.6vw, 2.1rem); line-height: 1.18; letter-spacing: -.01em; margin-bottom: 1.1rem; max-width: 22ch; }
 .psolve__copy { color: rgba(255,255,255,.74); font-size: 1.05rem; max-width: 52ch; margin-bottom: 1.8rem; }
@@ -221,15 +221,18 @@ main, .site-header, .footer { position: relative; z-index: 2; }
    ========================================================= */
 .insights { background: var(--paper); padding: clamp(4.5rem, 9vw, 8rem) 0; }
 .insights__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem; margin-bottom: 3rem; flex-wrap: wrap; }
-.posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); }
-.post { border-bottom: 1px solid var(--line); }
-.post + .post .post__link { border-left: 1px solid var(--line); }
-.post__link { display: block; padding: 2.2rem 1.8rem 2.4rem; height: 100%; transition: background .3s; }
-.post:hover .post__link { background: rgba(217,146,64,.06); }
+.posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 3vw, 2rem); }
+.post { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--paper); transition: transform .3s var(--ease), box-shadow .3s; }
+.post:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.post__link { display: flex; flex-direction: column; height: 100%; }
+.post__shot { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--paper-2); border-bottom: 1px solid var(--line); }
+.post__shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.post:hover .post__shot img { transform: scale(1.04); }
+.post__body { display: flex; flex-direction: column; flex: 1; padding: 1.8rem; }
 .post__cat { display: inline-block; color: var(--gold); font-weight: 600; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 1.1rem; }
 .post h3 { font-family: var(--display); font-weight: 500; font-size: 1.4rem; line-height: 1.24; color: var(--ink); margin-bottom: .9rem; letter-spacing: -.01em; }
 .post p { color: var(--muted); font-size: .95rem; margin-bottom: 1.6rem; }
-.post__meta { color: var(--muted); font-size: .82rem; letter-spacing: .02em; }
+.post__meta { color: var(--muted); font-size: .82rem; letter-spacing: .02em; margin-top: auto; }
 
 /* =========================================================
    Selected Work
@@ -314,6 +317,8 @@ main, .site-header, .footer { position: relative; z-index: 2; }
 .article-hero__back:hover { color: var(--gold); }
 
 .article { background: var(--paper); padding: clamp(3rem, 6vw, 4.5rem) 0 clamp(4.5rem, 9vw, 7rem); }
+.article__figure { max-width: 860px; margin: clamp(-4rem, -5vw, -2.5rem) auto clamp(2rem, 4vw, 3rem); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); position: relative; z-index: 3; }
+.article__figure img { width: 100%; display: block; aspect-ratio: 16 / 9; object-fit: cover; }
 .article__body { max-width: 720px; margin-inline: auto; }
 .article__body > p { color: var(--ink); font-size: 1.1rem; line-height: 1.75; margin-bottom: 1.5rem; }
 .article__body > p:first-of-type { font-size: 1.24rem; color: var(--ink); }
@@ -344,7 +349,15 @@ main, .site-header, .footer { position: relative; z-index: 2; }
   .lever, .lever + .lever { padding: 2rem 1.4rem; border-left: 1px solid var(--line); }
   .lever:nth-child(odd) { border-left: 0; padding-left: 0; }
   .steps { grid-template-columns: repeat(2, 1fr); }
-  .psolve__layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  /* Mobile: accordion — each situation expands under its own title */
+  .psolve__accordion { position: static; min-height: 0; }
+  .psolve__head { width: 100%; }
+  .psolve__chev { display: block; margin-left: auto; flex: 0 0 auto; width: 10px; height: 10px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); transition: transform .3s var(--ease); }
+  .psolve__item.is-active .psolve__chev { transform: rotate(225deg); color: var(--gold); }
+  .psolve__panel { position: static; width: auto; display: grid; grid-template-rows: 0fr; overflow: hidden; transition: grid-template-rows .4s var(--ease); }
+  .psolve__item.is-active .psolve__panel { display: grid; grid-template-rows: 1fr; }
+  .psolve__panel-inner { overflow: hidden; }
+  .psolve__item.is-active .psolve__panel-inner { padding: .2rem 0 1.8rem; }
   .industries__grid { grid-template-columns: 1fr; }
   .proof__stats { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
   .posts { grid-template-columns: 1fr; }
