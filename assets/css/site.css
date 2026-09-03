@@ -270,17 +270,17 @@ main, .site-header, .footer { position: relative; z-index: 2; }
 /* =========================================================
    Planner callout
    ========================================================= */
-.planner { background: var(--navy); color: #fff; padding: clamp(3rem, 6vw, 5rem) 0; }
-.planner__inner { display: flex; align-items: center; gap: clamp(1.5rem, 4vw, 3rem); flex-wrap: wrap; background: linear-gradient(135deg, var(--navy-2), var(--navy-deep)); border: 1px solid var(--line-light); border-radius: 8px; padding: clamp(1.5rem, 4vw, 2.5rem); }
+.planner { background: var(--blue); color: #fff; padding: clamp(4rem, 7vw, 6rem) 0; }
+.planner__inner { display: flex; align-items: center; gap: clamp(1.5rem, 4vw, 3rem); flex-wrap: wrap; background: linear-gradient(150deg, #26879f, #1b6b82); border: 1px solid rgba(255,255,255,.22); border-radius: 14px; padding: clamp(1.9rem, 4vw, 3rem); box-shadow: 0 32px 60px -32px rgba(8,28,33,.55); }
 .planner__media { flex: 0 0 auto; width: clamp(190px, 26vw, 260px); }
-.planner__media img { width: 100%; height: auto; display: block; border-radius: 12px; }
+.planner__media img { width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 18px 42px -18px rgba(8,28,33,.55); }
 .planner__body { flex: 1 1 340px; display: flex; flex-direction: column; gap: 1.6rem; }
 .planner__text { max-width: 46ch; }
 .planner__text .eyebrow { margin-bottom: 1rem; }
 .planner__title { font-family: var(--display); font-weight: 500; font-size: clamp(1.6rem, 3vw, 2.3rem); line-height: 1.1; letter-spacing: -.02em; color: #fff; margin-bottom: .8rem; }
-.planner__lead { color: rgba(255,255,255,.74); font-size: 1.02rem; }
+.planner__lead { color: rgba(255,255,255,.86); font-size: 1.02rem; }
 .planner__action { display: flex; flex-direction: column; align-items: flex-start; gap: .8rem; }
-.planner__note { color: rgba(255,255,255,.5); font-size: .82rem; letter-spacing: .02em; }
+.planner__note { color: rgba(255,255,255,.66); font-size: .82rem; letter-spacing: .02em; }
 
 /* =========================================================
    CTA
