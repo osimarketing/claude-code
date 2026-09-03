@@ -271,8 +271,11 @@ main, .site-header, .footer { position: relative; z-index: 2; }
    Planner callout
    ========================================================= */
 .planner { background: var(--navy); color: #fff; padding: clamp(3rem, 6vw, 5rem) 0; }
-.planner__inner { display: flex; align-items: center; justify-content: space-between; gap: 2.4rem; flex-wrap: wrap; background: linear-gradient(135deg, var(--navy-2), var(--navy-deep)); border: 1px solid var(--line-light); border-radius: 8px; padding: clamp(2rem, 4vw, 3rem); }
-.planner__text { max-width: 42ch; }
+.planner__inner { display: flex; align-items: center; gap: clamp(1.5rem, 4vw, 3rem); flex-wrap: wrap; background: linear-gradient(135deg, var(--navy-2), var(--navy-deep)); border: 1px solid var(--line-light); border-radius: 8px; padding: clamp(1.5rem, 4vw, 2.5rem); }
+.planner__media { flex: 0 0 auto; width: clamp(190px, 26vw, 260px); }
+.planner__media img { width: 100%; height: auto; display: block; border-radius: 12px; }
+.planner__body { flex: 1 1 340px; display: flex; flex-direction: column; gap: 1.6rem; }
+.planner__text { max-width: 46ch; }
 .planner__text .eyebrow { margin-bottom: 1rem; }
 .planner__title { font-family: var(--display); font-weight: 500; font-size: clamp(1.6rem, 3vw, 2.3rem); line-height: 1.1; letter-spacing: -.02em; color: #fff; margin-bottom: .8rem; }
 .planner__lead { color: rgba(255,255,255,.74); font-size: 1.02rem; }
@@ -391,6 +394,7 @@ main, .site-header, .footer { position: relative; z-index: 2; }
   .footer__inner { grid-template-columns: 1fr; }
   .hero__actions .btn { width: 100%; }
   .hero__media { max-width: 340px; }
+  .planner__media { margin-inline: auto; }
   .cta__form input { max-width: none; }
   .psolve__tab { font-size: 1.12rem; }
 }
