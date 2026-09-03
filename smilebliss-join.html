@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#1B6873" />
+<title>Smilebliss™ | Follow Your Bliss. Find More Success.</title>
+<meta name="description" content="A proven, ready-to-go orthodontic practice model. Marketing, revenue cycle management, procurement, peer support, and training — all done for you." />
+
+<meta property="og:title" content="Smilebliss™ — Follow Your Bliss. Find More Success." />
+<meta property="og:description" content="Introducing Smilebliss™, a proven, ready-to-go orthodontic practice model for doctors ready to start or convert a practice." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231B6873'/%3E%3Cpath d='M32 14l4 14 14 4-14 4-4 14-4-14-14-4 14-4z' fill='%23FAF7F2'/%3E%3C/svg%3E" />
+
+<style>
+/* =========================================================
+   Smilebliss — "Join Us" franchise/recruitment landing page
+   Self-contained. Brand tokens approximated from the live
+   site; refine exact hex values once brand guide is on hand.
+   ========================================================= */
+:root{
+  --teal:        #1B6873;
+  --teal-deep:   #16525B;
+  --mint:        #3FB8AC;
+  --mint-2:      #4CBFB4;
+  --mint-soft:   #E4F5F2;
+  --coral:       #E8927C;
+  --coral-2:     #EE9C82;
+  --coral-soft:  #FCE8E1;
+  --cream:       #FAF7F2;
+  --cream-2:     #F3EEE4;
+  --ink:         #1E2E30;
+  --muted:       #5C7175;
+  --white:       #FFFFFF;
+  --line:        rgba(27,104,115,.14);
+
+  --maxw: 1240px;
+  --radius-lg: 32px;
+  --radius: 20px;
+  --radius-sm: 12px;
+  --shadow-card: 0 30px 70px -30px rgba(22,82,91,.28);
+  --shadow-sm:   0 14px 34px -18px rgba(22,82,91,.3);
+  --ease: cubic-bezier(.22,1,.36,1);
+
+  --display: "Fraunces", Georgia, serif;
+  --eyebrow-font: "Poppins", system-ui, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; scroll-padding-top:88px; -webkit-text-size-adjust:100%; }
+body{
+  font-family:var(--sans); color:var(--ink); background:var(--cream);
+  line-height:1.65; overflow-x:hidden; -webkit-font-smoothing:antialiased;
+}
+img,svg,canvas{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; }
+button{ font-family:inherit; }
+.container{ width:min(100% - 2.5rem, var(--maxw)); margin-inline:auto; }
+.visually-hidden{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+}
+
+/* ---------- typography helpers ---------- */
+.eyebrow{
+  display:inline-flex; align-items:center; gap:.65rem;
+  font-family:var(--eyebrow-font); font-weight:600; font-size:.72rem;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--coral);
+  margin-bottom:1.1rem;
+}
+.eyebrow::before{ content:""; width:22px; height:2px; border-radius:2px; background:var(--coral); }
+.eyebrow--light{ color:#FFD9C9; }
+.eyebrow--light::before{ background:#FFD9C9; }
+
+.section-title{
+  font-family:var(--display); font-weight:600; letter-spacing:-.01em;
+  font-size:clamp(2rem,4.2vw,3.1rem); line-height:1.08; color:var(--teal-deep);
+}
+.section-title em{ font-style:italic; color:var(--coral); font-weight:500; }
+.section-title--light{ color:#fff; }
+.section-title--light em{ color:#FFD9C9; }
+.section-intro{ color:var(--muted); font-size:1.08rem; max-width:56ch; margin-top:1.1rem; }
+.section-intro--light{ color:rgba(255,255,255,.86); }
+.section-head{ max-width:700px; margin-bottom:clamp(2.6rem,4.5vw,3.6rem); position:relative; z-index:2; }
+.section-head.center{ margin-inline:auto; text-align:center; }
+.section{ padding:clamp(4.5rem,8vw,7.5rem) 0; position:relative; }
+
+/* ---------- accent shapes ---------- */
+.accent-dot,.accent-star,.accent-ring{ position:absolute; pointer-events:none; z-index:1; }
+.accent-dot{ width:14px; height:14px; border-radius:50%; }
+.accent-ring{ width:64px; height:64px; border-radius:50%; border:2px solid currentColor; opacity:.35; }
+.accent-star{ width:26px; height:26px; }
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+  font-family:var(--eyebrow-font); font-weight:600; font-size:.92rem;
+  padding:1rem 1.9rem; border-radius:50px; cursor:pointer; border:2px solid transparent;
+  transition:transform .25s var(--ease), background .25s, color .25s, border-color .25s, box-shadow .25s;
+  white-space:nowrap;
+}
+.btn--coral{ background:var(--coral); color:#fff; box-shadow:0 16px 30px -14px rgba(232,146,124,.85); }
+.btn--coral:hover{ transform:translateY(-2px); background:#E2795D; }
+.btn--teal{ background:var(--teal); color:#fff; box-shadow:0 16px 30px -14px rgba(27,104,115,.6); }
+.btn--teal:hover{ transform:translateY(-2px); background:var(--teal-deep); }
+.btn--ghost{ background:transparent; color:#fff; border-color:rgba(255,255,255,.55); }
+.btn--ghost:hover{ border-color:#fff; background:rgba(255,255,255,.14); transform:translateY(-2px); }
+.btn--outline{ background:transparent; color:var(--teal); border-color:var(--teal); }
+.btn--outline:hover{ background:var(--teal); color:#fff; transform:translateY(-2px); }
+.btn--sm{ padding:.7rem 1.3rem; font-size:.82rem; }
+.btn--block{ width:100%; }
+
+/* ---------- nav ---------- */
+.site-header{
+  position:fixed; inset:0 0 auto 0; z-index:1000;
+  padding:1.3rem 0; transition:background .35s var(--ease), box-shadow .35s, padding .35s;
+}
+.site-header.solid{ background:rgba(250,247,242,.92); backdrop-filter:blur(14px); box-shadow:0 8px 30px -22px rgba(22,82,91,.5); padding:.85rem 0; }
+.nav{ display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.brand{ display:flex; align-items:center; gap:.6rem; }
+.brand__mark{ width:34px; height:34px; flex:0 0 auto; }
+.brand__word{ display:flex; flex-direction:column; line-height:1; }
+.brand__name{ font-family:var(--display); font-weight:600; font-size:1.32rem; color:#fff; letter-spacing:-.01em; transition:color .35s; }
+.brand__sub{ font-family:var(--eyebrow-font); font-size:.52rem; letter-spacing:.24em; color:rgba(255,255,255,.75); transition:color .35s; }
+.solid .brand__name{ color:var(--teal-deep); }
+.solid .brand__sub{ color:var(--muted); }
+
+.nav__links{ display:flex; align-items:center; gap:1.9rem; }
+.nav__links a:not(.btn){ font-weight:600; font-size:.92rem; color:rgba(255,255,255,.92); transition:color .25s; }
+.solid .nav__links a:not(.btn){ color:var(--ink); }
+.nav__links a:not(.btn):hover{ color:var(--coral); }
+.nav__toggle{ display:none; flex-direction:column; gap:5px; background:none; border:0; cursor:pointer; padding:6px; z-index:1100; }
+.nav__toggle span{ width:26px; height:2px; background:#fff; border-radius:2px; transition:.3s; }
+.solid .nav__toggle span{ background:var(--teal-deep); }
+.nav__toggle.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.nav__toggle.open span:nth-child(2){ opacity:0; }
+.nav__toggle.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+@media (max-width:920px){
+  .nav__links{
+    position:fixed; inset:0 0 0 auto; width:min(78vw,340px); background:var(--teal-deep);
+    flex-direction:column; align-items:flex-start; justify-content:center; gap:1.7rem;
+    padding:2rem; transform:translateX(100%); transition:transform .4s var(--ease); z-index:1050;
+  }
+  .nav__links.open{ transform:translateX(0); }
+  .nav__links a:not(.btn){ color:#fff !important; font-size:1.15rem; }
+  .nav__toggle{ display:flex; }
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative; min-height:100svh; display:flex; align-items:center; overflow:hidden;
+  background:linear-gradient(165deg,#1B6873 0%,#2E8D8F 48%,#4CBFB4 100%);
+}
+#hero-canvas{ position:absolute; inset:0; width:100%; height:100%; z-index:1; display:block; }
+.hero::after{
+  content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 0%, rgba(22,82,91,0) 35%, rgba(15,52,58,.5) 100%);
+}
+.hero__inner{ position:relative; z-index:3; padding:9rem 0 5.5rem; max-width:820px; }
+.hero__eyebrow{
+  display:inline-flex; align-items:center; gap:.6rem; background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.32); color:#fff; font-family:var(--eyebrow-font);
+  font-weight:600; font-size:.68rem; letter-spacing:.16em; text-transform:uppercase;
+  padding:.55rem 1.1rem; border-radius:50px; margin-bottom:1.7rem; backdrop-filter:blur(6px);
+}
+.hero__eyebrow .dot{ width:7px; height:7px; border-radius:50%; background:var(--coral); box-shadow:0 0 0 4px rgba(232,146,124,.35); }
+.hero__title{
+  font-family:var(--display); font-weight:600; color:#fff; letter-spacing:-.02em;
+  font-size:clamp(2.6rem,6.2vw,4.7rem); line-height:1.05;
+}
+.hero__title em{ font-style:italic; color:#FFD9C9; font-weight:500; }
+.hero__lead{ color:rgba(255,255,255,.92); font-size:clamp(1.05rem,1.6vw,1.22rem); max-width:52ch; margin:1.5rem 0 2.3rem; }
+.hero__actions{ display:flex; flex-wrap:wrap; gap:1rem; }
+.hero__scroll{
+  position:absolute; left:50%; bottom:1.7rem; transform:translateX(-50%); z-index:3; color:rgba(255,255,255,.75);
+  font-family:var(--eyebrow-font); font-size:.68rem; letter-spacing:.22em; text-transform:uppercase;
+  display:flex; flex-direction:column; align-items:center; gap:.6rem;
+}
+.hero__scroll span{ width:1px; height:34px; background:rgba(255,255,255,.55); animation:scrolldot 1.9s var(--ease) infinite; }
+@keyframes scrolldot{ 0%{transform:scaleY(.2);transform-origin:top;opacity:.3} 50%{transform:scaleY(1);opacity:1} 100%{transform:scaleY(.2);transform-origin:bottom;opacity:.3} }
+
+/* ---------- stat bar ---------- */
+.stats{ background:var(--teal-deep); padding:2.6rem 0; position:relative; z-index:4; }
+.stats__grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; text-align:center; }
+.stats__num{ font-family:var(--display); font-weight:600; font-size:clamp(1.9rem,3.4vw,2.7rem); color:#fff; }
+.stats__num span{ color:#FFD9C9; }
+.stats__label{ font-family:var(--eyebrow-font); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.72); margin-top:.4rem; }
+@media (max-width:760px){ .stats__grid{ grid-template-columns:1fr; gap:1.8rem; } }
+
+/* ---------- floating card sections on gradient ---------- */
+.band{
+  background:linear-gradient(180deg,#FFF6EF 0%, var(--cream) 100%);
+  position:relative; overflow:hidden;
+}
+.band--mint{ background:linear-gradient(160deg,var(--mint-soft) 0%, var(--cream) 70%); }
+.band--teal{ background:linear-gradient(165deg,var(--teal) 0%,var(--teal-deep) 100%); color:#fff; }
+.band--coral{ background:linear-gradient(160deg,var(--coral-soft) 0%, var(--cream) 70%); }
+
+.float-card{
+  background:var(--white); border-radius:var(--radius-lg); box-shadow:var(--shadow-card);
+  padding:clamp(2.2rem,5vw,4rem);
+}
+
+/* ---------- "you're never alone" ---------- */
+.alone{ text-align:center; }
+.alone .float-card{ max-width:900px; margin-inline:auto; }
+
+/* ---------- pillars ---------- */
+.pillars__grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:1.4rem; margin-top:1rem; }
+.pillar{
+  background:var(--white); border-radius:var(--radius); padding:2rem 1.6rem; box-shadow:var(--shadow-sm);
+  display:flex; flex-direction:column; gap:.9rem; transition:transform .35s var(--ease), box-shadow .35s;
+}
+.pillar:hover{ transform:translateY(-6px); box-shadow:0 34px 60px -26px rgba(22,82,91,.32); }
+.pillar__icon{
+  width:52px; height:52px; border-radius:16px; display:flex; align-items:center; justify-content:center;
+  background:var(--mint-soft); color:var(--teal);
+}
+.pillar__icon svg{ width:26px; height:26px; }
+.pillar__title{ font-family:var(--display); font-weight:600; font-size:1.18rem; color:var(--teal-deep); }
+.pillar__text{ color:var(--muted); font-size:.95rem; flex:1; }
+.pillar__link{ font-family:var(--eyebrow-font); font-weight:600; font-size:.78rem; letter-spacing:.06em; color:var(--coral); display:inline-flex; align-items:center; gap:.4rem; }
+.pillar__link svg{ width:14px; height:14px; transition:transform .25s; }
+.pillar:hover .pillar__link svg{ transform:translateX(3px); }
+@media (max-width:1080px){ .pillars__grid{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:680px){ .pillars__grid{ grid-template-columns:1fr; } }
+
+/* ---------- revenue chart ---------- */
+.revenue__card{ background:var(--white); border-radius:var(--radius-lg); box-shadow:var(--shadow-card); padding:clamp(1.8rem,5vw,3.2rem); }
+.revenue__legend{ display:flex; gap:1.8rem; flex-wrap:wrap; margin:1.6rem 0 .6rem; }
+.legend-item{ display:flex; align-items:center; gap:.55rem; font-weight:600; font-size:.88rem; color:var(--ink); }
+.legend-swatch{ width:14px; height:14px; border-radius:4px; }
+.chart-wrap{ position:relative; height:min(60vw,420px); margin-top:1rem; }
+.revenue__disclaimer{ font-size:.76rem; color:var(--muted); margin-top:1.4rem; line-height:1.6; max-width:74ch; }
+.revenue__meta{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.4rem; }
+.meta-pill{ font-family:var(--eyebrow-font); font-size:.72rem; letter-spacing:.05em; font-weight:600; padding:.4rem .8rem; border-radius:50px; background:var(--mint-soft); color:var(--teal-deep); }
+
+/* ---------- benefits ---------- */
+.benefits__list{ display:flex; flex-direction:column; gap:1.3rem; margin-top:1rem; }
+.benefit{ display:flex; gap:1.3rem; align-items:flex-start; background:var(--white); border-radius:var(--radius); padding:1.5rem 1.7rem; box-shadow:var(--shadow-sm); }
+.benefit__num{
+  font-family:var(--display); font-weight:600; font-size:1.5rem; color:var(--coral);
+  width:46px; height:46px; border-radius:50%; background:var(--coral-soft); flex:0 0 auto;
+  display:flex; align-items:center; justify-content:center;
+}
+.benefit__text{ font-size:1.02rem; color:var(--ink); padding-top:.4rem; }
+
+/* ---------- two paths ---------- */
+.paths__grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.8rem; margin-top:1rem; }
+.path-card{
+  border-radius:var(--radius-lg); padding:clamp(2rem,4vw,2.8rem); position:relative; overflow:hidden;
+  box-shadow:var(--shadow-card); color:#fff; min-height:340px; display:flex; flex-direction:column;
+}
+.path-card--new{ background:linear-gradient(155deg,var(--teal) 0%,var(--teal-deep) 100%); }
+.path-card--conv{ background:linear-gradient(155deg,var(--coral) 0%,#D9765C 100%); }
+.path-card__badge{ font-family:var(--eyebrow-font); font-size:.68rem; letter-spacing:.16em; text-transform:uppercase; opacity:.85; margin-bottom:.8rem; }
+.path-card__title{ font-family:var(--display); font-weight:600; font-size:1.7rem; margin-bottom:.9rem; }
+.path-card__text{ opacity:.92; font-size:.98rem; flex:1; }
+.path-card .btn{ margin-top:1.6rem; align-self:flex-start; }
+@media (max-width:820px){ .paths__grid{ grid-template-columns:1fr; } }
+
+/* ---------- testimonials ---------- */
+.testi__grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; margin-top:1rem; }
+.testi-card{ background:var(--white); border-radius:var(--radius-lg); padding:2rem 1.8rem; box-shadow:var(--shadow-sm); text-align:center; }
+.testi-avatar{
+  width:88px; height:88px; margin:0 auto 1.2rem; border-radius:50% 50% 50% 4%; overflow:hidden;
+  display:flex; align-items:center; justify-content:center; font-family:var(--display); font-weight:600;
+  font-size:1.6rem; color:#fff;
+}
+.testi-quote{ font-family:var(--display); font-style:italic; font-size:1.06rem; color:var(--ink); line-height:1.55; margin-bottom:1.2rem; }
+.testi-name{ font-weight:700; font-size:.96rem; }
+.testi-loc{ font-family:var(--eyebrow-font); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:.25rem; }
+.testi-tag{ margin-top:1rem; display:inline-block; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--coral); background:var(--coral-soft); padding:.3rem .7rem; border-radius:50px; font-weight:600; }
+@media (max-width:900px){ .testi__grid{ grid-template-columns:1fr; } }
+
+/* ---------- checklist ---------- */
+.checklist{ max-width:760px; margin:0 auto; }
+.check-item{
+  display:flex; align-items:center; gap:1.1rem; background:var(--white); border-radius:var(--radius);
+  padding:1.3rem 1.6rem; box-shadow:var(--shadow-sm); margin-bottom:1rem;
+}
+.check-box{
+  width:34px; height:34px; border-radius:50%; border:2px solid var(--mint); flex:0 0 auto;
+  display:flex; align-items:center; justify-content:center; position:relative;
+}
+.check-box svg{ width:18px; height:18px; stroke:var(--mint-2); stroke-width:3; fill:none; stroke-dasharray:24; stroke-dashoffset:24; }
+.check-box.done{ background:var(--mint); border-color:var(--mint); }
+.check-box.done svg{ stroke:#fff; }
+.check-text{ font-size:1.02rem; color:var(--ink); font-weight:500; }
+.checklist__closing{
+  text-align:center; margin-top:2rem; font-family:var(--display); font-style:italic; font-size:1.2rem;
+  color:var(--teal-deep); max-width:60ch; margin-inline:auto;
+}
+
+/* ---------- final CTA + form ---------- */
+.cta-band{ background:linear-gradient(165deg,var(--teal) 0%,#20777F 45%,var(--mint) 100%); position:relative; overflow:hidden; }
+.cta-grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:3rem; align-items:start; }
+.cta-copy{ color:#fff; position:relative; z-index:2; }
+.cta-copy .section-intro{ margin-top:1.2rem; }
+.cta-trust{ display:flex; flex-direction:column; gap:.9rem; margin-top:2rem; }
+.cta-trust li{ display:flex; align-items:center; gap:.7rem; font-size:.92rem; color:rgba(255,255,255,.92); }
+.cta-trust svg{ width:18px; height:18px; flex:0 0 auto; color:#FFD9C9; }
+
+.form-card{ background:var(--white); border-radius:var(--radius-lg); padding:clamp(1.8rem,4vw,2.6rem); box-shadow:var(--shadow-card); position:relative; z-index:2; }
+.form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.field{ display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
+.field.full{ grid-column:1 / -1; }
+.field label{ font-family:var(--eyebrow-font); font-size:.72rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+.field input, .field select{
+  border:1.5px solid var(--line); border-radius:10px; padding:.85rem 1rem; font-size:.96rem; font-family:var(--sans);
+  color:var(--ink); background:var(--cream); transition:border-color .2s, box-shadow .2s;
+}
+.field input:focus, .field select:focus{ outline:none; border-color:var(--mint); box-shadow:0 0 0 4px rgba(63,184,172,.18); }
+.toggle-group{ display:flex; gap:.6rem; flex-wrap:wrap; }
+.toggle-pill{
+  border:1.5px solid var(--line); border-radius:50px; padding:.6rem 1.1rem; font-size:.86rem; font-weight:600;
+  cursor:pointer; background:var(--cream); color:var(--ink); transition:.2s;
+}
+.toggle-pill input{ display:none; }
+.toggle-pill.active{ background:var(--teal); border-color:var(--teal); color:#fff; }
+.form-note{ font-size:.8rem; color:var(--muted); margin-top:1rem; }
+.form-success{ display:none; text-align:center; padding:2.4rem 1rem; }
+.form-success.show{ display:block; }
+.form-success svg{ width:56px; height:56px; color:var(--mint); margin:0 auto 1rem; }
+.form-success h3{ font-family:var(--display); font-size:1.5rem; color:var(--teal-deep); margin-bottom:.6rem; }
+.form-success p{ color:var(--muted); }
+@media (max-width:960px){ .cta-grid{ grid-template-columns:1fr; } }
+@media (max-width:560px){ .form-grid{ grid-template-columns:1fr; } }
+
+/* ---------- sticky mobile CTA ---------- */
+.sticky-cta{
+  position:fixed; left:0; right:0; bottom:0; z-index:900; padding:.85rem 1rem;
+  background:rgba(250,247,242,.94); backdrop-filter:blur(10px); box-shadow:0 -10px 26px -18px rgba(22,82,91,.4);
+  display:none;
+}
+.sticky-cta .btn{ width:100%; }
+@media (max-width:760px){ .sticky-cta{ display:block; } body{ padding-bottom:74px; } }
+
+/* ---------- footer ---------- */
+footer{ background:var(--teal-deep); color:rgba(255,255,255,.85); padding:4rem 0 2rem; }
+.footer__grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:2.4rem; padding-bottom:2.6rem; border-bottom:1px solid rgba(255,255,255,.14); }
+.footer__brand .brand__name{ color:#fff; }
+.footer__brand p{ margin-top:1rem; font-size:.9rem; max-width:32ch; color:rgba(255,255,255,.7); }
+.footer__col h4{ font-family:var(--eyebrow-font); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:#FFD9C9; margin-bottom:1rem; }
+.footer__col a{ display:block; font-size:.9rem; color:rgba(255,255,255,.78); margin-bottom:.7rem; transition:color .2s; }
+.footer__col a:hover{ color:#fff; }
+.footer__social{ display:flex; gap:.8rem; margin-top:1.2rem; }
+.footer__social a{ width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.12); display:flex; align-items:center; justify-content:center; }
+.footer__social svg{ width:17px; height:17px; }
+.footer__bottom{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; padding-top:1.8rem; font-size:.82rem; color:rgba(255,255,255,.55); }
+@media (max-width:880px){ .footer__grid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:560px){ .footer__grid{ grid-template-columns:1fr; } }
+
+/* ---------- GSAP reveal base state ---------- */
+.reveal{ opacity:0; transform:translateY(36px); }
+.reveal-scale{ opacity:0; transform:scale(.92); }
+
+/* ---------- misc responsive ---------- */
+@media (max-width:960px){
+  .stats__grid{ grid-template-columns:repeat(3,1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="container nav">
+    <a href="#top" class="brand" aria-label="Smilebliss home">
+      <svg class="brand__mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#EE9C82"/>
+        <path d="M32 12l5 15 15 5-15 5-5 15-5-15-15-5 15-5z" fill="#fff"/>
+      </svg>
+      <span class="brand__word">
+        <span class="brand__name">Smilebliss<sup style="font-size:.5em;">™</sup></span>
+        <span class="brand__sub">ORTHODONTICS</span>
+      </span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="#support">Support</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#revenue">Revenue</a>
+      <a href="#">Locations</a>
+      <a href="#">News</a>
+      <a href="#contact" class="btn btn--coral btn--sm">Let's Do This</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="container hero__inner">
+    <span class="hero__eyebrow"><span class="dot"></span>Introducing Smilebliss™ — A Proven, Ready-to-Go Orthodontic Practice</span>
+    <h1 class="hero__title">Follow Your Bliss.<br>Find <em>More Success.</em></h1>
+    <p class="hero__lead">Starting an orthodontic practice is tough. There are lots of things to do. Pick a name. Find a location. Hire the right people. Create marketing. Get equipment. Then, make sure you're all set up with the insurance companies so that you get paid. It's a lot &mdash; and that's not even half of it. We have over 30 years of experience creating successful practices. The Smilebliss team can do it all. We've done it all. So, we took that knowledge and created a ready-to-go practice model with everything done for you.</p>
+    <div class="hero__actions">
+      <a href="#contact" class="btn btn--coral">Let's Do This</a>
+      <a href="#support" class="btn btn--ghost">See How It Works</a>
+    </div>
+  </div>
+  <div class="hero__scroll"><span></span>Scroll</div>
+</section>
+
+<!-- ============ STAT BAR ============ -->
+<section class="stats">
+  <div class="container stats__grid">
+    <div>
+      <div class="stats__num" data-count="30" data-suffix="+">0<span>+</span></div>
+      <div class="stats__label">Years of Experience</div>
+    </div>
+    <div>
+      <div class="stats__num" data-count="1" data-suffix="B+" data-prefix="$">$0<span>B+</span></div>
+      <div class="stats__label">Collected for Clients</div>
+    </div>
+    <div>
+      <div class="stats__num" data-count="50" data-suffix="+">0<span>+</span></div>
+      <div class="stats__label">Practice Partners Nationwide</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ YOU'RE NEVER IN IT ALONE ============ -->
+<section class="section band alone" id="alone-section">
+  <svg class="accent-star" style="top:6%;left:6%;color:var(--coral);" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+  <span class="accent-dot" style="bottom:10%;right:8%;background:var(--mint);"></span>
+  <span class="accent-ring" style="top:14%;right:12%;color:var(--coral);"></span>
+  <div class="container">
+    <div class="float-card reveal">
+      <span class="eyebrow" style="justify-content:center;">Together, Every Step</span>
+      <h2 class="section-title">As a Smilebliss Client, You're Never in It Alone.</h2>
+      <p class="section-intro" style="margin-inline:auto;">Here, we go out of our way to make your job &mdash; and that of your entire team &mdash; easier with support geared toward growing, successful practice needs. From marketing, training, and procurement to revenue cycle management, we handle the heavy lifting.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIVE PILLARS ============ -->
+<section class="section band--mint" id="support">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What We Handle</span>
+      <h2 class="section-title">Five Ways We Carry the Load</h2>
+      <p class="section-intro">A proven support system built for growing practices &mdash; so you can focus on patients, not paperwork.</p>
+    </div>
+    <div class="pillars__grid">
+      <article class="pillar reveal">
+        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+        <h3 class="pillar__title">Revenue Cycle Management</h3>
+        <p class="pillar__text">The secret to success is getting paid for the work you do. Our team has collected billions for clients.</p>
+        <a href="#contact" class="pillar__link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pillar reveal">
+        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4 9-4V7"/></svg></div>
+        <h3 class="pillar__title">Procurement</h3>
+        <p class="pillar__text">If you like deals, we know how to get them. Our all-in-one ordering system gets you negotiated rates on equipment and supplies.</p>
+        <a href="#contact" class="pillar__link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pillar reveal">
+        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6.2 6.5-6.2S15.5 16.4 15.5 20"/><circle cx="17.5" cy="9" r="2.4"/><path d="M21.5 19c0-2.7-1.9-4.6-4.2-4.9"/></svg></div>
+        <h3 class="pillar__title">Peer Support</h3>
+        <p class="pillar__text">Run your own practice without feeling like you're in it alone, backed by our award-winning team and peer-to-peer network.</p>
+        <a href="#contact" class="pillar__link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pillar reveal">
+        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l18-7-7 18-2.5-7.5L3 11z"/></svg></div>
+        <h3 class="pillar__title">Marketing</h3>
+        <p class="pillar__text">Nothing grows a practice faster than incredible marketing. Our strategists, designers, and copywriters get people signing up for treatment.</p>
+        <a href="#contact" class="pillar__link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pillar reveal">
+        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5a2 2 0 012-2h9l5 5v11a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M9 12h6M9 16h6M9 8h3"/></svg></div>
+        <h3 class="pillar__title">Training</h3>
+        <p class="pillar__text">Covering practice culture and brand, new patient process, scheduling, efficiencies, and adding patient value &mdash; for every role on your team.</p>
+        <a href="#contact" class="pillar__link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVENUE CHART ============ -->
+<section class="section band" id="revenue">
+  <span class="accent-dot" style="top:8%;left:6%;background:var(--coral);"></span>
+  <svg class="accent-star" style="bottom:8%;right:6%;color:var(--mint);" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">The Numbers</span>
+      <h2 class="section-title">License Model <em>Proforma.</em></h2>
+      <p class="section-intro" style="margin-inline:auto;">Start-Up Practice</p>
+    </div>
+    <div class="revenue__card reveal">
+      <div class="revenue__legend">
+        <span class="legend-item"><span class="legend-swatch" style="background:#1B6873;"></span>Base Scenario</span>
+        <span class="legend-item"><span class="legend-swatch" style="background:#E8927C;"></span>Best Scenario</span>
+      </div>
+      <div class="chart-wrap"><canvas id="revenueChart"></canvas></div>
+      <div class="revenue__meta">
+        <span class="meta-pill">Yr 1 Base: 500 starts</span>
+        <span class="meta-pill">Yr 1 Best: 900 starts</span>
+        <span class="meta-pill">Yr 3 Base: 2,000 starts</span>
+        <span class="meta-pill">Yr 3 Best: 2,400 starts</span>
+      </div>
+      <p class="revenue__disclaimer">Estimated results based on a brand-new practice establishing the direct-to-consumer pricing model with an average of 4 production days per week. Individual results may vary and should not be considered a guarantee of results.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFITS ============ -->
+<section class="section band--coral" id="benefits">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Why Smilebliss</span>
+      <h2 class="section-title">Our Benefits Will Make You Smile as Much as Your Patients.</h2>
+    </div>
+    <div class="benefits__list">
+      <div class="benefit reveal"><span class="benefit__num">1</span><p class="benefit__text">Jump-start your practice growth or revitalize your existing one.</p></div>
+      <div class="benefit reveal"><span class="benefit__num">2</span><p class="benefit__text">Gain greater brand awareness with marketing services that get people in the door and in your chair.</p></div>
+      <div class="benefit reveal"><span class="benefit__num">3</span><p class="benefit__text">Get access to established and proven practice operations.</p></div>
+      <div class="benefit reveal"><span class="benefit__num">4</span><p class="benefit__text">Save money on equipment and supplies.</p></div>
+      <div class="benefit reveal"><span class="benefit__num">5</span><p class="benefit__text">Get expert help with training programs, procurement, insurance, and billing.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TWO PATHS ============ -->
+<section class="section band--mint" id="paths">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Two Ways In</span>
+      <h2 class="section-title">Whichever Path You Choose, We've Built the Road.</h2>
+    </div>
+    <div class="paths__grid">
+      <div class="path-card path-card--new reveal">
+        <span class="path-card__badge">Start Fresh</span>
+        <h3 class="path-card__title">New Practice</h3>
+        <p class="path-card__text">Brand, training, site selection, financial modeling, and marketing support to launch your practice from scratch &mdash; with a proven playbook behind every decision.</p>
+        <a href="#contact" class="btn btn--ghost btn--sm">Explore New Practice</a>
+      </div>
+      <div class="path-card path-card--conv reveal">
+        <span class="path-card__badge">Level Up</span>
+        <h3 class="path-card__title">Practice Conversion</h3>
+        <p class="path-card__text">Convert your existing orthodontic practice into a Smilebliss location, with full access to the same proven systems our new-practice partners rely on.</p>
+        <a href="#contact" class="btn btn--ghost btn--sm">Explore Conversion</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section band" id="testimonials">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Practice Owners</span>
+      <h2 class="section-title">Hear From Our Practice Owners.</h2>
+      <p class="section-intro" style="margin-inline:auto;">Sample profiles &mdash; swap in your own client stories and headshots.</p>
+    </div>
+    <div class="testi__grid">
+      <div class="testi-card reveal">
+        <div class="testi-avatar" style="background:linear-gradient(155deg,#1B6873,#3FB8AC);">AR</div>
+        <p class="testi-quote">"Smilebliss handed us a marketing engine and a billing team on day one. We hit our Year 1 start goal three months early."</p>
+        <div class="testi-name">Dr. Alicia Reyes</div>
+        <div class="testi-loc">Scottsdale, AZ</div>
+        <span class="testi-tag">Sample Content</span>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-avatar" style="background:linear-gradient(155deg,#E8927C,#EE9C82);">MK</div>
+        <p class="testi-quote">"Converting to Smilebliss felt like exhaling. Procurement alone saved us more than the licensing fee in the first year."</p>
+        <div class="testi-name">Dr. Marcus Kim</div>
+        <div class="testi-loc">Charlotte, NC</div>
+        <span class="testi-tag">Sample Content</span>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-avatar" style="background:linear-gradient(155deg,#4CBFB4,#1B6873);">JT</div>
+        <p class="testi-quote">"The peer network is the real unlock. I've never once felt like I was figuring this out on my own."</p>
+        <div class="testi-name">Dr. Jasmine Torres</div>
+        <div class="testi-loc">Round Rock, TX</div>
+        <span class="testi-tag">Sample Content</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHECKLIST ============ -->
+<section class="section band--mint" id="checklist-section">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Self-Check</span>
+      <h2 class="section-title">Is Smilebliss Right for Me?</h2>
+    </div>
+    <div class="checklist">
+      <div class="check-item reveal"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I really want to take control of my own destiny?</span></div>
+      <div class="check-item reveal"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Am I prepared to adapt to new ideas?</span></div>
+      <div class="check-item reveal"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I have a genuine interest in improving the lives of others?</span></div>
+      <div class="check-item reveal"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I have great clinical results?</span></div>
+      <div class="check-item reveal"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I have a strong commitment to employee and customer satisfaction?</span></div>
+      <p class="checklist__closing reveal">If you answered YES to these questions, congrats! You just met the initial criteria for this incredible, proven model.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA + FORM ============ -->
+<section class="section cta-band" id="contact">
+  <span class="accent-dot" style="top:10%;left:4%;background:#FFD9C9;"></span>
+  <svg class="accent-star" style="bottom:6%;left:10%;color:#FFD9C9;" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+  <div class="container cta-grid">
+    <div class="cta-copy reveal">
+      <span class="eyebrow eyebrow--light">Ready When You Are</span>
+      <h2 class="section-title section-title--light">Find Success by Following Your Bliss.</h2>
+      <p class="section-intro section-intro--light">Tell us a little about you and your practice goals. A member of our team will follow up to walk through next steps.</p>
+      <ul class="cta-trust">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>30+ years building successful practices</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Billions collected for clients</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>A proven, ready-to-go model</li>
+      </ul>
+    </div>
+    <div class="form-card reveal">
+      <form id="joinForm" novalidate>
+        <div class="form-grid">
+          <div class="field"><label for="fname">First Name</label><input id="fname" name="fname" type="text" required></div>
+          <div class="field"><label for="lname">Last Name</label><input id="lname" name="lname" type="text" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required></div>
+          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required></div>
+          <div class="field"><label for="pname">Practice Name</label><input id="pname" name="pname" type="text"></div>
+          <div class="field"><label for="pweb">Website</label><input id="pweb" name="pweb" type="url"></div>
+          <div class="field full"><label for="source">How did you hear about us?</label>
+            <select id="source" name="source">
+              <option value="">Select one</option>
+              <option>Google Search</option>
+              <option>Social Media</option>
+              <option>Referral / Colleague</option>
+              <option>Industry Event</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label>I'm interested in Smilebliss for:</label>
+            <div class="toggle-group" data-group="interest">
+              <label class="toggle-pill active"><input type="radio" name="interest" value="Starting New Practice" checked>Starting New Practice</label>
+              <label class="toggle-pill"><input type="radio" name="interest" value="Converting Existing Practice">Converting Existing Practice</label>
+            </div>
+          </div>
+          <div class="field full">
+            <label>I am interested in Smilebliss as a:</label>
+            <div class="toggle-group" data-group="role">
+              <label class="toggle-pill active"><input type="radio" name="role" value="Practice Owner" checked>Practice Owner</label>
+              <label class="toggle-pill"><input type="radio" name="role" value="Practice Employee">Practice Employee</label>
+              <label class="toggle-pill"><input type="radio" name="role" value="Patient">Patient</label>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn--coral btn--block">Let's Do This</button>
+        <p class="form-note">By submitting, you agree to be contacted by the Smilebliss team about this inquiry.</p>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+        <h3>Thanks &mdash; we've got it.</h3>
+        <p>A member of the Smilebliss team will be in touch shortly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="#top" class="brand">
+          <svg class="brand__mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" fill="#EE9C82"/>
+            <path d="M32 12l5 15 15 5-15 5-5 15-5-15-15-5 15-5z" fill="#fff"/>
+          </svg>
+          <span class="brand__word"><span class="brand__name">Smilebliss™</span></span>
+        </a>
+        <p>A proven, ready-to-go orthodontic practice model for doctors ready to follow their bliss.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8.5H16l.5-3.5h-3V7.8c0-1 .3-1.7 1.8-1.7H16.6V3.1C16.3 3 15.3 3 14.2 3c-2.4 0-4 1.5-4 4.2V10H7.7v3.5h2.5V22z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <a href="#">Locations</a>
+        <a href="#">News</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="footer__col">
+        <h4>Partners</h4>
+        <a href="#">Licensee Portal</a>
+        <a href="#">Ordering Portal</a>
+        <a href="#">Doctor Referral</a>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <a href="mailto:info@smilebliss.com">info@smilebliss.com</a>
+        <a href="tel:8338331148">833-833-1148</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Accessibility Statement</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Smilebliss Orthodontics. All rights reserved.</span>
+      <span>Concept redesign &mdash; content sourced from joinsmilebliss.com</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a href="#contact" class="btn btn--coral">Let's Do This</a></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js" defer></script>
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- nav ---------- */
+  var header = document.getElementById('siteHeader');
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  function onScroll(){ header.classList.toggle('solid', window.scrollY > 40); }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+  navToggle.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ---------- toggle pills ---------- */
+  document.querySelectorAll('.toggle-group').forEach(function(group){
+    group.querySelectorAll('.toggle-pill').forEach(function(pill){
+      pill.addEventListener('click', function(){
+        group.querySelectorAll('.toggle-pill').forEach(function(p){ p.classList.remove('active'); });
+        pill.classList.add('active');
+      });
+    });
+  });
+
+  /* ---------- form submit ---------- */
+  var form = document.getElementById('joinForm');
+  var success = document.getElementById('formSuccess');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!form.checkValidity()){ form.reportValidity(); return; }
+    form.style.display = 'none';
+    success.classList.add('show');
+  });
+
+  /* ---------- stat counters ---------- */
+  function animateCount(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    var prefix = el.getAttribute('data-prefix') || '';
+    var span = el.querySelector('span');
+    var obj = { val: 0 };
+    gsap.to(obj, {
+      val: target, duration: reduceMotion ? 0.01 : 1.8, ease: 'power2.out',
+      onUpdate: function(){
+        var v = target % 1 === 0 ? Math.round(obj.val) : obj.val.toFixed(1);
+        el.childNodes[0].nodeValue = prefix + v;
+      },
+      onComplete: function(){
+        var v = target % 1 === 0 ? target : target.toFixed(1);
+        el.childNodes[0].nodeValue = prefix + v;
+      }
+    });
+  }
+
+  /* ---------- GSAP scroll reveals ---------- */
+  if (window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.querySelectorAll('.reveal').forEach(function(el, i){
+      gsap.to(el, {
+        opacity:1, y:0, duration: reduceMotion ? 0.01 : 0.9, ease:'power3.out',
+        scrollTrigger:{ trigger: el, start:'top 88%', once:true }
+      });
+    });
+
+    gsap.utils.toArray('.stats__num').forEach(function(el){
+      ScrollTrigger.create({
+        trigger: el, start:'top 90%', once:true,
+        onEnter: function(){ animateCount(el); }
+      });
+    });
+
+    document.querySelectorAll('.pillar').forEach(function(card, i){
+      gsap.fromTo(card, { opacity:0, y:40 }, {
+        opacity:1, y:0, duration: reduceMotion ? 0.01 : 0.7, ease:'power3.out',
+        delay: reduceMotion ? 0 : (i % 5) * 0.08,
+        scrollTrigger:{ trigger: card, start:'top 90%', once:true }
+      });
+    });
+
+    document.querySelectorAll('.benefit').forEach(function(card, i){
+      gsap.fromTo(card, { opacity:0, x:-30 }, {
+        opacity:1, x:0, duration: reduceMotion ? 0.01 : 0.6, ease:'power3.out',
+        delay: reduceMotion ? 0 : i * 0.07,
+        scrollTrigger:{ trigger: card, start:'top 92%', once:true }
+      });
+    });
+
+    document.querySelectorAll('.testi-card').forEach(function(card, i){
+      gsap.fromTo(card, { opacity:0, y:30, scale:.96 }, {
+        opacity:1, y:0, scale:1, duration: reduceMotion ? 0.01 : 0.7, ease:'power3.out',
+        delay: reduceMotion ? 0 : i * 0.1,
+        scrollTrigger:{ trigger: card, start:'top 90%', once:true }
+      });
+    });
+
+    /* checklist checkmarks draw in one by one */
+    var checkItems = document.querySelectorAll('.check-item');
+    ScrollTrigger.create({
+      trigger: '.checklist', start:'top 82%', once:true,
+      onEnter: function(){
+        checkItems.forEach(function(item, i){
+          var box = item.querySelector('.check-box');
+          var svg = box.querySelector('svg');
+          gsap.fromTo(item, { opacity:0, y:20 }, { opacity:1, y:0, duration:.5, delay: reduceMotion?0:i*0.15, ease:'power3.out' });
+          gsap.to(box, {
+            delay: reduceMotion ? 0 : i * 0.15 + 0.25, duration:.01,
+            onStart: function(){ box.classList.add('done'); }
+          });
+          gsap.to(svg, { strokeDashoffset:0, duration: reduceMotion?0.01:0.4, delay: reduceMotion?0:i*0.15+0.25, ease:'power2.out' });
+        });
+        var closing = document.querySelector('.checklist__closing');
+        gsap.to(closing, { opacity:1, y:0, duration:.6, delay: reduceMotion?0:checkItems.length*0.15+0.3, ease:'power3.out' });
+      }
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.style.opacity = 1; el.style.transform = 'none'; });
+  }
+
+  /* ---------- revenue chart (Chart.js), created only when in view ---------- */
+  var chartData = {
+    labels: ['Year 1','Year 2','Year 3'],
+    base: [401012, 1805244, 3895784],
+    baseStarts: [500, 1500, 2000],
+    best: [721822, 2647921, 5146670],
+    bestStarts: [900, 1950, 2400]
+  };
+  var revenueChart = null;
+  function money(v){ return '$' + Math.round(v).toLocaleString('en-US'); }
+  function initRevenueChart(){
+    var ctx = document.getElementById('revenueChart');
+    if (!ctx || revenueChart) return;
+    revenueChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: chartData.labels,
+        datasets: [
+          { label:'Base', data: chartData.base, backgroundColor:'#1B6873', borderRadius:8, maxBarThickness:64 },
+          { label:'Best', data: chartData.best, backgroundColor:'#E8927C', borderRadius:8, maxBarThickness:64 }
+        ]
+      },
+      options: {
+        responsive:true, maintainAspectRatio:false,
+        animation: reduceMotion ? false : { duration:1400, easing:'easeOutQuart' },
+        plugins:{
+          legend:{ display:false },
+          tooltip:{
+            backgroundColor:'#16525B', padding:12, cornerRadius:10, titleFont:{ family:'Poppins', weight:'600' }, bodyFont:{ family:'Inter' },
+            callbacks:{
+              label: function(item){
+                var starts = item.datasetIndex === 0 ? chartData.baseStarts[item.dataIndex] : chartData.bestStarts[item.dataIndex];
+                return item.dataset.label + ': ' + money(item.raw) + ' (' + starts.toLocaleString('en-US') + ' starts)';
+              }
+            }
+          }
+        },
+        scales:{
+          y:{ beginAtZero:true, ticks:{ callback:function(v){ return '$' + (v/1000000).toFixed(1) + 'M'; }, font:{ family:'Inter' } }, grid:{ color:'rgba(27,104,115,.08)' } },
+          x:{ ticks:{ font:{ family:'Poppins', weight:'600' } }, grid:{ display:false } }
+        }
+      }
+    });
+  }
+  if (window.ScrollTrigger){
+    ScrollTrigger.create({ trigger:'#revenue', start:'top 75%', once:true, onEnter: initRevenueChart });
+  } else {
+    window.addEventListener('DOMContentLoaded', initRevenueChart);
+  }
+
+  /* ---------- Three.js ambient hero background ---------- */
+  function initHeroScene(){
+    var canvas = document.getElementById('hero-canvas');
+    var heroEl = document.querySelector('.hero');
+    if (!canvas || !window.THREE || reduceMotion) return;
+
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha:true, antialias:true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+    camera.position.z = 12;
+
+    function makeGlowTexture(color){
+      var size = 128;
+      var c = document.createElement('canvas'); c.width = c.height = size;
+      var g = c.getContext('2d');
+      var grad = g.createRadialGradient(size/2,size/2,0,size/2,size/2,size/2);
+      grad.addColorStop(0, color + 'FF');
+      grad.addColorStop(0.4, color + '88');
+      grad.addColorStop(1, color + '00');
+      g.fillStyle = grad;
+      g.fillRect(0,0,size,size);
+      return new THREE.CanvasTexture(c);
+    }
+
+    var texTeal = makeGlowTexture('#4CBFB4');
+    var texCoral = makeGlowTexture('#EE9C82');
+    var texCream = makeGlowTexture('#FAF7F2');
+
+    var count = window.innerWidth < 700 ? 16 : 26;
+    var group = new THREE.Group();
+    var sprites = [];
+    for (var i=0; i<count; i++){
+      var tex = i % 3 === 0 ? texCoral : (i % 3 === 1 ? texCream : texTeal);
+      var mat = new THREE.SpriteMaterial({ map: tex, transparent:true, opacity: 0.16 + Math.random()*0.22, blending:THREE.AdditiveBlending, depthWrite:false });
+      var sprite = new THREE.Sprite(mat);
+      var scale = 1.4 + Math.random()*3.2;
+      sprite.scale.set(scale, scale, 1);
+      sprite.position.set((Math.random()-0.5)*20, (Math.random()-0.5)*14, (Math.random()-0.5)*8);
+      sprite.userData.speed = 0.05 + Math.random()*0.12;
+      sprite.userData.offset = Math.random()*Math.PI*2;
+      sprite.userData.baseY = sprite.position.y;
+      sprite.userData.baseX = sprite.position.x;
+      group.add(sprite);
+      sprites.push(sprite);
+    }
+    scene.add(group);
+
+    var mouse = { x:0, y:0 };
+    heroEl.addEventListener('pointermove', function(e){
+      var r = heroEl.getBoundingClientRect();
+      mouse.x = ((e.clientX - r.left) / r.width - 0.5) * 2;
+      mouse.y = ((e.clientY - r.top) / r.height - 0.5) * 2;
+    }, { passive:true });
+
+    function resize(){
+      var w = heroEl.clientWidth, h = heroEl.clientHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    var clock = new THREE.Clock();
+    var running = true;
+    document.addEventListener('visibilitychange', function(){ running = !document.hidden; });
+
+    function tick(){
+      requestAnimationFrame(tick);
+      if (!running) return;
+      var t = clock.getElapsedTime();
+      sprites.forEach(function(s){
+        s.position.y = s.userData.baseY + Math.sin(t * s.userData.speed + s.userData.offset) * 0.8;
+        s.position.x = s.userData.baseX + Math.cos(t * s.userData.speed * 0.7 + s.userData.offset) * 0.6;
+      });
+      group.rotation.y = mouse.x * 0.06;
+      group.rotation.x = -mouse.y * 0.04;
+      camera.position.x += (mouse.x * 0.6 - camera.position.x) * 0.03;
+      camera.position.y += (-mouse.y * 0.4 - camera.position.y) * 0.03;
+      camera.lookAt(0,0,0);
+      renderer.render(scene, camera);
+    }
+    tick();
+  }
+
+  if (document.readyState === 'complete') { initHeroScene(); }
+  else { window.addEventListener('load', initHeroScene); }
+})();
+</script>
+</body>
+</html>
