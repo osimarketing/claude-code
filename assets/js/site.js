@@ -135,6 +135,34 @@
     });
   });
 
+  /* Testimonials carousel — one on screen, arrows + dots */
+  const pq = document.getElementById("proofQuotes");
+  if (pq) {
+    const slides = Array.from(pq.querySelectorAll(".proof__quote"));
+    const carousel = pq.closest(".proof__carousel");
+    const dots = Array.from(carousel.querySelectorAll(".proof__dot"));
+    const arrows = Array.from(carousel.querySelectorAll(".proof__arrow"));
+    const currentIndex = () => Math.round(pq.scrollLeft / pq.clientWidth);
+    const goTo = (i) => {
+      const n = Math.max(0, Math.min(slides.length - 1, i));
+      pq.scrollTo({ left: n * pq.clientWidth, behavior: reduced ? "auto" : "smooth" });
+    };
+    const sync = () => {
+      const c = currentIndex();
+      dots.forEach((d, k) => d.classList.toggle("is-active", k === c));
+      arrows.forEach((a) => {
+        const dir = parseInt(a.dataset.dir, 10);
+        a.disabled = (dir < 0 && c <= 0) || (dir > 0 && c >= slides.length - 1);
+      });
+    };
+    arrows.forEach((a) => a.addEventListener("click", () => goTo(currentIndex() + parseInt(a.dataset.dir, 10))));
+    dots.forEach((d, k) => d.addEventListener("click", () => goTo(k)));
+    let raf;
+    pq.addEventListener("scroll", () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(sync); }, { passive: true });
+    window.addEventListener("resize", sync);
+    sync();
+  }
+
   /* CTA form */
   const form = document.getElementById("ctaForm");
   const note = document.getElementById("ctaNote");
