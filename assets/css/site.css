@@ -364,7 +364,8 @@ main, .site-header, .footer { position: relative; z-index: 2; }
   .psolve__panel { position: static; width: auto; display: grid; grid-template-rows: 0fr; overflow: hidden; transition: grid-template-rows .4s var(--ease); }
   .psolve__item.is-active .psolve__panel { display: grid; grid-template-rows: 1fr; }
   .psolve__panel-inner { overflow: hidden; }
-  .psolve__item.is-active .psolve__panel-inner { padding: .2rem 0 1.8rem; }
+  .psolve__item.is-active .psolve__panel-inner { padding: 1.15rem 0 1.8rem; }
+  .psolve__outcome { border-top: none; padding-top: .4rem; }
   .industries__grid { grid-template-columns: 1fr; }
   .proof__stats { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
   .posts { grid-template-columns: 1fr; }
