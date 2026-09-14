@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 700" role="img" aria-label="E&amp;S Orthodontics work sample — image coming soon">
+  <rect width="1120" height="700" rx="16" fill="#eef2f4"/>
+  <rect x="24" y="24" width="1072" height="652" rx="12" fill="none" stroke="#9fb3ba" stroke-width="3" stroke-dasharray="14 12"/>
+  <g transform="translate(560 292)" fill="none" stroke="#5d7076" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="-78" y="-58" width="156" height="116" rx="12"/>
+    <circle cx="-34" cy="-18" r="15" fill="#eea541" stroke="none"/>
+    <path d="M-70 44 L-14 -8 L20 28 L48 2 L72 24"/>
+  </g>
+  <text x="560" y="436" text-anchor="middle" font-family="Poppins, system-ui, sans-serif" font-size="44" font-weight="500" fill="#16282d">E&amp;S Orthodontics</text>
+  <text x="560" y="490" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="27" fill="#5d7076">Image coming soon</text>
+</svg>
