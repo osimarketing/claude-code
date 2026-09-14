@@ -213,8 +213,9 @@ main, .site-header, .footer { position: relative; z-index: 2; }
 .proof__stat { display: flex; flex-direction: column; gap: .5rem; }
 .proof__num { font-family: var(--display); font-weight: 600; font-size: clamp(2.4rem, 4vw, 3.4rem); color: var(--gold); line-height: 1; }
 .proof__label { color: rgba(255,255,255,.66); font-size: .95rem; }
-.proof__quote { max-width: 880px; }
-.proof__quote blockquote { font-family: var(--display); font-weight: 400; font-size: clamp(1.4rem, 2.8vw, 2.1rem); line-height: 1.4; letter-spacing: -.01em; color: #fff; margin-bottom: 1.8rem; }
+.proof__quotes { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: stretch; }
+.proof__quote { display: flex; flex-direction: column; }
+.proof__quote blockquote { font-family: var(--display); font-weight: 400; font-size: clamp(1.15rem, 1.7vw, 1.5rem); line-height: 1.45; letter-spacing: -.01em; color: #fff; margin-bottom: 1.8rem; flex: 1; }
 .proof__quote figcaption { display: flex; align-items: center; gap: 1rem; }
 .proof__avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--navy)); display: grid; place-items: center; font-weight: 600; font-size: .9rem; }
 .proof__quote figcaption strong { display: block; font-weight: 600; }
@@ -411,9 +412,9 @@ main, .site-header, .footer { position: relative; z-index: 2; }
   .psolve__tab { font-size: 1.12rem; }
 }
 
-/* Mobile: Selected Work & Insights become one-at-a-time swipe rows (peek) */
+/* Mobile: Selected Work, Insights & testimonials become one-at-a-time swipe rows (peek) */
 @media (max-width: 640px) {
-  .work__grid, .posts {
+  .work__grid, .posts, .proof__quotes {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -422,12 +423,13 @@ main, .site-header, .footer { position: relative; z-index: 2; }
     padding-bottom: .75rem;
     scrollbar-width: none;
   }
-  .work__grid::-webkit-scrollbar, .posts::-webkit-scrollbar { display: none; }
-  .work__card, .post {
+  .work__grid::-webkit-scrollbar, .posts::-webkit-scrollbar, .proof__quotes::-webkit-scrollbar { display: none; }
+  .work__card, .post, .proof__quote {
     flex: 0 0 85%;
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
+  .proof__quote { background: rgba(255,255,255,.05); border: 1px solid var(--line-light); border-radius: 10px; padding: 1.5rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
