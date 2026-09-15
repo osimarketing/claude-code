@@ -32,16 +32,26 @@
   if (toggle && navLinks) {
     const close = () => {
       toggle.classList.remove("is-open"); navLinks.classList.remove("is-open");
+      document.body.classList.remove("nav-open"); document.documentElement.classList.remove("nav-open");
       toggle.setAttribute("aria-expanded", "false"); toggle.setAttribute("aria-label", "Open menu");
     };
     toggle.addEventListener("click", () => {
       const open = navLinks.classList.toggle("is-open");
       toggle.classList.toggle("is-open", open);
+      document.body.classList.toggle("nav-open", open); document.documentElement.classList.toggle("nav-open", open);
       toggle.setAttribute("aria-expanded", String(open));
       toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     });
     navLinks.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+    // tap outside the panel (scrim/left area) to close
+    document.addEventListener("click", (e) => {
+      if (!navLinks.classList.contains("is-open")) return;
+      if (navLinks.contains(e.target) || toggle.contains(e.target)) return;
+      close();
+    });
+    // close if resized up to desktop while open
+    window.addEventListener("resize", () => { if (window.innerWidth > 820 && navLinks.classList.contains("is-open")) close(); });
   }
 
   /* hero intro */
