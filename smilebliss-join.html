@@ -73,6 +73,7 @@ button,input,select{ font:inherit; color:inherit; }
 
 /* ---------- layout primitives ---------- */
 .wrap{ width:min(100% - (var(--gut) * 2), var(--measure)); margin-inline:auto; }
+.wrap--wide{ width:min(100% - (var(--gut) * 2), 1560px); margin-inline:auto; }
 .wrap--narrow{ width:min(100% - (var(--gut) * 2), var(--measure)); margin-inline:auto; }
 .wrap--narrow > *{ max-width:780px; }
 .navy{ background:var(--navy); color:var(--paper); }
@@ -164,7 +165,10 @@ p{ text-wrap:pretty; }
 /* ---------- statement + what you get ---------- */
 .statement{ display:grid; gap:clamp(1.25rem,3vw,3rem); }
 .statement h2{ max-width:16ch; }
-@media (min-width:900px){ .statement{ grid-template-columns:1fr 1fr; align-items:start; } }
+@media (min-width:900px){
+  .statement{ grid-template-columns:.9fr 1.1fr; align-items:start; }
+  .statement h2{ position:sticky; top:6rem; }
+}
 
 /* an index, not a card grid */
 .index{ margin-top:clamp(2.5rem,5vw,4rem); border-top:1px solid var(--navy-14); }
@@ -222,7 +226,16 @@ p{ text-wrap:pretty; }
 /* ---------- two paths: flat fields, not cards ---------- */
 .paths{ display:grid; }
 @media (min-width:860px){ .paths{ grid-template-columns:1fr 1fr; } }
-.path{ padding:clamp(2rem,4vw,3.5rem); }
+.path{ padding:clamp(2rem,4vw,3.5rem); display:flex; flex-direction:column; text-decoration:none;
+       transition:background .2s; }
+.path__go{
+  margin-top:auto; padding-top:2rem; display:inline-flex; align-items:center; gap:.6rem;
+  font-family:var(--mono); font-size:.76rem; letter-spacing:.12em; text-transform:uppercase;
+}
+.path__go svg{ width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:2; transition:transform .2s; }
+.path:hover .path__go svg{ transform:translateX(5px); }
+.path--a:hover{ background-image:linear-gradient(rgba(247,243,239,.07),rgba(247,243,239,.07)); }
+.path--b:hover{ background-image:linear-gradient(rgba(247,243,239,.35),rgba(247,243,239,.35)); }
 .path--a{ background:var(--navy); color:var(--paper); }
 .path--b{ background:var(--sky); color:var(--navy); }
 .path p{ margin-top:1rem; max-width:44ch; }
@@ -231,14 +244,16 @@ p{ text-wrap:pretty; }
 .path--a .path__tag{ color:var(--sky); }
 
 /* ---------- qualification: real checkboxes the visitor answers ---------- */
-.qual{ margin-top:clamp(2rem,4vw,3rem); display:grid; gap:.5rem; }
-.qual li{ background:rgba(5,77,102,.05); }
+.tint{ background:var(--sky-18); }
+.qual{ margin-top:clamp(1.75rem,3vw,2.5rem); display:grid; gap:1px; background:var(--navy-14); }
+.qual li{ background:var(--paper); transition:background .15s; }
+@media (min-width:900px){ .qual{ grid-template-columns:1fr 1fr; } .qual li:last-child{ grid-column:1 / -1; } }
 .qual label{
   display:grid; grid-template-columns:auto 1fr; gap:1.1rem; align-items:center;
   padding:1.15rem 1.25rem; cursor:pointer; font-size:clamp(1.02rem,1.7vw,1.2rem);
   font-family:var(--display); transition:background .15s;
 }
-.qual li:has(input:checked){ background:rgba(5,77,102,.12); }
+.qual li:has(input:checked){ background:var(--sky); }   /* navy on sky = 5.13:1 */
 .qual input{ position:absolute; opacity:0; width:1px; height:1px; }
 .qual .box{
   width:28px; height:28px; border:2px solid var(--navy); display:grid; place-items:center;
@@ -250,7 +265,7 @@ p{ text-wrap:pretty; }
 .qual input:checked + .box{ background:var(--navy); }
 .qual input:checked + .box svg{ stroke-dashoffset:0; }
 .qual input:focus-visible + .box{ outline:3px solid var(--navy); outline-offset:3px; }
-.qual__count{ margin-top:1.25rem; font-family:var(--mono); font-size:.8rem; letter-spacing:.1em;
+.qual__count{ margin-top:1.5rem; font-family:var(--mono); font-size:.8rem; letter-spacing:.1em;
                text-transform:uppercase; color:var(--navy-78); }
 .qual__result{
   margin-top:1.75rem; padding:1.6rem; background:var(--navy); color:var(--paper);
@@ -432,7 +447,7 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
 
 <!-- ============================== ECONOMICS ============================= -->
 <section class="navy band band--tall" id="economics">
-  <div class="wrap">
+  <div class="wrap wrap--wide">
     <div class="exhibit">
       <div>
         <p class="kicker">License model proforma &mdash; start-up practice</p>
@@ -475,23 +490,25 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
     <p class="body" style="margin-top:1rem">Jump-start your practice growth, or revitalize the one you already have.</p>
   </div>
   <div class="paths">
-    <div class="path path--a">
+    <a class="path path--a" href="#contact" data-interest="Starting New Practice">
       <span class="path__tag">Start fresh</span>
       <h3>New practice</h3>
       <p>Brand, training, site selection, financial modeling, and marketing support to launch from scratch &mdash; with a proven playbook behind every decision.</p>
-    </div>
-    <div class="path path--b">
+      <span class="path__go">Start here <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <a class="path path--b" href="#contact" data-interest="Converting Existing Practice">
       <span class="path__tag">Already practising</span>
       <h3>Practice conversion</h3>
       <p>Convert an existing orthodontic practice into a Smilebliss location, with access to all the same proven systems.</p>
-    </div>
+      <span class="path__go">Start here <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+    </a>
   </div>
 </section>
 
 <!-- ================================= FIT ================================ -->
-<section class="band" id="fit">
-  <div class="wrap--narrow">
-    <h2 style="margin-top:1rem">Five questions worth answering honestly.</h2>
+<section class="band band--tight tint" id="fit">
+  <div class="wrap">
+    <h2 style="max-width:18ch">Five questions worth answering honestly.</h2>
     <ul class="qual" id="qual">
       <li><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Do I really want to take control of my own destiny?</label></li>
       <li><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Am I prepared to adapt to new ideas?</label></li>
@@ -615,6 +632,7 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
          URLs are confirmed. Dead "#" links were removed rather than shipped. -->
     <div class="foot__legal">
       <span>&copy; 2026 Smilebliss Orthodontics. All rights reserved.</span>
+      <span>Revenue figures on this page are estimates for a start-up practice, not a guarantee of results &mdash; <a href="#economics">see the full assumptions</a>.</span>
     </div>
   </div>
 </footer>
@@ -729,7 +747,7 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
       svg.appendChild(el('line', { x1: padL, x2: W - padR, y1: y(t), y2: y(t),
         stroke: 'rgba(247,243,239,.18)', 'stroke-width': 1 }));
       var lab = el('text', { x: padL, y: y(t) - 9, fill: 'rgba(247,243,239,.72)',
-        'font-family': 'IBM Plex Mono, monospace', 'font-size': 15 });
+        'font-family': 'IBM Plex Mono, monospace', 'font-size': 17 });
       lab.textContent = t === 0 ? '$0' : '$' + (t / 1e6) + 'M';
       if (t === 0) lab.setAttribute('y', y(t) + 20);
       svg.appendChild(lab);
@@ -752,7 +770,7 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
         g.appendChild(bar);
 
         var val = el('text', { x: x + barW / 2, y: top - 13, fill: '#f7f3ef',
-          'text-anchor': 'middle', 'font-family': 'IBM Plex Mono, monospace', 'font-size': 19 });
+          'text-anchor': 'middle', 'font-family': 'IBM Plex Mono, monospace', 'font-size': 18 });
         val.textContent = short(v);
         val.style.opacity = reduce ? 1 : 0;
         g.appendChild(val);
@@ -841,6 +859,15 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
     var n = Array.prototype.filter.call(boxes, function (b) { return b.checked; }).length;
     qualCount.textContent = n + ' of ' + boxes.length + ' answered yes';
     qualResult.classList.toggle('show', n === boxes.length);
+  });
+
+  /* ---------------- path blocks feed the form ---------------- */
+  document.querySelectorAll('.path[data-interest]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var want = a.getAttribute('data-interest');
+      var radio = document.querySelector('input[name="interest"][value="' + want + '"]');
+      if (radio) radio.checked = true;
+    });
   });
 
   /* ---------------- contact form ----------------
