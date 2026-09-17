@@ -140,12 +140,11 @@ p{ text-wrap:pretty; }
 .hero__in{ display:grid; gap:clamp(2rem,4vw,3.5rem); align-items:end; }
 .hero h1 .turn{ display:block; color:var(--sky); }
 /* the real hero copy, set as the enumerated list of burdens it actually is */
-.burden{ display:grid; gap:0; align-self:end; max-width:34ch; }
-.burden li{
-  display:grid; grid-template-columns:2.4rem 1fr; gap:1rem; align-items:baseline;
-  padding-block:.55rem; border-top:1px solid var(--paper-22); font-size:.98rem;
+.burden{
+  align-self:end; max-width:40ch; font-size:1.02rem; line-height:1.8;
+  color:var(--paper-72); border-left:2px solid var(--sky); padding-left:1.35rem;
 }
-.burden li span{ font-family:var(--mono); font-size:.76rem; color:var(--sky); }
+.burden b{ font-weight:400; color:var(--paper); }
 .hero__turn{ margin-top:1.4rem; font-family:var(--display); font-size:1.15rem; color:var(--paper); }
 .hero__answer{ margin-top:clamp(2rem,4vw,3rem); display:grid; gap:1.5rem; }
 .hero__answer p{ font-size:clamp(1.02rem,1.4vw,1.18rem); max-width:54ch; color:var(--paper-72); }
@@ -158,7 +157,7 @@ p{ text-wrap:pretty; }
 .figures dt{ font-family:var(--mono); font-size:clamp(1.9rem,4vw,2.8rem); line-height:1; color:var(--paper); font-variant-numeric:tabular-nums; }
 .figures dd{ margin-top:.55rem; font-size:.87rem; color:var(--paper-72); max-width:32ch; }
 @media (min-width:760px){
-  .figures{ grid-template-columns:repeat(2,1fr); max-width:760px; }
+  .figures{ grid-template-columns:repeat(2,1fr); }
   .figures div{ padding-right:2rem; border-bottom:0; }
   .figures div + div{ border-left:1px solid var(--paper-22); padding-left:2rem; }
 }
@@ -232,12 +231,14 @@ p{ text-wrap:pretty; }
 .path--a .path__tag{ color:var(--sky); }
 
 /* ---------- qualification: real checkboxes the visitor answers ---------- */
-.qual{ margin-top:clamp(2rem,4vw,3rem); border-top:1px solid var(--navy-14); }
-.qual li{ border-bottom:1px solid var(--navy-14); }
+.qual{ margin-top:clamp(2rem,4vw,3rem); display:grid; gap:.5rem; }
+.qual li{ background:rgba(5,77,102,.05); }
 .qual label{
   display:grid; grid-template-columns:auto 1fr; gap:1.1rem; align-items:center;
-  padding-block:1.1rem; cursor:pointer; font-size:clamp(1rem,1.6vw,1.12rem);
+  padding:1.15rem 1.25rem; cursor:pointer; font-size:clamp(1.02rem,1.7vw,1.2rem);
+  font-family:var(--display); transition:background .15s;
 }
+.qual li:has(input:checked){ background:rgba(5,77,102,.12); }
 .qual input{ position:absolute; opacity:0; width:1px; height:1px; }
 .qual .box{
   width:28px; height:28px; border:2px solid var(--navy); display:grid; place-items:center;
@@ -252,7 +253,7 @@ p{ text-wrap:pretty; }
 .qual__count{ margin-top:1.25rem; font-family:var(--mono); font-size:.8rem; letter-spacing:.1em;
                text-transform:uppercase; color:var(--navy-78); }
 .qual__result{
-  margin-top:1.75rem; padding:1.2rem 1.4rem; background:var(--navy); color:var(--paper);
+  margin-top:1.75rem; padding:1.6rem; background:var(--navy); color:var(--paper);
   font-family:var(--display); font-size:1.12rem; display:none;
 }
 .qual__result.show{ display:block; }
@@ -263,11 +264,18 @@ p{ text-wrap:pretty; }
 .field{ display:grid; gap:.3rem; margin-bottom:1.1rem; }
 .field > label{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--sky); }
 .field input, .field select{
-  background:rgba(247,243,239,.07); border:1px solid var(--paper-22); border-bottom-width:2px;
-  padding:.7rem .75rem; color:var(--paper); font-size:1rem; border-radius:0;
+  background:rgba(247,243,239,.12); border:1px solid rgba(247,243,239,.42);
+  padding:.75rem .8rem; color:var(--paper); font-size:1rem; border-radius:0; width:100%;
 }
-.field select{ background:#0a5972; }
-.field input:focus, .field select:focus{ outline:none; border-color:var(--gold); background:rgba(247,243,239,.12); }
+.field select{
+  appearance:none; -webkit-appearance:none; padding-right:2.5rem; cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--paper) 50%),
+                   linear-gradient(135deg,var(--paper) 50%,transparent 50%);
+  background-position:calc(100% - 1.15rem) 1.2rem, calc(100% - .8rem) 1.2rem;
+  background-size:6px 6px, 6px 6px; background-repeat:no-repeat;
+}
+.field select option{ background:var(--navy); color:var(--paper); }
+.field input:focus, .field select:focus{ outline:none; border-color:var(--gold); box-shadow:inset 0 0 0 1px var(--gold); background:rgba(247,243,239,.18); }
 .field input::placeholder{ color:rgba(247,243,239,.4); }
 .field input[aria-invalid="true"]{ border-color:var(--coral); }
 .err{ font-size:.78rem; color:var(--gold); min-height:1.1em; }
@@ -279,11 +287,11 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
 .choice{ position:relative; }
 .choice input{ position:absolute; opacity:0; width:1px; height:1px; }
 .choice span{
-  display:block; border:1.5px solid var(--paper-22); padding:.55rem 1rem; font-size:.9rem;
+  display:block; border:1.5px solid rgba(247,243,239,.42); padding:.55rem 1rem; font-size:.9rem;
   cursor:pointer; transition:background .15s, border-color .15s, color .15s;
 }
-.choice input:checked + span{ background:var(--gold); color:var(--navy); border-color:var(--gold); font-weight:600; }
-.choice input:focus-visible + span{ outline:3px solid var(--gold); outline-offset:3px; }
+.choice input:checked + span{ background:var(--paper); color:var(--navy); border-color:var(--paper); font-weight:600; }
+.choice input:focus-visible + span{ outline:3px solid var(--paper); outline-offset:3px; }
 .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
 .form-note{ font-size:.8rem; color:var(--paper-72); margin-top:1rem; max-width:48ch; }
 .form-done{ display:none; border-top:2px solid var(--gold); padding-top:1.5rem; }
@@ -296,7 +304,11 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
   background:var(--paper); border-top:1px solid var(--navy-14); display:none;
 }
 .sticky .btn{ width:100%; justify-content:center; }
-@media (max-width:760px){ .sticky{ display:block; } body{ padding-bottom:5.5rem; } }
+@media (max-width:760px){
+  .sticky{ display:block; }
+  body{ padding-bottom:5.5rem; }
+  .masthead .btn--dark{ display:none; }   /* the sticky bar already carries this action */
+}
 
 /* ---------- footer ---------- */
 .foot{ display:grid; gap:2rem; }
@@ -351,14 +363,10 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
         <h1 style="margin-top:1.5rem">Follow your bliss.<span class="turn">Find more success.</span></h1>
       </div>
 
-      <ul class="burden" aria-label="What starting a practice involves">
-        <li><span>01</span>Pick a name</li>
-        <li><span>02</span>Find a location</li>
-        <li><span>03</span>Hire the right people</li>
-        <li><span>04</span>Create marketing</li>
-        <li><span>05</span>Get equipment</li>
-        <li><span>06</span>Get set up with the insurance companies so that you get paid</li>
-      </ul>
+      <p class="burden">Starting an orthodontic practice is tough. There are lots of things to do.
+        <b>Pick a name.</b> <b>Find a location.</b> <b>Hire the right people.</b>
+        <b>Create marketing.</b> <b>Get equipment.</b> Then make sure you&rsquo;re all set up with
+        the insurance companies so that you get paid.</p>
     </div>
 
     <div class="hero__answer">
@@ -491,7 +499,10 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
       <li><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Do I have a strong commitment to employee and customer satisfaction?</label></li>
     </ul>
     <p class="qual__count" id="qualCount" role="status" aria-live="polite">0 of 5 answered yes</p>
-    <p class="qual__result" id="qualResult">If you answered YES to these questions, congrats! You just met the initial criteria for this incredible, proven model.</p>
+    <div class="qual__result" id="qualResult">
+      <p>If you answered YES to these questions, congrats! You just met the initial criteria for this incredible, proven model.</p>
+      <a class="btn btn--primary" href="#contact" style="margin-top:1.4rem">Talk to us about a practice</a>
+    </div>
   </div>
 </section>
 
@@ -651,10 +662,59 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
   function usd(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
   function short(v) { return v < 1e6 ? '$' + Math.round(v / 1e3) + 'K' : '$' + (v / 1e6).toFixed(1) + 'M'; }
 
+  var SERIES = [['base', '#72cfd4', 'Base'], ['best', '#ffca5e', 'Best']];
+
+  // --- narrow screens: horizontal bars, one row per year, labels on their own line ---
+  function drawChartNarrow(host) {
+    var W = 380, rowH = 108, padT = 8, padL = 4, padR = 4;
+    var H = padT + rowH * 3 - 14;
+    var max = 5500000, plotW = W - padL - padR;
+    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img',
+      'aria-label': 'Projected revenue by year. Base scenario: $401,012 in year one rising to $3,895,784 in year three. Best scenario: $721,822 rising to $5,146,670. Full figures in the table below.' });
+
+    chartData.labels.forEach(function (label, i) {
+      var top = padT + rowH * i;
+      var g = el('g', { class: 'chart__g' });
+
+      var yl = el('text', { x: padL, y: top + 14, fill: '#f7f3ef',
+        'font-family': 'IBM Plex Mono, monospace', 'font-size': 13, 'letter-spacing': '.12em' });
+      yl.textContent = label.toUpperCase() + '  \u00b7  ' +
+        chartData.baseStarts[i].toLocaleString('en-US') + ' / ' +
+        chartData.bestStarts[i].toLocaleString('en-US') + ' starts';
+      g.appendChild(yl);
+
+      SERIES.forEach(function (s, k) {
+        var key = s[0], fill = s[1];
+        var v = chartData[key][i];
+        var w = (v / max) * plotW;
+        var by = top + 28 + k * 34;
+        var bar = el('rect', { class: 'chart__bar', x: padL, y: by, height: 22, fill: fill,
+          width: reduce ? w : 0 });
+        g.appendChild(bar);
+        // a short bar cannot hold its own label — put it outside instead of clipping it
+        var inside = w > 86;
+        var val = el('text', { x: padL + (inside ? 8 : w + 8), y: by + 16,
+          fill: inside ? '#054d66' : '#f7f3ef',
+          'font-family': 'IBM Plex Mono, monospace', 'font-size': 14, 'font-weight': 500 });
+        val.textContent = short(v);
+        g.appendChild(val);
+        if (!reduce) {
+          requestAnimationFrame(function () {
+            bar.style.transition = 'width .8s cubic-bezier(.2,.8,.2,1) ' + (i * 0.1) + 's';
+            bar.setAttribute('width', w);
+          });
+        }
+      });
+      svg.appendChild(g);
+    });
+    host.appendChild(svg);
+  }
+
   function drawChart() {
     var host = document.getElementById('chartHost');
     if (!host || host.dataset.drawn) return;
     host.dataset.drawn = '1';
+    if (window.matchMedia('(max-width: 700px)').matches) { drawChartNarrow(host); return; }
 
     var W = 1000, H = 400, padL = 4, padR = 4, padT = 44, padB = 76;
     var plotW = W - padL - padR, plotH = H - padT - padB;
@@ -749,6 +809,16 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
   function moveTip(e) { tip.style.left = e.clientX + 'px'; tip.style.top = e.clientY + 'px'; }
   function hideTip() { tip.style.opacity = '0'; }
 
+  var narrowNow = window.matchMedia('(max-width: 700px)').matches;
+  window.addEventListener('resize', function () {
+    var n = window.matchMedia('(max-width: 700px)').matches;
+    if (n === narrowNow) return;
+    narrowNow = n;
+    var host = document.getElementById('chartHost');
+    host.textContent = ''; delete host.dataset.drawn;
+    drawChart();
+  });
+
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { drawChart(); io.disconnect(); } });
@@ -761,10 +831,12 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
   /* ---------------- qualification checklist ---------------- */
   var qual = document.getElementById('qual');
   var qualResult = document.getElementById('qualResult');
+  var qualCount = document.getElementById('qualCount');
   var boxes = qual.querySelectorAll('input[type="checkbox"]');
   qual.addEventListener('change', function () {
-    var all = Array.prototype.every.call(boxes, function (b) { return b.checked; });
-    qualResult.classList.toggle('show', all);
+    var n = Array.prototype.filter.call(boxes, function (b) { return b.checked; }).length;
+    qualCount.textContent = n + ' of ' + boxes.length + ' answered yes';
+    qualResult.classList.toggle('show', n === boxes.length);
   });
 
   /* ---------------- contact form ----------------
