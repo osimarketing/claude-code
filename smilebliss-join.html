@@ -73,7 +73,8 @@ button,input,select{ font:inherit; color:inherit; }
 
 /* ---------- layout primitives ---------- */
 .wrap{ width:min(100% - (var(--gut) * 2), var(--measure)); margin-inline:auto; }
-.wrap--narrow{ width:min(100% - (var(--gut) * 2), 760px); margin-inline:auto; }
+.wrap--narrow{ width:min(100% - (var(--gut) * 2), var(--measure)); margin-inline:auto; }
+.wrap--narrow > *{ max-width:780px; }
 .navy{ background:var(--navy); color:var(--paper); }
 
 /* section rhythm is deliberately uneven — the economics block gets the most air */
@@ -137,26 +138,26 @@ p{ text-wrap:pretty; }
 @media (min-width:900px){ .drawer.open{ display:none; } }
 
 /* ---------- hero ---------- */
-.hero__in{ display:grid; gap:clamp(2rem,4vw,3.5rem); align-items:end; }
+.hero__in{ display:grid; gap:clamp(2.5rem,5vw,4.5rem); align-items:start; }
 .hero h1 .turn{ display:block; color:var(--sky); }
+.hero__rail{ display:grid; align-content:start; gap:clamp(1.75rem,3vw,2.5rem); }
 /* the real hero copy, set as the enumerated list of burdens it actually is */
 .burden{
   align-self:end; max-width:40ch; font-size:1.02rem; line-height:1.8;
   color:var(--paper-72); border-left:2px solid var(--sky); padding-left:1.35rem;
 }
 .burden b{ font-weight:400; color:var(--paper); }
-.hero__turn{ margin-top:1.4rem; font-family:var(--display); font-size:1.15rem; color:var(--paper); }
-.hero__answer{ margin-top:clamp(2rem,4vw,3rem); display:grid; gap:1.5rem; }
-.hero__answer p{ font-size:clamp(1.02rem,1.4vw,1.18rem); max-width:54ch; color:var(--paper-72); }
-.hero__cta{ display:flex; flex-wrap:wrap; gap:1rem; align-items:center; }
-@media (min-width:900px){ .hero__in{ grid-template-columns:1.3fr .7fr; } }
+.hero__turn{ margin-top:clamp(1.75rem,3vw,2.5rem); font-family:var(--display); font-size:1.3rem; color:var(--paper); }
+.hero__answer{ margin-top:1rem; font-size:1.02rem; max-width:52ch; color:var(--paper-72); }
+.hero__cta{ display:flex; flex-wrap:wrap; gap:1rem; align-items:center; margin-top:2rem; }
+@media (min-width:900px){ .hero__in{ grid-template-columns:1.25fr .75fr; } }
 
 /* the figures sit on rules, not in cards */
-.figures{ display:grid; gap:0; border-top:1px solid var(--paper-22); margin-top:clamp(2.5rem,5vw,4rem); }
+.figures{ display:grid; gap:0; border-top:1px solid var(--paper-22); }
 .figures div{ padding-block:1.4rem; border-bottom:1px solid var(--paper-22); }
 .figures dt{ font-family:var(--mono); font-size:clamp(1.9rem,4vw,2.8rem); line-height:1; color:var(--paper); font-variant-numeric:tabular-nums; }
 .figures dd{ margin-top:.55rem; font-size:.87rem; color:var(--paper-72); max-width:32ch; }
-@media (min-width:760px){
+@media (min-width:760px) and (max-width:899px){
   .figures{ grid-template-columns:repeat(2,1fr); }
   .figures div{ padding-right:2rem; border-bottom:0; }
   .figures div + div{ border-left:1px solid var(--paper-22); padding-left:2rem; }
@@ -184,11 +185,12 @@ p{ text-wrap:pretty; }
 
 /* ---------- economics ---------- */
 .exhibit{ display:grid; gap:clamp(1.5rem,3vw,3rem); align-items:end; }
-@media (min-width:900px){ .exhibit{ grid-template-columns:1fr auto; } }
-.legend{ display:flex; gap:1.5rem; flex-wrap:wrap; }
+
+.legend{ display:flex; gap:1.5rem; flex-wrap:wrap; align-items:center; padding-bottom:1.25rem; }
+.legend__unit{ margin-left:auto; font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; }
 .legend span{ display:inline-flex; align-items:center; gap:.5rem; font-size:.85rem; color:var(--paper-72); }
 .legend i{ width:14px; height:14px; display:block; }
-.chart{ margin-top:clamp(2rem,4vw,3rem); }
+.chart{ margin-top:clamp(1.5rem,3vw,2.25rem); }
 .chart svg{ width:100%; height:auto; overflow:visible; }
 .chart__bar{ transition:opacity .15s; }
 .chart:hover .chart__bar{ opacity:.5; }
@@ -264,7 +266,7 @@ p{ text-wrap:pretty; }
 .field{ display:grid; gap:.3rem; margin-bottom:1.1rem; }
 .field > label{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--sky); }
 .field input, .field select{
-  background:rgba(247,243,239,.12); border:1px solid rgba(247,243,239,.42);
+  background:rgba(247,243,239,.12); border:1px solid rgba(247,243,239,.58);
   padding:.75rem .8rem; color:var(--paper); font-size:1rem; border-radius:0; width:100%;
 }
 .field select{
@@ -276,7 +278,7 @@ p{ text-wrap:pretty; }
 }
 .field select option{ background:var(--navy); color:var(--paper); }
 .field input:focus, .field select:focus{ outline:none; border-color:var(--gold); box-shadow:inset 0 0 0 1px var(--gold); background:rgba(247,243,239,.18); }
-.field input::placeholder{ color:rgba(247,243,239,.4); }
+.field input::placeholder{ color:rgba(247,243,239,.62); }
 .field input[aria-invalid="true"]{ border-color:var(--coral); }
 .err{ font-size:.78rem; color:var(--gold); min-height:1.1em; }
 .grid2{ display:grid; gap:0 1.5rem; }
@@ -287,7 +289,7 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
 .choice{ position:relative; }
 .choice input{ position:absolute; opacity:0; width:1px; height:1px; }
 .choice span{
-  display:block; border:1.5px solid rgba(247,243,239,.42); padding:.55rem 1rem; font-size:.9rem;
+  display:block; border:1.5px solid rgba(247,243,239,.58); padding:.55rem 1rem; font-size:.9rem;
   cursor:pointer; transition:background .15s, border-color .15s, color .15s;
 }
 .choice input:checked + span{ background:var(--paper); color:var(--navy); border-color:var(--paper); font-weight:600; }
@@ -361,33 +363,35 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
       <div>
         <p class="kicker">A proven, ready-to-go orthodontic practice</p>
         <h1 style="margin-top:1.5rem">Follow your bliss.<span class="turn">Find more success.</span></h1>
+
+        <p class="hero__turn">It&rsquo;s a lot. And that&rsquo;s not even half of it.</p>
+        <p class="hero__answer">We have over 30 years of experience creating successful practices. The Smilebliss team can do it all. We&rsquo;ve done it all. So we took that knowledge and created a ready-to-go practice model with everything done for you.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#contact">Talk to us about a practice</a>
+          <a class="btn btn--line" href="#economics">See the economics</a>
+        </div>
       </div>
 
-      <p class="burden">Starting an orthodontic practice is tough. There are lots of things to do.
-        <b>Pick a name.</b> <b>Find a location.</b> <b>Hire the right people.</b>
-        <b>Create marketing.</b> <b>Get equipment.</b> Then make sure you&rsquo;re all set up with
-        the insurance companies so that you get paid.</p>
+      <div class="hero__rail">
+        <p class="burden">Starting an orthodontic practice is tough. There are lots of things to do.
+          <b>Pick a name.</b> <b>Find a location.</b> <b>Hire the right people.</b>
+          <b>Create marketing.</b> <b>Get equipment.</b> Then make sure you&rsquo;re all set up with
+          the insurance companies so that you get paid.</p>
+
+        <dl class="figures">
+          <div>
+            <dt class="fig">$1B+</dt>
+            <dd>Collected in revenue for client practices by our RCM team.</dd>
+          </div>
+          <div>
+            <dt class="fig">50+</dt>
+            <dd>Practice partners nationwide.<!-- placeholder figure — confirm before publishing --></dd>
+          </div>
+        </dl>
+      </div>
     </div>
 
-    <div class="hero__answer">
-      <p class="hero__turn">It&rsquo;s a lot. And that&rsquo;s not even half of it.</p>
-      <p>We have over 30 years of experience creating successful practices. The Smilebliss team can do it all. We&rsquo;ve done it all. So we took that knowledge and created a ready-to-go practice model with everything done for you.</p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="#contact">Talk to us about a practice</a>
-        <a class="btn btn--line" href="#economics">See the economics</a>
-      </div>
-    </div>
 
-    <dl class="figures">
-      <div>
-        <dt class="fig">$1B+</dt>
-        <dd>Collected in revenue for client practices by our RCM team.</dd>
-      </div>
-      <div>
-        <dt class="fig">50+</dt>
-        <dd>Practice partners nationwide.<!-- placeholder figure — confirm before publishing --></dd>
-      </div>
-    </dl>
   </div>
 </section>
 
@@ -437,13 +441,14 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
         <p class="kicker">License model proforma &mdash; start-up practice</p>
         <h2 style="margin-top:1rem;max-width:18ch">What the first three years look like.</h2>
       </div>
-      <div class="legend" aria-hidden="true">
-        <span><i style="background:#72cfd4"></i>Base scenario</span>
-        <span><i style="background:#ffca5e"></i>Best scenario</span>
-      </div>
     </div>
 
     <figure class="chart">
+      <div class="legend" aria-hidden="true">
+        <span><i style="background:#72cfd4"></i>Base scenario</span>
+        <span><i style="background:#ffca5e"></i>Best scenario</span>
+        <span class="legend__unit">Revenue, USD</span>
+      </div>
       <div id="chartHost"></div>
       <details class="numbers__toggle" id="figures" open>
         <summary>Show the full figures</summary>
@@ -489,7 +494,6 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
 <!-- ================================= FIT ================================ -->
 <section class="band" id="fit">
   <div class="wrap--narrow">
-    <p class="kicker">Is Smilebliss right for me</p>
     <h2 style="margin-top:1rem">Five questions worth answering honestly.</h2>
     <ul class="qual" id="qual">
       <li><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Do I really want to take control of my own destiny?</label></li>
@@ -510,7 +514,6 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
 <section class="navy band band--tall" id="contact">
   <div class="wrap contact">
     <div>
-      <p class="kicker">Next step</p>
       <h2 style="margin-top:1rem">Start the conversation.</h2>
       <p class="body" style="margin-top:1.2rem">Tell us about you and your practice goals. A member of our team will follow up to walk through the model, the numbers, and what setting up would involve.</p>
     </div>
