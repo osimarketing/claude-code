@@ -154,6 +154,7 @@ p{ text-wrap:pretty; }
 /* the figures sit on rules, not in cards */
 .figures{ display:grid; gap:0; border-top:1px solid var(--paper-22); }
 .figures div{ padding-block:1.4rem; border-bottom:1px solid var(--paper-22); }
+.figures div:last-child{ border-bottom:0; }
 .figures dt{ font-family:var(--mono); font-size:clamp(1.9rem,4vw,2.8rem); line-height:1; color:var(--paper); font-variant-numeric:tabular-nums; }
 .figures dd{ margin-top:.55rem; font-size:.87rem; color:var(--paper-72); max-width:32ch; }
 @media (min-width:760px) and (max-width:899px){
@@ -180,7 +181,7 @@ p{ text-wrap:pretty; }
 .index__body{ grid-column:2 / -1; }            /* below 860px it sits under the heading */
 .index__body p{ margin-top:.55rem; color:var(--navy-78); max-width:64ch; }
 @media (min-width:860px){
-  .index__row{ grid-template-columns:3.5rem 19rem 1fr; align-items:baseline; }
+  .index__row{ grid-template-columns:3.5rem 12.5rem 1fr; align-items:baseline; }
   .index__body{ grid-column:auto; }
   .index__body p{ margin-top:0; }
 }
@@ -246,14 +247,14 @@ p{ text-wrap:pretty; }
 /* ---------- qualification: real checkboxes the visitor answers ---------- */
 .tint{ background:var(--sky-18); }
 .qual{ margin-top:clamp(1.75rem,3vw,2.5rem); display:grid; gap:1px; background:var(--navy-14); }
-.qual li{ background:var(--paper); transition:background .15s; }
-@media (min-width:900px){ .qual{ grid-template-columns:1fr 1fr; } .qual li:last-child{ grid-column:1 / -1; } }
+.qual > *{ background:var(--paper); transition:background .15s; }
+@media (min-width:900px){ .qual{ grid-template-columns:1fr 1fr; } }
 .qual label{
   display:grid; grid-template-columns:auto 1fr; gap:1.1rem; align-items:center;
   padding:1.15rem 1.25rem; cursor:pointer; font-size:clamp(1.02rem,1.7vw,1.2rem);
   font-family:var(--display); transition:background .15s;
 }
-.qual li:has(input:checked){ background:var(--sky); }   /* navy on sky = 5.13:1 */
+.qual > *:has(input:checked){ background:var(--sky); }   /* navy on sky = 5.13:1 */
 .qual input{ position:absolute; opacity:0; width:1px; height:1px; }
 .qual .box{
   width:28px; height:28px; border:2px solid var(--navy); display:grid; place-items:center;
@@ -265,7 +266,8 @@ p{ text-wrap:pretty; }
 .qual input:checked + .box{ background:var(--navy); }
 .qual input:checked + .box svg{ stroke-dashoffset:0; }
 .qual input:focus-visible + .box{ outline:3px solid var(--navy); outline-offset:3px; }
-.qual__count{ margin-top:1.5rem; font-family:var(--mono); font-size:.8rem; letter-spacing:.1em;
+.qual__status{ display:flex; align-items:center; padding:1.15rem 1.25rem; }
+.qual__count{ font-family:var(--mono); font-size:.8rem; letter-spacing:.1em;
                text-transform:uppercase; color:var(--navy-78); }
 .qual__result{
   margin-top:1.75rem; padding:1.6rem; background:var(--navy); color:var(--paper);
@@ -317,7 +319,9 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
 .sticky{
   position:fixed; inset:auto 0 0 0; z-index:60; padding:.7rem var(--gut);
   background:var(--paper); border-top:1px solid var(--navy-14); display:none;
+  transform:translateY(100%); transition:transform .25s ease;
 }
+.sticky.show{ transform:translateY(0); }
 .sticky .btn{ width:100%; justify-content:center; }
 @media (max-width:760px){
   .sticky{ display:block; }
@@ -509,14 +513,16 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
 <section class="band band--tight tint" id="fit">
   <div class="wrap">
     <h2 style="max-width:18ch">Five questions worth answering honestly.</h2>
-    <ul class="qual" id="qual">
-      <li><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Do I really want to take control of my own destiny?</label></li>
-      <li><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Am I prepared to adapt to new ideas?</label></li>
-      <li><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Do I have a genuine interest in improving the lives of others?</label></li>
-      <li><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Do I have great clinical results?</label></li>
-      <li><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Do I have a strong commitment to employee and customer satisfaction?</label></li>
-    </ul>
-    <p class="qual__count" id="qualCount" role="status" aria-live="polite">0 of 5 answered yes</p>
+    <div class="qual" id="qual" role="list">
+      <div role="listitem"><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Do I really want to take control of my own destiny?</label></div>
+      <div role="listitem"><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Am I prepared to adapt to new ideas?</label></div>
+      <div role="listitem"><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Do I have a genuine interest in improving the lives of others?</label></div>
+      <div role="listitem"><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Do I have great clinical results?</label></div>
+      <div role="listitem"><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Do I have a strong commitment to employee and customer satisfaction?</label></div>
+      <div class="qual__status">
+        <p class="qual__count" id="qualCount" role="status" aria-live="polite">0 of 5 answered yes</p>
+      </div>
+    </div>
     <div class="qual__result" id="qualResult">
       <p>If you answered YES to these questions, congrats! You just met the initial criteria for this incredible, proven model.</p>
       <a class="btn btn--primary" href="#contact" style="margin-top:1.4rem">Talk to us about a practice</a>
@@ -860,6 +866,17 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
     qualCount.textContent = n + ' of ' + boxes.length + ' answered yes';
     qualResult.classList.toggle('show', n === boxes.length);
   });
+
+  /* ---------------- sticky action: only once the hero's own action is gone ---------------- */
+  var sticky = document.querySelector('.sticky');
+  var heroSection = document.querySelector('.hero');
+  if (sticky && heroSection && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      sticky.classList.toggle('show', !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(heroSection);
+  } else if (sticky) {
+    sticky.classList.add('show');
+  }
 
   /* ---------------- path blocks feed the form ---------------- */
   document.querySelectorAll('.path[data-interest]').forEach(function (a) {
