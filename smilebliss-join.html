@@ -277,6 +277,13 @@ p{ text-wrap:pretty; }
 
 /* ---------- form ---------- */
 .contact{ display:grid; gap:clamp(2rem,5vw,4rem); align-items:start; }
+.direct{ margin-top:clamp(2.5rem,5vw,4rem); border-top:1px solid var(--paper-22); padding-top:1.5rem; }
+.direct .kicker{ display:block; margin-bottom:1rem; }
+.direct__line{
+  display:block; font-family:var(--mono); font-size:clamp(1rem,1.5vw,1.2rem);
+  text-decoration:none; padding-block:.6rem; border-bottom:1px solid var(--paper-22);
+}
+.direct__line:hover{ color:var(--gold); }
 @media (min-width:980px){ .contact{ grid-template-columns:.8fr 1.2fr; } }
 .field{ display:grid; gap:.3rem; margin-bottom:1.1rem; }
 .field > label{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--sky); }
@@ -501,7 +508,7 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
       <span class="path__go">Start here <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
     </a>
     <a class="path path--b" href="#contact" data-interest="Converting Existing Practice">
-      <span class="path__tag">Already practising</span>
+      <span class="path__tag">Already practicing</span>
       <h3>Practice conversion</h3>
       <p>Convert an existing orthodontic practice into a Smilebliss location, with access to all the same proven systems.</p>
       <span class="path__go">Start here <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
@@ -536,6 +543,12 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
     <div>
       <h2 style="margin-top:1rem">Start the conversation.</h2>
       <p class="body" style="margin-top:1.2rem">Tell us about you and your practice goals. A member of our team will follow up to walk through the model, the numbers, and what setting up would involve.</p>
+
+      <div class="direct">
+        <p class="kicker">Or reach us directly</p>
+        <a class="direct__line" href="mailto:info@smilebliss.com">info@smilebliss.com</a>
+        <a class="direct__line" href="tel:8338331148">833-833-1148</a>
+      </div>
     </div>
 
     <div>
