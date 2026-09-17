@@ -141,12 +141,10 @@ p{ text-wrap:pretty; }
 .hero__in{ display:grid; gap:clamp(2.5rem,5vw,4.5rem); align-items:start; }
 .hero h1 .turn{ display:block; color:var(--sky); }
 .hero__rail{ display:grid; align-content:start; gap:clamp(1.75rem,3vw,2.5rem); }
-/* the real hero copy, set as the enumerated list of burdens it actually is */
 .burden{
   align-self:end; max-width:40ch; font-size:1.02rem; line-height:1.8;
   color:var(--paper-72); border-left:2px solid var(--sky); padding-left:1.35rem;
 }
-.burden b{ font-weight:400; color:var(--paper); }
 .hero__turn{ margin-top:clamp(1.75rem,3vw,2.5rem); font-family:var(--display); font-size:1.3rem; color:var(--paper); }
 .hero__answer{ margin-top:1rem; font-size:1.02rem; max-width:52ch; color:var(--paper-72); }
 .hero__cta{ display:flex; flex-wrap:wrap; gap:1rem; align-items:center; margin-top:2rem; }
@@ -266,7 +264,7 @@ p{ text-wrap:pretty; }
 .field{ display:grid; gap:.3rem; margin-bottom:1.1rem; }
 .field > label{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--sky); }
 .field input, .field select{
-  background:rgba(247,243,239,.12); border:1px solid rgba(247,243,239,.58);
+  background:rgba(247,243,239,.16); border:1px solid rgba(247,243,239,.72);
   padding:.75rem .8rem; color:var(--paper); font-size:1rem; border-radius:0; width:100%;
 }
 .field select{
@@ -289,7 +287,7 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
 .choice{ position:relative; }
 .choice input{ position:absolute; opacity:0; width:1px; height:1px; }
 .choice span{
-  display:block; border:1.5px solid rgba(247,243,239,.58); padding:.55rem 1rem; font-size:.9rem;
+  display:block; border:1.5px solid rgba(247,243,239,.72); padding:.55rem 1rem; font-size:.9rem;
   cursor:pointer; transition:background .15s, border-color .15s, color .15s;
 }
 .choice input:checked + span{ background:var(--paper); color:var(--navy); border-color:var(--paper); font-weight:600; }
@@ -374,9 +372,8 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
 
       <div class="hero__rail">
         <p class="burden">Starting an orthodontic practice is tough. There are lots of things to do.
-          <b>Pick a name.</b> <b>Find a location.</b> <b>Hire the right people.</b>
-          <b>Create marketing.</b> <b>Get equipment.</b> Then make sure you&rsquo;re all set up with
-          the insurance companies so that you get paid.</p>
+          Pick a name. Find a location. Hire the right people. Create marketing. Get equipment.
+          Then make sure you&rsquo;re all set up with the insurance companies so that you get paid.</p>
 
         <dl class="figures">
           <div>
