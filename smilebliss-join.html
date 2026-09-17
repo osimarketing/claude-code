@@ -445,7 +445,7 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
 
     <figure class="chart">
       <div id="chartHost"></div>
-      <details class="numbers__toggle">
+      <details class="numbers__toggle" id="figures" open>
         <summary>Show the full figures</summary>
         <div class="numbers__scroll">
         <table class="numbers">
@@ -794,6 +794,10 @@ legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-tra
     });
 
     host.appendChild(svg);
+    // the chart now carries the shape, so the table can fold away — but only once
+    // it actually exists, so a no-JS reader still gets the numbers.
+    var fig = document.getElementById('figures');
+    if (fig) fig.open = false;
   }
 
   var tip = document.getElementById('tip');
