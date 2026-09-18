@@ -145,12 +145,6 @@ h1,h2,h3{ text-wrap:balance; }
 .btn--sm{ padding:.7rem 1.35rem; font-size:1.18rem; }
 .btn--block{ width:100%; }
 
-/* ---------- marquee ticker ---------- */
-.ticker{ background:var(--ink); color:var(--cream); overflow:hidden; padding:.65rem 0; position:relative; z-index:1001; }
-.ticker__track{ display:flex; width:max-content; gap:2.5rem; animation:ticker 32s linear infinite; }
-.ticker__item{ display:flex; align-items:center; gap:2.5rem; font-family:var(--display); font-weight:600; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; white-space:nowrap; }
-.ticker__item .spark{ width:12px; height:12px; color:var(--gold); }
-@keyframes ticker{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
 
 /* ---------- nav ---------- */
 .site-header{
@@ -159,8 +153,12 @@ h1,h2,h3{ text-wrap:balance; }
 }
 .site-header.solid{ border-color:var(--line); box-shadow:0 8px 30px -24px rgba(5,77,102,.4); padding:.8rem 0; }
 .nav{ display:flex; align-items:center; justify-content:space-between; gap:1rem; }
-.brand{ display:flex; align-items:center; gap:.6rem; }
-.brand__logo{ height:34px; width:auto; display:block; }
+.brand{ display:flex; align-items:center; gap:.6rem; flex:0 0 auto; }
+.brand__logo{ height:48px; width:auto; flex:0 0 auto; display:block; }
+@media (max-width:600px){
+  .brand__logo{ height:40px; }
+  .nav__right > .btn{ display:none; }
+}
 .brand__logo--footer{ height:38px; }
 
 .nav__right{ display:flex; align-items:center; gap:.7rem; }
@@ -472,8 +470,10 @@ h1,h2,h3{ text-wrap:balance; }
 .sticky-cta{
   position:fixed; left:0; right:0; bottom:0; z-index:900; padding:.85rem 1rem;
   background:rgba(247,243,239,.94); backdrop-filter:blur(10px); box-shadow:0 -10px 26px -18px rgba(5,77,102,.35);
-  display:none;
+  display:none; transform:translateY(115%); transition:transform .32s var(--ease);
 }
+.sticky-cta.is-on{ transform:none; }
+@media (prefers-reduced-motion: reduce){ .sticky-cta{ transition:none; } }
 .sticky-cta .btn{ width:100%; }
 @media (max-width:760px){ .sticky-cta{ display:block; } body{ padding-bottom:74px; } }
 
@@ -509,21 +509,6 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
 </style>
 </head>
 <body>
-
-<!-- ============ MARQUEE TICKER ============ -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker__track" id="tickerTrack">
-    <div class="ticker__item">
-      <span>Revenue Cycle Management</span><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
-      <span>Procurement</span><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
-      <span>Peer Support</span><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
-      <span>Marketing</span><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
-      <span>Training</span><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
-      <span>New Practice</span><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
-      <span>Practice Conversion</span><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
-    </div>
-  </div>
-</div>
 
 <!-- ============ NAV ============ -->
 <header class="site-header" id="siteHeader">
@@ -972,10 +957,6 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
   "use strict";
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- marquee: double the track for seamless loop ---------- */
-  var track = document.getElementById('tickerTrack');
-  if (track) track.innerHTML += track.innerHTML;
-
   /* ---------- nav ---------- */
   var header = document.getElementById('siteHeader');
   var navToggle = document.getElementById('navToggle');
@@ -1315,6 +1296,17 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
   }
   function moveTip(e){ tip.style.left = e.clientX + 'px'; tip.style.top = e.clientY + 'px'; }
   function hideTip(){ tip.classList.remove('is-on'); }
+
+  /* ---------- mobile CTA bar: only once the hero is out of the way ---------- */
+  var stickyCta = document.querySelector('.sticky-cta');
+  var heroEl = document.getElementById('top');
+  if (stickyCta && heroEl && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      stickyCta.classList.toggle('is-on', !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(heroEl);
+  } else if (stickyCta) {
+    stickyCta.classList.add('is-on');
+  }
 
   var revenueSection = document.getElementById('revenue');
   if (revenueSection) onceInView(revenueSection, drawChart, 0.15);
