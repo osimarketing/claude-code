@@ -3,959 +3,1244 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#054d66" />
-<title>Smilebliss — a ready-to-go orthodontic practice</title>
-<meta name="description" content="A proven, ready-to-go orthodontic practice model. Revenue cycle management, procurement, peer support, marketing and training — done for you." />
+<meta name="theme-color" content="#f7f3ef" />
+<title>Smilebliss™ | Follow Your Bliss. Find More Success.</title>
+<meta name="description" content="A proven, ready-to-go orthodontic practice model. Marketing, revenue cycle management, procurement, peer support, and training — all done for you." />
 
-<meta property="og:title" content="Smilebliss — a ready-to-go orthodontic practice" />
-<meta property="og:description" content="Thirty years of building successful orthodontic practices, packaged as a model you can license — for a new practice or a conversion." />
+<meta property="og:title" content="Smilebliss™ — Follow Your Bliss. Find More Success." />
+<meta property="og:description" content="Introducing Smilebliss™, a proven, ready-to-go orthodontic practice model for doctors ready to start or convert a practice." />
 <meta property="og:type" content="website" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23054d66'/%3E%3Cpath d='M14 40c6-14 10-20 18-20s12 6 18 20' stroke='%231aada7' stroke-width='6' fill='none' stroke-linecap='square'/%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23054d66'/%3E%3Cpath d='M32 14l4 14 14 4-14 4-4 14-4-14-14-4 14-4z' fill='%231aada7'/%3E%3C/svg%3E" />
 
 <style>
-/* ============================================================
-   Smilebliss — practice licensing pitch
-   Editorial/data direction: flat brand fields, square corners,
-   hairline rules, one serif display against a workhorse sans,
-   mono for every figure. No gradients, no decorative shapes.
-
-   Palette is fixed at six brand values; the only other colours
-   in this file are alpha tints of those six.
-   ============================================================ */
+/* =========================================================
+   Smilebliss — "Join Us" franchise/recruitment landing page
+   v2: editorial pastel-block system (ref: soft dotted hero,
+   twin trust cards, bordered stat cards, asterisk accents).
+   Self-contained. Brand tokens approximated from the live
+   site; refine exact hex values once brand guide is on hand.
+   ========================================================= */
 :root{
-  --navy:   #054d66;
-  --aqua:   #1aada7;   /* lives in the logo only: 2.51:1 on paper and 3.35:1 on navy are
-                          below the floor for text and UI edges, so nothing else uses it */
-  --coral:  #ff7d5c;
-  --gold:   #ffca5e;
-  --sky:    #72cfd4;
-  --paper:  #f7f3ef;
+  /* ---- exact brand palette — do not introduce other hues ---- */
+  --color-navy:       #054d66;
+  --color-aqua:       #1aada7;
+  --color-coral:      #ff7d5c;
+  --color-gold:       #ffca5e;
+  --color-sky:        #72cfd4;
+  --color-warm-white: #f7f3ef;
 
-  /* alpha tints of the six above — nothing else */
-  --navy-78:  rgba(5,77,102,.78);    /* secondary text on paper — 4.85:1 */
-  --navy-14:  rgba(5,77,102,.14);    /* hairline on paper */
-  --paper-72: rgba(247,243,239,.72); /* secondary text on navy */
-  --paper-22: rgba(247,243,239,.22); /* hairline on navy */
-  --sky-18:   rgba(114,207,212,.18); /* section tint */
+  /* ---- component tokens, all derived from the 6 colors above ---- */
+  --ink:         var(--color-navy);
+  --teal:        var(--color-aqua);
+  --teal-deep:   var(--color-navy);
+  --mint:        var(--color-aqua);
+  --mint-2:      var(--color-aqua);
+  --mint-soft:   rgba(114,207,212,.24);   /* sky tint */
+  --sky-soft:    rgba(114,207,212,.24);
+  --coral:       var(--color-coral);
+  --coral-2:     #c8725e;                 /* coral blended toward navy, for hover/darker states */
+  --coral-soft:  rgba(255,125,92,.15);
+  --gold:        var(--color-gold);
+  --gold-soft:   rgba(255,202,94,.24);
+  --cream:       var(--color-warm-white);
+  --cream-2:     var(--color-warm-white);
+  --muted:       rgba(5,77,102,.66);
+  --white:       var(--color-warm-white);
+  --line:        rgba(5,77,102,.15);
+  --on-bright:   var(--color-navy);       /* text color for anything sitting on coral/gold/aqua/sky */
+  --on-dark:     var(--color-warm-white); /* text color for anything sitting on navy */
 
-  --measure: 1280px;
-  --gut: clamp(1.25rem, 5vw, 4rem);
+  --maxw: 1240px;
+  --radius-lg: 34px;
+  --radius: 22px;
+  --radius-sm: 14px;
+  --shadow-sm:   0 18px 40px -24px rgba(5,77,102,.22);
+  --shadow-card: 0 30px 60px -28px rgba(5,77,102,.24);
+  --ease: cubic-bezier(.22,1,.36,1);
 
-  --display: "Newsreader", Georgia, serif;
-  --sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+  --display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, sans-serif;
 }
 
-*, *::before, *::after{ box-sizing:border-box; margin:0; padding:0; }
-html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:5rem; }
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; scroll-padding-top:96px; -webkit-text-size-adjust:100%; overflow-x:hidden; }
 body{
-  background:var(--paper); color:var(--navy);
-  font-family:var(--sans); font-size:1rem; line-height:1.6;
-  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  font-family:var(--sans); color:var(--ink); background:var(--cream);
+  line-height:1.65; overflow-x:hidden; -webkit-font-smoothing:antialiased;
 }
-img,svg{ display:block; max-width:100%; }
-a{ color:inherit; }
-ul,ol{ list-style:none; }
-button,input,select{ font:inherit; color:inherit; }
+img,svg,canvas{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; }
+button{ font-family:inherit; }
+h1,h2,h3{ text-wrap:balance; }
+.container{ width:min(100% - 2.5rem, var(--maxw)); margin-inline:auto; }
+.visually-hidden{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 :focus-visible{ outline:3px solid var(--navy); outline-offset:3px; }
-.navy :focus-visible{ outline-color:var(--gold); }
 
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
-  *,*::before,*::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important;
-                        transition-duration:.01ms !important; }
+  *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
 }
 
-/* ---------- layout primitives ---------- */
-.wrap{ width:min(100% - (var(--gut) * 2), var(--measure)); margin-inline:auto; }
-.wrap--wide{ width:min(100% - (var(--gut) * 2), 1560px); margin-inline:auto; }
-.wrap--narrow{ width:min(100% - (var(--gut) * 2), var(--measure)); margin-inline:auto; }
-.wrap--narrow > *{ max-width:780px; }
-.navy{ background:var(--navy); color:var(--paper); }
+/* ---------- asterisk icon ---------- */
+.spark{ display:inline-block; width:1em; height:1em; flex:0 0 auto; }
 
-/* section rhythm is deliberately uneven — the economics block gets the most air */
-.band{ padding-block:clamp(3.5rem,7vw,6rem); }
-.band--tight{ padding-block:clamp(2.5rem,4vw,3.5rem); }
-.band--tall{ padding-block:clamp(4.5rem,9vw,8rem); }
-
-/* ---------- type ---------- */
-.kicker{
-  font-family:var(--mono); font-size:.72rem; font-weight:500;
-  letter-spacing:.14em; text-transform:uppercase; color:var(--navy-78);
+/* ---------- typography helpers ---------- */
+.eyebrow{
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-family:var(--display); font-weight:700; font-size:.76rem;
+  letter-spacing:.03em; color:var(--on-bright);
+  background:var(--gold-soft); padding:.5rem .95rem .5rem .7rem; border-radius:50px;
+  margin-bottom:1.3rem;
 }
-.navy .kicker{ color:var(--sky); }
-h1,h2,h3{ font-family:var(--display); font-weight:400; line-height:1.05; letter-spacing:-.015em; text-wrap:balance; }
-h1{ font-size:clamp(2.6rem,7vw,5.4rem); }
-h2{ font-size:clamp(1.95rem,4.2vw,3.2rem); }
-h3{ font-size:clamp(1.3rem,2.2vw,1.7rem); line-height:1.15; }
-p{ text-wrap:pretty; }
-.body{ max-width:62ch; color:var(--navy-78); }
-.navy .body{ color:var(--paper-72); }
-.fig{ font-family:var(--mono); font-variant-numeric:tabular-nums; letter-spacing:-.02em; }
+.eyebrow .spark{ color:var(--gold); width:14px; height:14px; }
+.eyebrow--mint{ color:var(--on-bright); background:var(--sky-soft); }
+.eyebrow--mint .spark{ color:var(--teal); }
+.eyebrow--light{ color:var(--gold); background:rgba(247,243,239,.14); }
+.eyebrow--light .spark{ color:var(--gold); }
 
-/* ---------- buttons: square, no pills ----------
-   Coral on paper is 2.28:1 and navy-on-coral is 3.69:1, so the coral
-   action is set at large-text size/weight, where 3:1 is the AA floor.
-   The dark action carries small text at 8.42:1.                      */
+.section-title{
+  font-family:var(--display); font-weight:800; letter-spacing:-.02em;
+  font-size:clamp(2rem,4vw,2.95rem); line-height:1.08; color:var(--ink);
+}
+.section-title .muted{ color:var(--muted); font-weight:600; }
+.section-title--light{ color:var(--on-dark); }
+.section-title--light .muted{ color:rgba(247,243,239,.62); }
+.section-intro{ color:var(--muted); font-size:1.06rem; max-width:56ch; margin-top:1.1rem; }
+.section-intro--light{ color:rgba(247,243,239,.82); }
+.section-head{ max-width:700px; margin-bottom:clamp(2.6rem,4.5vw,3.6rem); position:relative; z-index:2; }
+.section-head.center{ margin-inline:auto; text-align:center; }
+.section{ padding:clamp(4.5rem,8vw,7.5rem) 0; position:relative; }
+
+/* ---------- accent shapes ---------- */
+.accent-dot,.accent-ring{ position:absolute; pointer-events:none; z-index:1; }
+.accent-dot{ width:12px; height:12px; border-radius:50%; }
+.accent-ring{ width:60px; height:60px; border-radius:50%; border:2px solid currentColor; opacity:.3; }
+.accent-spark{ position:absolute; pointer-events:none; z-index:1; }
+
+/* ---------- buttons ---------- */
 .btn{
-  display:inline-flex; align-items:center; gap:.6rem; border:2px solid transparent;
-  font-family:var(--sans); font-weight:600; text-decoration:none; cursor:pointer;
-  padding:.95rem 1.6rem; transition:background .18s, color .18s, border-color .18s;
+  display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+  font-family:var(--display); font-weight:700; font-size:1.18rem;   /* navy-on-coral is 3.69:1 — AA large-text */
+  padding:.95rem 1.9rem; border-radius:50px; cursor:pointer; border:2px solid transparent;
+  transition:transform .25s var(--ease), background .25s, color .25s, border-color .25s, box-shadow .25s;
+  white-space:nowrap;
 }
-.btn--primary{ background:var(--coral); color:var(--navy); font-size:1.2rem; line-height:1.25; }
-.btn--primary:hover{ background:var(--navy); color:var(--paper); }
-.btn--dark{ background:var(--navy); color:var(--paper); font-size:.95rem; }
-.btn--dark:hover{ background:var(--sky); color:var(--navy); }
-.btn--line{ background:transparent; color:var(--navy); border-color:var(--navy); font-size:.95rem; }
-.btn--line:hover{ background:var(--navy); color:var(--paper); }
-.navy .btn--line{ color:var(--paper); border-color:var(--paper-22); }
-.navy .btn--line:hover{ background:var(--paper); color:var(--navy); border-color:var(--paper); }
+.btn--coral{ background:var(--coral); color:var(--on-bright); box-shadow:0 16px 30px -14px rgba(255,125,92,.55); }
+.btn--coral:hover{ transform:translateY(-2px); background:var(--coral-2); color:var(--on-dark); }
+.btn--ink{ background:var(--ink); color:var(--on-dark); }
+.btn--ink:hover{ transform:translateY(-2px); background:var(--teal-deep); }
+.btn--ghost-dark{ background:transparent; color:var(--ink); border-color:var(--ink); }
+.btn--ghost-dark:hover{ background:var(--ink); color:var(--on-dark); transform:translateY(-2px); }
+.btn--ghost{ background:transparent; color:var(--on-dark); border-color:rgba(247,243,239,.5); }
+.btn--ghost:hover{ border-color:var(--on-dark); background:rgba(247,243,239,.14); transform:translateY(-2px); }
+.path-card--conv .btn--ghost{ color:var(--on-bright); border-color:rgba(5,77,102,.4); }
+.path-card--conv .btn--ghost:hover{ border-color:var(--color-navy); background:rgba(5,77,102,.08); }
+.btn--outline{ background:transparent; color:var(--navy); border-color:var(--navy); }
+.btn--outline:hover{ background:var(--navy); color:var(--on-dark); transform:translateY(-2px); }
+.btn--sm{ padding:.7rem 1.35rem; font-size:1.18rem; }
+.btn--block{ width:100%; }
 
-/* ---------- masthead ---------- */
-.masthead{
-  position:sticky; top:0; z-index:50; background:var(--paper);
-  border-bottom:1px solid var(--navy-14);
+/* ---------- marquee ticker ---------- */
+.ticker{ background:var(--ink); color:var(--cream); overflow:hidden; padding:.65rem 0; position:relative; z-index:1001; }
+.ticker__track{ display:flex; width:max-content; gap:2.5rem; animation:ticker 32s linear infinite; }
+.ticker__item{ display:flex; align-items:center; gap:2.5rem; font-family:var(--display); font-weight:600; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; white-space:nowrap; }
+.ticker__item .spark{ width:12px; height:12px; color:var(--gold); }
+@keyframes ticker{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+/* ---------- nav ---------- */
+.site-header{
+  position:sticky; top:0; z-index:1000; background:rgba(247,243,239,.9); backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent; padding:1.1rem 0; transition:border-color .3s, box-shadow .3s, padding .3s;
 }
-.masthead__in{ display:flex; align-items:center; justify-content:space-between; gap:1rem; padding-block:.8rem; }
-.logo img{ height:30px; width:auto; }
-.mainnav{ display:none; gap:2rem; }
-.mainnav a{ font-size:.9rem; text-decoration:none; padding-block:.35rem; border-bottom:2px solid transparent; }
-.mainnav a:hover{ border-bottom-color:var(--navy); }
-.masthead__right{ display:flex; align-items:center; gap:1rem; }
-.menu-btn{ background:none; border:1px solid var(--navy); padding:.5rem .9rem; font-size:.85rem; font-weight:600; cursor:pointer; }
-.menu-btn:hover{ background:var(--navy); color:var(--paper); }
-@media (min-width:900px){
-  .mainnav{ display:flex; }
-  .menu-btn{ display:none; }
+.site-header.solid{ border-color:var(--line); box-shadow:0 8px 30px -24px rgba(5,77,102,.4); padding:.8rem 0; }
+.nav{ display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.brand{ display:flex; align-items:center; gap:.6rem; }
+.brand__logo{ height:34px; width:auto; display:block; }
+.brand__logo--footer{ height:38px; }
+
+.nav__right{ display:flex; align-items:center; gap:.7rem; }
+.nav__links{ display:flex; align-items:center; gap:1.9rem; }
+.nav__links a:not(.btn){ font-family:var(--display); font-weight:600; font-size:.9rem; color:var(--ink); transition:color .25s; }
+.nav__links a:not(.btn):hover{ color:var(--navy); box-shadow:inset 0 -2px 0 var(--navy); }
+
+.nav__toggle{
+  display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%;
+  background:var(--ink); border:0; cursor:pointer; flex:0 0 auto; position:relative; z-index:1100;
 }
-.drawer{ display:none; border-top:1px solid var(--navy-14); padding-bottom:.5rem; }
-.drawer.open{ display:block; }
-.drawer a{ display:block; padding:.85rem 0; text-decoration:none; border-bottom:1px solid var(--navy-14); }
-@media (min-width:900px){ .drawer.open{ display:none; } }
+.nav__toggle-grid{ display:grid; grid-template-columns:repeat(2,4px); grid-template-rows:repeat(2,4px); gap:3px; }
+.nav__toggle-grid span{ width:4px; height:4px; border-radius:50%; background:var(--on-dark); transition:background .2s; }
+.nav__toggle.open .nav__toggle-grid span{ background:var(--coral); }
+
+.nav__panel{
+  position:fixed; inset:0; z-index:1050; background:var(--teal-deep);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2rem;
+  opacity:0; visibility:hidden; transform:translateY(-12px); transition:opacity .35s var(--ease), transform .35s var(--ease), visibility 0s linear .35s;
+}
+.nav__panel.open{ opacity:1; visibility:visible; transform:translateY(0); transition:opacity .35s var(--ease), transform .35s var(--ease); }
+.nav__panel a{ font-family:var(--display); font-weight:700; font-size:clamp(1.6rem,5vw,2.4rem); color:var(--on-dark); }
+.nav__panel a:hover{ color:var(--gold); }
+.nav__panel .btn{ margin-top:.5rem; }
+.nav__panel-close{
+  position:absolute; top:1.5rem; right:min(5vw,2rem); width:44px; height:44px; border-radius:50%;
+  background:rgba(247,243,239,.12); border:0; color:var(--on-dark); cursor:pointer; display:flex; align-items:center; justify-content:center;
+}
+.nav__panel-close svg{ width:18px; height:18px; }
 
 /* ---------- hero ---------- */
-.hero__in{ display:grid; gap:clamp(2.5rem,5vw,4.5rem); align-items:start; }
-.hero h1 .turn{ display:block; color:var(--sky); }
-.hero__rail{ display:grid; align-content:start; gap:clamp(1.75rem,3vw,2.5rem); }
-.burden{
-  align-self:end; max-width:40ch; font-size:1.02rem; line-height:1.8;
-  color:var(--paper-72); border-left:2px solid var(--sky); padding-left:1.35rem;
+.hero{ position:relative; padding:clamp(3rem,7vw,5.5rem) 0 clamp(2.5rem,5vw,4rem); overflow:hidden; }
+.hero__grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(2rem,5vw,4rem); align-items:center; }
+.hero__eyebrow{ margin-bottom:1.4rem; }
+.hero__title{
+  font-family:var(--display); font-weight:800; color:var(--ink); letter-spacing:-.025em;
+  font-size:clamp(2.5rem,5vw,3.9rem); line-height:1.04;
 }
-.hero__turn{ margin-top:clamp(1.75rem,3vw,2.5rem); font-family:var(--display); font-size:1.3rem; color:var(--paper); }
-.hero__answer{ margin-top:1rem; font-size:1.02rem; max-width:52ch; color:var(--paper-72); }
-.hero__cta{ display:flex; flex-wrap:wrap; gap:1rem; align-items:center; margin-top:2rem; }
-@media (min-width:900px){ .hero__in{ grid-template-columns:1.25fr .75fr; } }
+.hero__title .accent{ color:var(--coral); }
+.hero__lead{ color:var(--muted); font-size:1.03rem; max-width:50ch; margin:1.5rem 0 2.1rem; }
+.hero__actions{ display:flex; flex-wrap:wrap; gap:1rem; }
 
-/* the figures sit on rules, not in cards */
-.figures{ display:grid; gap:0; border-top:1px solid var(--paper-22); }
-.figures div{ padding-block:1.4rem; border-bottom:1px solid var(--paper-22); }
-.figures div:last-child{ border-bottom:0; }
-.figures dt{ font-family:var(--mono); font-size:clamp(1.9rem,4vw,2.8rem); line-height:1; color:var(--paper); font-variant-numeric:tabular-nums; }
-.figures dd{ margin-top:.55rem; font-size:.87rem; color:var(--paper-72); max-width:32ch; }
-@media (min-width:760px) and (max-width:899px){
-  .figures{ grid-template-columns:repeat(2,1fr); }
-  .figures div{ padding-right:2rem; border-bottom:0; }
-  .figures div + div{ border-left:1px solid var(--paper-22); padding-left:2rem; }
+.hero__visual{ position:relative; aspect-ratio:1/1.02; }
+.hero__visual-backdrop{
+  position:absolute; inset:6% -8% -6% 8%; border-radius:44%;
+  background:
+    radial-gradient(circle, rgba(5,77,102,.16) 1.4px, transparent 1.4px) 0 0/16px 16px,
+    linear-gradient(155deg, var(--sky-soft) 0%, var(--cream-2) 100%);
 }
+#hero-canvas{ position:absolute; inset:6% -8% -6% 8%; width:auto; height:auto; z-index:1; border-radius:44%; }
+.hero__visual-card{
+  position:absolute; inset:0 6% 4% 0; border-radius:var(--radius-lg); overflow:hidden; z-index:2;
+  background:linear-gradient(165deg, rgba(114,207,212,.16) 0%, var(--sky-soft) 55%, rgba(114,207,212,.38) 100%);
+  box-shadow:var(--shadow-card);
+}
+.hero__visual-card svg{ width:100%; height:100%; }
+.hero__badge{
+  position:absolute; left:-6%; bottom:14%; z-index:3; background:var(--white); border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-sm); padding:.9rem 1.2rem; display:flex; align-items:center; gap:.7rem;
+}
+.hero__badge-icon{ width:38px; height:38px; border-radius:50%; background:var(--teal-deep); display:flex; align-items:center; justify-content:center; flex:0 0 auto; }
+.hero__badge-icon svg{ width:18px; height:18px; color:var(--on-dark); }
+.hero__badge strong{ font-family:var(--display); font-size:.92rem; display:block; }
+.hero__badge span{ font-size:.76rem; color:var(--muted); }
 
-/* ---------- statement + what you get ---------- */
-.statement{ display:grid; gap:clamp(1.25rem,3vw,3rem); }
-.statement h2{ max-width:16ch; }
-@media (min-width:900px){
-  .statement{ grid-template-columns:.9fr 1.1fr; align-items:start; }
-  .statement h2{ position:sticky; top:6rem; }
-}
-
-/* an index, not a card grid */
-.index{ margin-top:clamp(2.5rem,5vw,4rem); border-top:1px solid var(--navy-14); }
-.index__row{
-  display:grid; grid-template-columns:auto 1fr; gap:.4rem 1.5rem;
-  padding-block:clamp(1.4rem,2.6vw,2.1rem); border-bottom:1px solid var(--navy-14);
-}
-.index__num{ font-family:var(--mono); font-size:.78rem; color:var(--navy-78); padding-top:.5rem; }
-.index__body{ grid-column:2 / -1; }            /* below 860px it sits under the heading */
-.index__body p{ margin-top:.55rem; color:var(--navy-78); max-width:64ch; }
-@media (min-width:860px){
-  .index__row{ grid-template-columns:3.5rem 12.5rem 1fr; align-items:baseline; }
-  .index__body{ grid-column:auto; }
-  .index__body p{ margin-top:0; }
+@media (max-width:980px){
+  .hero__grid{ grid-template-columns:1fr; }
+  .hero__visual{ width:100%; max-width:420px; margin-inline:auto; order:-1; aspect-ratio:1/.95; }
+  .hero__badge{ left:0; }
 }
 
-/* ---------- economics ---------- */
-.exhibit{ display:grid; gap:clamp(1.5rem,3vw,3rem); align-items:end; }
+/* ---------- trust cards (twin pastel) ---------- */
+.trust{ padding:0 0 clamp(3.5rem,7vw,5.5rem); }
+.trust__grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
+.trust-card{ border-radius:var(--radius); padding:2rem; display:flex; flex-direction:column; gap:1rem; }
+.trust-card--coral{ background:var(--coral-soft); }
+.trust-card--mint{ background:var(--mint-soft); }
+.trust-card--ink{ background:var(--ink); color:var(--on-dark); }
+.trust-card__icon{ width:46px; height:46px; border-radius:50%; background:var(--ink); display:flex; align-items:center; justify-content:center; }
+.trust-card--ink .trust-card__icon{ background:rgba(247,243,239,.14); }
+.trust-card__icon svg{ width:21px; height:21px; color:var(--on-dark); }
+.trust-card h3{ font-family:var(--display); font-weight:800; font-size:1.15rem; }
+.trust-card p{ font-size:.9rem; color:var(--muted); }
+.trust-card--ink p{ color:rgba(247,243,239,.72); }
+@media (max-width:860px){ .trust__grid{ grid-template-columns:1fr; } }
 
-.legend{ display:flex; gap:1.5rem; flex-wrap:wrap; align-items:center; padding-bottom:1.25rem; }
-.legend__unit{ margin-left:auto; font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; }
-.legend span{ display:inline-flex; align-items:center; gap:.5rem; font-size:.85rem; color:var(--paper-72); }
-.legend i{ width:14px; height:14px; display:block; }
-.chart{ margin-top:clamp(1.5rem,3vw,2.25rem); }
-.chart svg{ width:100%; height:auto; overflow:visible; }
-.chart__bar{ transition:opacity .15s; }
-.chart:hover .chart__bar{ opacity:.5; }
-.chart__g:hover .chart__bar{ opacity:1; }
-.tip{
-  position:fixed; z-index:80; pointer-events:none; opacity:0; transform:translate(-50%,-125%);
-  background:var(--paper); color:var(--navy); padding:.55rem .75rem; font-size:.8rem;
-  border:1px solid var(--navy); white-space:nowrap; transition:opacity .12s;
+/* ---------- about (never alone) ---------- */
+.about{ background:var(--white); }
+.about__grid{ display:grid; grid-template-columns:.95fr 1.05fr; gap:clamp(2rem,5vw,3.5rem); align-items:center; }
+.about__visual{ position:relative; }
+.about__visual-card{
+  border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/4.6;
+  background:linear-gradient(165deg,var(--teal) 0%,var(--teal-deep) 100%);
+  box-shadow:var(--shadow-card); position:relative;
 }
-.tip strong{ font-family:var(--mono); display:block; font-size:.98rem; }
+.about__visual-card svg{ width:100%; height:100%; }
+.about__chip{
+  position:absolute; left:-5%; bottom:8%; background:var(--white); border-radius:50px; box-shadow:var(--shadow-sm);
+  padding:.75rem 1.25rem .75rem .75rem; display:flex; align-items:center; gap:.65rem; max-width:250px;
+}
+.about__chip-icon{ width:34px; height:34px; border-radius:50%; background:var(--gold-soft); display:flex; align-items:center; justify-content:center; flex:0 0 auto; }
+.about__chip-icon svg{ width:16px; height:16px; color:var(--on-bright); }
+.about__chip span{ font-family:var(--display); font-weight:700; font-size:.82rem; line-height:1.25; }
 
-.numbers__toggle{ margin-top:clamp(2rem,4vw,3rem); border-top:1px solid var(--paper-22); }
-.numbers__toggle summary{
-  cursor:pointer; padding-block:1rem; font-family:var(--mono); font-size:.76rem;
-  letter-spacing:.12em; text-transform:uppercase; color:var(--sky); list-style:none;
-}
-.numbers__toggle summary::-webkit-details-marker{ display:none; }
-.numbers__toggle summary::before{ content:"+ "; }
-.numbers__toggle[open] summary::before{ content:"\2212 "; }
-.numbers__scroll{ overflow-x:auto; padding-bottom:.5rem; }
-.numbers{ width:100%; min-width:540px; border-collapse:collapse; font-size:.9rem; margin-bottom:1rem; }
-.numbers caption{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); text-align:left; font-family:var(--mono); font-size:.72rem; letter-spacing:.14em;
-                  text-transform:uppercase; color:var(--sky); padding-bottom:.9rem; }
-.numbers th, .numbers td{ text-align:right; padding:.7rem .4rem; border-bottom:1px solid var(--paper-22); }
-.numbers th:first-child, .numbers td:first-child{ text-align:left; }
-.numbers thead th{ font-weight:500; color:var(--paper-72); font-size:.74rem; text-transform:uppercase; letter-spacing:.08em; }
-.numbers tbody th{ font-weight:500; }
-.numbers td{ font-family:var(--mono); font-variant-numeric:tabular-nums; }
-.disclaimer{ margin-top:1.5rem; font-size:.78rem; line-height:1.55; color:var(--paper-72); max-width:76ch; }
+.about__copy h2{ font-family:var(--display); font-weight:800; letter-spacing:-.02em; font-size:clamp(1.9rem,3.6vw,2.6rem); line-height:1.16; }
+.about__copy h2 .muted{ color:var(--muted); font-weight:600; }
+.about__copy > p{ color:var(--muted); font-size:1.03rem; margin-top:1.2rem; max-width:52ch; }
 
-/* ---------- two paths: flat fields, not cards ---------- */
-.paths{ display:grid; }
-@media (min-width:860px){ .paths{ grid-template-columns:1fr 1fr; } }
-.path{ padding:clamp(2rem,4vw,3.5rem); display:flex; flex-direction:column; text-decoration:none;
-       transition:background .2s; }
-.path__go{
-  margin-top:auto; padding-top:2rem; display:inline-flex; align-items:center; gap:.6rem;
-  font-family:var(--mono); font-size:.76rem; letter-spacing:.12em; text-transform:uppercase;
+.stat-cards{ display:flex; flex-direction:column; gap:.9rem; margin-top:2rem; }
+.stat-card{
+  border:1.5px solid var(--line); border-radius:var(--radius-sm); padding:1.1rem 1.4rem;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem; position:relative;
 }
-.path__go svg{ width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:2; transition:transform .2s; }
-.path:hover .path__go svg{ transform:translateX(5px); }
-.path--a:hover{ background-image:linear-gradient(rgba(247,243,239,.07),rgba(247,243,239,.07)); }
-.path--b:hover{ background-image:linear-gradient(rgba(247,243,239,.35),rgba(247,243,239,.35)); }
-.path--a{ background:var(--navy); color:var(--paper); }
-.path--b{ background:var(--sky); color:var(--navy); }
-.path p{ margin-top:1rem; max-width:44ch; }
-.path--a p{ color:var(--paper-72); }
-.path__tag{ font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; display:block; margin-bottom:1rem; }
-.path--a .path__tag{ color:var(--sky); }
+.stat-card__num{ font-family:var(--display); font-weight:800; font-size:1.7rem; color:var(--ink); }
+.stat-card__label{ font-size:.86rem; color:var(--muted); text-align:right; max-width:20ch; }
+.stat-card .spark{ position:absolute; top:.85rem; right:.85rem; width:15px; height:15px; color:var(--gold); }
 
-/* ---------- qualification: real checkboxes the visitor answers ---------- */
-.tint{ background:var(--sky-18); }
-.qual{ margin-top:clamp(1.75rem,3vw,2.5rem); display:grid; gap:1px; background:var(--navy-14); }
-.qual > *{ background:var(--paper); transition:background .15s; }
-@media (min-width:900px){ .qual{ grid-template-columns:1fr 1fr; } }
-.qual label{
-  display:grid; grid-template-columns:auto 1fr; gap:1.1rem; align-items:center;
-  padding:1.15rem 1.25rem; cursor:pointer; font-size:clamp(1.02rem,1.7vw,1.2rem);
-  font-family:var(--display); transition:background .15s;
+@media (max-width:900px){
+  .about__grid{ grid-template-columns:1fr; }
+  .about__chip{ left:0; }
 }
-.qual > *:has(input:checked){ background:var(--sky); }   /* navy on sky = 5.13:1 */
-.qual input{ position:absolute; opacity:0; width:1px; height:1px; }
-.qual .box{
-  width:28px; height:28px; border:2px solid var(--navy); display:grid; place-items:center;
-  transition:background .15s;
-}
-.qual label:hover .box{ background:rgba(5,77,102,.08); }
-.qual .box svg{ width:16px; height:16px; stroke:var(--paper); stroke-width:2.5; fill:none;
-                stroke-dasharray:22; stroke-dashoffset:22; transition:stroke-dashoffset .25s ease-out; }
-.qual input:checked + .box{ background:var(--navy); }
-.qual input:checked + .box svg{ stroke-dashoffset:0; }
-.qual input:focus-visible + .box{ outline:3px solid var(--navy); outline-offset:3px; }
-.qual__status{ display:flex; align-items:center; padding:1.15rem 1.25rem; }
-.qual__count{ font-family:var(--mono); font-size:.8rem; letter-spacing:.1em;
-               text-transform:uppercase; color:var(--navy-78); }
-.qual__result{
-  margin-top:1.75rem; padding:1.6rem; background:var(--navy); color:var(--paper);
-  font-family:var(--display); font-size:1.12rem; display:none;
-}
-.qual__result.show{ display:block; }
 
-/* ---------- form ---------- */
-.contact{ display:grid; gap:clamp(2rem,5vw,4rem); align-items:start; }
-.direct{ margin-top:clamp(2.5rem,5vw,4rem); border-top:1px solid var(--paper-22); padding-top:1.5rem; }
-.direct .kicker{ display:block; margin-bottom:1rem; }
-.direct__line{
-  display:block; font-family:var(--mono); font-size:clamp(1rem,1.5vw,1.2rem);
-  text-decoration:none; padding-block:.6rem; border-bottom:1px solid var(--paper-22);
+/* ---------- services / pillars ---------- */
+.services{ background:linear-gradient(180deg,var(--cream) 0%,var(--mint-soft) 100%); }
+.pillars__grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:1.3rem; margin-top:1rem; }
+.pillar{
+  background:var(--white); border:1.5px solid var(--line); border-radius:var(--radius); padding:1.9rem 1.5rem;
+  display:flex; flex-direction:column; gap:.9rem; transition:transform .3s var(--ease), border-color .3s, box-shadow .3s;
 }
-.direct__line:hover{ color:var(--gold); }
-@media (min-width:980px){ .contact{ grid-template-columns:.8fr 1.2fr; } }
-.field{ display:grid; gap:.3rem; margin-bottom:1.1rem; }
-.field > label{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--sky); }
+.pillar:hover{ transform:translateY(-6px); border-color:transparent; box-shadow:var(--shadow-sm); }
+.pillar__icon{ width:50px; height:50px; border-radius:16px; display:flex; align-items:center; justify-content:center; }
+.pillar:nth-child(5n+1) .pillar__icon{ background:var(--mint-soft); color:var(--teal); }
+.pillar:nth-child(5n+2) .pillar__icon{ background:var(--coral-soft); color:var(--coral); }
+.pillar:nth-child(5n+3) .pillar__icon{ background:var(--gold-soft); color:var(--on-bright); }
+.pillar:nth-child(5n+4) .pillar__icon{ background:var(--mint-soft); color:var(--teal); }
+.pillar:nth-child(5n+5) .pillar__icon{ background:var(--coral-soft); color:var(--coral); }
+.pillar__icon svg{ width:24px; height:24px; }
+.pillar__title{ font-family:var(--display); font-weight:800; font-size:1.08rem; color:var(--ink); }
+.pillar__text{ color:var(--muted); font-size:.92rem; flex:1; }
+.pillar__link{ font-family:var(--display); font-weight:700; font-size:.82rem; color:var(--navy); display:inline-flex; align-items:center; gap:.4rem; }
+.pillar__link svg{ width:14px; height:14px; transition:transform .25s; }
+.pillar:hover .pillar__link svg{ transform:translateX(3px); }
+@media (max-width:1080px){ .pillars__grid{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:680px){ .pillars__grid{ grid-template-columns:1fr; } }
+
+/* ---------- revenue chart ---------- */
+.revenue__card{ background:var(--white); border:1.5px solid var(--line); border-radius:var(--radius-lg); padding:clamp(1.8rem,5vw,3.2rem); }
+.revenue__legend{ display:flex; gap:1.8rem; flex-wrap:wrap; margin:1.6rem 0 .6rem; }
+.legend-item{ display:flex; align-items:center; gap:.55rem; font-weight:700; font-size:.88rem; color:var(--ink); font-family:var(--display); }
+.legend-swatch{ width:14px; height:14px; border-radius:4px; }
+.chart-wrap{ position:relative; height:min(62vw,440px); margin-top:1.25rem; }
+
+/* scenario switch — same pill language as the rest of the page */
+.scenario{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.25rem; }
+.scenario__btn{
+  font-family:var(--display); font-weight:700; font-size:.82rem; cursor:pointer;
+  padding:.5rem 1.1rem; border-radius:50px; border:1.5px solid var(--line);
+  background:var(--white); color:var(--navy); transition:.2s;
+}
+.scenario__btn:hover{ border-color:var(--navy); }
+.scenario__btn.is-on{ background:var(--navy); border-color:var(--navy); color:var(--paper); }
+
+/* all six starts figures, beside the year they belong to */
+.starts{ display:grid; gap:.6rem; margin-top:1.4rem; }
+@media (min-width:720px){ .starts{ grid-template-columns:repeat(3,1fr); gap:1rem; } }
+.starts__item{
+  background:var(--sky-24); border-radius:var(--radius-sm); padding:.85rem 1rem;
+  font-size:.92rem; color:var(--navy);
+}
+.starts__yr{ display:block; font-family:var(--display); font-weight:700; font-size:.74rem;
+             letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:.15rem; }
+.starts__item b{ font-weight:700; }
+.starts__item em{ font-style:normal; color:var(--muted); }
+
+/* the exact figures, one click away */
+.figures{ margin-top:1.4rem; border-top:1px solid var(--line); }
+.figures summary{
+  cursor:pointer; padding:1rem 0; list-style:none; font-family:var(--display);
+  font-weight:700; font-size:.86rem; color:var(--navy);
+}
+.figures summary::-webkit-details-marker{ display:none; }
+.figures summary::before{ content:"+ "; color:var(--coral-2); }
+.figures[open] summary::before{ content:"\2212 "; }
+.figures__scroll{ overflow-x:auto; padding-bottom:.75rem; }
+.figures__table{ width:100%; min-width:520px; border-collapse:collapse; font-size:.9rem; }
+.figures__table th, .figures__table td{ padding:.7rem .5rem; text-align:right; border-bottom:1px solid var(--line); }
+.figures__table th:first-child, .figures__table td:first-child{ text-align:left; }
+.figures__table thead th{ font-family:var(--display); font-size:.72rem; letter-spacing:.06em;
+                          text-transform:uppercase; color:var(--muted); font-weight:700; }
+.figures__table tbody th{ font-weight:700; }
+.figures__table td{ font-variant-numeric:tabular-nums; }
+.revenue__disclaimer{ font-size:.76rem; color:var(--muted); margin-top:1.4rem; line-height:1.6; max-width:74ch; }
+.revenue__meta{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.4rem; }
+.meta-pill{ font-family:var(--display); font-size:.72rem; font-weight:700; padding:.4rem .8rem; border-radius:50px; background:var(--gold-soft); color:var(--on-bright); }
+
+/* ---------- benefits ---------- */
+.benefits{ background:var(--white); }
+.benefits__list{ display:flex; flex-direction:column; gap:1.1rem; margin-top:1rem; }
+.benefit{ display:flex; gap:1.3rem; align-items:flex-start; border:1.5px solid var(--line); border-radius:var(--radius); padding:1.4rem 1.7rem; }
+.benefit:nth-child(odd){ background:var(--coral-soft); border-color:transparent; }
+.benefit:nth-child(even){ background:var(--mint-soft); border-color:transparent; }
+.benefit__num{
+  font-family:var(--display); font-weight:800; font-size:1.35rem; color:var(--on-bright);
+  width:44px; height:44px; border-radius:50%; background:var(--gold); flex:0 0 auto;
+  display:flex; align-items:center; justify-content:center;
+}
+.benefit__text{ font-size:1.01rem; color:var(--ink); padding-top:.45rem; font-weight:500; }
+
+/* ---------- two paths ---------- */
+.paths__grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.8rem; margin-top:1rem; }
+.path-card{
+  border-radius:var(--radius-lg); padding:clamp(2rem,4vw,2.8rem); position:relative; overflow:hidden;
+  color:var(--on-dark); min-height:320px; display:flex; flex-direction:column;
+}
+.path-card--new{ background:linear-gradient(155deg,var(--teal) 0%,var(--teal-deep) 100%); }
+.path-card--conv{ background:linear-gradient(155deg,var(--coral) 0%,var(--gold) 100%); color:var(--on-bright); }
+.path-card__badge{ font-family:var(--display); font-weight:700; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; opacity:.85; margin-bottom:.9rem; }
+.path-card__title{ font-family:var(--display); font-weight:800; font-size:1.7rem; margin-bottom:.9rem; }
+.path-card__text{ opacity:.92; font-size:.98rem; flex:1; }
+.path-card .btn{ margin-top:1.6rem; align-self:flex-start; }
+@media (max-width:820px){ .paths__grid{ grid-template-columns:1fr; } }
+
+/* ---------- testimonials ---------- */
+.testimonials{ background:var(--white); }
+.testi__grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; margin-top:1rem; }
+.testi-card{ border:1.5px solid var(--line); border-radius:var(--radius-lg); padding:2rem 1.8rem; text-align:center; position:relative; }
+.testi-card .spark{ position:absolute; top:1.3rem; right:1.3rem; width:16px; height:16px; color:var(--gold); }
+.testi-avatar{
+  width:80px; height:80px; margin:0 auto 1.2rem; border-radius:50% 50% 50% 6%; overflow:hidden;
+  display:flex; align-items:center; justify-content:center; font-family:var(--display); font-weight:800;
+  font-size:1.5rem; color:var(--on-dark);
+}
+.testi-quote{ font-size:1.02rem; color:var(--ink); line-height:1.55; margin-bottom:1.2rem; }
+.testi-name{ font-family:var(--display); font-weight:700; font-size:.96rem; }
+.testi-loc{ font-size:.78rem; color:var(--muted); margin-top:.25rem; }
+.testi-tag{ margin-top:1rem; display:inline-block; font-family:var(--display); font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--on-bright); background:var(--gold-soft); padding:.3rem .7rem; border-radius:50px; font-weight:700; }
+@media (max-width:900px){ .testi__grid{ grid-template-columns:1fr; } }
+
+/* ---------- checklist ---------- */
+.checklist-section{ background:linear-gradient(180deg,var(--mint-soft) 0%,var(--cream) 100%); }
+.checklist{ max-width:760px; margin:0 auto; }
+.check-item{
+  display:flex; align-items:center; gap:1.1rem; background:var(--white); border:1.5px solid var(--line); border-radius:var(--radius);
+  padding:1.2rem 1.6rem; margin-bottom:.9rem;
+}
+.check-box{
+  width:32px; height:32px; border-radius:50%; border:2px solid var(--mint); flex:0 0 auto;
+  display:flex; align-items:center; justify-content:center; position:relative;
+}
+.check-box svg{ width:17px; height:17px; stroke:var(--mint-2); stroke-width:3; fill:none; stroke-dasharray:24; stroke-dashoffset:24; }
+.check-box.done{ background:var(--mint); border-color:var(--mint); }
+.check-box.done svg{ stroke:var(--on-dark); }
+.check-text{ font-size:1.01rem; color:var(--ink); font-weight:500; }
+.checklist__closing{
+  text-align:center; margin-top:2rem; font-family:var(--display); font-weight:700; font-size:1.15rem;
+  color:var(--teal-deep); max-width:60ch; margin-inline:auto;
+}
+
+/* ---------- final CTA + form ---------- */
+.cta-band{ background:linear-gradient(165deg,var(--teal-deep) 0%,var(--teal) 100%); position:relative; overflow:hidden; }
+.cta-grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:3rem; align-items:start; }
+.cta-copy{ color:var(--on-dark); position:relative; z-index:2; }
+.cta-copy .section-intro{ margin-top:1.2rem; }
+.cta-trust{ display:flex; flex-direction:column; gap:.9rem; margin-top:2rem; }
+.cta-trust li{ display:flex; align-items:center; gap:.7rem; font-size:.92rem; color:rgba(247,243,239,.92); }
+.cta-trust svg{ width:18px; height:18px; flex:0 0 auto; color:var(--gold); }
+
+.form-card{ background:var(--white); border-radius:var(--radius-lg); padding:clamp(1.8rem,4vw,2.6rem); box-shadow:var(--shadow-card); position:relative; z-index:2; }
+.form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.field{ display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
+.field.full{ grid-column:1 / -1; }
+.field label{ font-family:var(--display); font-size:.72rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); }
 .field input, .field select{
-  background:rgba(247,243,239,.16); border:1px solid rgba(247,243,239,.72);
-  padding:.75rem .8rem; color:var(--paper); font-size:1rem; border-radius:0; width:100%;
+  border:1.5px solid var(--line); border-radius:12px; padding:.85rem 1rem; font-size:.96rem; font-family:var(--sans);
+  color:var(--ink); background:var(--cream); transition:border-color .2s, box-shadow .2s;
 }
-.field select{
-  appearance:none; -webkit-appearance:none; padding-right:2.5rem; cursor:pointer;
-  background-image:linear-gradient(45deg,transparent 50%,var(--paper) 50%),
-                   linear-gradient(135deg,var(--paper) 50%,transparent 50%);
-  background-position:calc(100% - 1.15rem) 1.2rem, calc(100% - .8rem) 1.2rem;
-  background-size:6px 6px, 6px 6px; background-repeat:no-repeat;
+.field input:focus, .field select:focus{ outline:none; border-color:var(--teal); box-shadow:0 0 0 4px rgba(26,173,167,.18); }
+.toggle-group{ display:flex; gap:.6rem; flex-wrap:wrap; }
+.toggle-pill{
+  border:1.5px solid var(--line); border-radius:50px; padding:.6rem 1.1rem; font-size:.86rem; font-weight:700; font-family:var(--display);
+  cursor:pointer; background:var(--cream); color:var(--ink); transition:.2s;
 }
-.field select option{ background:var(--navy); color:var(--paper); }
-.field input:focus, .field select:focus{ outline:none; border-color:var(--gold); box-shadow:inset 0 0 0 1px var(--gold); background:rgba(247,243,239,.18); }
-.field input::placeholder{ color:rgba(247,243,239,.62); }
-.field input[aria-invalid="true"]{ border-color:var(--coral); }
-.err{ font-size:.78rem; color:var(--gold); min-height:1.1em; }
-.grid2{ display:grid; gap:0 1.5rem; }
-@media (min-width:560px){ .grid2{ grid-template-columns:1fr 1fr; } }
-fieldset{ border:0; margin-bottom:1.5rem; }
-legend{ font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--sky); margin-bottom:.7rem; }
-.choices{ display:flex; flex-wrap:wrap; gap:.6rem; }
-.choice{ position:relative; }
-.choice input{ position:absolute; opacity:0; width:1px; height:1px; }
-.choice span{
-  display:block; border:1.5px solid rgba(247,243,239,.72); padding:.55rem 1rem; font-size:.9rem;
-  cursor:pointer; transition:background .15s, border-color .15s, color .15s;
-}
-.choice input:checked + span{ background:var(--paper); color:var(--navy); border-color:var(--paper); font-weight:600; }
-.choice input:focus-visible + span{ outline:3px solid var(--paper); outline-offset:3px; }
-.hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
-.form-note{ font-size:.8rem; color:var(--paper-72); margin-top:1rem; max-width:48ch; }
-.form-done{ display:none; border-top:2px solid var(--gold); padding-top:1.5rem; }
-.form-done.show{ display:block; }
-.form-done p{ color:var(--paper-72); margin-top:.5rem; }
+.toggle-pill input{ display:none; }
+.toggle-pill.active{ background:var(--coral); border-color:var(--coral); color:var(--on-bright); }
+.form-note{ font-size:.8rem; color:var(--muted); margin-top:1rem; }
+.form-success{ display:none; text-align:center; padding:2.4rem 1rem; }
+.form-success.show{ display:block; }
+.form-success svg{ width:56px; height:56px; color:var(--mint); margin:0 auto 1rem; }
+.form-success h3{ font-family:var(--display); font-weight:800; font-size:1.5rem; color:var(--teal-deep); margin-bottom:.6rem; }
+.form-success p{ color:var(--muted); }
+@media (max-width:960px){ .cta-grid{ grid-template-columns:1fr; } }
+@media (max-width:560px){ .form-grid{ grid-template-columns:1fr; } }
 
-/* ---------- sticky mobile action ---------- */
-.sticky{
-  position:fixed; inset:auto 0 0 0; z-index:60; padding:.7rem var(--gut);
-  background:var(--paper); border-top:1px solid var(--navy-14); display:none;
-  transform:translateY(100%); transition:transform .25s ease;
+/* ---------- sticky mobile CTA ---------- */
+.sticky-cta{
+  position:fixed; left:0; right:0; bottom:0; z-index:900; padding:.85rem 1rem;
+  background:rgba(247,243,239,.94); backdrop-filter:blur(10px); box-shadow:0 -10px 26px -18px rgba(5,77,102,.35);
+  display:none;
 }
-.sticky.show{ transform:translateY(0); }
-.sticky .btn{ width:100%; justify-content:center; }
-@media (max-width:760px){
-  .sticky{ display:block; }
-  body{ padding-bottom:5.5rem; }
-  .masthead .btn--dark{ display:none; }   /* the sticky bar already carries this action */
-}
+.sticky-cta .btn{ width:100%; }
+@media (max-width:760px){ .sticky-cta{ display:block; } body{ padding-bottom:74px; } }
 
 /* ---------- footer ---------- */
-.foot{ display:grid; gap:2rem; }
-@media (min-width:760px){ .foot{ grid-template-columns:1fr auto; align-items:start; } }
-.foot__logo{ height:34px; width:auto; }
-.foot a{ color:var(--paper); text-decoration:none; border-bottom:1px solid var(--paper-22); }
-.foot a:hover{ border-bottom-color:var(--gold); }
-.foot__contact{ display:grid; gap:.6rem; font-family:var(--mono); font-size:.9rem; }
-.foot__social{ display:flex; gap:1rem; margin-top:1.2rem; }
-.foot__social a{ border:0; }
-.foot__social svg{ width:20px; height:20px; }
-.foot__legal{ margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--paper-22);
-              font-size:.78rem; color:var(--paper-72); display:flex; flex-wrap:wrap; gap:1rem; justify-content:space-between; }
+footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0 2rem; }
+.footer__grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:2.4rem; padding-bottom:2.6rem; border-bottom:1px solid rgba(247,243,239,.14); }
+.footer__logo-chip{ display:inline-flex; }   /* reversed lockup needs no white plate */
+.footer__brand p{ margin-top:1rem; font-size:.9rem; max-width:32ch; color:rgba(247,243,239,.7); }
+.footer__col h4{ font-family:var(--display); font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; }
+/* placeholders until the real URLs are confirmed — deliberately not links,
+   so nothing on the page looks clickable and goes nowhere */
+.footer__todo{ display:block; font-size:.9rem; color:rgba(247,243,239,.5); margin-bottom:.7rem; }
+.footer__col a{ display:block; font-size:.9rem; color:rgba(247,243,239,.78); margin-bottom:.7rem; transition:color .2s; }
+.footer__col a:hover{ color:var(--gold); }
+.footer__social{ display:flex; gap:.8rem; margin-top:1.2rem; }
+.footer__social a{ width:38px; height:38px; border-radius:50%; background:rgba(247,243,239,.12); display:flex; align-items:center; justify-content:center; }
+.footer__social svg{ width:17px; height:17px; }
+.footer__bottom{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; padding-top:1.8rem; font-size:.82rem; color:rgba(247,243,239,.55); }
+@media (max-width:880px){ .footer__grid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:560px){ .footer__grid{ grid-template-columns:1fr; } }
+
+/* ---------- GSAP reveal base state ---------- */
+.reveal{ opacity:0; transform:translateY(32px); }
 </style>
 </head>
 <body>
 
-<!-- ============================== MASTHEAD ============================== -->
-<header class="masthead">
-  <div class="wrap masthead__in">
-    <a class="logo" href="#top" aria-label="Smilebliss Orthodontics — home">
-      <img src="assets/img/smilebliss-logo.webp" alt="Smilebliss Orthodontics" width="459" height="150" />
-    </a>
-    <nav class="mainnav" aria-label="Sections">
-      <a href="#support">What you get</a>
-      <a href="#economics">Economics</a>
-      <a href="#paths">Two paths</a>
-      <a href="#fit">Is it a fit</a>
-    </nav>
-    <div class="masthead__right">
-      <a class="btn btn--dark" href="#contact">Talk to us</a>
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer">Menu</button>
+<!-- ============ MARQUEE TICKER ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track" id="tickerTrack">
+    <div class="ticker__item">
+      <span>Revenue Cycle Management</span><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+      <span>Procurement</span><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+      <span>Peer Support</span><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+      <span>Marketing</span><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+      <span>Training</span><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+      <span>New Practice</span><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+      <span>Practice Conversion</span><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
     </div>
   </div>
-  <nav class="drawer wrap" id="drawer" aria-label="Sections">
-    <a href="#support">What you get</a>
-    <a href="#economics">Economics</a>
-    <a href="#paths">Two paths</a>
-    <a href="#fit">Is it a fit</a>
-    <a href="#contact">Talk to us</a>
-  </nav>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="container nav">
+    <a href="#top" class="brand" aria-label="Smilebliss home">
+      <img class="brand__logo" src="assets/img/smilebliss-logo.webp" alt="Smilebliss Orthodontics" width="1500" height="490">
+    </a>
+    <div class="nav__right">
+      <a href="#contact" class="btn btn--coral btn--sm">Let's Do This</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navPanel">
+        <span class="nav__toggle-grid"><span></span><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
 </header>
 
-<main id="top">
+<div class="nav__panel" id="navPanel">
+  <button class="nav__panel-close" id="navClose" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <a href="#support">Support</a>
+  <a href="#benefits">Benefits</a>
+  <a href="#revenue">Revenue</a>
+  <a href="#contact" class="btn btn--coral">Let's Do This</a>
+</div>
 
-<!-- ================================ HERO ================================ -->
-<section class="navy band band--tall hero">
-  <div class="wrap">
-    <div class="hero__in">
-      <div>
-        <p class="kicker">A proven, ready-to-go orthodontic practice</p>
-        <h1 style="margin-top:1.5rem">Follow your bliss.<span class="turn">Find more success.</span></h1>
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow hero__eyebrow"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>Introducing Smilebliss™</span>
+      <h1 class="hero__title">Follow Your Bliss.<br>Find <span class="accent">More Success.</span></h1>
+      <p class="hero__lead">Starting an orthodontic practice is tough. There are lots of things to do. Pick a name. Find a location. Hire the right people. Create marketing. Get equipment. Then, make sure you're all set up with the insurance companies so that you get paid. It's a lot &mdash; and that's not even half of it. We have over 30 years of experience creating successful practices. So we took that knowledge and created a ready-to-go practice model with everything done for you.</p>
+      <div class="hero__actions">
+        <a href="#contact" class="btn btn--coral">Let's Do This</a>
+        <a href="#support" class="btn btn--ghost-dark">See How It Works</a>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <div class="hero__visual-backdrop" aria-hidden="true"></div>
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero__visual-card">
+        <svg viewBox="0 0 520 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="barGrad1" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0" stop-color="#054d66"/><stop offset="1" stop-color="#1aada7"/>
+            </linearGradient>
+            <linearGradient id="barGrad2" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0" stop-color="#ff7d5c"/><stop offset="1" stop-color="#ffca5e"/>
+            </linearGradient>
+          </defs>
+          <circle cx="180" cy="150" r="140" fill="#f7f3ef" opacity=".55"/>
+          <g transform="translate(90,330)">
+            <rect x="0" y="90" width="46" height="90" rx="12" fill="url(#barGrad1)"/>
+            <rect x="66" y="50" width="46" height="130" rx="12" fill="url(#barGrad2)"/>
+            <rect x="132" y="10" width="46" height="170" rx="12" fill="url(#barGrad1)"/>
+            <rect x="198" y="-40" width="46" height="220" rx="12" fill="url(#barGrad2)"/>
+            <rect x="264" y="-80" width="46" height="260" rx="12" fill="url(#barGrad1)"/>
+          </g>
+          <path d="M100 190 Q180 260 260 185 T420 175" fill="none" stroke="#ff7d5c" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="420" cy="175" r="10" fill="#ff7d5c"/>
+          <path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z" fill="#1aada7" transform="translate(370,60) scale(1.6)"/>
+          <path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z" fill="#ffca5e" transform="translate(60,80) scale(1.1)"/>
+          <circle cx="150" cy="110" r="6" fill="#ff7d5c"/>
+          <circle cx="440" cy="260" r="7" fill="#054d66"/>
+        </svg>
+      </div>
+      <div class="hero__badge">
+        <span class="hero__badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></span>
+        <span><strong>$5.1M</strong><span>Year 3 revenue, best-case scenario</span></span>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <p class="hero__turn">It&rsquo;s a lot. And that&rsquo;s not even half of it.</p>
-        <p class="hero__answer">We have over 30 years of experience creating successful practices. The Smilebliss team can do it all. We&rsquo;ve done it all. So we took that knowledge and created a ready-to-go practice model with everything done for you.</p>
-        <div class="hero__cta">
-          <a class="btn btn--primary" href="#contact">Talk to us about a practice</a>
-          <a class="btn btn--line" href="#economics">See the economics</a>
+<!-- ============ TRUST / TWIN CARDS ============ -->
+<section class="trust">
+  <div class="container trust__grid">
+    <div class="trust-card trust-card--coral reveal">
+      <span class="trust-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6.2 6.5-6.2S15.5 16.4 15.5 20"/><circle cx="17.5" cy="9" r="2.4"/><path d="M21.5 19c0-2.7-1.9-4.6-4.2-4.9"/></svg></span>
+      <h3>You're Never Alone</h3>
+      <p>Marketing, RCM, procurement, and training &mdash; handled for you, every step of the way.</p>
+    </div>
+    <div class="trust-card trust-card--mint reveal">
+      <span class="trust-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 6 6.5.9-4.7 4.6 1.1 6.5L12 17l-5.9 3 1.1-6.5L2.5 8.9 9 8z"/></svg></span>
+      <h3>A Proven Model</h3>
+      <p>30+ years of experience building successful practices, packaged and ready to go.</p>
+    </div>
+    <div class="trust-card trust-card--ink reveal">
+      <span class="trust-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></span>
+      <h3>Billions Collected</h3>
+      <p>The secret to success is getting paid for the work you do &mdash; we make sure you do.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ YOU'RE NEVER IN IT ALONE / ABOUT ============ -->
+<section class="section about" id="alone-section">
+  <div class="container about__grid">
+    <div class="about__visual reveal">
+      <div class="about__visual-card">
+        <svg viewBox="0 0 420 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <radialGradient id="glow1" cx="50%" cy="35%" r="65%">
+              <stop offset="0" stop-color="#1aada7" stop-opacity=".55"/><stop offset="1" stop-color="#054d66" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="420" height="480" fill="url(#glow1)"/>
+          <circle cx="150" cy="190" r="66" fill="#1aada7" opacity=".9"/>
+          <circle cx="255" cy="170" r="52" fill="#ff7d5c" opacity=".92"/>
+          <circle cx="210" cy="280" r="74" fill="#f7f3ef" opacity=".14"/>
+          <circle cx="90" cy="300" r="40" fill="#ff7d5c" opacity=".5"/>
+          <circle cx="300" cy="330" r="34" fill="#1aada7" opacity=".65"/>
+          <path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z" fill="#ffca5e" opacity=".9" transform="translate(320,90) scale(1.8)"/>
+          <path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z" fill="#ffca5e" opacity=".65" transform="translate(60,110) scale(1.2)"/>
+        </svg>
+      </div>
+      <div class="about__chip">
+        <span class="about__chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6.5.9-4.7 4.6 1.1 6.5L12 17l-5.9 3 1.1-6.5L2.5 8.9 9 8z"/></svg></span>
+        <span>Award-winning, peer-to-peer support network</span>
+      </div>
+    </div>
+    <div class="about__copy">
+      <span class="eyebrow eyebrow--mint"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>About Smilebliss</span>
+      <h2 class="reveal">As a Smilebliss client, <span class="muted">you're never in it alone.</span></h2>
+      <p class="reveal">Here, we go out of our way to make your job &mdash; and that of your entire team &mdash; easier with support geared toward growing, successful practice needs. From marketing, training, and procurement to revenue cycle management, we handle the heavy lifting.</p>
+      <div class="stat-cards">
+        <div class="stat-card reveal">
+          <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+          <span class="stat-card__num" data-count="30" data-suffix="+">0+</span>
+          <span class="stat-card__label">Years of experience building practices</span>
+        </div>
+        <div class="stat-card reveal">
+          <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+          <span class="stat-card__num" data-count="1" data-prefix="$" data-suffix="B+">$0B+</span>
+          <span class="stat-card__label">Collected in revenue for clients</span>
+        </div>
+        <div class="stat-card reveal">
+          <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+          <span class="stat-card__num" data-count="50" data-suffix="+">0+</span>
+          <span class="stat-card__label">Practice partners nationwide</span>
         </div>
       </div>
-
-      <div class="hero__rail">
-        <p class="burden">Starting an orthodontic practice is tough. There are lots of things to do.
-          Pick a name. Find a location. Hire the right people. Create marketing. Get equipment.
-          Then make sure you&rsquo;re all set up with the insurance companies so that you get paid.</p>
-
-        <dl class="figures">
-          <div>
-            <dt class="fig">$1B+</dt>
-            <dd>Collected in revenue for client practices by our RCM team.</dd>
-          </div>
-          <div>
-            <dt class="fig">50+</dt>
-            <dd>Practice partners nationwide.<!-- placeholder figure — confirm before publishing --></dd>
-          </div>
-        </dl>
-      </div>
     </div>
-
-
   </div>
 </section>
 
-<!-- ======================= STATEMENT + WHAT YOU GET ====================== -->
-<section class="band" id="support">
-  <div class="wrap">
-    <div class="statement">
-      <h2>As a Smilebliss client, you&rsquo;re never in it alone.</h2>
-      <p class="body">Here, we go out of our way to make your job &mdash; and that of your entire team &mdash; easier with support geared toward growing, successful practice needs. From marketing, training, and procurement to revenue cycle management, we handle the heavy lifting.</p>
+<!-- ============ FIVE PILLARS ============ -->
+<section class="section services" id="support">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow" style="margin-inline:auto;"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>What We Handle</span>
+      <h2 class="section-title">Five Ways We Carry the Load</h2>
+      <p class="section-intro" style="margin-inline:auto;">A proven support system built for growing practices &mdash; so you can focus on patients, not paperwork.</p>
     </div>
-
-    <ol class="index">
-      <li class="index__row">
-        <span class="index__num">01</span>
-        <h3>Revenue cycle management</h3>
-        <div class="index__body"><p>The secret to success is getting paid for the work you do.</p></div>
-      </li>
-      <li class="index__row">
-        <span class="index__num">02</span>
-        <h3>Procurement</h3>
-        <div class="index__body"><p>If you like deals, we know how to get them. We have an all-in-one ordering system that gets you negotiated rates on equipment and supplies.</p></div>
-      </li>
-      <li class="index__row">
-        <span class="index__num">03</span>
-        <h3>Peer support</h3>
-        <div class="index__body"><p>What&rsquo;s nice about Smilebliss is that you&rsquo;ll be able to run your own practice without feeling like you&rsquo;re in it alone, with our award-winning team and peer-to-peer support.</p></div>
-      </li>
-      <li class="index__row">
-        <span class="index__num">04</span>
-        <h3>Marketing</h3>
-        <div class="index__body"><p>Nothing grows an orthodontic practice faster than incredible marketing. Our team of strategists, designers, and copywriters created a brand that will get people talking and signing up for treatment.</p></div>
-      </li>
-      <li class="index__row">
-        <span class="index__num">05</span>
-        <h3>Training</h3>
-        <div class="index__body"><p>Whether you&rsquo;re hiring an orthodontic associate, an office manager, or another orthodontist, our training programs cover practice culture and brand, new patient process, patient flow and scheduling, practice efficiencies, and adding patient value.</p></div>
-      </li>
-    </ol>
+    <div class="pillars__grid">
+      <article class="pillar reveal">
+        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+        <h3 class="pillar__title">Revenue Cycle Management</h3>
+        <p class="pillar__text">The secret to success is getting paid for the work you do. Our team has collected billions for clients.</p>
+        <a href="#contact" class="pillar__link">Talk to us about this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pillar reveal">
+        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4 9-4V7"/></svg></div>
+        <h3 class="pillar__title">Procurement</h3>
+        <p class="pillar__text">If you like deals, we know how to get them. Our all-in-one ordering system gets you negotiated rates on equipment and supplies.</p>
+        <a href="#contact" class="pillar__link">Talk to us about this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pillar reveal">
+        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6.2 6.5-6.2S15.5 16.4 15.5 20"/><circle cx="17.5" cy="9" r="2.4"/><path d="M21.5 19c0-2.7-1.9-4.6-4.2-4.9"/></svg></div>
+        <h3 class="pillar__title">Peer Support</h3>
+        <p class="pillar__text">Run your own practice without feeling like you're in it alone, backed by our award-winning team and peer-to-peer network.</p>
+        <a href="#contact" class="pillar__link">Talk to us about this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pillar reveal">
+        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l18-7-7 18-2.5-7.5L3 11z"/></svg></div>
+        <h3 class="pillar__title">Marketing</h3>
+        <p class="pillar__text">Nothing grows a practice faster than incredible marketing. Our strategists, designers, and copywriters get people signing up for treatment.</p>
+        <a href="#contact" class="pillar__link">Talk to us about this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pillar reveal">
+        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5a2 2 0 012-2h9l5 5v11a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M9 12h6M9 16h6M9 8h3"/></svg></div>
+        <h3 class="pillar__title">Training</h3>
+        <p class="pillar__text">Covering practice culture and brand, new patient process, scheduling, efficiencies, and adding patient value &mdash; for every role on your team.</p>
+        <a href="#contact" class="pillar__link">Talk to us about this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+    </div>
   </div>
 </section>
 
-<!-- ============================== ECONOMICS ============================= -->
-<section class="navy band band--tall" id="economics">
-  <div class="wrap wrap--wide">
-    <div class="exhibit">
-      <div>
-        <p class="kicker">License model proforma &mdash; start-up practice</p>
-        <h2 style="margin-top:1rem;max-width:18ch">What the first three years look like.</h2>
-      </div>
+<!-- ============ REVENUE CHART ============ -->
+<section class="section" id="revenue">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow" style="margin-inline:auto;"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>The Numbers</span>
+      <h2 class="section-title">License Model <span class="muted">Proforma.</span></h2>
+      <p class="section-intro" style="margin-inline:auto;">Start-Up Practice</p>
     </div>
-
-    <figure class="chart">
-      <div class="legend" aria-hidden="true">
-        <span><i style="background:#72cfd4"></i>Base scenario</span>
-        <span><i style="background:#ffca5e"></i>Best scenario</span>
-        <span class="legend__unit">Revenue, USD</span>
+    <div class="revenue__card reveal">
+      <div class="revenue__legend">
+        <span class="legend-item"><span class="legend-swatch" style="background:#054d66;"></span>Base Scenario</span>
+        <span class="legend-item"><span class="legend-swatch" style="background:#ff7d5c;"></span>Best Scenario</span>
       </div>
-      <div id="chartHost"></div>
-      <details class="numbers__toggle" id="figures" open>
-        <summary>Show the full figures</summary>
-        <div class="numbers__scroll">
-        <table class="numbers">
-        <caption>Projected revenue and patient starts by year</caption>
-        <thead>
-          <tr><th scope="col">Year</th><th scope="col">Base revenue</th><th scope="col">Base starts</th><th scope="col">Best revenue</th><th scope="col">Best starts</th></tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">Year 1</th><td>$401,012</td><td>500</td><td>$721,822</td><td>900</td></tr>
-          <tr><th scope="row">Year 2</th><td>$1,805,244</td><td>1,500</td><td>$2,647,921</td><td>1,950</td></tr>
-          <tr><th scope="row">Year 3</th><td>$3,895,784</td><td>2,000</td><td>$5,146,670</td><td>2,400</td></tr>
-        </tbody>
-        </table>
+      <div class="scenario" role="group" aria-label="Which scenario to show">
+        <button type="button" class="scenario__btn is-on" data-scenario="both">Both</button>
+        <button type="button" class="scenario__btn" data-scenario="base">Base only</button>
+        <button type="button" class="scenario__btn" data-scenario="best">Best only</button>
+      </div>
+
+      <div class="chart-wrap"><canvas id="revenueChart"></canvas></div>
+
+      <div class="starts">
+        <div class="starts__item"><span class="starts__yr">Year 1</span><b>500</b> base &middot; <b>900</b> best <em>patient starts</em></div>
+        <div class="starts__item"><span class="starts__yr">Year 2</span><b>1,500</b> base &middot; <b>1,950</b> best <em>patient starts</em></div>
+        <div class="starts__item"><span class="starts__yr">Year 3</span><b>2,000</b> base &middot; <b>2,400</b> best <em>patient starts</em></div>
+      </div>
+
+      <div class="revenue__meta">
+        <span class="meta-pill">Year 3 base is 9.7&times; year 1</span>
+        <span class="meta-pill">Best case adds $1.25M in year 3</span>
+        <span class="meta-pill">4 production days per week</span>
+      </div>
+
+      <details class="figures">
+        <summary>Show every figure</summary>
+        <div class="figures__scroll">
+          <table class="figures__table">
+            <caption class="visually-hidden">Projected revenue and patient starts by year</caption>
+            <thead>
+              <tr><th scope="col">Year</th><th scope="col">Base revenue</th><th scope="col">Base starts</th><th scope="col">Best revenue</th><th scope="col">Best starts</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Year 1</th><td>$401,012</td><td>500</td><td>$721,822</td><td>900</td></tr>
+              <tr><th scope="row">Year 2</th><td>$1,805,244</td><td>1,500</td><td>$2,647,921</td><td>1,950</td></tr>
+              <tr><th scope="row">Year 3</th><td>$3,895,784</td><td>2,000</td><td>$5,146,670</td><td>2,400</td></tr>
+            </tbody>
+          </table>
         </div>
       </details>
-      <figcaption class="disclaimer">Estimated results based on a brand-new practice establishing the direct-to-consumer pricing model with an average of 4 production days per week. Individual results may vary and should not be considered a guarantee of results.</figcaption>
-    </figure>
+      <p class="revenue__disclaimer">Estimated results based on a brand-new practice establishing the direct-to-consumer pricing model with an average of 4 production days per week. Individual results may vary and should not be considered a guarantee of results.</p>
+    </div>
   </div>
 </section>
 
-<!-- =============================== TWO PATHS ============================ -->
-<section id="paths">
-  <div class="wrap band band--tight">
-    <h2 style="max-width:20ch">Whichever path you choose, we&rsquo;ve built the road.</h2>
-    <p class="body" style="margin-top:1rem">Jump-start your practice growth, or revitalize the one you already have.</p>
-  </div>
-  <div class="paths">
-    <a class="path path--a" href="#contact" data-interest="Starting New Practice">
-      <span class="path__tag">Start fresh</span>
-      <h3>New practice</h3>
-      <p>Brand, training, site selection, financial modeling, and marketing support to launch from scratch &mdash; with a proven playbook behind every decision.</p>
-      <span class="path__go">Start here <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
-    </a>
-    <a class="path path--b" href="#contact" data-interest="Converting Existing Practice">
-      <span class="path__tag">Already practicing</span>
-      <h3>Practice conversion</h3>
-      <p>Convert an existing orthodontic practice into a Smilebliss location, with access to all the same proven systems.</p>
-      <span class="path__go">Start here <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
-    </a>
+<!-- ============ BENEFITS ============ -->
+<section class="section benefits" id="benefits">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>Why Smilebliss</span>
+      <h2 class="section-title">Our Benefits Will Make You Smile as Much as Your Patients.</h2>
+    </div>
+    <div class="benefits__list">
+      <div class="benefit reveal"><span class="benefit__num">1</span><p class="benefit__text">Jump-start your practice growth or revitalize your existing one.</p></div>
+      <div class="benefit reveal"><span class="benefit__num">2</span><p class="benefit__text">Gain greater brand awareness with marketing services that get people in the door and in your chair.</p></div>
+      <div class="benefit reveal"><span class="benefit__num">3</span><p class="benefit__text">Get access to established and proven practice operations.</p></div>
+      <div class="benefit reveal"><span class="benefit__num">4</span><p class="benefit__text">Save money on equipment and supplies.</p></div>
+      <div class="benefit reveal"><span class="benefit__num">5</span><p class="benefit__text">Get expert help with training programs, procurement, insurance, and billing.</p></div>
+    </div>
   </div>
 </section>
 
-<!-- ================================= FIT ================================ -->
-<section class="band band--tight tint" id="fit">
-  <div class="wrap">
-    <h2 style="max-width:18ch">Five questions worth answering honestly.</h2>
-    <div class="qual" id="qual" role="list">
-      <div role="listitem"><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Do I really want to take control of my own destiny?</label></div>
-      <div role="listitem"><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Am I prepared to adapt to new ideas?</label></div>
-      <div role="listitem"><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Do I have a genuine interest in improving the lives of others?</label></div>
-      <div role="listitem"><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Do I have great clinical results?</label></div>
-      <div role="listitem"><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 13 10 18 19 7"/></svg></span>Do I have a strong commitment to employee and customer satisfaction?</label></div>
-      <div class="qual__status">
-        <p class="qual__count" id="qualCount" role="status" aria-live="polite">0 of 5 answered yes</p>
+<!-- ============ TWO PATHS ============ -->
+<section class="section" id="paths" style="background:var(--mint-soft);">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow" style="margin-inline:auto;"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>Two Ways In</span>
+      <h2 class="section-title">Whichever Path You Choose, We've Built the Road.</h2>
+    </div>
+    <div class="paths__grid">
+      <div class="path-card path-card--new reveal">
+        <span class="path-card__badge">Start Fresh</span>
+        <h3 class="path-card__title">New Practice</h3>
+        <p class="path-card__text">Brand, training, site selection, financial modeling, and marketing support to launch your practice from scratch &mdash; with a proven playbook behind every decision.</p>
+        <a href="#contact" class="btn btn--ghost btn--sm">Explore New Practice</a>
+      </div>
+      <div class="path-card path-card--conv reveal">
+        <span class="path-card__badge">Level Up</span>
+        <h3 class="path-card__title">Practice Conversion</h3>
+        <p class="path-card__text">Convert your existing orthodontic practice into a Smilebliss location, with full access to the same proven systems our new-practice partners rely on.</p>
+        <a href="#contact" class="btn btn--ghost btn--sm">Explore Conversion</a>
       </div>
     </div>
-    <div class="qual__result" id="qualResult">
-      <p>If you answered YES to these questions, congrats! You just met the initial criteria for this incredible, proven model.</p>
-      <a class="btn btn--primary" href="#contact" style="margin-top:1.4rem">Talk to us about a practice</a>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow" style="margin-inline:auto;"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>Practice Owners</span>
+      <h2 class="section-title">Hear From Our Practice Owners.</h2>
+      <p class="section-intro" style="margin-inline:auto;">Sample profiles &mdash; swap in your own client stories and headshots.</p>
+    </div>
+    <div class="testi__grid">
+      <div class="testi-card reveal">
+        <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+        <div class="testi-avatar" style="background:linear-gradient(155deg,#054d66,#1aada7);">AR</div>
+        <p class="testi-quote">"Smilebliss handed us a marketing engine and a billing team on day one. We hit our Year 1 start goal three months early."</p>
+        <div class="testi-name">Dr. Alicia Reyes</div>
+        <div class="testi-loc">Scottsdale, AZ</div>
+        <span class="testi-tag">Sample Content</span>
+      </div>
+      <div class="testi-card reveal">
+        <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+        <div class="testi-avatar" style="background:linear-gradient(155deg,#054d66,#ff7d5c);">MK</div>
+        <p class="testi-quote">"Converting to Smilebliss felt like exhaling. Procurement alone saved us more than the licensing fee in the first year."</p>
+        <div class="testi-name">Dr. Marcus Kim</div>
+        <div class="testi-loc">Charlotte, NC</div>
+        <span class="testi-tag">Sample Content</span>
+      </div>
+      <div class="testi-card reveal">
+        <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+        <div class="testi-avatar" style="background:linear-gradient(155deg,#054d66,#ffca5e);">JT</div>
+        <p class="testi-quote">"The peer network is the real unlock. I've never once felt like I was figuring this out on my own."</p>
+        <div class="testi-name">Dr. Jasmine Torres</div>
+        <div class="testi-loc">Round Rock, TX</div>
+        <span class="testi-tag">Sample Content</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- =============================== CONTACT ============================== -->
-<section class="navy band band--tall" id="contact">
-  <div class="wrap contact">
-    <div>
-      <h2 style="margin-top:1rem">Start the conversation.</h2>
-      <p class="body" style="margin-top:1.2rem">Tell us about you and your practice goals. A member of our team will follow up to walk through the model, the numbers, and what setting up would involve.</p>
-
-      <div class="direct">
-        <p class="kicker">Or reach us directly</p>
-        <a class="direct__line" href="mailto:info@smilebliss.com">info@smilebliss.com</a>
-        <a class="direct__line" href="tel:8338331148">833-833-1148</a>
-      </div>
+<!-- ============ CHECKLIST ============ -->
+<section class="section checklist-section" id="checklist-section">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow" style="margin-inline:auto;"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>Self-Check</span>
+      <h2 class="section-title">Is Smilebliss Right for Me?</h2>
     </div>
+    <div class="checklist">
+      <div class="check-item reveal"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I really want to take control of my own destiny?</span></div>
+      <div class="check-item reveal"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Am I prepared to adapt to new ideas?</span></div>
+      <div class="check-item reveal"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I have a genuine interest in improving the lives of others?</span></div>
+      <div class="check-item reveal"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I have great clinical results?</span></div>
+      <div class="check-item reveal"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I have a strong commitment to employee and customer satisfaction?</span></div>
+      <p class="checklist__closing reveal">If you answered YES to these questions, congrats! You just met the initial criteria for this incredible, proven model.</p>
+    </div>
+  </div>
+</section>
 
-    <div>
+<!-- ============ FINAL CTA + FORM ============ -->
+<section class="section cta-band" id="contact">
+  <div class="container cta-grid">
+    <div class="cta-copy reveal">
+      <span class="eyebrow eyebrow--light"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>Ready When You Are</span>
+      <h2 class="section-title section-title--light">Find Success by Following Your Bliss.</h2>
+      <p class="section-intro section-intro--light">Tell us a little about you and your practice goals. A member of our team will follow up to walk through next steps.</p>
+      <ul class="cta-trust">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>30+ years building successful practices</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Billions collected for clients</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>A proven, ready-to-go model</li>
+      </ul>
+    </div>
+    <div class="form-card reveal">
       <form id="joinForm" novalidate>
-        <div class="grid2">
-          <div class="field">
-            <label for="fname">First name</label>
-            <input id="fname" name="fname" type="text" autocomplete="given-name" required aria-describedby="fname-err">
-            <p class="err" id="fname-err"></p>
+        <div class="form-grid">
+          <div class="field"><label for="fname">First Name</label><input id="fname" name="fname" type="text" required></div>
+          <div class="field"><label for="lname">Last Name</label><input id="lname" name="lname" type="text" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required></div>
+          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required></div>
+          <div class="field"><label for="pname">Practice Name</label><input id="pname" name="pname" type="text"></div>
+          <div class="field"><label for="pweb">Website</label><input id="pweb" name="pweb" type="url"></div>
+          <div class="field full"><label for="source">How did you hear about us?</label>
+            <select id="source" name="source">
+              <option value="">Select one</option>
+              <option>Google Search</option>
+              <option>Social Media</option>
+              <option>Referral / Colleague</option>
+              <option>Industry Event</option>
+              <option>Other</option>
+            </select>
           </div>
-          <div class="field">
-            <label for="lname">Last name</label>
-            <input id="lname" name="lname" type="text" autocomplete="family-name" required aria-describedby="lname-err">
-            <p class="err" id="lname-err"></p>
+          <div class="field full">
+            <label>I'm interested in Smilebliss for:</label>
+            <div class="toggle-group" data-group="interest">
+              <label class="toggle-pill active"><input type="radio" name="interest" value="Starting New Practice" checked>Starting New Practice</label>
+              <label class="toggle-pill"><input type="radio" name="interest" value="Converting Existing Practice">Converting Existing Practice</label>
+            </div>
           </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-err">
-            <p class="err" id="email-err"></p>
-          </div>
-          <div class="field">
-            <label for="phone">Phone</label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" required aria-describedby="phone-err">
-            <p class="err" id="phone-err"></p>
-          </div>
-          <div class="field">
-            <label for="practice">Practice name</label>
-            <input id="practice" name="practice" type="text" autocomplete="organization">
-          </div>
-          <div class="field">
-            <label for="website">Website</label>
-            <input id="website" name="website" type="url" autocomplete="url" placeholder="https://">
+          <div class="field full">
+            <label>I am interested in Smilebliss as a:</label>
+            <div class="toggle-group" data-group="role">
+              <label class="toggle-pill active"><input type="radio" name="role" value="Practice Owner" checked>Practice Owner</label>
+              <label class="toggle-pill"><input type="radio" name="role" value="Practice Employee">Practice Employee</label>
+              <label class="toggle-pill"><input type="radio" name="role" value="Patient">Patient</label>
+            </div>
           </div>
         </div>
-
-        <div class="field">
-          <label for="source">How did you hear about us?</label>
-          <select id="source" name="source">
-            <option value="">Select one</option>
-            <option>Google search</option>
-            <option>Social media</option>
-            <option>Referral / colleague</option>
-            <option>Industry event</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <fieldset>
-          <legend>I'm interested in Smilebliss for</legend>
-          <div class="choices">
-            <label class="choice"><input type="radio" name="interest" value="Starting New Practice" checked><span>Starting a new practice</span></label>
-            <label class="choice"><input type="radio" name="interest" value="Converting Existing Practice"><span>Converting an existing practice</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>I am interested in Smilebliss as a</legend>
-          <div class="choices">
-            <label class="choice"><input type="radio" name="role" value="Practice Owner" checked><span>Practice owner</span></label>
-            <label class="choice"><input type="radio" name="role" value="Practice Employee"><span>Practice employee</span></label>
-            <label class="choice"><input type="radio" name="role" value="Patient"><span>Patient</span></label>
-          </div>
-        </fieldset>
-
-        <!-- honeypot: real people never fill this in -->
-        <div class="hp" aria-hidden="true"><label for="company_site">Company site</label><input id="company_site" name="company_site" type="text" tabindex="-1" autocomplete="off"></div>
-
-        <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">Send my details</button>
-        <p class="form-note">We&rsquo;ll use this only to contact you about the Smilebliss model.</p>
+        <button type="submit" class="btn btn--coral btn--block">Let's Do This</button>
+        <p class="form-note">By submitting, you agree to be contacted by the Smilebliss team about this inquiry.</p>
       </form>
-
-      <div class="form-done" id="formDone" role="status">
-        <h3>Thanks &mdash; that&rsquo;s with us.</h3>
-        <p>A member of the Smilebliss team will follow up shortly at the email you gave us.</p>
+      <div class="form-success" id="formSuccess">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+        <h3>Thanks &mdash; we've got it.</h3>
+        <p>A member of the Smilebliss team will be in touch shortly.</p>
       </div>
     </div>
   </div>
 </section>
 
-</main>
-
-<!-- ================================ FOOTER ============================== -->
-<footer class="navy band">
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <img class="foot__logo" src="assets/img/smilebliss-logo-reverse.webp" alt="Smilebliss Orthodontics" width="459" height="150" />
-        <div class="foot__social">
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="#top" class="brand">
+          <span class="footer__logo-chip"><img class="brand__logo brand__logo--footer" src="assets/img/smilebliss-logo-reverse.webp" alt="Smilebliss Orthodontics" width="1500" height="490"></span>
+        </a>
+        <p>A proven, ready-to-go orthodontic practice model for doctors ready to follow their bliss.</p>
+        <div class="footer__social">
           <a href="https://www.facebook.com/smileblissorthodontics" aria-label="Smilebliss on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8.5H16l.5-3.5h-3V7.8c0-1 .3-1.7 1.8-1.7H16.6V3.1C16.3 3 15.3 3 14.2 3c-2.4 0-4 1.5-4 4.2V10H7.7v3.5h2.5V22z"/></svg></a>
-          <a href="https://www.instagram.com/smilebliss_ortho_/" aria-label="Smilebliss on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
+          <a href="https://www.instagram.com/smilebliss_ortho_/" aria-label="Smilebliss on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
         </div>
       </div>
-      <div class="foot__contact">
+      <div class="footer__col">
+        <h4>Company</h4>
+        <span class="footer__todo">Locations</span>
+        <span class="footer__todo">News</span>
+        <span class="footer__todo">Careers</span>
+      </div>
+      <div class="footer__col">
+        <h4>Partners</h4>
+        <span class="footer__todo">Licensee Portal</span>
+        <span class="footer__todo">Ordering Portal</span>
+        <span class="footer__todo">Doctor Referral</span>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
         <a href="mailto:info@smilebliss.com">info@smilebliss.com</a>
         <a href="tel:8338331148">833-833-1148</a>
+        <span class="footer__todo">Privacy Policy</span>
+        <span class="footer__todo">Accessibility Statement</span>
       </div>
     </div>
-    <!-- Locations, News, Careers, Licensee Portal, Ordering Portal, Doctor Referral,
-         Privacy Policy and the Accessibility Statement belong here once their real
-         URLs are confirmed. Dead "#" links were removed rather than shipped. -->
-    <div class="foot__legal">
+    <div class="footer__bottom">
       <span>&copy; 2026 Smilebliss Orthodontics. All rights reserved.</span>
-      <span>Revenue figures on this page are estimates for a start-up practice, not a guarantee of results &mdash; <a href="#economics">see the full assumptions</a>.</span>
+      <span>Concept redesign &mdash; content sourced from joinsmilebliss.com</span>
     </div>
   </div>
 </footer>
 
-<div class="sticky"><a class="btn btn--primary" href="#contact">Talk to us</a></div>
-<div class="tip" id="tip" role="presentation"></div>
+<div class="sticky-cta"><a href="#contact" class="btn btn--coral">Let's Do This</a></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
 <script>
-(function () {
-  'use strict';
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------------- masthead drawer ---------------- */
-  var menuBtn = document.getElementById('menuBtn');
-  var drawer = document.getElementById('drawer');
-  menuBtn.addEventListener('click', function () {
-    var open = drawer.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', String(open));
-  });
-  drawer.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', function () {
-      drawer.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
+  /* ---------- marquee: double the track for seamless loop ---------- */
+  var track = document.getElementById('tickerTrack');
+  if (track) track.innerHTML += track.innerHTML;
+
+  /* ---------- nav ---------- */
+  var header = document.getElementById('siteHeader');
+  var navToggle = document.getElementById('navToggle');
+  var navPanel = document.getElementById('navPanel');
+  var navClose = document.getElementById('navClose');
+  function onScroll(){ header.classList.toggle('solid', window.scrollY > 30); }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+  function openNav(){ navPanel.classList.add('open'); navToggle.classList.add('open'); navToggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeNav(){ navPanel.classList.remove('open'); navToggle.classList.remove('open'); navToggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  navToggle.addEventListener('click', function(){ navPanel.classList.contains('open') ? closeNav() : openNav(); });
+  navClose.addEventListener('click', closeNav);
+  navPanel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeNav); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeNav(); });
+
+  /* ---------- toggle pills ---------- */
+  document.querySelectorAll('.toggle-group').forEach(function(group){
+    group.querySelectorAll('.toggle-pill').forEach(function(pill){
+      pill.addEventListener('click', function(){
+        group.querySelectorAll('.toggle-pill').forEach(function(p){ p.classList.remove('active'); });
+        pill.classList.add('active');
+      });
     });
   });
 
-  /* ---------------- proforma exhibit ----------------
-     Hand-built SVG so the type, ticks and labels belong to this page.
-     chartData is the proforma of record; the table in the markup carries
-     the same values for no-JS, print and screen readers.               */
+  /* ---------- form submit ---------- */
+  var form = document.getElementById('joinForm');
+  var success = document.getElementById('formSuccess');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!form.checkValidity()){ form.reportValidity(); return; }
+    form.style.display = 'none';
+    success.classList.add('show');
+  });
+
+  /* ---------- stat counters ---------- */
+  function animateCount(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    var prefix = el.getAttribute('data-prefix') || '';
+    var obj = { val: 0 };
+    if (window.gsap){
+      gsap.to(obj, {
+        val: target, duration: reduceMotion ? 0.01 : 1.7, ease: 'power2.out',
+        onUpdate: function(){
+          var v = target % 1 === 0 ? Math.round(obj.val) : obj.val.toFixed(1);
+          el.textContent = prefix + v + suffix;
+        },
+        onComplete: function(){ el.textContent = prefix + target + suffix; }
+      });
+    } else { el.textContent = prefix + target + suffix; }
+  }
+
+  /* ---------- GSAP scroll reveals ---------- */
+  if (window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.querySelectorAll('.reveal').forEach(function(el){
+      gsap.to(el, {
+        opacity:1, y:0, duration: reduceMotion ? 0.01 : 0.9, ease:'power3.out',
+        scrollTrigger:{ trigger: el, start:'top 88%', once:true }
+      });
+    });
+
+    gsap.utils.toArray('.stat-card__num').forEach(function(el){
+      ScrollTrigger.create({ trigger: el, start:'top 90%', once:true, onEnter: function(){ animateCount(el); } });
+    });
+
+    document.querySelectorAll('.pillar').forEach(function(card, i){
+      gsap.fromTo(card, { opacity:0, y:40 }, {
+        opacity:1, y:0, duration: reduceMotion ? 0.01 : 0.7, ease:'power3.out',
+        delay: reduceMotion ? 0 : (i % 5) * 0.08,
+        scrollTrigger:{ trigger: card, start:'top 90%', once:true }
+      });
+    });
+
+    document.querySelectorAll('.benefit').forEach(function(card, i){
+      gsap.fromTo(card, { opacity:0, x:-30 }, {
+        opacity:1, x:0, duration: reduceMotion ? 0.01 : 0.6, ease:'power3.out',
+        delay: reduceMotion ? 0 : i * 0.07,
+        scrollTrigger:{ trigger: card, start:'top 92%', once:true }
+      });
+    });
+
+    document.querySelectorAll('.testi-card').forEach(function(card, i){
+      gsap.fromTo(card, { opacity:0, y:30, scale:.96 }, {
+        opacity:1, y:0, scale:1, duration: reduceMotion ? 0.01 : 0.7, ease:'power3.out',
+        delay: reduceMotion ? 0 : i * 0.1,
+        scrollTrigger:{ trigger: card, start:'top 90%', once:true }
+      });
+    });
+
+    /* checklist checkmarks draw in one by one */
+    var checkItems = document.querySelectorAll('.check-item');
+    ScrollTrigger.create({
+      trigger: '.checklist', start:'top 82%', once:true,
+      onEnter: function(){
+        checkItems.forEach(function(item, i){
+          var box = item.querySelector('.check-box');
+          var svg = box.querySelector('svg');
+          gsap.fromTo(item, { opacity:0, y:20 }, { opacity:1, y:0, duration:.5, delay: reduceMotion?0:i*0.15, ease:'power3.out' });
+          gsap.to(box, {
+            delay: reduceMotion ? 0 : i * 0.15 + 0.25, duration:.01,
+            onStart: function(){ box.classList.add('done'); }
+          });
+          gsap.to(svg, { strokeDashoffset:0, duration: reduceMotion?0.01:0.4, delay: reduceMotion?0:i*0.15+0.25, ease:'power2.out' });
+        });
+        var closing = document.querySelector('.checklist__closing');
+        gsap.to(closing, { opacity:1, y:0, duration:.6, delay: reduceMotion?0:checkItems.length*0.15+0.3, ease:'power3.out' });
+      }
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.style.opacity = 1; el.style.transform = 'none'; });
+    document.querySelectorAll('.stat-card__num').forEach(animateCount);
+  }
+
+  /* ---------- revenue chart (Chart.js), created only when in view ---------- */
   var chartData = {
-    labels: ['Year 1', 'Year 2', 'Year 3'],
-    base:  [401012, 1805244, 3895784],
+    labels: ['Year 1','Year 2','Year 3'],
+    base: [401012, 1805244, 3895784],
     baseStarts: [500, 1500, 2000],
-    best:  [721822, 2647921, 5146670],
+    best: [721822, 2647921, 5146670],
     bestStarts: [900, 1950, 2400]
   };
-
-  var SVGNS = 'http://www.w3.org/2000/svg';
-  function el(name, attrs) {
-    var n = document.createElementNS(SVGNS, name);
-    for (var k in attrs) n.setAttribute(k, attrs[k]);
-    return n;
-  }
-  function usd(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
-  function short(v) { return v < 1e6 ? '$' + Math.round(v / 1e3) + 'K' : '$' + (v / 1e6).toFixed(1) + 'M'; }
-
-  var SERIES = [['base', '#72cfd4', 'Base'], ['best', '#ffca5e', 'Best']];
-
-  // --- narrow screens: horizontal bars, one row per year, labels on their own line ---
-  function drawChartNarrow(host) {
-    var W = 380, rowH = 108, padT = 8, padL = 4, padR = 4;
-    var H = padT + rowH * 3 - 14;
-    var max = 5500000, plotW = W - padL - padR;
-    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img',
-      'aria-label': 'Projected revenue by year. Base scenario: $401,012 in year one rising to $3,895,784 in year three. Best scenario: $721,822 rising to $5,146,670. Full figures in the table below.' });
-
-    chartData.labels.forEach(function (label, i) {
-      var top = padT + rowH * i;
-      var g = el('g', { class: 'chart__g' });
-
-      var yl = el('text', { x: padL, y: top + 14, fill: '#f7f3ef',
-        'font-family': 'IBM Plex Mono, monospace', 'font-size': 13, 'letter-spacing': '.12em' });
-      yl.textContent = label.toUpperCase() + '  \u00b7  ' +
-        chartData.baseStarts[i].toLocaleString('en-US') + ' / ' +
-        chartData.bestStarts[i].toLocaleString('en-US') + ' starts';
-      g.appendChild(yl);
-
-      SERIES.forEach(function (s, k) {
-        var key = s[0], fill = s[1];
-        var v = chartData[key][i];
-        var w = (v / max) * plotW;
-        var by = top + 28 + k * 34;
-        var bar = el('rect', { class: 'chart__bar', x: padL, y: by, height: 22, fill: fill,
-          width: reduce ? w : 0 });
-        g.appendChild(bar);
-        // a short bar cannot hold its own label — put it outside instead of clipping it
-        var inside = w > 86;
-        var val = el('text', { x: padL + (inside ? 8 : w + 8), y: by + 16,
-          fill: inside ? '#054d66' : '#f7f3ef',
-          'font-family': 'IBM Plex Mono, monospace', 'font-size': 14, 'font-weight': 500 });
-        val.textContent = short(v);
-        g.appendChild(val);
-        if (!reduce) {
-          requestAnimationFrame(function () {
-            bar.style.transition = 'width .8s cubic-bezier(.2,.8,.2,1) ' + (i * 0.1) + 's';
-            bar.setAttribute('width', w);
-          });
-        }
-      });
-      svg.appendChild(g);
-    });
-    host.appendChild(svg);
+  var revenueChart = null;
+  function money(v){ return '$' + Math.round(v).toLocaleString('en-US'); }
+  function shortMoney(v){
+    return v < 1e6 ? '$' + Math.round(v / 1e3) + 'K' : '$' + (v / 1e6).toFixed(1) + 'M';
   }
 
-  function drawChart() {
-    var host = document.getElementById('chartHost');
-    if (!host || host.dataset.drawn) return;
-    host.dataset.drawn = '1';
-    if (window.matchMedia('(max-width: 700px)').matches) { drawChartNarrow(host); return; }
-
-    var W = 1000, H = 400, padL = 4, padR = 4, padT = 44, padB = 76;
-    var plotW = W - padL - padR, plotH = H - padT - padB;
-    var max = 5500000;
-    var ticks = [0, 1000000, 2000000, 3000000, 4000000, 5000000];
-    function y(v) { return padT + plotH - (v / max) * plotH; }
-
-    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img',
-      'aria-label': 'Projected revenue by year. Base scenario: $401,012 in year one rising to $3,895,784 in year three. Best scenario: $721,822 rising to $5,146,670. Full figures in the table below.' });
-
-    ticks.forEach(function (t) {
-      svg.appendChild(el('line', { x1: padL, x2: W - padR, y1: y(t), y2: y(t),
-        stroke: 'rgba(247,243,239,.18)', 'stroke-width': 1 }));
-      var lab = el('text', { x: padL, y: y(t) - 9, fill: 'rgba(247,243,239,.72)',
-        'font-family': 'IBM Plex Mono, monospace', 'font-size': 17 });
-      lab.textContent = t === 0 ? '$0' : '$' + (t / 1e6) + 'M';
-      if (t === 0) lab.setAttribute('y', y(t) + 20);
-      svg.appendChild(lab);
-    });
-
-    var groupW = plotW / 3, barW = 124, gap = 10;
-
-    chartData.labels.forEach(function (label, i) {
-      var cx = padL + groupW * i + groupW / 2;
-      var g = el('g', { class: 'chart__g' });
-
-      [['base', '#72cfd4', -1], ['best', '#ffca5e', 1]].forEach(function (s) {
-        var key = s[0], fill = s[1], side = s[2];
-        var v = chartData[key][i];
-        var x = cx + (side < 0 ? -barW - gap / 2 : gap / 2);
-        var top = y(v), h = padT + plotH - top;
-
-        var bar = el('rect', { class: 'chart__bar', x: x, width: barW, fill: fill,
-          y: reduce ? top : padT + plotH, height: reduce ? h : 0 });
-        g.appendChild(bar);
-
-        var val = el('text', { x: x + barW / 2, y: top - 13, fill: '#f7f3ef',
-          'text-anchor': 'middle', 'font-family': 'IBM Plex Mono, monospace', 'font-size': 18 });
-        val.textContent = short(v);
-        val.style.opacity = reduce ? 1 : 0;
-        g.appendChild(val);
-
-        var starts = chartData[key === 'base' ? 'baseStarts' : 'bestStarts'][i];
-        var name = key === 'base' ? 'Base' : 'Best';
-        var hit = el('rect', { x: x, y: padT, width: barW, height: plotH, fill: 'transparent' });
-        hit.addEventListener('pointerenter', function (e) {
-          showTip(e, label + ' · ' + name + ' scenario', usd(v), starts.toLocaleString('en-US') + ' patient starts');
+  /* value labels: six numbers the reader should not have to estimate off an axis */
+  var valueLabels = {
+    id: 'valueLabels',
+    afterDatasetsDraw: function (chart) {
+      var ctx = chart.ctx;
+      chart.data.datasets.forEach(function (ds, di) {
+        if (!chart.isDatasetVisible(di)) return;
+        chart.getDatasetMeta(di).data.forEach(function (bar, i) {
+          ctx.save();
+          ctx.font = '700 13px "Plus Jakarta Sans", system-ui, sans-serif';
+          ctx.fillStyle = '#054d66';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'bottom';
+          ctx.fillText(shortMoney(ds.data[i]), bar.x, bar.y - 8);
+          ctx.restore();
         });
-        hit.addEventListener('pointermove', moveTip);
-        hit.addEventListener('pointerleave', hideTip);
-        g.appendChild(hit);
-
-        if (!reduce) {
-          requestAnimationFrame(function () {
-            var d = (i * 0.12) + 's';
-            bar.style.transition = 'y .85s cubic-bezier(.2,.8,.2,1) ' + d + ', height .85s cubic-bezier(.2,.8,.2,1) ' + d;
-            bar.setAttribute('y', top);
-            bar.setAttribute('height', h);
-            val.style.transition = 'opacity .4s ease ' + ((i * 0.12) + 0.5) + 's';
-            val.style.opacity = 1;
-          });
-        }
       });
-
-      var xlab = el('text', { x: cx, y: H - 48, fill: '#f7f3ef', 'text-anchor': 'middle',
-        'font-family': 'IBM Plex Mono, monospace', 'font-size': 16, 'letter-spacing': '.12em' });
-      xlab.textContent = label.toUpperCase();
-      g.appendChild(xlab);
-
-      // what actually separates the two scenarios, in the data's own terms
-      var st = el('text', { x: cx, y: H - 22, fill: 'rgba(247,243,239,.72)', 'text-anchor': 'middle',
-        'font-family': 'IBM Plex Mono, monospace', 'font-size': 14 });
-      st.textContent = chartData.baseStarts[i].toLocaleString('en-US') + ' / ' +
-                       chartData.bestStarts[i].toLocaleString('en-US') + ' starts';
-      g.appendChild(st);
-      svg.appendChild(g);
-    });
-
-    host.appendChild(svg);
-    // the chart now carries the shape, so the table can fold away — but only once
-    // it actually exists, so a no-JS reader still gets the numbers.
-    var fig = document.getElementById('figures');
-    if (fig) fig.open = false;
-  }
-
-  var tip = document.getElementById('tip');
-  function showTip(e, head, big, sub) {
-    tip.textContent = '';
-    var a = document.createElement('div'); a.textContent = head;
-    var b = document.createElement('strong'); b.textContent = big;
-    var c = document.createElement('div'); c.textContent = sub;
-    tip.append(a, b, c);
-    tip.style.opacity = '1';
-    moveTip(e);
-  }
-  function moveTip(e) { tip.style.left = e.clientX + 'px'; tip.style.top = e.clientY + 'px'; }
-  function hideTip() { tip.style.opacity = '0'; }
-
-  var narrowNow = window.matchMedia('(max-width: 700px)').matches;
-  window.addEventListener('resize', function () {
-    var n = window.matchMedia('(max-width: 700px)').matches;
-    if (n === narrowNow) return;
-    narrowNow = n;
-    var host = document.getElementById('chartHost');
-    host.textContent = ''; delete host.dataset.drawn;
-    drawChart();
-  });
-
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { if (en.isIntersecting) { drawChart(); io.disconnect(); } });
-    }, { threshold: 0.2 });
-    io.observe(document.getElementById('economics'));
-  } else {
-    drawChart();
-  }
-
-  /* ---------------- qualification checklist ---------------- */
-  var qual = document.getElementById('qual');
-  var qualResult = document.getElementById('qualResult');
-  var qualCount = document.getElementById('qualCount');
-  var boxes = qual.querySelectorAll('input[type="checkbox"]');
-  qual.addEventListener('change', function () {
-    var n = Array.prototype.filter.call(boxes, function (b) { return b.checked; }).length;
-    qualCount.textContent = n + ' of ' + boxes.length + ' answered yes';
-    qualResult.classList.toggle('show', n === boxes.length);
-  });
-
-  /* ---------------- sticky action: only once the hero's own action is gone ---------------- */
-  var sticky = document.querySelector('.sticky');
-  var heroSection = document.querySelector('.hero');
-  if (sticky && heroSection && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      sticky.classList.toggle('show', !entries[0].isIntersecting);
-    }, { threshold: 0 }).observe(heroSection);
-  } else if (sticky) {
-    sticky.classList.add('show');
-  }
-
-  /* ---------------- path blocks feed the form ---------------- */
-  document.querySelectorAll('.path[data-interest]').forEach(function (a) {
-    a.addEventListener('click', function () {
-      var want = a.getAttribute('data-interest');
-      var radio = document.querySelector('input[name="interest"][value="' + want + '"]');
-      if (radio) radio.checked = true;
-    });
-  });
-
-  /* ---------------- contact form ----------------
-     FORM_ENDPOINT: point this at the real intake endpoint (Formspree,
-     HubSpot, an internal handler — anything that accepts a POST). While
-     it is null the form validates and confirms locally without sending. */
-  var FORM_ENDPOINT = null;
-
-  var form = document.getElementById('joinForm');
-  var done = document.getElementById('formDone');
-  var RULES = {
-    fname: { msg: 'Please enter your first name.' },
-    lname: { msg: 'Please enter your last name.' },
-    email: { msg: 'Please enter an email we can reply to.', test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); } },
-    phone: { msg: 'Please enter a phone number we can reach you on.', test: function (v) { return v.replace(/\D/g, '').length >= 7; } }
+    }
   };
 
-  function validate(id) {
-    var input = document.getElementById(id);
-    var rule = RULES[id];
-    var errEl = document.getElementById(id + '-err');
-    var v = input.value.trim();
-    var ok = v !== '' && (!rule.test || rule.test(v));
-    errEl.textContent = ok ? '' : rule.msg;
-    input.setAttribute('aria-invalid', ok ? 'false' : 'true');
-    return ok;
-  }
-
-  Object.keys(RULES).forEach(function (id) {
-    var input = document.getElementById(id);
-    input.addEventListener('blur', function () { if (input.value.trim() !== '') validate(id); });
-    input.addEventListener('input', function () {
-      if (input.getAttribute('aria-invalid') === 'true') validate(id);
+  function initRevenueChart(){
+    var ctx = document.getElementById('revenueChart');
+    if (!ctx || revenueChart) return;
+    revenueChart = new Chart(ctx, {
+      type: 'bar',
+      plugins: [valueLabels],
+      data: {
+        labels: chartData.labels,
+        datasets: [
+          { label:'Base', data: chartData.base, backgroundColor:'#054d66', borderRadius:8, maxBarThickness:70 },
+          { label:'Best', data: chartData.best, backgroundColor:'#ff7d5c', borderRadius:8, maxBarThickness:70 }
+        ]
+      },
+      options: {
+        responsive:true, maintainAspectRatio:false,
+        layout:{ padding:{ top:26 } },          /* room for the value labels */
+        animation: reduceMotion ? false : { duration:1400, easing:'easeOutQuart' },
+        plugins:{
+          legend:{ display:false },
+          tooltip:{
+            backgroundColor:'#054d66', padding:12, cornerRadius:10, displayColors:false,
+            titleFont:{ family:'Plus Jakarta Sans', weight:'700', size:13 },
+            bodyFont:{ family:'Inter', size:13 },
+            callbacks:{
+              title: function(items){
+                return chartData.labels[items[0].dataIndex] + ' \u00b7 ' + items[0].dataset.label + ' scenario';
+              },
+              label: function(item){
+                var i = item.dataIndex, base = item.datasetIndex === 0;
+                var starts = base ? chartData.baseStarts[i] : chartData.bestStarts[i];
+                var series = base ? chartData.base : chartData.best;
+                var lines = [money(item.raw), starts.toLocaleString('en-US') + ' patient starts'];
+                if (i > 0) {
+                  var growth = Math.round(((series[i] / series[i - 1]) - 1) * 100);
+                  lines.push('+' + growth + '% on year ' + i);
+                }
+                return lines;
+              }
+            }
+          }
+        },
+        scales:{
+          y:{
+            beginAtZero:true, max:5500000,     /* 6M buried year one against the 5.15M peak */
+            ticks:{ stepSize:1000000, callback:function(v){ return v === 0 ? '$0' : '$' + (v/1e6) + 'M'; },
+                    font:{ family:'Inter' }, color:'#5C7175' },
+            grid:{ color:'rgba(5,77,102,.08)' },
+            border:{ display:false }
+          },
+          x:{ ticks:{ font:{ family:'Plus Jakarta Sans', weight:'700', size:13 }, color:'#054d66' },
+              grid:{ display:false }, border:{ color:'rgba(5,77,102,.18)' } }
+        }
+      }
     });
-  });
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (document.getElementById('company_site').value !== '') return;   // honeypot
-    var ok = Object.keys(RULES).map(validate).every(Boolean);
-    if (!ok) { form.querySelector('[aria-invalid="true"]').focus(); return; }
-
-    if (FORM_ENDPOINT) {
-      fetch(FORM_ENDPOINT, { method: 'POST', body: new FormData(form) })
-        .then(finish)
-        .catch(function () {
-          document.getElementById('email-err').textContent = 'That didn’t send — please email info@smilebliss.com.';
-        });
-    } else {
-      finish();
-    }
-  });
-
-  function finish() {
-    form.style.display = 'none';
-    done.classList.add('show');
-    done.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+    /* scenario switch */
+    var btns = document.querySelectorAll('.scenario__btn');
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var want = b.dataset.scenario;
+        btns.forEach(function (o) { o.classList.toggle('is-on', o === b); });
+        revenueChart.setDatasetVisibility(0, want !== 'best');
+        revenueChart.setDatasetVisibility(1, want !== 'base');
+        revenueChart.update();
+      });
+    });
   }
+
+  if (window.ScrollTrigger){
+    ScrollTrigger.create({ trigger:'#revenue', start:'top 75%', once:true, onEnter: initRevenueChart });
+  } else {
+    window.addEventListener('DOMContentLoaded', initRevenueChart);
+  }
+
+  /* ---------- ambient drifting dots behind the hero visual ----------
+     The same effect the Three.js version drew, in plain 2D canvas: it was
+     a ~600KB WebGL dependency rendering about twenty soft sprites.       */
+  function initHeroScene(){
+    var canvas = document.getElementById('hero-canvas');
+    var host = document.querySelector('.hero__visual');
+    if (!canvas || !host || reduceMotion) return;
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    var DPR = Math.min(window.devicePixelRatio || 1, 2);
+    var colors = ['5,77,102', '255,125,92'];
+    var dots = [];
+
+    function seed(){
+      var n = window.innerWidth < 700 ? 14 : 22;
+      dots = [];
+      for (var i = 0; i < n; i++){
+        dots.push({ x: Math.random(), y: Math.random(),
+                    r: 10 + Math.random() * 26, a: 0.18 + Math.random() * 0.16,
+                    speed: 0.04 + Math.random() * 0.08, phase: Math.random() * Math.PI * 2,
+                    color: colors[i % 2] });
+      }
+    }
+    function resize(){
+      var w = host.clientWidth, hgt = host.clientHeight;
+      canvas.width = w * DPR; canvas.height = hgt * DPR;
+      canvas.style.width = w + 'px'; canvas.style.height = hgt + 'px';
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    }
+    seed(); resize();
+    window.addEventListener('resize', function(){ resize(); seed(); });
+
+    var running = true;
+    document.addEventListener('visibilitychange', function(){ running = !document.hidden; });
+
+    var start = performance.now();
+    function frame(now){
+      requestAnimationFrame(frame);
+      if (!running) return;
+      var t = (now - start) / 1000;
+      var w = canvas.width / DPR, hgt = canvas.height / DPR;
+      ctx.clearRect(0, 0, w, hgt);
+      for (var i = 0; i < dots.length; i++){
+        var d = dots[i];
+        var x = d.x * w + Math.cos(t * d.speed * 0.7 + d.phase) * 22;
+        var y = d.y * hgt + Math.sin(t * d.speed + d.phase) * 26;
+        var g = ctx.createRadialGradient(x, y, 0, x, y, d.r);
+        g.addColorStop(0, 'rgba(' + d.color + ',' + d.a + ')');
+        g.addColorStop(1, 'rgba(' + d.color + ',0)');
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(x, y, d.r, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  if (document.readyState === 'complete') { initHeroScene(); }
+  else { window.addEventListener('load', initHeroScene); }
+
 })();
 </script>
 </body>
