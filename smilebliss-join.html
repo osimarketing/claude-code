@@ -43,7 +43,6 @@
   --mint-soft:   rgba(114,207,212,.24);   /* sky tint */
   --sky-soft:    rgba(114,207,212,.24);
   --coral:       var(--color-coral);
-  --coral-2:     #c8725e;                 /* coral blended toward navy, for hover/darker states */
   --coral-soft:  rgba(255,125,92,.15);
   --gold:        var(--color-gold);
   --gold-soft:   rgba(255,202,94,.24);
@@ -132,7 +131,7 @@ h1,h2,h3{ text-wrap:balance; }
   white-space:nowrap;
 }
 .btn--coral{ background:var(--coral); color:var(--on-bright); box-shadow:0 16px 30px -14px rgba(255,125,92,.55); }
-.btn--coral:hover{ transform:translateY(-2px); background:var(--coral-2); color:var(--on-dark); }
+.btn--coral:hover{ transform:translateY(-2px); background:var(--ink); color:var(--on-dark); }
 .btn--ink{ background:var(--ink); color:var(--on-dark); }
 .btn--ink:hover{ transform:translateY(-2px); background:var(--teal-deep); }
 .btn--ghost-dark{ background:transparent; color:var(--ink); border-color:var(--ink); }
@@ -313,6 +312,20 @@ h1,h2,h3{ text-wrap:balance; }
 .legend-item{ display:flex; align-items:center; gap:.55rem; font-weight:700; font-size:.88rem; color:var(--ink); font-family:var(--display); }
 .legend-swatch{ width:14px; height:14px; border-radius:4px; }
 .chart-wrap{ position:relative; height:min(62vw,440px); margin-top:1.25rem; }
+@media (max-width:620px){ .chart-wrap, .chart-wrap > div, .chart-wrap svg{ height:auto; } }
+.chart-wrap > div{ width:100%; height:100%; }
+.chart-wrap svg{ width:100%; height:100%; overflow:visible; }
+.chart-tip{
+  position:fixed; z-index:120; pointer-events:none; opacity:0;
+  transform:translate(-50%,-125%); transition:opacity .15s ease;
+  background:var(--navy); color:var(--paper); border-radius:var(--radius-sm);
+  padding:.55rem .8rem; font-size:.82rem; line-height:1.45; max-width:15rem;
+  box-shadow:0 10px 26px rgba(5,77,102,.28);
+}
+.chart-tip strong{ display:block; font-family:var(--display); font-weight:700;
+  font-size:.78rem; letter-spacing:.04em; text-transform:uppercase; margin-bottom:.15rem; }
+.chart-tip.is-on{ opacity:1; }
+@media (hover:none){ .chart-tip{ display:none; } }
 
 /* scenario switch — same pill language as the rest of the page */
 .scenario{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.25rem; }
@@ -343,7 +356,7 @@ h1,h2,h3{ text-wrap:balance; }
   font-weight:700; font-size:.86rem; color:var(--navy);
 }
 .figures summary::-webkit-details-marker{ display:none; }
-.figures summary::before{ content:"+ "; color:var(--coral-2); }
+.figures summary::before{ content:"+ "; color:var(--coral); }
 .figures[open] summary::before{ content:"\2212 "; }
 .figures__scroll{ overflow-x:auto; padding-bottom:.75rem; }
 .figures__table{ width:100%; min-width:520px; border-collapse:collapse; font-size:.9rem; }
@@ -483,7 +496,16 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
 @media (max-width:560px){ .footer__grid{ grid-template-columns:1fr; } }
 
 /* ---------- GSAP reveal base state ---------- */
-.reveal{ opacity:0; transform:translateY(32px); }
+.reveal, .reveal-item{
+  opacity:0; transform:translateY(32px);
+  transition:opacity .85s var(--ease), transform .85s var(--ease);
+}
+.benefit.reveal-item{ transform:translateX(-30px); }
+.testi-card.reveal-item{ transform:translateY(30px) scale(.96); }
+.reveal.is-in, .reveal-item.is-in{ opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce){
+  .reveal, .reveal-item{ opacity:1; transform:none; transition:none; }
+}
 </style>
 </head>
 <body>
@@ -706,12 +728,12 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
         <span class="legend-item"><span class="legend-swatch" style="background:#ff7d5c;"></span>Best Scenario</span>
       </div>
       <div class="scenario" role="group" aria-label="Which scenario to show">
-        <button type="button" class="scenario__btn is-on" data-scenario="both">Both</button>
-        <button type="button" class="scenario__btn" data-scenario="base">Base only</button>
-        <button type="button" class="scenario__btn" data-scenario="best">Best only</button>
+        <button type="button" class="scenario__btn is-on" data-scenario="both" aria-pressed="true">Both</button>
+        <button type="button" class="scenario__btn" data-scenario="base" aria-pressed="false">Base only</button>
+        <button type="button" class="scenario__btn" data-scenario="best" aria-pressed="false">Best only</button>
       </div>
 
-      <div class="chart-wrap"><canvas id="revenueChart"></canvas></div>
+      <div class="chart-wrap"><div id="revenueChart"></div></div>
 
       <div class="starts">
         <div class="starts__item"><span class="starts__yr">Year 1</span><b>500</b> base &middot; <b>900</b> best <em>patient starts</em></div>
@@ -945,9 +967,6 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
 
 <div class="sticky-cta"><a href="#contact" class="btn btn--coral">Let's Do This</a></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
 <script>
 (function(){
   "use strict";
@@ -997,83 +1016,79 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     var target = parseFloat(el.getAttribute('data-count'));
     var suffix = el.getAttribute('data-suffix') || '';
     var prefix = el.getAttribute('data-prefix') || '';
-    var obj = { val: 0 };
-    if (window.gsap){
-      gsap.to(obj, {
-        val: target, duration: reduceMotion ? 0.01 : 1.7, ease: 'power2.out',
-        onUpdate: function(){
-          var v = target % 1 === 0 ? Math.round(obj.val) : obj.val.toFixed(1);
-          el.textContent = prefix + v + suffix;
-        },
-        onComplete: function(){ el.textContent = prefix + target + suffix; }
-      });
-    } else { el.textContent = prefix + target + suffix; }
+    if (reduceMotion) { el.textContent = prefix + target + suffix; return; }
+    var dur = 1700, t0 = null;
+    function step(now){
+      if (t0 === null) t0 = now;
+      var k = Math.min((now - t0) / dur, 1);
+      var eased = 1 - Math.pow(1 - k, 3);
+      var v = target % 1 === 0 ? Math.round(target * eased) : (target * eased).toFixed(1);
+      el.textContent = prefix + v + suffix;
+      if (k < 1) requestAnimationFrame(step);
+      else el.textContent = prefix + target + suffix;
+    }
+    requestAnimationFrame(step);
   }
 
-  /* ---------- GSAP scroll reveals ---------- */
-  if (window.gsap && window.ScrollTrigger){
-    gsap.registerPlugin(ScrollTrigger);
-
-    document.querySelectorAll('.reveal').forEach(function(el){
-      gsap.to(el, {
-        opacity:1, y:0, duration: reduceMotion ? 0.01 : 0.9, ease:'power3.out',
-        scrollTrigger:{ trigger: el, start:'top 88%', once:true }
+  /* ---------- scroll reveals, no library ----------
+     These used GSAP + ScrollTrigger from a CDN. When that CDN did not answer,
+     the reveals silently fell back to "everything visible" and the chart —
+     which was Chart.js from the same CDN — rendered nothing at all. The page
+     now carries its own animation, so nothing here depends on the network. */
+  function onceInView(el, cb, ratio){
+    if (!('IntersectionObserver' in window)) { cb(); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { io.unobserve(e.target); cb(); }
       });
-    });
+    }, { threshold: ratio || 0, rootMargin: '0px 0px -8% 0px' });
+    io.observe(el);
+  }
 
-    gsap.utils.toArray('.stat-card__num').forEach(function(el){
-      ScrollTrigger.create({ trigger: el, start:'top 90%', once:true, onEnter: function(){ animateCount(el); } });
-    });
+  function revealWith(el, delay){
+    if (reduceMotion) { el.style.transition = 'none'; el.classList.add('is-in'); return; }
+    el.style.transitionDelay = (delay || 0) + 'ms';
+    el.classList.add('is-in');
+  }
 
-    document.querySelectorAll('.pillar').forEach(function(card, i){
-      gsap.fromTo(card, { opacity:0, y:40 }, {
-        opacity:1, y:0, duration: reduceMotion ? 0.01 : 0.7, ease:'power3.out',
-        delay: reduceMotion ? 0 : (i % 5) * 0.08,
-        scrollTrigger:{ trigger: card, start:'top 90%', once:true }
-      });
-    });
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    onceInView(el, function () { revealWith(el, 0); });
+  });
 
-    document.querySelectorAll('.benefit').forEach(function(card, i){
-      gsap.fromTo(card, { opacity:0, x:-30 }, {
-        opacity:1, x:0, duration: reduceMotion ? 0.01 : 0.6, ease:'power3.out',
-        delay: reduceMotion ? 0 : i * 0.07,
-        scrollTrigger:{ trigger: card, start:'top 92%', once:true }
-      });
+  [['.pillar', 80], ['.benefit', 70], ['.testi-card', 100]].forEach(function (pair) {
+    var items = document.querySelectorAll(pair[0]);
+    items.forEach(function (card, i) {
+      card.classList.add('reveal-item');
+      onceInView(card, function () { revealWith(card, (i % 5) * pair[1]); });
     });
+  });
 
-    document.querySelectorAll('.testi-card').forEach(function(card, i){
-      gsap.fromTo(card, { opacity:0, y:30, scale:.96 }, {
-        opacity:1, y:0, scale:1, duration: reduceMotion ? 0.01 : 0.7, ease:'power3.out',
-        delay: reduceMotion ? 0 : i * 0.1,
-        scrollTrigger:{ trigger: card, start:'top 90%', once:true }
-      });
-    });
+  document.querySelectorAll('.stat-card__num').forEach(function (el) {
+    onceInView(el, function () { animateCount(el); });
+  });
 
-    /* checklist checkmarks draw in one by one */
+  /* checklist ticks draw in one by one */
+  var checklist = document.querySelector('.checklist');
+  if (checklist) {
     var checkItems = document.querySelectorAll('.check-item');
-    ScrollTrigger.create({
-      trigger: '.checklist', start:'top 82%', once:true,
-      onEnter: function(){
-        checkItems.forEach(function(item, i){
-          var box = item.querySelector('.check-box');
-          var svg = box.querySelector('svg');
-          gsap.fromTo(item, { opacity:0, y:20 }, { opacity:1, y:0, duration:.5, delay: reduceMotion?0:i*0.15, ease:'power3.out' });
-          gsap.to(box, {
-            delay: reduceMotion ? 0 : i * 0.15 + 0.25, duration:.01,
-            onStart: function(){ box.classList.add('done'); }
-          });
-          gsap.to(svg, { strokeDashoffset:0, duration: reduceMotion?0.01:0.4, delay: reduceMotion?0:i*0.15+0.25, ease:'power2.out' });
-        });
-        var closing = document.querySelector('.checklist__closing');
-        gsap.to(closing, { opacity:1, y:0, duration:.6, delay: reduceMotion?0:checkItems.length*0.15+0.3, ease:'power3.out' });
-      }
+    checkItems.forEach(function (item) { item.classList.add('reveal-item'); });
+    onceInView(checklist, function () {
+      checkItems.forEach(function (item, i) {
+        var step = reduceMotion ? 0 : i * 150;
+        setTimeout(function () {
+          revealWith(item, 0);
+          item.querySelector('.check-box').classList.add('done');
+        }, step);
+      });
+      var closing = document.querySelector('.checklist__closing');
+      if (closing) setTimeout(function () { revealWith(closing, 0); },
+                              reduceMotion ? 0 : checkItems.length * 150 + 150);
     });
-  } else {
-    document.querySelectorAll('.reveal').forEach(function(el){ el.style.opacity = 1; el.style.transform = 'none'; });
-    document.querySelectorAll('.stat-card__num').forEach(animateCount);
   }
 
-  /* ---------- revenue chart (Chart.js), created only when in view ---------- */
+  /* ---------- proforma chart, drawn here rather than by a library ----------
+     chartData is the proforma of record; the table in the markup carries the
+     same twelve figures for print, screen readers and JS-off.              */
   var chartData = {
     labels: ['Year 1','Year 2','Year 3'],
     base: [401012, 1805244, 3895784],
@@ -1081,105 +1096,246 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     best: [721822, 2647921, 5146670],
     bestStarts: [900, 1950, 2400]
   };
-  var revenueChart = null;
+  var SERIES = [
+    { key:'base', startsKey:'baseStarts', name:'Base',  fill:'#054d66' },
+    { key:'best', startsKey:'bestStarts', name:'Best',  fill:'#ff7d5c' }
+  ];
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  var shown = 'both';
+  var chartDrawn = false;
+
   function money(v){ return '$' + Math.round(v).toLocaleString('en-US'); }
-  function shortMoney(v){
-    return v < 1e6 ? '$' + Math.round(v / 1e3) + 'K' : '$' + (v / 1e6).toFixed(1) + 'M';
+  function shortMoney(v){ return v < 1e6 ? '$' + Math.round(v/1e3) + 'K' : '$' + (v/1e6).toFixed(1) + 'M'; }
+  function svgEl(name, attrs){
+    var n = document.createElementNS(SVGNS, name);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    return n;
+  }
+  /* a bar with only its top corners rounded, matching the original look */
+  function barPath(x, y, w, hgt, r){
+    r = Math.min(r, w / 2, hgt);
+    return 'M' + x + ',' + (y + hgt) +
+           'V' + (y + r) + 'a' + r + ',' + r + ' 0 0 1 ' + r + ',' + (-r) +
+           'h' + (w - 2*r) + 'a' + r + ',' + r + ' 0 0 1 ' + r + ',' + r +
+           'V' + (y + hgt) + 'Z';
   }
 
-  /* value labels: six numbers the reader should not have to estimate off an axis */
-  var valueLabels = {
-    id: 'valueLabels',
-    afterDatasetsDraw: function (chart) {
-      var ctx = chart.ctx;
-      chart.data.datasets.forEach(function (ds, di) {
-        if (!chart.isDatasetVisible(di)) return;
-        chart.getDatasetMeta(di).data.forEach(function (bar, i) {
-          ctx.save();
-          ctx.font = '700 13px "Plus Jakarta Sans", system-ui, sans-serif';
-          ctx.fillStyle = '#054d66';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'bottom';
-          ctx.fillText(shortMoney(ds.data[i]), bar.x, bar.y - 8);
-          ctx.restore();
-        });
-      });
-    }
-  };
+  var DESCRIBE = 'Projected revenue by year. Base scenario $401,012 in year one rising to ' +
+                 '$3,895,784 in year three. Best scenario $721,822 rising to $5,146,670. ' +
+                 'Every figure is in the table below.';
+  var MAX = 5500000;
+  var TICKS = [0, 1000000, 2000000, 3000000, 4000000, 5000000];
+  var GRID = 'rgba(5,77,102,.10)';
+  var MUTED = 'rgba(5,77,102,.66)';
 
-  function initRevenueChart(){
-    var ctx = document.getElementById('revenueChart');
-    if (!ctx || revenueChart) return;
-    revenueChart = new Chart(ctx, {
-      type: 'bar',
-      plugins: [valueLabels],
-      data: {
-        labels: chartData.labels,
-        datasets: [
-          { label:'Base', data: chartData.base, backgroundColor:'#054d66', borderRadius:8, maxBarThickness:70 },
-          { label:'Best', data: chartData.best, backgroundColor:'#ff7d5c', borderRadius:8, maxBarThickness:70 }
-        ]
-      },
-      options: {
-        responsive:true, maintainAspectRatio:false,
-        layout:{ padding:{ top:26 } },          /* room for the value labels */
-        animation: reduceMotion ? false : { duration:1400, easing:'easeOutQuart' },
-        plugins:{
-          legend:{ display:false },
-          tooltip:{
-            backgroundColor:'#054d66', padding:12, cornerRadius:10, displayColors:false,
-            titleFont:{ family:'Plus Jakarta Sans', weight:'700', size:13 },
-            bodyFont:{ family:'Inter', size:13 },
-            callbacks:{
-              title: function(items){
-                return chartData.labels[items[0].dataIndex] + ' \u00b7 ' + items[0].dataset.label + ' scenario';
-              },
-              label: function(item){
-                var i = item.dataIndex, base = item.datasetIndex === 0;
-                var starts = base ? chartData.baseStarts[i] : chartData.bestStarts[i];
-                var series = base ? chartData.base : chartData.best;
-                var lines = [money(item.raw), starts.toLocaleString('en-US') + ' patient starts'];
-                if (i > 0) {
-                  var growth = Math.round(((series[i] / series[i - 1]) - 1) * 100);
-                  lines.push('+' + growth + '% on year ' + i);
-                }
-                return lines;
-              }
-            }
-          }
-        },
-        scales:{
-          y:{
-            beginAtZero:true, max:5500000,     /* 6M buried year one against the 5.15M peak */
-            ticks:{ stepSize:1000000, callback:function(v){ return v === 0 ? '$0' : '$' + (v/1e6) + 'M'; },
-                    font:{ family:'Inter' }, color:'#5C7175' },
-            grid:{ color:'rgba(5,77,102,.08)' },
-            border:{ display:false }
-          },
-          x:{ ticks:{ font:{ family:'Plus Jakarta Sans', weight:'700', size:13 }, color:'#054d66' },
-              grid:{ display:false }, border:{ color:'rgba(5,77,102,.18)' } }
+  function chartSvg(W, H){
+    var s = svgEl('svg', {
+      viewBox: '0 0 ' + W + ' ' + H, width: '100%', height: H,
+      preserveAspectRatio: 'none', role: 'img', 'aria-label': DESCRIBE
+    });
+    return s;
+  }
+
+  /* wide: grouped vertical columns */
+  function buildVertical(W, H, active){
+    var padL = 66, padR = 14, padT = 34, padB = 46;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    function y(v){ return padT + plotH - (v / MAX) * plotH; }
+    var svg = chartSvg(W, H);
+
+    TICKS.forEach(function (t) {
+      svg.appendChild(svgEl('line', { x1: padL, x2: W - padR, y1: y(t), y2: y(t),
+        stroke: GRID, 'stroke-width': 1 }));
+      var lab = svgEl('text', { x: padL - 12, y: y(t) + 5, fill: MUTED, 'text-anchor': 'end',
+        'font-family': 'Inter, system-ui, sans-serif', 'font-size': 15 });
+      lab.textContent = t === 0 ? '$0' : '$' + (t / 1e6) + 'M';
+      svg.appendChild(lab);
+    });
+
+    var groupW = plotW / 3, gap = 16;
+    var barW = Math.max(16, Math.min(active.length === 1 ? 108 : 78,
+                        (groupW * 0.62 - (active.length - 1) * gap) / active.length));
+
+    chartData.labels.forEach(function (label, i) {
+      var cx = padL + groupW * i + groupW / 2;
+      var total = active.length * barW + (active.length - 1) * gap;
+      var x0 = cx - total / 2;
+
+      active.forEach(function (s, k) {
+        var v = chartData[s.key][i];
+        var x = x0 + k * (barW + gap);
+        var top = y(v), hgt = padT + plotH - top;
+        var g = svgEl('g', {});
+
+        var bar = svgEl('path', { d: barPath(x, reduceMotion ? top : padT + plotH, barW,
+                                             reduceMotion ? hgt : 0, 8), fill: s.fill });
+        g.appendChild(bar);
+
+        var val = svgEl('text', { x: x + barW / 2, y: top - 12, fill: '#054d66', 'text-anchor': 'middle',
+          'font-family': '"Plus Jakarta Sans", system-ui, sans-serif', 'font-size': 17, 'font-weight': 700 });
+        val.textContent = shortMoney(v);
+        val.style.opacity = reduceMotion ? 1 : 0;
+        g.appendChild(val);
+
+        g.appendChild(hitArea(x, padT, barW, plotH, label, s, i));
+
+        if (!reduceMotion) {
+          requestAnimationFrame(function () {
+            var d = (i * 110) + (k * 60);
+            bar.animate(
+              [{ d: 'path("' + barPath(x, padT + plotH, barW, 0, 8) + '")' },
+               { d: 'path("' + barPath(x, top, barW, hgt, 8) + '")' }],
+              { duration: 900, delay: d, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' }
+            );
+            bar.setAttribute('d', barPath(x, top, barW, hgt, 8));
+            val.style.transition = 'opacity .4s ease ' + (d + 520) + 'ms';
+            val.style.opacity = 1;
+          });
         }
-      }
-    });
-
-    /* scenario switch */
-    var btns = document.querySelectorAll('.scenario__btn');
-    btns.forEach(function (b) {
-      b.addEventListener('click', function () {
-        var want = b.dataset.scenario;
-        btns.forEach(function (o) { o.classList.toggle('is-on', o === b); });
-        revenueChart.setDatasetVisibility(0, want !== 'best');
-        revenueChart.setDatasetVisibility(1, want !== 'base');
-        revenueChart.update();
+        svg.appendChild(g);
       });
+
+      var xlab = svgEl('text', { x: cx, y: H - 16, fill: '#054d66', 'text-anchor': 'middle',
+        'font-family': '"Plus Jakarta Sans", system-ui, sans-serif', 'font-size': 16, 'font-weight': 700 });
+      xlab.textContent = label;
+      svg.appendChild(xlab);
     });
+    return svg;
   }
 
-  if (window.ScrollTrigger){
-    ScrollTrigger.create({ trigger:'#revenue', start:'top 75%', once:true, onEnter: initRevenueChart });
-  } else {
-    window.addEventListener('DOMContentLoaded', initRevenueChart);
+  /* narrow: the same data as rows, so nothing is shrunk past reading size */
+  function buildHorizontal(W, active){
+    var headH = 18, fLab = 12.5, gapLB = 5, barH = 16, gapS = 10, groupGap = 18, axisH = 24;
+    var n = active.length;
+    var groupH = headH + n * (fLab + gapLB + barH) + (n - 1) * gapS;
+    var H = Math.round(3 * groupH + 2 * groupGap + axisH);
+    var len = W - 2;
+    var plotBottom = H - axisH + 4;
+    var svg = chartSvg(W, H);
+
+    TICKS.forEach(function (t) {
+      var x = (t / MAX) * len;
+      svg.appendChild(svgEl('line', { x1: x, x2: x, y1: 0, y2: plotBottom,
+        stroke: GRID, 'stroke-width': 1 }));
+      var lab = svgEl('text', { x: x, y: H - 6, fill: MUTED,
+        'text-anchor': t === 0 ? 'start' : (t === 5000000 ? 'end' : 'middle'),
+        'font-family': 'Inter, system-ui, sans-serif', 'font-size': 10.5 });
+      lab.textContent = t === 0 ? '$0' : '$' + (t / 1e6) + 'M';
+      svg.appendChild(lab);
+    });
+
+    var cursor = 0;
+    chartData.labels.forEach(function (label, i) {
+      var head = svgEl('text', { x: 0, y: cursor + 12, fill: MUTED,
+        'font-family': '"Plus Jakarta Sans", system-ui, sans-serif', 'font-size': 11,
+        'font-weight': 700, 'letter-spacing': '.09em' });
+      head.textContent = label.toUpperCase();
+      svg.appendChild(head);
+      cursor += headH;
+
+      active.forEach(function (s, k) {
+        var v = chartData[s.key][i];
+        var w = Math.max(3, (v / MAX) * len);
+        var g = svgEl('g', {});
+
+        var txt = svgEl('text', { x: 0, y: cursor + fLab, fill: '#054d66',
+          'font-family': '"Plus Jakarta Sans", system-ui, sans-serif', 'font-size': fLab });
+        var nm = svgEl('tspan', { 'font-weight': 700 });
+        nm.textContent = s.name + ' · ';
+        txt.appendChild(nm);
+        txt.appendChild(document.createTextNode(money(v)));
+        g.appendChild(txt);
+
+        var by = cursor + fLab + gapLB;
+        var bar = svgEl('path', {
+          d: rowPath(reduceMotion ? w : 3, by, barH), fill: s.fill });
+        g.appendChild(bar);
+        g.appendChild(hitArea(0, cursor, len, fLab + gapLB + barH, label, s, i));
+
+        if (!reduceMotion) {
+          requestAnimationFrame(function () {
+            var d = (i * 110) + (k * 60);
+            bar.animate(
+              [{ d: 'path("' + rowPath(3, by, barH) + '")' },
+               { d: 'path("' + rowPath(w, by, barH) + '")' }],
+              { duration: 900, delay: d, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' }
+            );
+            bar.setAttribute('d', rowPath(w, by, barH));
+          });
+        }
+        svg.appendChild(g);
+        cursor += fLab + gapLB + barH + (k < n - 1 ? gapS : 0);
+      });
+      cursor += groupGap;
+    });
+    return svg;
   }
+
+  /* a row bar: square at the axis, rounded at the growing end */
+  function rowPath(w, y, h){
+    var r = Math.min(5, w / 2, h / 2);
+    return 'M0,' + y + 'H' + (w - r) + 'a' + r + ',' + r + ' 0 0 1 ' + r + ',' + r +
+           'V' + (y + h - r) + 'a' + r + ',' + r + ' 0 0 1 ' + (-r) + ',' + r + 'H0Z';
+  }
+
+  function hitArea(x, y, w, h, label, s, i){
+    var v = chartData[s.key][i], starts = chartData[s.startsKey][i], series = chartData[s.key];
+    var hit = svgEl('rect', { x: x, y: y, width: w, height: h, fill: 'transparent' });
+    hit.addEventListener('pointerenter', function (e) {
+      var lines = [money(v), starts.toLocaleString('en-US') + ' patient starts'];
+      if (i > 0) lines.push('+' + Math.round((series[i] / series[i-1] - 1) * 100) + '% on year ' + i);
+      showTip(e, label + ' · ' + s.name + ' scenario', lines);
+    });
+    hit.addEventListener('pointermove', moveTip);
+    hit.addEventListener('pointerleave', hideTip);
+    return hit;
+  }
+
+  function drawChart(){
+    var host = document.getElementById('revenueChart');
+    if (!host) return;
+    host.textContent = '';
+    var W = Math.round(host.clientWidth) || 1000;
+    var active = SERIES.filter(function (s) { return shown === 'both' || shown === s.key; });
+    host.appendChild(W < 620 ? buildHorizontal(W, active)
+                             : buildVertical(W, Math.round(host.clientHeight) || 420, active));
+    chartDrawn = true;
+  }
+
+  /* tooltip */
+  var tip = document.createElement('div');
+  tip.className = 'chart-tip';
+  document.body.appendChild(tip);
+  function showTip(e, head, lines){
+    tip.textContent = '';
+    var h1 = document.createElement('strong'); h1.textContent = head; tip.appendChild(h1);
+    lines.forEach(function (l) { var d = document.createElement('div'); d.textContent = l; tip.appendChild(d); });
+    tip.classList.add('is-on');
+    moveTip(e);
+  }
+  function moveTip(e){ tip.style.left = e.clientX + 'px'; tip.style.top = e.clientY + 'px'; }
+  function hideTip(){ tip.classList.remove('is-on'); }
+
+  var revenueSection = document.getElementById('revenue');
+  if (revenueSection) onceInView(revenueSection, drawChart, 0.15);
+
+  document.querySelectorAll('.scenario__btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      shown = b.dataset.scenario;
+      document.querySelectorAll('.scenario__btn').forEach(function (o) {
+        o.classList.toggle('is-on', o === b);
+        o.setAttribute('aria-pressed', o === b ? 'true' : 'false');
+      });
+      if (chartDrawn) drawChart();
+    });
+  });
+
+  var redrawTimer;
+  window.addEventListener('resize', function () {
+    if (!chartDrawn) return;
+    clearTimeout(redrawTimer);
+    redrawTimer = setTimeout(drawChart, 200);
+  });
 
   /* ---------- ambient drifting dots behind the hero visual ----------
      The same effect the Three.js version drew, in plain 2D canvas: it was
