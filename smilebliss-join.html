@@ -67,10 +67,10 @@
 }
 
 *{ box-sizing:border-box; margin:0; padding:0; }
-html{ scroll-behavior:smooth; scroll-padding-top:96px; -webkit-text-size-adjust:100%; overflow-x:hidden; }
+html{ scroll-behavior:smooth; scroll-padding-top:96px; -webkit-text-size-adjust:100%; }
 body{
   font-family:var(--sans); color:var(--ink); background:var(--cream);
-  line-height:1.65; overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  line-height:1.65; -webkit-font-smoothing:antialiased;
 }
 img,svg,canvas{ display:block; max-width:100%; }
 a{ color:inherit; text-decoration:none; }
@@ -357,6 +357,15 @@ h1,h2,h3{ text-wrap:balance; }
 
 /* ---------- benefits ---------- */
 .benefits{ background:var(--white); }
+.benefits__grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(2rem,5vw,3.5rem); align-items:center; }
+.benefits .section-head{ margin-bottom:clamp(1.6rem,3vw,2.2rem); }
+.benefits__visual{ position:relative; }
+.benefits__visual-card{
+  border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/4.6;
+  background:var(--teal-deep); box-shadow:var(--shadow-card); position:relative;
+}
+.benefits__photo{ width:100%; height:100%; object-fit:cover; display:block; }
+@media (max-width:900px){ .benefits__grid{ grid-template-columns:1fr; } }
 .benefits__list{ display:flex; flex-direction:column; gap:1.1rem; margin-top:1rem; }
 .benefit{ display:flex; gap:1.3rem; align-items:flex-start; border:1.5px solid var(--line); border-radius:var(--radius); padding:1.4rem 1.7rem; }
 .benefit:nth-child(odd){ background:var(--coral-soft); border-color:transparent; }
@@ -716,7 +725,8 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
 
 <!-- ============ BENEFITS ============ -->
 <section class="section benefits" id="benefits">
-  <div class="container">
+  <div class="container benefits__grid">
+    <div class="benefits__copy">
     <div class="section-head">
       <span class="eyebrow"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>Why Smilebliss</span>
       <h2 class="section-title">Our Benefits Will Make You Smile as Much as Your Patients.</h2>
@@ -727,6 +737,20 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
       <div class="benefit reveal"><span class="benefit__num">3</span><p class="benefit__text">Get access to established and proven practice operations.</p></div>
       <div class="benefit reveal"><span class="benefit__num">4</span><p class="benefit__text">Save money on equipment and supplies.</p></div>
       <div class="benefit reveal"><span class="benefit__num">5</span><p class="benefit__text">Get expert help with training programs, procurement, insurance, and billing.</p></div>
+    </div>
+    </div>
+    <div class="benefits__visual reveal">
+      <div class="benefits__visual-card">
+        <img class="benefits__photo"
+             src="assets/img/team-practice-880.webp"
+             srcset="assets/img/team-practice-580.webp 580w,
+                     assets/img/team-practice-880.webp 880w,
+                     assets/img/team-practice-1160.webp 1160w,
+                     assets/img/team-practice-1740.webp 1740w"
+             sizes="(max-width:900px) calc(100vw - 2.5rem), min(562px, 45vw)"
+             width="1740" height="2000" loading="lazy" decoding="async"
+             alt="A Smilebliss doctor and team member standing with a smiling patient in braces outside a Smilebliss practice">
+      </div>
     </div>
   </div>
 </section>
