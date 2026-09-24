@@ -302,7 +302,10 @@ h1,h2,h3{ text-wrap:balance; }
 .legend-item{ display:flex; align-items:center; gap:.55rem; font-weight:700; font-size:.88rem; color:var(--ink); font-family:var(--display); }
 .legend-swatch{ width:14px; height:14px; border-radius:4px; }
 .chart-wrap{ position:relative; height:min(62vw,440px); margin-top:1.25rem; }
-@media (max-width:620px){ .chart-wrap, .chart-wrap > div, .chart-wrap svg{ height:auto; } }
+.is-rows .chart-wrap, .is-rows .chart-wrap > div, .is-rows .chart-wrap svg{ height:auto; }
+/* in rows mode each bar carries its own starts figure and names its own scenario,
+   so the separate starts block and the legend would only repeat what is already there */
+.is-rows .starts, .is-rows .revenue__legend{ display:none; }
 .chart-wrap > div{ width:100%; height:100%; }
 .chart-wrap svg{ width:100%; height:100%; overflow:visible; }
 .chart-tip{
@@ -1248,6 +1251,11 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
         txt.appendChild(document.createTextNode(money(v)));
         g.appendChild(txt);
 
+        var st = svgEl('text', { x: len, y: cursor + fLab, fill: MUTED, 'text-anchor': 'end',
+          'font-family': 'Inter, system-ui, sans-serif', 'font-size': fLab - 1.5 });
+        st.textContent = chartData[s.startsKey][i].toLocaleString('en-US') + ' starts';
+        g.appendChild(st);
+
         var by = cursor + fLab + gapLB;
         var bar = svgEl('path', {
           d: rowPath(reduceMotion ? w : 3, by, barH), fill: s.fill });
@@ -1298,9 +1306,12 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     if (!host) return;
     host.textContent = '';
     var W = Math.round(host.clientWidth) || 1000;
+    var narrow = W < 620;
+    var card = host.closest ? host.closest('.revenue__card') : null;
+    if (card) card.classList.toggle('is-rows', narrow);
     var active = SERIES.filter(function (s) { return shown === 'both' || shown === s.key; });
-    host.appendChild(W < 620 ? buildHorizontal(W, active)
-                             : buildVertical(W, Math.round(host.clientHeight) || 420, active));
+    host.appendChild(narrow ? buildHorizontal(W, active)
+                            : buildVertical(W, Math.round(host.clientHeight) || 420, active));
     chartDrawn = true;
   }
 
