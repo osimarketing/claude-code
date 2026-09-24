@@ -51,6 +51,8 @@
   --muted:       rgba(5,77,102,.66);
   --white:       var(--color-warm-white);
   --line:        rgba(5,77,102,.15);
+  --navy:        var(--color-navy);       /* used in 16 rules but never defined until now */
+  --paper:       var(--color-warm-white);
   --on-bright:   var(--color-navy);       /* text color for anything sitting on coral/gold/aqua/sky */
   --on-dark:     var(--color-warm-white); /* text color for anything sitting on navy */
 
@@ -136,10 +138,11 @@ h1,h2,h3{ text-wrap:balance; }
 .btn--ink:hover{ transform:translateY(-2px); background:var(--teal-deep); }
 .btn--ghost-dark{ background:transparent; color:var(--ink); border-color:var(--ink); }
 .btn--ghost-dark:hover{ background:var(--ink); color:var(--on-dark); transform:translateY(-2px); }
-.btn--ghost{ background:transparent; color:var(--on-dark); border-color:rgba(247,243,239,.5); }
-.btn--ghost:hover{ border-color:var(--on-dark); background:rgba(247,243,239,.14); transform:translateY(-2px); }
-.path-card--conv .btn--ghost{ color:var(--on-bright); border-color:rgba(5,77,102,.4); }
-.path-card--conv .btn--ghost:hover{ border-color:var(--color-navy); background:rgba(5,77,102,.08); }
+/* the outlined version measured 1.96:1 against the gold card, below the 3:1 floor
+   for a control edge; solid fills put both cards at 8.42:1 */
+.btn--path{ background:var(--on-dark); color:var(--navy); border-color:transparent; }
+.btn--path:hover{ transform:translateY(-2px); box-shadow:0 14px 26px -16px rgba(5,77,102,.65); }
+.path-card--conv .btn--path{ background:var(--navy); color:var(--on-dark); }
 .btn--outline{ background:transparent; color:var(--navy); border-color:var(--navy); }
 .btn--outline:hover{ background:var(--navy); color:var(--on-dark); transform:translateY(-2px); }
 .btn--sm{ padding:.7rem 1.35rem; font-size:1.18rem; }
@@ -283,13 +286,8 @@ h1,h2,h3{ text-wrap:balance; }
   display:flex; flex-direction:column; gap:.9rem; transition:transform .3s var(--ease), border-color .3s, box-shadow .3s;
 }
 .pillar:hover{ transform:translateY(-6px); border-color:transparent; box-shadow:var(--shadow-sm); }
-.pillar__icon{ width:50px; height:50px; border-radius:16px; display:flex; align-items:center; justify-content:center; }
-.pillar:nth-child(5n+1) .pillar__icon{ background:var(--mint-soft); color:var(--teal); }
-.pillar:nth-child(5n+2) .pillar__icon{ background:var(--coral-soft); color:var(--coral); }
-.pillar:nth-child(5n+3) .pillar__icon{ background:var(--gold-soft); color:var(--on-bright); }
-.pillar:nth-child(5n+4) .pillar__icon{ background:var(--mint-soft); color:var(--teal); }
-.pillar:nth-child(5n+5) .pillar__icon{ background:var(--coral-soft); color:var(--coral); }
-.pillar__icon svg{ width:24px; height:24px; }
+/* the icons carry their own color, so no tinted chip behind them */
+.pillar__icon{ width:64px; height:64px; object-fit:contain; display:block; }
 .pillar__title{ font-family:var(--display); font-weight:800; font-size:1.08rem; color:var(--ink); }
 .pillar__text{ color:var(--muted); font-size:.92rem; flex:1; }
 .pillar__link{ font-family:var(--display); font-weight:700; font-size:.82rem; color:var(--navy); display:inline-flex; align-items:center; gap:.4rem; }
@@ -384,7 +382,6 @@ h1,h2,h3{ text-wrap:balance; }
 }
 .path-card--new{ background:var(--teal-deep); }
 .path-card--conv{ background:var(--gold); color:var(--on-bright); }
-.path-card__badge{ font-family:var(--display); font-weight:700; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; opacity:.85; margin-bottom:.9rem; }
 .path-card__title{ font-family:var(--display); font-weight:800; font-size:1.7rem; margin-bottom:.9rem; }
 .path-card__text{ opacity:.92; font-size:.98rem; flex:1; }
 .path-card .btn{ margin-top:1.6rem; align-self:flex-start; }
@@ -410,21 +407,42 @@ h1,h2,h3{ text-wrap:balance; }
 .checklist-section{ background:var(--mint-soft); }
 .checklist{ max-width:760px; margin:0 auto; }
 .check-item{
+  width:100%; font:inherit; text-align:left; cursor:pointer;
   display:flex; align-items:center; gap:1.1rem; background:var(--white); border:1.5px solid var(--line); border-radius:var(--radius);
   padding:1.2rem 1.6rem; margin-bottom:.9rem;
+  transition:background .25s, border-color .25s, transform .2s var(--ease);
 }
+.check-item:hover{ border-color:var(--navy); }
+.check-item:active{ transform:scale(.995); }
+.check-item.is-on{ background:var(--mint-soft); border-color:transparent; }
 .check-box{
-  width:32px; height:32px; border-radius:50%; border:2px solid var(--mint); flex:0 0 auto;
+  width:32px; height:32px; border-radius:50%; flex:0 0 auto;
+  border:2px solid rgba(5,77,102,.65);            /* 3.56:1 — aqua was 2.51:1 */
   display:flex; align-items:center; justify-content:center; position:relative;
+  transition:background .25s, border-color .25s;
 }
-.check-box svg{ width:17px; height:17px; stroke:var(--mint-2); stroke-width:3; fill:none; stroke-dasharray:24; stroke-dashoffset:24; }
-.check-box.done{ background:var(--mint); border-color:var(--mint); }
-.check-box.done svg{ stroke:var(--on-dark); }
+.check-box svg{
+  width:17px; height:17px; stroke:var(--on-dark); stroke-width:3; fill:none;
+  stroke-dasharray:24; stroke-dashoffset:24; transition:stroke-dashoffset .35s var(--ease);
+}
+.check-item.is-on .check-box{ background:var(--navy); border-color:var(--navy); }
+.check-item.is-on .check-box svg{ stroke-dashoffset:0; }
 .check-text{ font-size:1.01rem; color:var(--ink); font-weight:500; }
+.checklist__progress{ display:flex; align-items:center; gap:.9rem; margin-top:1.4rem; }
+.checklist__bar{ flex:1; height:8px; border-radius:50px; background:var(--line); overflow:hidden; }
+.checklist__bar-fill{ display:block; width:0; height:100%; background:var(--navy); border-radius:50px;
+  transition:width .35s var(--ease); }
+.checklist__count{ font-family:var(--display); font-weight:700; font-size:.86rem; color:var(--muted); white-space:nowrap; }
+.checklist__count b{ color:var(--ink); }
+@media (max-width:520px){ .checklist__progress{ flex-direction:column; align-items:stretch; gap:.6rem; }
+  .checklist__count{ text-align:center; } }
 .checklist__closing{
-  text-align:center; margin-top:2rem; font-family:var(--display); font-weight:700; font-size:1.15rem;
+  text-align:center; margin-top:1.6rem; font-family:var(--display); font-weight:700; font-size:1.15rem;
   color:var(--teal-deep); max-width:60ch; margin-inline:auto;
+  border-radius:var(--radius); padding:1rem 1.4rem;
+  background:transparent; transition:background .3s;
 }
+.checklist__closing.is-complete{ background:var(--gold-soft); }
 
 /* ---------- final CTA + form ---------- */
 .cta-band{ background:var(--teal-deep); position:relative; overflow:hidden; }
@@ -635,31 +653,31 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     </div>
     <div class="pillars__grid">
       <article class="pillar reveal">
-        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+        <img class="pillar__icon" src="assets/img/icon-rcm.webp" width="168" height="168" alt="" loading="lazy" decoding="async">
         <h3 class="pillar__title">Revenue Cycle Management</h3>
         <p class="pillar__text">The secret to success is getting paid for the work you do. Our team has collected billions for clients.</p>
         <a href="#contact" class="pillar__link">Talk to us about this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
       <article class="pillar reveal">
-        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4 9-4V7"/></svg></div>
+        <img class="pillar__icon" src="assets/img/icon-procurement.webp" width="168" height="168" alt="" loading="lazy" decoding="async">
         <h3 class="pillar__title">Procurement</h3>
         <p class="pillar__text">If you like deals, we know how to get them. Our all-in-one ordering system gets you negotiated rates on equipment and supplies.</p>
         <a href="#contact" class="pillar__link">Talk to us about this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
       <article class="pillar reveal">
-        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6.2 6.5-6.2S15.5 16.4 15.5 20"/><circle cx="17.5" cy="9" r="2.4"/><path d="M21.5 19c0-2.7-1.9-4.6-4.2-4.9"/></svg></div>
+        <img class="pillar__icon" src="assets/img/icon-peer.webp" width="168" height="168" alt="" loading="lazy" decoding="async">
         <h3 class="pillar__title">Peer Support</h3>
         <p class="pillar__text">Run your own practice without feeling like you're in it alone, backed by our award-winning team and peer-to-peer network.</p>
         <a href="#contact" class="pillar__link">Talk to us about this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
       <article class="pillar reveal">
-        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l18-7-7 18-2.5-7.5L3 11z"/></svg></div>
+        <img class="pillar__icon" src="assets/img/icon-marketing.webp" width="168" height="168" alt="" loading="lazy" decoding="async">
         <h3 class="pillar__title">Marketing</h3>
         <p class="pillar__text">Nothing grows a practice faster than incredible marketing. Our strategists, designers, and copywriters get people signing up for treatment.</p>
         <a href="#contact" class="pillar__link">Talk to us about this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
       <article class="pillar reveal">
-        <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5a2 2 0 012-2h9l5 5v11a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M9 12h6M9 16h6M9 8h3"/></svg></div>
+        <img class="pillar__icon" src="assets/img/icon-training.webp" width="168" height="168" alt="" loading="lazy" decoding="async">
         <h3 class="pillar__title">Training</h3>
         <p class="pillar__text">Covering practice culture and brand, new patient process, scheduling, efficiencies, and adding patient value &mdash; for every role on your team.</p>
         <a href="#contact" class="pillar__link">Talk to us about this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -763,16 +781,14 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     </div>
     <div class="paths__grid">
       <div class="path-card path-card--new reveal">
-        <span class="path-card__badge">Start Fresh</span>
         <h3 class="path-card__title">New Practice</h3>
         <p class="path-card__text">Brand, training, site selection, financial modeling, and marketing support to launch your practice from scratch &mdash; with a proven playbook behind every decision.</p>
-        <a href="#contact" class="btn btn--ghost btn--sm">Explore New Practice</a>
+        <a href="#contact" class="btn btn--sm btn--path">Explore New Practice</a>
       </div>
       <div class="path-card path-card--conv reveal">
-        <span class="path-card__badge">Level Up</span>
         <h3 class="path-card__title">Practice Conversion</h3>
         <p class="path-card__text">Convert your existing orthodontic practice into a Smilebliss location, with full access to the same proven systems our new-practice partners rely on.</p>
-        <a href="#contact" class="btn btn--ghost btn--sm">Explore Conversion</a>
+        <a href="#contact" class="btn btn--sm btn--path">Explore Conversion</a>
       </div>
     </div>
   </div>
@@ -822,11 +838,15 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
       <h2 class="section-title">Is Smilebliss Right for Me?</h2>
     </div>
     <div class="checklist">
-      <div class="check-item reveal"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I really want to take control of my own destiny?</span></div>
-      <div class="check-item reveal"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Am I prepared to adapt to new ideas?</span></div>
-      <div class="check-item reveal"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I have a genuine interest in improving the lives of others?</span></div>
-      <div class="check-item reveal"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I have great clinical results?</span></div>
-      <div class="check-item reveal"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I have a strong commitment to employee and customer satisfaction?</span></div>
+      <button type="button" class="check-item reveal" aria-pressed="false"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I really want to take control of my own destiny?</span></button>
+      <button type="button" class="check-item reveal" aria-pressed="false"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Am I prepared to adapt to new ideas?</span></button>
+      <button type="button" class="check-item reveal" aria-pressed="false"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I have a genuine interest in improving the lives of others?</span></button>
+      <button type="button" class="check-item reveal" aria-pressed="false"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I have great clinical results?</span></button>
+      <button type="button" class="check-item reveal" aria-pressed="false"><span class="check-box"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span><span class="check-text">Do I have a strong commitment to employee and customer satisfaction?</span></button>
+      <p class="checklist__progress reveal" role="status" aria-live="polite">
+        <span class="checklist__bar"><span class="checklist__bar-fill"></span></span>
+        <span class="checklist__count"><b id="checkCount">0</b> of 5 answered yes</span>
+      </p>
       <p class="checklist__closing reveal">If you answered YES to these questions, congrats! You just met the initial criteria for this incredible, proven model.</p>
     </div>
   </div>
@@ -1038,16 +1058,34 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     checkItems.forEach(function (item) { item.classList.add('reveal-item'); });
     onceInView(checklist, function () {
       checkItems.forEach(function (item, i) {
-        var step = reduceMotion ? 0 : i * 150;
-        setTimeout(function () {
-          revealWith(item, 0);
-          item.querySelector('.check-box').classList.add('done');
-        }, step);
+        setTimeout(function () { revealWith(item, 0); }, reduceMotion ? 0 : i * 150);
       });
-      var closing = document.querySelector('.checklist__closing');
-      if (closing) setTimeout(function () { revealWith(closing, 0); },
-                              reduceMotion ? 0 : checkItems.length * 150 + 150);
+      ['.checklist__progress', '.checklist__closing'].forEach(function (sel, k) {
+        var el = document.querySelector(sel);
+        if (el) setTimeout(function () { revealWith(el, 0); },
+                           reduceMotion ? 0 : checkItems.length * 150 + 150 + k * 100);
+      });
     });
+
+    var countEl = document.getElementById('checkCount');
+    var barFill = document.querySelector('.checklist__bar-fill');
+    var closing = document.querySelector('.checklist__closing');
+    function syncChecklist(){
+      var n = 0;
+      checkItems.forEach(function (b) { if (b.getAttribute('aria-pressed') === 'true') n++; });
+      if (countEl) countEl.textContent = n;
+      if (barFill) barFill.style.width = (n / checkItems.length * 100) + '%';
+      if (closing) closing.classList.toggle('is-complete', n === checkItems.length);
+    }
+    checkItems.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var on = b.getAttribute('aria-pressed') === 'true';
+        b.setAttribute('aria-pressed', on ? 'false' : 'true');
+        b.classList.toggle('is-on', !on);
+        syncChecklist();
+      });
+    });
+    syncChecklist();
   }
 
   /* ---------- proforma chart, drawn here rather than by a library ----------
