@@ -1,0 +1,19 @@
+/*
+Theme Name: Smilebliss Licensing
+Theme URI: https://joinsmilebliss.com/
+Author: Smilebliss
+Description: Classic WordPress theme for the Smilebliss licensing/recruitment site. Every page is
+  composed from ACF Flexible Content layouts, so sections can be added, reordered and removed
+  without touching templates. Requires Advanced Custom Fields PRO.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.7
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: smilebliss
+Tags: one-column, custom-logo, custom-menu, editor-style, accessibility-ready
+
+The compiled styles live in assets/css/main.css. This file exists for the theme header only;
+WordPress requires it and does not load it as the primary stylesheet.
+*/
