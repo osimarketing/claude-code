@@ -234,14 +234,23 @@ h1,h2,h3{ text-wrap:balance; }
 
 /* ---------- about (never alone) ---------- */
 .about{ background:var(--white); }
-.about__grid{ display:grid; grid-template-columns:.95fr 1.05fr; gap:clamp(2rem,5vw,3.5rem); align-items:center; }
-.about__visual{ position:relative; }
-.about__visual-card{
+/* About and Why Smilebliss are the same layout mirrored, so they share one
+   definition: identical gap, alignment, column split and photo card. */
+.about__grid, .benefits__grid{ display:grid; gap:clamp(2rem,5vw,3.5rem); align-items:center; }
+.about__grid{ grid-template-columns:.95fr 1.05fr; }      /* photo left  */
+.benefits__grid{ grid-template-columns:1.05fr .95fr; }   /* photo right */
+.about__visual, .benefits__visual{ position:relative; }
+.about__visual-card, .benefits__visual-card{
   border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/4.6;
-  background:var(--teal-deep);
-  box-shadow:var(--shadow-card); position:relative;
+  background:var(--teal-deep); box-shadow:var(--shadow-card); position:relative;
 }
-.about__photo{ width:100%; height:100%; object-fit:cover; display:block; }
+.about__photo, .benefits__photo{ width:100%; height:100%; object-fit:cover; display:block; }
+/* between the stack point and 1200 the columns are narrow enough that the copy
+   outgrows a 4:4.6 card; a taller card keeps the pair balanced */
+@media (min-width:901px) and (max-width:1200px){
+  .about__visual-card, .benefits__visual-card{ aspect-ratio:4/5.3; }
+}
+@media (max-width:900px){ .about__grid, .benefits__grid{ grid-template-columns:1fr; } }
 .about__chip{
   position:absolute; left:-5%; bottom:8%; background:var(--white); border-radius:50px; box-shadow:var(--shadow-sm);
   padding:.75rem 1.25rem .75rem .75rem; display:flex; align-items:center; gap:.65rem; max-width:250px;
@@ -250,8 +259,6 @@ h1,h2,h3{ text-wrap:balance; }
 .about__chip-icon svg{ width:16px; height:16px; color:var(--on-bright); }
 .about__chip span{ font-family:var(--display); font-weight:700; font-size:.82rem; line-height:1.25; }
 
-.about__copy h2{ font-family:var(--display); font-weight:800; letter-spacing:-.02em; font-size:clamp(1.9rem,3.6vw,2.6rem); line-height:1.16; }
-.about__copy h2 .muted{ color:var(--muted); font-weight:600; }
 .about__copy > p{ color:var(--muted); font-size:1.03rem; margin-top:1.2rem; max-width:52ch; }
 
 .stat-cards{ display:flex; flex-direction:column; gap:.9rem; margin-top:2rem; }
@@ -357,17 +364,9 @@ h1,h2,h3{ text-wrap:balance; }
 
 /* ---------- benefits ---------- */
 .benefits{ background:var(--white); }
-.benefits__grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(2rem,5vw,3.5rem); align-items:center; }
-.benefits .section-head{ margin-bottom:clamp(1.6rem,3vw,2.2rem); }
-.benefits__visual{ position:relative; }
-.benefits__visual-card{
-  border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/4.6;
-  background:var(--teal-deep); box-shadow:var(--shadow-card); position:relative;
-}
-.benefits__photo{ width:100%; height:100%; object-fit:cover; display:block; }
-@media (max-width:900px){ .benefits__grid{ grid-template-columns:1fr; } }
-.benefits__list{ display:flex; flex-direction:column; gap:1.1rem; margin-top:1rem; }
-.benefit{ display:flex; gap:1.3rem; align-items:flex-start; border:1.5px solid var(--line); border-radius:var(--radius); padding:1.4rem 1.7rem; }
+.benefits .section-head{ margin-bottom:clamp(1.2rem,2vw,1.5rem); }
+.benefits__list{ display:flex; flex-direction:column; gap:.7rem; margin-top:0; }
+.benefit{ display:flex; gap:1.1rem; align-items:flex-start; border:1.5px solid var(--line); border-radius:var(--radius); padding:1rem 1.4rem; }
 .benefit:nth-child(odd){ background:var(--coral-soft); border-color:transparent; }
 .benefit:nth-child(even){ background:var(--mint-soft); border-color:transparent; }
 .benefit__num{
@@ -375,7 +374,7 @@ h1,h2,h3{ text-wrap:balance; }
   width:44px; height:44px; border-radius:50%; background:var(--gold); flex:0 0 auto;
   display:flex; align-items:center; justify-content:center;
 }
-.benefit__text{ font-size:1.01rem; color:var(--ink); padding-top:.45rem; font-weight:500; }
+.benefit__text{ font-size:1.01rem; color:var(--ink); padding-top:.3rem; font-weight:500; }
 
 /* ---------- two paths ---------- */
 .paths__grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.8rem; margin-top:1rem; }
@@ -603,7 +602,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     </div>
     <div class="about__copy">
       <span class="eyebrow eyebrow--mint"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>About Smilebliss</span>
-      <h2 class="reveal">As a Smilebliss client, <span class="muted">you're never in it alone.</span></h2>
+      <h2 class="section-title reveal">As a Smilebliss client, <span class="muted">you're never in it alone.</span></h2>
       <p class="reveal">Here, we go out of our way to make your job &mdash; and that of your entire team &mdash; easier with support geared toward growing, successful practice needs. From marketing, training, and procurement to revenue cycle management, we handle the heavy lifting.</p>
       <div class="stat-cards">
         <div class="stat-card reveal">
