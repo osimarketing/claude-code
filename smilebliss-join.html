@@ -192,7 +192,6 @@ h1,h2,h3{ text-wrap:balance; }
 /* ---------- hero ---------- */
 .hero{ position:relative; padding:clamp(3rem,7vw,5.5rem) 0 clamp(2.5rem,5vw,4rem); overflow:hidden; }
 .hero__grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(2rem,5vw,4rem); align-items:center; }
-.hero__eyebrow{ margin-bottom:1.4rem; }
 .hero__title{
   font-family:var(--display); font-weight:800; color:var(--ink); letter-spacing:-.025em;
   font-size:clamp(2.5rem,5vw,3.9rem); line-height:1.04;
@@ -201,20 +200,8 @@ h1,h2,h3{ text-wrap:balance; }
 .hero__lead{ color:var(--muted); font-size:1.03rem; max-width:50ch; margin:1.5rem 0 2.1rem; }
 .hero__actions{ display:flex; flex-wrap:wrap; gap:1rem; }
 
-.hero__visual{ position:relative; aspect-ratio:1/1.02; }
-.hero__visual-backdrop{
-  position:absolute; inset:6% -8% -6% 8%; border-radius:44%;
-  background:
-    radial-gradient(circle, rgba(5,77,102,.16) 1.4px, transparent 1.4px) 0 0/16px 16px,
-    linear-gradient(155deg, var(--sky-soft) 0%, var(--cream-2) 100%);
-}
-#hero-canvas{ position:absolute; inset:6% -8% -6% 8%; width:auto; height:auto; z-index:1; border-radius:44%; }
-.hero__visual-card{
-  position:absolute; inset:0 6% 4% 0; border-radius:var(--radius-lg); overflow:hidden; z-index:2;
-  background:linear-gradient(165deg, rgba(114,207,212,.16) 0%, var(--sky-soft) 55%, rgba(114,207,212,.38) 100%);
-  box-shadow:var(--shadow-card);
-}
-.hero__visual-card svg{ width:100%; height:100%; }
+.hero__visual{ position:relative; }
+.hero__photo{ width:100%; height:auto; display:block; }
 .hero__badge{
   position:absolute; left:-6%; bottom:14%; z-index:3; background:var(--white); border-radius:var(--radius-sm);
   box-shadow:var(--shadow-sm); padding:.9rem 1.2rem; display:flex; align-items:center; gap:.7rem;
@@ -226,7 +213,7 @@ h1,h2,h3{ text-wrap:balance; }
 
 @media (max-width:980px){
   .hero__grid{ grid-template-columns:1fr; }
-  .hero__visual{ width:100%; max-width:420px; margin-inline:auto; order:-1; aspect-ratio:1/.95; }
+  .hero__visual{ width:100%; max-width:420px; margin-inline:auto; order:-1; }
   .hero__badge{ left:0; }
 }
 
@@ -251,10 +238,10 @@ h1,h2,h3{ text-wrap:balance; }
 .about__visual{ position:relative; }
 .about__visual-card{
   border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/4.6;
-  background:linear-gradient(165deg,var(--teal) 0%,var(--teal-deep) 100%);
+  background:var(--teal-deep);
   box-shadow:var(--shadow-card); position:relative;
 }
-.about__visual-card svg{ width:100%; height:100%; }
+.about__photo{ width:100%; height:100%; object-fit:cover; display:block; }
 .about__chip{
   position:absolute; left:-5%; bottom:8%; background:var(--white); border-radius:50px; box-shadow:var(--shadow-sm);
   padding:.75rem 1.25rem .75rem .75rem; display:flex; align-items:center; gap:.65rem; max-width:250px;
@@ -282,7 +269,7 @@ h1,h2,h3{ text-wrap:balance; }
 }
 
 /* ---------- services / pillars ---------- */
-.services{ background:linear-gradient(180deg,var(--cream) 0%,var(--mint-soft) 100%); }
+.services{ background:var(--mint-soft); }
 .pillars__grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:1.3rem; margin-top:1rem; }
 .pillar{
   background:var(--white); border:1.5px solid var(--line); border-radius:var(--radius); padding:1.9rem 1.5rem;
@@ -387,8 +374,8 @@ h1,h2,h3{ text-wrap:balance; }
   border-radius:var(--radius-lg); padding:clamp(2rem,4vw,2.8rem); position:relative; overflow:hidden;
   color:var(--on-dark); min-height:320px; display:flex; flex-direction:column;
 }
-.path-card--new{ background:linear-gradient(155deg,var(--teal) 0%,var(--teal-deep) 100%); }
-.path-card--conv{ background:linear-gradient(155deg,var(--coral) 0%,var(--gold) 100%); color:var(--on-bright); }
+.path-card--new{ background:var(--teal-deep); }
+.path-card--conv{ background:var(--gold); color:var(--on-bright); }
 .path-card__badge{ font-family:var(--display); font-weight:700; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; opacity:.85; margin-bottom:.9rem; }
 .path-card__title{ font-family:var(--display); font-weight:800; font-size:1.7rem; margin-bottom:.9rem; }
 .path-card__text{ opacity:.92; font-size:.98rem; flex:1; }
@@ -412,7 +399,7 @@ h1,h2,h3{ text-wrap:balance; }
 @media (max-width:900px){ .testi__grid{ grid-template-columns:1fr; } }
 
 /* ---------- checklist ---------- */
-.checklist-section{ background:linear-gradient(180deg,var(--mint-soft) 0%,var(--cream) 100%); }
+.checklist-section{ background:var(--mint-soft); }
 .checklist{ max-width:760px; margin:0 auto; }
 .check-item{
   display:flex; align-items:center; gap:1.1rem; background:var(--white); border:1.5px solid var(--line); border-radius:var(--radius);
@@ -432,7 +419,7 @@ h1,h2,h3{ text-wrap:balance; }
 }
 
 /* ---------- final CTA + form ---------- */
-.cta-band{ background:linear-gradient(165deg,var(--teal-deep) 0%,var(--teal) 100%); position:relative; overflow:hidden; }
+.cta-band{ background:var(--teal-deep); position:relative; overflow:hidden; }
 .cta-grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:3rem; align-items:start; }
 .cta-copy{ color:var(--on-dark); position:relative; z-index:2; }
 .cta-copy .section-intro{ margin-top:1.2rem; }
@@ -539,7 +526,6 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
 <section class="hero" id="top">
   <div class="container hero__grid">
     <div class="hero__copy">
-      <span class="eyebrow hero__eyebrow"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>Introducing Smilebliss™</span>
       <h1 class="hero__title">Follow Your Bliss.<br>Find <span class="accent">More Success.</span></h1>
       <p class="hero__lead">Starting an orthodontic practice is tough. There are lots of things to do. Pick a name. Find a location. Hire the right people. Create marketing. Get equipment. Then, make sure you're all set up with the insurance companies so that you get paid. It's a lot &mdash; and that's not even half of it. We have over 30 years of experience creating successful practices. So we took that knowledge and created a ready-to-go practice model with everything done for you.</p>
       <div class="hero__actions">
@@ -548,34 +534,15 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
       </div>
     </div>
     <div class="hero__visual">
-      <div class="hero__visual-backdrop" aria-hidden="true"></div>
-      <canvas id="hero-canvas" aria-hidden="true"></canvas>
-      <div class="hero__visual-card">
-        <svg viewBox="0 0 520 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <defs>
-            <linearGradient id="barGrad1" x1="0" y1="1" x2="0" y2="0">
-              <stop offset="0" stop-color="#054d66"/><stop offset="1" stop-color="#1aada7"/>
-            </linearGradient>
-            <linearGradient id="barGrad2" x1="0" y1="1" x2="0" y2="0">
-              <stop offset="0" stop-color="#ff7d5c"/><stop offset="1" stop-color="#ffca5e"/>
-            </linearGradient>
-          </defs>
-          <circle cx="180" cy="150" r="140" fill="#f7f3ef" opacity=".55"/>
-          <g transform="translate(90,330)">
-            <rect x="0" y="90" width="46" height="90" rx="12" fill="url(#barGrad1)"/>
-            <rect x="66" y="50" width="46" height="130" rx="12" fill="url(#barGrad2)"/>
-            <rect x="132" y="10" width="46" height="170" rx="12" fill="url(#barGrad1)"/>
-            <rect x="198" y="-40" width="46" height="220" rx="12" fill="url(#barGrad2)"/>
-            <rect x="264" y="-80" width="46" height="260" rx="12" fill="url(#barGrad1)"/>
-          </g>
-          <path d="M100 190 Q180 260 260 185 T420 175" fill="none" stroke="#ff7d5c" stroke-width="6" stroke-linecap="round"/>
-          <circle cx="420" cy="175" r="10" fill="#ff7d5c"/>
-          <path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z" fill="#1aada7" transform="translate(370,60) scale(1.6)"/>
-          <path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z" fill="#ffca5e" transform="translate(60,80) scale(1.1)"/>
-          <circle cx="150" cy="110" r="6" fill="#ff7d5c"/>
-          <circle cx="440" cy="260" r="7" fill="#054d66"/>
-        </svg>
-      </div>
+      <img class="hero__photo"
+           src="assets/img/hero-smile-840.webp"
+           srcset="assets/img/hero-smile-560.webp 560w,
+                   assets/img/hero-smile-840.webp 840w,
+                   assets/img/hero-smile-1120.webp 1120w,
+                   assets/img/hero-smile-1600.webp 1600w"
+           sizes="(max-width:980px) min(420px, 92vw), min(559px, 44vw)"
+           width="1600" height="1670" fetchpriority="high" decoding="async"
+           alt="A smiling young woman holding an orthodontic model fitted with braces and a mirror ball">
       <div class="hero__badge">
         <span class="hero__badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></span>
         <span><strong>$5.1M</strong><span>Year 3 revenue, best-case scenario</span></span>
@@ -610,21 +577,15 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
   <div class="container about__grid">
     <div class="about__visual reveal">
       <div class="about__visual-card">
-        <svg viewBox="0 0 420 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <defs>
-            <radialGradient id="glow1" cx="50%" cy="35%" r="65%">
-              <stop offset="0" stop-color="#1aada7" stop-opacity=".55"/><stop offset="1" stop-color="#054d66" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-          <rect width="420" height="480" fill="url(#glow1)"/>
-          <circle cx="150" cy="190" r="66" fill="#1aada7" opacity=".9"/>
-          <circle cx="255" cy="170" r="52" fill="#ff7d5c" opacity=".92"/>
-          <circle cx="210" cy="280" r="74" fill="#f7f3ef" opacity=".14"/>
-          <circle cx="90" cy="300" r="40" fill="#ff7d5c" opacity=".5"/>
-          <circle cx="300" cy="330" r="34" fill="#1aada7" opacity=".65"/>
-          <path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z" fill="#ffca5e" opacity=".9" transform="translate(320,90) scale(1.8)"/>
-          <path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z" fill="#ffca5e" opacity=".65" transform="translate(60,110) scale(1.2)"/>
-        </svg>
+        <img class="about__photo"
+             src="assets/img/about-doctor-880.webp"
+             srcset="assets/img/about-doctor-580.webp 580w,
+                     assets/img/about-doctor-880.webp 880w,
+                     assets/img/about-doctor-1160.webp 1160w,
+                     assets/img/about-doctor-1740.webp 1740w"
+             sizes="(max-width:900px) calc(100vw - 2.5rem), min(562px, 45vw)"
+             width="1740" height="2000" loading="lazy" decoding="async"
+             alt="A Smilebliss doctor smiling in front of a wall reading Follow Your Bliss, Find Your Smile">
       </div>
       <div class="about__chip">
         <span class="about__chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6.5.9-4.7 4.6 1.1 6.5L12 17l-5.9 3 1.1-6.5L2.5 8.9 9 8z"/></svg></span>
@@ -805,7 +766,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     <div class="testi__grid">
       <div class="testi-card reveal">
         <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
-        <div class="testi-avatar" style="background:linear-gradient(155deg,#054d66,#1aada7);">AR</div>
+        <div class="testi-avatar" style="background:#054d66;">AR</div>
         <p class="testi-quote">"Smilebliss handed us a marketing engine and a billing team on day one. We hit our Year 1 start goal three months early."</p>
         <div class="testi-name">Dr. Alicia Reyes</div>
         <div class="testi-loc">Scottsdale, AZ</div>
@@ -813,7 +774,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
       </div>
       <div class="testi-card reveal">
         <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
-        <div class="testi-avatar" style="background:linear-gradient(155deg,#054d66,#ff7d5c);">MK</div>
+        <div class="testi-avatar" style="background:#054d66;">MK</div>
         <p class="testi-quote">"Converting to Smilebliss felt like exhaling. Procurement alone saved us more than the licensing fee in the first year."</p>
         <div class="testi-name">Dr. Marcus Kim</div>
         <div class="testi-loc">Charlotte, NC</div>
@@ -821,7 +782,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
       </div>
       <div class="testi-card reveal">
         <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
-        <div class="testi-avatar" style="background:linear-gradient(155deg,#054d66,#ffca5e);">JT</div>
+        <div class="testi-avatar" style="background:#054d66;">JT</div>
         <p class="testi-quote">"The peer network is the real unlock. I've never once felt like I was figuring this out on my own."</p>
         <div class="testi-name">Dr. Jasmine Torres</div>
         <div class="testi-loc">Round Rock, TX</div>
@@ -835,7 +796,6 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
 <section class="section checklist-section" id="checklist-section">
   <div class="container">
     <div class="section-head center">
-      <span class="eyebrow" style="margin-inline:auto;"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>Self-Check</span>
       <h2 class="section-title">Is Smilebliss Right for Me?</h2>
     </div>
     <div class="checklist">
@@ -1329,65 +1289,6 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     redrawTimer = setTimeout(drawChart, 200);
   });
 
-  /* ---------- ambient drifting dots behind the hero visual ----------
-     The same effect the Three.js version drew, in plain 2D canvas: it was
-     a ~600KB WebGL dependency rendering about twenty soft sprites.       */
-  function initHeroScene(){
-    var canvas = document.getElementById('hero-canvas');
-    var host = document.querySelector('.hero__visual');
-    if (!canvas || !host || reduceMotion) return;
-    var ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    var DPR = Math.min(window.devicePixelRatio || 1, 2);
-    var colors = ['5,77,102', '255,125,92'];
-    var dots = [];
-
-    function seed(){
-      var n = window.innerWidth < 700 ? 14 : 22;
-      dots = [];
-      for (var i = 0; i < n; i++){
-        dots.push({ x: Math.random(), y: Math.random(),
-                    r: 10 + Math.random() * 26, a: 0.18 + Math.random() * 0.16,
-                    speed: 0.04 + Math.random() * 0.08, phase: Math.random() * Math.PI * 2,
-                    color: colors[i % 2] });
-      }
-    }
-    function resize(){
-      var w = host.clientWidth, hgt = host.clientHeight;
-      canvas.width = w * DPR; canvas.height = hgt * DPR;
-      canvas.style.width = w + 'px'; canvas.style.height = hgt + 'px';
-      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    }
-    seed(); resize();
-    window.addEventListener('resize', function(){ resize(); seed(); });
-
-    var running = true;
-    document.addEventListener('visibilitychange', function(){ running = !document.hidden; });
-
-    var start = performance.now();
-    function frame(now){
-      requestAnimationFrame(frame);
-      if (!running) return;
-      var t = (now - start) / 1000;
-      var w = canvas.width / DPR, hgt = canvas.height / DPR;
-      ctx.clearRect(0, 0, w, hgt);
-      for (var i = 0; i < dots.length; i++){
-        var d = dots[i];
-        var x = d.x * w + Math.cos(t * d.speed * 0.7 + d.phase) * 22;
-        var y = d.y * hgt + Math.sin(t * d.speed + d.phase) * 26;
-        var g = ctx.createRadialGradient(x, y, 0, x, y, d.r);
-        g.addColorStop(0, 'rgba(' + d.color + ',' + d.a + ')');
-        g.addColorStop(1, 'rgba(' + d.color + ',0)');
-        ctx.fillStyle = g;
-        ctx.beginPath(); ctx.arc(x, y, d.r, 0, Math.PI * 2); ctx.fill();
-      }
-    }
-    requestAnimationFrame(frame);
-  }
-
-  if (document.readyState === 'complete') { initHeroScene(); }
-  else { window.addEventListener('load', initHeroScene); }
 
 })();
 </script>
