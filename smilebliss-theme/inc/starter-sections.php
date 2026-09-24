@@ -19,8 +19,8 @@ function smilebliss_starter_sections( callable $img ): array {
 	return array(
 		array(
 			'acf_fc_layout' => 'hero',
-			'title'         => 'Follow Your Bliss.<br>Find',
-			'title_accent'  => 'More Success.',
+			'title'         => 'Follow Your Bliss.<br>',
+			'title_accent'  => 'Find More Success.',
 			'lead'          => 'Starting an orthodontic practice is tough. There are lots of things to do. Pick a name. Find a location. Hire the right people. Create marketing. Get equipment. Then, make sure you\'re all set up with the insurance companies so that you get paid. It\'s a lot — and that\'s not even half of it. We have over 30 years of experience creating successful practices. So we took that knowledge and created a ready-to-go practice model with everything done for you.',
 			'primary_cta'   => array( 'title' => "Let's Do This", 'url' => '#contact', 'target' => '' ),
 			'secondary_cta' => array( 'title' => 'See How It Works', 'url' => '#support', 'target' => '' ),
