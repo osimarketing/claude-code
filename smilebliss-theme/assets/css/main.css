@@ -268,6 +268,11 @@ h1,h2,h3{ text-wrap:balance; }
 .about__copy > p{ color:var(--muted); font-size:1.03rem; margin-top:1.2rem; max-width:52ch; }
 
 .stat-cards{ display:flex; flex-direction:column; gap:.9rem; margin-top:2rem; }
+/* Shrink the stack to the widest card's content so the cards stop running the
+   full column width with a long empty tail. They still share one right edge
+   because the flex items stretch to the container. Phones keep full width,
+   where the card is already narrower than its content needs. */
+@media (min-width:521px){ .stat-cards{ width:max-content; max-width:100%; } }
 .stat-card{
   border:1.5px solid var(--line); border-radius:var(--radius-sm); padding:1.1rem 1.4rem;
   display:grid; grid-template-columns:5.5rem 1fr; align-items:center; gap:1rem; position:relative;
