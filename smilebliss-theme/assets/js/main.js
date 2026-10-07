@@ -112,11 +112,9 @@
       checkItems.forEach(function (item, i) {
         setTimeout(function () { revealWith(item, 0); }, reduceMotion ? 0 : i * 150);
       });
-      ['.checklist__progress', '.checklist__closing'].forEach(function (sel, k) {
-        var el = document.querySelector(sel);
-        if (el) setTimeout(function () { revealWith(el, 0); },
-                           reduceMotion ? 0 : checkItems.length * 150 + 150 + k * 100);
-      });
+      var progress = document.querySelector('.checklist__progress');
+      if (progress) setTimeout(function () { revealWith(progress, 0); },
+                               reduceMotion ? 0 : checkItems.length * 150 + 150);
     });
 
     var countEl = document.getElementById('checkCount');
@@ -127,7 +125,8 @@
       checkItems.forEach(function (b) { if (b.getAttribute('aria-pressed') === 'true') n++; });
       if (countEl) countEl.textContent = n;
       if (barFill) barFill.style.width = (n / checkItems.length * 100) + '%';
-      if (closing) closing.classList.toggle('is-complete', n === checkItems.length);
+      // the closing line is the reward for answering every question, not a caption
+      if (closing) closing.hidden = n !== checkItems.length;
     }
     checkItems.forEach(function (b) {
       b.addEventListener('click', function () {

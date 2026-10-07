@@ -2,7 +2,8 @@
 /**
  * Layout: the self-assessment checklist.
  *
- * Each row is a real button; the progress readout is driven by main.js.
+ * Each row is a real button. The progress readout is driven by main.js, and the
+ * closing line stays hidden until every question is answered yes.
  *
  * @package Smilebliss
  */
@@ -47,7 +48,7 @@ $sb_total   = (int) ( function_exists( 'get_sub_field' ) ? count( (array) get_su
 			<?php endif; ?>
 
 			<?php if ( $sb_closing ) : ?>
-				<p class="checklist__closing reveal"><?php echo esc_html( $sb_closing ); ?></p>
+				<p class="checklist__closing" role="status" hidden><?php echo esc_html( $sb_closing ); ?></p>
 			<?php endif; ?>
 		</div>
 	</div>

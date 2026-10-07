@@ -431,9 +431,10 @@ h1,h2,h3{ text-wrap:balance; }
   text-align:center; margin-top:1.6rem; font-family:var(--display); font-weight:700; font-size:1.15rem;
   color:var(--teal-deep); max-width:60ch; margin-inline:auto;
   border-radius:var(--radius); padding:1rem 1.4rem;
-  background:transparent; transition:background .3s;
+  background:var(--gold-soft); animation:closingIn .45s var(--ease) both;
 }
-.checklist__closing.is-complete{ background:var(--gold-soft); }
+@keyframes closingIn{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
+@media (prefers-reduced-motion: reduce){ .checklist__closing{ animation:none; } }
 
 /* ---------- final CTA + form ---------- */
 .cta-band{ background:var(--teal-deep); position:relative; overflow:hidden; }
