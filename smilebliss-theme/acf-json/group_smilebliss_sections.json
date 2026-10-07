@@ -1560,6 +1560,48 @@
                             ]
                         },
                         {
+                            "key": "field_sb_tst_rating_s",
+                            "label": "Rating score",
+                            "name": "rating_score",
+                            "type": "number",
+                            "instructions": "Out of 5. Leave empty to hide the rating row.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "min": 0,
+                            "max": 5,
+                            "step": "0.01",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_sb_tst_rating_c",
+                            "label": "Review count",
+                            "name": "rating_count",
+                            "type": "number",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "min": 0,
+                            "max": "",
+                            "step": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_sb_tst_anchor",
                             "label": "Anchor (id)",
                             "name": "anchor",

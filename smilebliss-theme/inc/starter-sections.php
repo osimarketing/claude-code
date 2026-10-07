@@ -151,6 +151,8 @@ function smilebliss_starter_sections( callable $img ): array {
 			'eyebrow'       => 'Practice Owners',
 			'title'         => 'Hear From Our Practice Owners.',
 			'intro'         => 'Sample profiles — swap in your own client stories and headshots.',
+			'rating_score'  => 4.92,
+			'rating_count'  => 5658,
 			'items'         => array(
 				array( 'initials' => 'AR', 'quote' => 'Smilebliss handed us a marketing engine and a billing team on day one. We hit our Year 1 start goal three months early.', 'name' => 'Dr. Alicia Reyes', 'location' => 'Scottsdale, AZ', 'is_sample' => 1 ),
 				array( 'initials' => 'MK', 'quote' => 'Converting to Smilebliss felt like exhaling. Procurement alone saved us more than the licensing fee in the first year.', 'name' => 'Dr. Marcus Kim', 'location' => 'Charlotte, NC', 'is_sample' => 1 ),

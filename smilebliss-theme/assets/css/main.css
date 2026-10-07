@@ -381,18 +381,47 @@ h1,h2,h3{ text-wrap:balance; }
 
 /* ---------- testimonials ---------- */
 .testimonials{ background:var(--white); }
-.testi__grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; margin-top:1rem; }
-.testi-card{ border:1.5px solid var(--line); border-radius:var(--radius-lg); padding:2rem 1.8rem; text-align:center; position:relative; }
-.testi-avatar{
-  width:80px; height:80px; margin:0 auto 1.2rem; border-radius:50% 50% 50% 6%; overflow:hidden;
-  display:flex; align-items:center; justify-content:center; font-family:var(--display); font-weight:800;
-  font-size:1.5rem; color:var(--on-dark);
+.rating--center{ justify-content:center; margin-top:1.1rem; }
+
+/* one quote at a time, manually advanced. No auto-rotation: it steals reading
+   time from anyone slower than the timer, and there is no good interval. */
+.quotes{ position:relative; max-width:860px; margin:2.6rem auto 0; text-align:center; }
+.quotes__mark{
+  font-family:var(--display); font-weight:800; font-size:5.5rem; line-height:1;
+  color:rgba(255,125,92,.38); display:block; height:2.6rem; user-select:none;
 }
-.testi-quote{ font-size:1.02rem; color:var(--ink); line-height:1.55; margin-bottom:1.2rem; }
-.testi-name{ font-family:var(--display); font-weight:700; font-size:.96rem; }
-.testi-loc{ font-size:.78rem; color:var(--muted); margin-top:.25rem; }
-.testi-tag{ margin-top:1rem; display:inline-block; font-family:var(--display); font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--on-bright); background:var(--gold-soft); padding:.3rem .7rem; border-radius:50px; font-weight:700; }
-@media (max-width:900px){ .testi__grid{ grid-template-columns:1fr; } }
+@media (min-width:860px){
+  .quotes__mark{ position:absolute; left:0; top:-.4rem; height:auto; }
+}
+.quotes__viewport{ position:relative; }
+.quote{ animation:quoteIn .4s var(--ease) both; }
+@keyframes quoteIn{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
+@media (prefers-reduced-motion: reduce){ .quote{ animation:none; } }
+.quote__text{
+  font-family:var(--display); font-weight:600; font-size:clamp(1.18rem,2.3vw,1.72rem);
+  line-height:1.42; color:var(--ink); max-width:36ch; margin-inline:auto;
+}
+.quote__by{ margin-top:1.5rem; font-family:var(--display); font-weight:700; font-size:.98rem; color:var(--ink); }
+.quote__loc{ font-weight:500; color:var(--muted); }
+.testi-tag{ display:block; width:max-content; margin:.9rem auto 0; font-family:var(--display); font-size:.66rem;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--on-bright); background:var(--gold-soft);
+  padding:.3rem .7rem; border-radius:50px; font-weight:700; }
+
+.quotes__nav{ display:flex; align-items:center; justify-content:center; gap:1.1rem; margin-top:2.2rem; }
+.quotes__arrow{
+  width:38px; height:38px; border-radius:50%; flex:0 0 auto; cursor:pointer;
+  border:1.5px solid rgba(5,77,102,.65);          /* 3.56:1 against the ground */
+  background:transparent; color:var(--navy);
+  display:flex; align-items:center; justify-content:center; transition:background .2s, border-color .2s;
+}
+.quotes__arrow svg{ width:16px; height:16px; }
+.quotes__arrow:hover{ background:var(--mint-soft); border-color:var(--navy); }
+.quotes__dots{ display:flex; align-items:center; gap:.45rem; }
+.quotes__dot{
+  width:8px; height:8px; padding:0; border:0; border-radius:50px; cursor:pointer;
+  background:rgba(5,77,102,.28); transition:width .25s var(--ease), background .25s;
+}
+.quotes__dot.is-on{ width:28px; background:var(--navy); }
 
 /* ---------- checklist ---------- */
 .checklist-section{ background:var(--mint-soft); }
@@ -506,7 +535,6 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
   transition:opacity .85s var(--ease), transform .85s var(--ease);
 }
 .benefit.reveal-item{ transform:translateX(-30px); }
-.testi-card.reveal-item{ transform:translateY(30px) scale(.96); }
 .reveal.is-in, .reveal-item.is-in{ opacity:1; transform:none; }
 @media (prefers-reduced-motion: reduce){
   .reveal, .reveal-item{ opacity:1; transform:none; transition:none; }

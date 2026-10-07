@@ -91,7 +91,7 @@
     onceInView(el, function () { revealWith(el, 0); });
   });
 
-  [['.pillar', 80], ['.benefit', 70], ['.testi-card', 100]].forEach(function (pair) {
+  [['.pillar', 80], ['.benefit', 70]].forEach(function (pair) {
     var items = document.querySelectorAll(pair[0]);
     items.forEach(function (card, i) {
       card.classList.add('reveal-item');
@@ -102,6 +102,60 @@
   document.querySelectorAll('.stat-card__num').forEach(function (el) {
     onceInView(el, function () { animateCount(el); });
   });
+
+  /* ---------- testimonial carousel ---------- */
+  (function () {
+    var root = document.querySelector('.quotes');
+    if (!root) return;
+    var viewport = root.querySelector('.quotes__viewport');
+    var slides = [].slice.call(root.querySelectorAll('.quote'));
+    var dots = [].slice.call(root.querySelectorAll('.quotes__dot'));
+    if (!viewport || slides.length < 2) return;
+    var at = 0, resizeTimer;
+
+    /* Reserve the tallest quote so moving between them does not shift the page
+       under the reader's cursor. */
+    function fit(){
+      viewport.style.minHeight = '';
+      var tallest = 0;
+      slides.forEach(function (s) {
+        var was = s.hidden;
+        s.hidden = false;
+        tallest = Math.max(tallest, s.offsetHeight);
+        s.hidden = was;
+      });
+      if (tallest) viewport.style.minHeight = tallest + 'px';
+    }
+
+    function show(n){
+      at = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.hidden = k !== at; });
+      dots.forEach(function (d, k) {
+        d.classList.toggle('is-on', k === at);
+        d.setAttribute('aria-current', k === at ? 'true' : 'false');
+      });
+    }
+
+    root.querySelectorAll('.quotes__arrow').forEach(function (b) {
+      b.addEventListener('click', function () { show(at + Number(b.dataset.dir)); });
+    });
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () { show(Number(d.dataset.go)); });
+    });
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { show(at - 1); }
+      else if (e.key === 'ArrowRight') { show(at + 1); }
+      else { return; }
+      e.preventDefault();
+    });
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(fit, 200);
+    });
+
+    fit();
+    show(0);
+  }());
 
   /* checklist ticks draw in one by one */
   var checklist = document.querySelector('.checklist');
