@@ -270,10 +270,11 @@ h1,h2,h3{ text-wrap:balance; }
 .stat-cards{ display:flex; flex-direction:column; gap:.9rem; margin-top:2rem; }
 .stat-card{
   border:1.5px solid var(--line); border-radius:var(--radius-sm); padding:1.1rem 1.4rem;
-  display:flex; align-items:center; justify-content:space-between; gap:1rem; position:relative;
+  display:grid; grid-template-columns:5.5rem 1fr; align-items:center; gap:1rem; position:relative;
 }
+@media (max-width:520px){ .stat-card{ grid-template-columns:1fr; gap:.25rem; } }
 .stat-card__num{ font-family:var(--display); font-weight:800; font-size:1.7rem; color:var(--ink); }
-.stat-card__label{ font-size:.86rem; color:var(--muted); text-align:right; }
+.stat-card__label{ font-size:.86rem; color:var(--muted); text-align:left; }
 
 @media (max-width:900px){
   .about__grid{ grid-template-columns:1fr; }
