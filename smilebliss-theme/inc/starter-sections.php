@@ -24,7 +24,7 @@ function smilebliss_starter_sections( callable $img ): array {
 			'lead'          => 'Starting an orthodontic practice is tough. There are lots of things to do. Pick a name. Find a location. Hire the right people. Create marketing. Get equipment. Then, make sure you\'re all set up with the insurance companies so that you get paid. It\'s a lot — and that\'s not even half of it. We have over 30 years of experience creating successful practices. So we took that knowledge and created a ready-to-go practice model with everything done for you.',
 			'primary_cta'   => array( 'title' => "Let's Do This", 'url' => '#contact', 'target' => '' ),
 			'secondary_cta' => array( 'title' => 'See How It Works', 'url' => '#support', 'target' => '' ),
-			'image'         => $img( 'hero-smile-1600.webp' ),
+			'image'         => $img( 'hero-practice-1600.webp' ),
 			'badge_value'   => '$5.1M',
 			'badge_label'   => 'Year 3 revenue, best-case scenario',
 			'rating_score'  => 4.92,

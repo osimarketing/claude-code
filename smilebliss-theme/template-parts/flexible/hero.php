@@ -84,7 +84,7 @@ $sb_grad_id = wp_unique_id( 'ratingFill-' );
 				array(
 					'class'         => 'hero__photo',
 					'sizes'         => '(max-width:980px) min(420px, 92vw), min(559px, 44vw)',
-					'fallback'      => 'hero-smile-840.webp',
+					'fallback'      => 'hero-practice-840.webp',
 					'loading'       => 'eager',
 					'fetchpriority' => 'high',
 				)
