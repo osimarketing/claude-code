@@ -168,7 +168,7 @@ function smilebliss_starter_sections( callable $img ): array {
 				array( 'question' => 'Do I have great clinical results?' ),
 				array( 'question' => 'Do I have a strong commitment to employee and customer satisfaction?' ),
 			),
-			'closing'       => 'If you answered YES to these questions, congrats! You just met the initial criteria for this incredible, proven model.',
+			'closing'       => 'CONGRATS! You just met the initial criteria for this incredible, proven model.',
 			'anchor'        => 'checklist-section',
 		),
 		array(
