@@ -71,8 +71,6 @@ $sb_total = count( $sb_quotes );
 
 		<?php if ( $sb_total ) : ?>
 			<div class="quotes reveal" aria-roledescription="carousel" aria-label="<?php esc_attr_e( 'Practice owner testimonials', 'smilebliss' ); ?>">
-				<span class="quotes__mark" aria-hidden="true">&ldquo;</span>
-
 				<div class="quotes__viewport" aria-live="polite">
 					<?php foreach ( $sb_quotes as $sb_i => $sb_q ) : ?>
 						<figure class="quote"<?php echo $sb_i ? ' hidden' : ''; ?>>

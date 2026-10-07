@@ -406,13 +406,6 @@ h1,h2,h3{ text-wrap:balance; }
 /* one quote at a time, manually advanced. No auto-rotation: it steals reading
    time from anyone slower than the timer, and there is no good interval. */
 .quotes{ position:relative; max-width:860px; margin:2.6rem auto 0; text-align:center; }
-.quotes__mark{
-  font-family:var(--display); font-weight:800; font-size:5.5rem; line-height:1;
-  color:rgba(255,125,92,.38); display:block; height:2.6rem; user-select:none;
-}
-@media (min-width:860px){
-  .quotes__mark{ position:absolute; left:0; top:-.4rem; height:auto; }
-}
 .quotes__viewport{ position:relative; }
 .quote{ animation:quoteIn .4s var(--ease) both; }
 @keyframes quoteIn{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
@@ -872,8 +865,6 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     </div>
 
     <div class="quotes reveal" aria-roledescription="carousel" aria-label="Practice owner testimonials">
-      <span class="quotes__mark" aria-hidden="true">&ldquo;</span>
-
       <div class="quotes__viewport" aria-live="polite">
         <figure class="quote">
           <blockquote class="quote__text">&ldquo;Smilebliss handed us a marketing engine and a billing team on day one. We hit our Year 1 start goal three months early.&rdquo;</blockquote>
