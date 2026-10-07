@@ -19,16 +19,6 @@ function smilebliss_option( string $name, mixed $default = '' ): mixed {
 }
 
 /**
- * The four-point sparkle used inside eyebrow pills and decorative corners.
- */
-function smilebliss_spark( string $class = 'spark' ): string {
-	return sprintf(
-		'<svg class="%s" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>',
-		esc_attr( $class )
-	);
-}
-
-/**
  * Eyebrow pill. Returns an empty string when there is no label, so callers can
  * echo it unconditionally.
  *
@@ -43,10 +33,9 @@ function smilebliss_eyebrow( string $text, string $modifier = '', bool $centered
 	}
 	$class = 'eyebrow' . ( $modifier ? ' eyebrow--' . $modifier : '' );
 	return sprintf(
-		'<span class="%s"%s>%s%s</span>',
+		'<span class="%s"%s>%s</span>',
 		esc_attr( $class ),
 		$centered ? ' style="margin-inline:auto;"' : '',
-		smilebliss_spark(),
 		esc_html( $text )
 	);
 }

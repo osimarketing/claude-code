@@ -69,7 +69,6 @@ h1,h2,h3{ text-wrap:balance; }
 }
 
 /* ---------- asterisk icon ---------- */
-.spark{ display:inline-block; width:1em; height:1em; flex:0 0 auto; }
 
 /* ---------- typography helpers ---------- */
 .eyebrow{
@@ -79,11 +78,8 @@ h1,h2,h3{ text-wrap:balance; }
   background:var(--gold-soft); padding:.5rem .95rem .5rem .7rem; border-radius:50px;
   margin-bottom:1.3rem;
 }
-.eyebrow .spark{ color:var(--gold); width:14px; height:14px; }
 .eyebrow--mint{ color:var(--on-bright); background:var(--sky-soft); }
-.eyebrow--mint .spark{ color:var(--teal); }
 .eyebrow--light{ color:var(--gold); background:rgba(247,243,239,.14); }
-.eyebrow--light .spark{ color:var(--gold); }
 
 .section-title{
   font-family:var(--display); font-weight:800; letter-spacing:-.02em;
@@ -102,7 +98,6 @@ h1,h2,h3{ text-wrap:balance; }
 .accent-dot,.accent-ring{ position:absolute; pointer-events:none; z-index:1; }
 .accent-dot{ width:12px; height:12px; border-radius:50%; }
 .accent-ring{ width:60px; height:60px; border-radius:50%; border:2px solid currentColor; opacity:.3; }
-.accent-spark{ position:absolute; pointer-events:none; z-index:1; }
 
 /* ---------- buttons ---------- */
 .btn{
@@ -193,6 +188,14 @@ h1,h2,h3{ text-wrap:balance; }
 .hero__title .accent{ color:var(--coral); }
 .hero__lead{ color:var(--muted); font-size:1.03rem; max-width:50ch; margin:1.5rem 0 2.1rem; }
 .hero__actions{ display:flex; flex-wrap:wrap; gap:1rem; }
+/* The stars repeat what the text already says, so they are aria-hidden and the
+   label carries the rating. */
+.hero__rating{ display:flex; align-items:center; gap:.65rem; margin-top:1.5rem; flex-wrap:wrap; }
+.rating__stars{ width:104px; height:20px; flex:0 0 auto; display:block; }
+.rating__stars .s-on{ stop-color:var(--gold); }
+.rating__stars .s-off{ stop-color:rgba(5,77,102,.22); }
+.rating__text{ font-size:.93rem; color:var(--muted); }
+.rating__text b{ color:var(--ink); font-weight:700; }
 
 .hero__visual{ position:relative; }
 .hero__photo{ width:100%; height:auto; display:block; }
@@ -215,6 +218,7 @@ h1,h2,h3{ text-wrap:balance; }
   .hero__visual{ order:2; width:100%; max-width:420px; margin:1.6rem auto 0; }
   .hero__lead{ order:3; margin:1.6rem 0 1.8rem; }
   .hero__actions{ order:4; }
+  .hero__rating{ order:5; }
   .hero__badge{ position:static; margin:1rem auto 0; width:max-content; max-width:100%; }
 }
 
@@ -270,7 +274,6 @@ h1,h2,h3{ text-wrap:balance; }
 }
 .stat-card__num{ font-family:var(--display); font-weight:800; font-size:1.7rem; color:var(--ink); }
 .stat-card__label{ font-size:.86rem; color:var(--muted); text-align:right; max-width:20ch; }
-.stat-card .spark{ position:absolute; top:.85rem; right:.85rem; width:15px; height:15px; color:var(--gold); }
 
 @media (max-width:900px){
   .about__grid{ grid-template-columns:1fr; }
@@ -380,7 +383,6 @@ h1,h2,h3{ text-wrap:balance; }
 .testimonials{ background:var(--white); }
 .testi__grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; margin-top:1rem; }
 .testi-card{ border:1.5px solid var(--line); border-radius:var(--radius-lg); padding:2rem 1.8rem; text-align:center; position:relative; }
-.testi-card .spark{ position:absolute; top:1.3rem; right:1.3rem; width:16px; height:16px; color:var(--gold); }
 .testi-avatar{
   width:80px; height:80px; margin:0 auto 1.2rem; border-radius:50% 50% 50% 6%; overflow:hidden;
   display:flex; align-items:center; justify-content:center; font-family:var(--display); font-weight:800;

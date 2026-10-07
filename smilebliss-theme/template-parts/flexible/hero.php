@@ -13,6 +13,9 @@ $sb_second  = smilebliss_link( get_sub_field( 'secondary_cta' ) );
 $sb_image   = get_sub_field( 'image' );
 $sb_badge_v = (string) get_sub_field( 'badge_value' );
 $sb_badge_l = (string) get_sub_field( 'badge_label' );
+$sb_score   = (float) get_sub_field( 'rating_score' );
+$sb_count   = (int) get_sub_field( 'rating_count' );
+$sb_grad_id = wp_unique_id( 'ratingFill-' );
 ?>
 <section class="hero" id="<?php echo esc_attr( smilebliss_section_id( 'top' ) ); ?>">
 	<div class="container hero__grid">
@@ -38,6 +41,37 @@ $sb_badge_l = (string) get_sub_field( 'badge_label' );
 					echo smilebliss_button( $sb_primary, 'btn btn--coral' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in helper.
 					echo smilebliss_button( $sb_second, 'btn btn--ghost-dark' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in helper.
 					?>
+				</div>
+			<?php endif; ?>
+
+			<?php if ( $sb_score > 0 && $sb_count > 0 ) : ?>
+				<?php
+				// One source of truth: the stars fill to the same score the label states,
+				// and the stars are aria-hidden because the label already says it.
+				$sb_pct = max( 0, min( 100, $sb_score / 5 * 100 ) );
+				?>
+				<div class="hero__rating">
+					<svg class="rating__stars" viewBox="0 0 104 20" aria-hidden="true" focusable="false">
+						<defs>
+							<linearGradient id="<?php echo esc_attr( $sb_grad_id ); ?>" x1="0" y1="0" x2="1" y2="0">
+								<stop class="s-on" offset="<?php echo esc_attr( (string) round( $sb_pct, 2 ) ); ?>%"/>
+								<stop class="s-off" offset="<?php echo esc_attr( (string) round( $sb_pct, 2 ) ); ?>%"/>
+							</linearGradient>
+							<path id="<?php echo esc_attr( $sb_grad_id ); ?>-star" d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.21l-4.94 2.6.94-5.5-4-3.9 5.53-.8z"/>
+						</defs>
+						<g fill="url(#<?php echo esc_attr( $sb_grad_id ); ?>)">
+							<?php foreach ( array( 0, 21, 42, 63, 84 ) as $sb_x ) : ?>
+								<use href="#<?php echo esc_attr( $sb_grad_id ); ?>-star" x="<?php echo esc_attr( (string) $sb_x ); ?>"/>
+							<?php endforeach; ?>
+						</g>
+					</svg>
+					<span class="rating__text">
+						<b><?php echo esc_html( number_format_i18n( $sb_score, 1 ) ); ?></b>
+						<?php
+						/* translators: %s: formatted review count. */
+						printf( esc_html__( 'stars from %s reviews', 'smilebliss' ), esc_html( number_format_i18n( $sb_count ) ) );
+						?>
+					</span>
 				</div>
 			<?php endif; ?>
 		</div>

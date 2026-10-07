@@ -27,6 +27,8 @@ function smilebliss_starter_sections( callable $img ): array {
 			'image'         => $img( 'hero-smile-1600.webp' ),
 			'badge_value'   => '$5.1M',
 			'badge_label'   => 'Year 3 revenue, best-case scenario',
+			'rating_score'  => 4.92,
+			'rating_count'  => 5658,
 			'anchor'        => 'top',
 		),
 		array(

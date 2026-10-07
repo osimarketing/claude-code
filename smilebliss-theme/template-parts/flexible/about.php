@@ -58,7 +58,6 @@ $sb_chip = (string) get_sub_field( 'chip_text' );
 						$sb_suffix = (string) get_sub_field( 'suffix' );
 						?>
 						<div class="stat-card reveal">
-							<?php echo smilebliss_spark(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup. ?>
 							<span
 								class="stat-card__num"
 								data-count="<?php echo esc_attr( $sb_value ); ?>"

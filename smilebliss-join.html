@@ -89,7 +89,6 @@ h1,h2,h3{ text-wrap:balance; }
 }
 
 /* ---------- asterisk icon ---------- */
-.spark{ display:inline-block; width:1em; height:1em; flex:0 0 auto; }
 
 /* ---------- typography helpers ---------- */
 .eyebrow{
@@ -99,11 +98,8 @@ h1,h2,h3{ text-wrap:balance; }
   background:var(--gold-soft); padding:.5rem .95rem .5rem .7rem; border-radius:50px;
   margin-bottom:1.3rem;
 }
-.eyebrow .spark{ color:var(--gold); width:14px; height:14px; }
 .eyebrow--mint{ color:var(--on-bright); background:var(--sky-soft); }
-.eyebrow--mint .spark{ color:var(--teal); }
 .eyebrow--light{ color:var(--gold); background:rgba(247,243,239,.14); }
-.eyebrow--light .spark{ color:var(--gold); }
 
 .section-title{
   font-family:var(--display); font-weight:800; letter-spacing:-.02em;
@@ -122,7 +118,6 @@ h1,h2,h3{ text-wrap:balance; }
 .accent-dot,.accent-ring{ position:absolute; pointer-events:none; z-index:1; }
 .accent-dot{ width:12px; height:12px; border-radius:50%; }
 .accent-ring{ width:60px; height:60px; border-radius:50%; border:2px solid currentColor; opacity:.3; }
-.accent-spark{ position:absolute; pointer-events:none; z-index:1; }
 
 /* ---------- buttons ---------- */
 .btn{
@@ -213,6 +208,14 @@ h1,h2,h3{ text-wrap:balance; }
 .hero__title .accent{ color:var(--coral); }
 .hero__lead{ color:var(--muted); font-size:1.03rem; max-width:50ch; margin:1.5rem 0 2.1rem; }
 .hero__actions{ display:flex; flex-wrap:wrap; gap:1rem; }
+/* The stars repeat what the text already says, so they are aria-hidden and the
+   label carries the rating. */
+.hero__rating{ display:flex; align-items:center; gap:.65rem; margin-top:1.5rem; flex-wrap:wrap; }
+.rating__stars{ width:104px; height:20px; flex:0 0 auto; display:block; }
+.rating__stars .s-on{ stop-color:var(--gold); }
+.rating__stars .s-off{ stop-color:rgba(5,77,102,.22); }
+.rating__text{ font-size:.93rem; color:var(--muted); }
+.rating__text b{ color:var(--ink); font-weight:700; }
 
 .hero__visual{ position:relative; }
 .hero__photo{ width:100%; height:auto; display:block; }
@@ -235,6 +238,7 @@ h1,h2,h3{ text-wrap:balance; }
   .hero__visual{ order:2; width:100%; max-width:420px; margin:1.6rem auto 0; }
   .hero__lead{ order:3; margin:1.6rem 0 1.8rem; }
   .hero__actions{ order:4; }
+  .hero__rating{ order:5; }
   .hero__badge{ position:static; margin:1rem auto 0; width:max-content; max-width:100%; }
 }
 
@@ -290,7 +294,6 @@ h1,h2,h3{ text-wrap:balance; }
 }
 .stat-card__num{ font-family:var(--display); font-weight:800; font-size:1.7rem; color:var(--ink); }
 .stat-card__label{ font-size:.86rem; color:var(--muted); text-align:right; max-width:20ch; }
-.stat-card .spark{ position:absolute; top:.85rem; right:.85rem; width:15px; height:15px; color:var(--gold); }
 
 @media (max-width:900px){
   .about__grid{ grid-template-columns:1fr; }
@@ -400,7 +403,6 @@ h1,h2,h3{ text-wrap:balance; }
 .testimonials{ background:var(--white); }
 .testi__grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; margin-top:1rem; }
 .testi-card{ border:1.5px solid var(--line); border-radius:var(--radius-lg); padding:2rem 1.8rem; text-align:center; position:relative; }
-.testi-card .spark{ position:absolute; top:1.3rem; right:1.3rem; width:16px; height:16px; color:var(--gold); }
 .testi-avatar{
   width:80px; height:80px; margin:0 auto 1.2rem; border-radius:50% 50% 50% 6%; overflow:hidden;
   display:flex; align-items:center; justify-content:center; font-family:var(--display); font-weight:800;
@@ -567,6 +569,24 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
         <a href="#contact" class="btn btn--coral">Let's Do This</a>
         <a href="#support" class="btn btn--ghost-dark">See How It Works</a>
       </div>
+
+      <div class="hero__rating">
+        <svg class="rating__stars" viewBox="0 0 104 20" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="ratingFill" x1="0" y1="0" x2="1" y2="0">
+              <!-- 4.92 of 5 = 98.4% of the row, so the fifth star is 92% filled -->
+              <stop class="s-on" offset="98.4%"/>
+              <stop class="s-off" offset="98.4%"/>
+            </linearGradient>
+            <path id="ratingStar" d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.21l-4.94 2.6.94-5.5-4-3.9 5.53-.8z"/>
+          </defs>
+          <g fill="url(#ratingFill)">
+            <use href="#ratingStar" x="0"/><use href="#ratingStar" x="21"/><use href="#ratingStar" x="42"/>
+            <use href="#ratingStar" x="63"/><use href="#ratingStar" x="84"/>
+          </g>
+        </svg>
+        <span class="rating__text"><b>4.9</b> stars from 5,658 reviews</span>
+      </div>
     </div>
     <div class="hero__visual">
       <img class="hero__photo"
@@ -628,22 +648,22 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
       </div>
     </div>
     <div class="about__copy">
-      <span class="eyebrow eyebrow--mint"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>About Smilebliss</span>
+      <span class="eyebrow eyebrow--mint">About Smilebliss</span>
       <h2 class="section-title reveal">As a Smilebliss client, <span class="muted">you're never in it alone.</span></h2>
       <p class="reveal">Here, we go out of our way to make your job &mdash; and that of your entire team &mdash; easier with support geared toward growing, successful practice needs. From marketing, training, and procurement to revenue cycle management, we handle the heavy lifting.</p>
       <div class="stat-cards">
         <div class="stat-card reveal">
-          <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+          
           <span class="stat-card__num" data-count="30" data-suffix="+">0+</span>
           <span class="stat-card__label">Years of experience building practices</span>
         </div>
         <div class="stat-card reveal">
-          <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+          
           <span class="stat-card__num" data-count="1" data-prefix="$" data-suffix="B+">$0B+</span>
           <span class="stat-card__label">Collected in revenue for clients</span>
         </div>
         <div class="stat-card reveal">
-          <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+          
           <span class="stat-card__num" data-count="50" data-suffix="+">0+</span>
           <span class="stat-card__label">Practice partners nationwide</span>
         </div>
@@ -656,7 +676,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
 <section class="section services" id="support">
   <div class="container">
     <div class="section-head center">
-      <span class="eyebrow" style="margin-inline:auto;"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>What We Handle</span>
+      <span class="eyebrow" style="margin-inline:auto;">What We Handle</span>
       <h2 class="section-title">Five Ways We Carry the Load</h2>
       <p class="section-intro" style="margin-inline:auto;">A proven support system built for growing practices &mdash; so you can focus on patients, not paperwork.</p>
     </div>
@@ -699,7 +719,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
 <section class="section" id="revenue">
   <div class="container">
     <div class="section-head center">
-      <span class="eyebrow" style="margin-inline:auto;"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>The Numbers</span>
+      <span class="eyebrow" style="margin-inline:auto;">The Numbers</span>
       <h2 class="section-title">License Model <span class="muted">Proforma.</span></h2>
       <p class="section-intro" style="margin-inline:auto;">Start-Up Practice</p>
     </div>
@@ -748,7 +768,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
   <div class="container benefits__grid">
     <div class="benefits__copy">
     <div class="section-head">
-      <span class="eyebrow"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>Why Smilebliss</span>
+      <span class="eyebrow">Why Smilebliss</span>
       <h2 class="section-title">Our Benefits Will Make You Smile as Much as Your Patients.</h2>
     </div>
     <div class="benefits__list">
@@ -779,7 +799,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
 <section class="section" id="paths" style="background:var(--mint-soft);">
   <div class="container">
     <div class="section-head center">
-      <span class="eyebrow" style="margin-inline:auto;"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>Two Ways In</span>
+      <span class="eyebrow" style="margin-inline:auto;">Two Ways In</span>
       <h2 class="section-title">Whichever Path You Choose, We've Built the Road.</h2>
     </div>
     <div class="paths__grid">
@@ -801,13 +821,13 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
 <section class="section testimonials" id="testimonials">
   <div class="container">
     <div class="section-head center">
-      <span class="eyebrow" style="margin-inline:auto;"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>Practice Owners</span>
+      <span class="eyebrow" style="margin-inline:auto;">Practice Owners</span>
       <h2 class="section-title">Hear From Our Practice Owners.</h2>
       <p class="section-intro" style="margin-inline:auto;">Sample profiles &mdash; swap in your own client stories and headshots.</p>
     </div>
     <div class="testi__grid">
       <div class="testi-card reveal">
-        <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+        
         <div class="testi-avatar" style="background:#054d66;">AR</div>
         <p class="testi-quote">"Smilebliss handed us a marketing engine and a billing team on day one. We hit our Year 1 start goal three months early."</p>
         <div class="testi-name">Dr. Alicia Reyes</div>
@@ -815,7 +835,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
         <span class="testi-tag">Sample Content</span>
       </div>
       <div class="testi-card reveal">
-        <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+        
         <div class="testi-avatar" style="background:#054d66;">MK</div>
         <p class="testi-quote">"Converting to Smilebliss felt like exhaling. Procurement alone saved us more than the licensing fee in the first year."</p>
         <div class="testi-name">Dr. Marcus Kim</div>
@@ -823,7 +843,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
         <span class="testi-tag">Sample Content</span>
       </div>
       <div class="testi-card reveal">
-        <svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>
+        
         <div class="testi-avatar" style="background:#054d66;">JT</div>
         <p class="testi-quote">"The peer network is the real unlock. I've never once felt like I was figuring this out on my own."</p>
         <div class="testi-name">Dr. Jasmine Torres</div>
@@ -859,7 +879,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
 <section class="section cta-band" id="contact">
   <div class="container cta-grid">
     <div class="cta-copy reveal">
-      <span class="eyebrow eyebrow--light"><svg class="spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 8.4L23 11l-8.4 2.6L12 22l-2.6-8.4L1 11l8.4-2.6z"/></svg>Ready When You Are</span>
+      <span class="eyebrow eyebrow--light">Ready When You Are</span>
       <h2 class="section-title section-title--light">Find Success by Following Your Bliss.</h2>
       <p class="section-intro section-intro--light">Tell us a little about you and your practice goals. A member of our team will follow up to walk through next steps.</p>
       <ul class="cta-trust">

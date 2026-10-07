@@ -28,7 +28,6 @@ $sb_intro = (string) get_sub_field( 'intro' );
 					$sb_sample = (bool) get_sub_field( 'is_sample' );
 					?>
 					<div class="testi-card reveal">
-						<?php echo smilebliss_spark(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static markup. ?>
 						<div class="testi-avatar" style="background:#054d66;"><?php echo esc_html( (string) get_sub_field( 'initials' ) ); ?></div>
 						<p class="testi-quote">&ldquo;<?php echo esc_html( (string) get_sub_field( 'quote' ) ); ?>&rdquo;</p>
 						<p class="testi-name"><?php echo esc_html( (string) get_sub_field( 'name' ) ); ?></p>
