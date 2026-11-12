@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<!--
+  ORTHODONTIC LANDING PAGE TEMPLATE
+  OrthoSynetics / OSI Marketing
+  ─────────────────────────────────
+  WORDPRESS IMPLEMENTATION NOTES:
+
+  COLORS
+  Update the 6 CSS variables in :root (search "CLIENT BRANDING" below).
+  In WordPress: paste into Elementor > Site Settings > Global Colors,
+  or Appearance > Customize > Additional CSS.
+
+  FONTS
+  Fraunces + Space Mono via Google Fonts.
+  In WordPress: add to Elementor > Site Settings > Global Fonts,
+  or enqueue in functions.php.
+
+  GSAP ANIMATIONS
+  Load via: https://cdnjs.cloudflare.com/ajax/libs/gsap/
+  In WordPress: enqueue in functions.php using wp_enqueue_script(),
+  set $in_footer = true.
+  Do NOT use Elementor's built-in animation system alongside GSAP —
+  disable Elementor motion effects on all animated elements to
+  avoid conflicts.
+
+  ICONS
+  Tabler Icons CDN loaded in <head>.
+  In WordPress: enqueue the same CDN link via wp_enqueue_style()
+  in functions.php.
+
+  SECTIONS
+  Each <section> maps directly to an Elementor Section.
+  Each column within maps to an Elementor Column.
+  <!-- CLIENT: --> comments mark every editable value.
+
+  STICKY MOBILE BAR
+  Implemented as position: fixed in CSS.
+  In WordPress: use an Elementor section with Sticky > Stick to
+  Bottom enabled, visible on mobile breakpoint only.
+
+  IMAGE PLACEHOLDERS
+  All <img> tags have placeholder src values.
+  Replace with WordPress Media Library URLs or Elementor dynamic
+  image widgets.
+
+  CONTENT EDITING
+  All copy is in static HTML — fully editable in Elementor text
+  widgets or the WP block editor. No content is JS-generated.
+-->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meridian Orthodontics — Straighter Smiles, Simpler Journey</title>
+  <meta name="description" content="Meridian Orthodontics offers braces, Invisalign, and early orthodontic care for the whole family. Schedule your free consultation today." />
+  <meta name="theme-color" content="#054d66" />
+  <!-- Placeholder favicon. In WordPress this is superseded by
+       Appearance > Customize > Site Identity > Site Icon. -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%23054d66'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23f7f3ef' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Fraunces (headlines) + Space Mono (body/mono elements).
+       In WordPress: enqueue via functions.php wp_enqueue_style(), or
+       add these same families in Elementor > Site Settings > Global Fonts. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Tabler Icons (outline set). In WordPress: enqueue this same
+       CDN link via wp_enqueue_style() in functions.php. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/dist/tabler-icons.min.css" />
+
+  <style>
+    /* ==========================================================
+       CLIENT BRANDING — swap these 6 values to reskin for any client.
+       In WordPress, add these to Appearance > Customize >
+       Additional CSS, or to the Elementor Global Colors panel.
+       ========================================================== */
+    :root {
+      --color-primary:    #054d66;
+      --color-accent:     #ff7d5c;
+      --color-aqua:       #1aada7;
+      --color-gold:       #ffca5e;
+      --color-sky:        #72cfd4;
+      --color-warm-white: #f7f3ef;
+
+      /* Derived surfaces — composited from the 6 brand vars only,
+         via color-mix(), so nothing below is a hardcoded hex value. */
+      --surface-sky-15: color-mix(in srgb, var(--color-sky) 15%, transparent);
+      --surface-sky-20: color-mix(in srgb, var(--color-sky) 20%, transparent);
+      --surface-white-92: color-mix(in srgb, var(--color-warm-white) 92%, white);
+      --border-primary-15: color-mix(in srgb, var(--color-primary) 15%, transparent);
+      --border-primary-25: color-mix(in srgb, var(--color-primary) 25%, transparent);
+      --text-on-primary-70: color-mix(in srgb, var(--color-warm-white) 70%, transparent);
+      --primary-dark-10: color-mix(in srgb, var(--color-primary) 90%, black);
+
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Space Mono', 'Courier New', monospace;
+
+      --radius-pill: 50px;
+      --radius-card: 12px;
+      --max-width: 1280px;
+    }
+
+    /* ==========================================================
+       RESET
+       ========================================================== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--color-warm-white);
+      color: var(--color-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul, dl, dd { margin: 0; padding: 0; list-style: none; }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 900; margin: 0; line-height: 1.1; }
+    p { margin: 0; }
+    button { font-family: inherit; cursor: pointer; }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0; padding: 0; margin: -1px;
+    }
+
+    /* ==========================================================
+       PROGRESSIVE ENHANCEMENT — no-js / GSAP hook
+       html.no-js is present by default and everything below is
+       fully visible at all times via base CSS — no rule anywhere
+       hides an element by default. The only thing allowed to set
+       opacity:0 on a .gsap-fade element is GSAP itself (gsap.set),
+       and only from inside the branch that has already confirmed
+       GSAP + ScrollTrigger loaded successfully. That way a failed
+       CDN load, ad blocker, or JS error can never leave content
+       stuck invisible — there's no CSS state for it to get stuck in.
+       ========================================================== */
+    .gsap-fade { opacity: 1; transform: none; }
+
+    /* ==========================================================
+       BUTTONS
+       ========================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 14px 32px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1;
+      border: 1.5px solid transparent;
+      white-space: nowrap;
+    }
+    .btn--primary {
+      background: var(--color-accent);
+      color: var(--color-warm-white);
+    }
+    .btn--secondary {
+      background: transparent;
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .btn--on-dark.btn--secondary {
+      border-color: var(--color-warm-white);
+      color: var(--color-warm-white);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: var(--radius-pill);
+      background: var(--surface-sky-15);
+      color: var(--color-primary);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section { padding: 96px 0; }
+    .section-head { max-width: 640px; margin: 0 auto 56px; text-align: center; }
+    .section-head h2 { font-size: clamp(2rem, 4vw, 2.75rem); margin-top: 16px; }
+    .section-head p { margin-top: 16px; font-size: 1.05rem; }
+
+    /* decorative gold/aqua glyphs */
+    .glyph { position: absolute; pointer-events: none; }
+
+    /* ==========================================================
+       NAV
+       ========================================================== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      background: transparent;
+      transition: background-color .3s ease;
+    }
+    html.no-js .nav { background: var(--color-primary); }
+    .nav__bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+    }
+    .nav__brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: var(--color-warm-white);
+      white-space: nowrap;
+    }
+    .nav__logo { width: 40px; height: 40px; border-radius: 50%; }
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .nav__links a { color: var(--color-warm-white); padding: 6px 2px; white-space: nowrap; }
+    .nav__links a:hover { color: var(--color-gold); }
+    .nav__cta.btn--primary { font-size: 14px; padding: 10px 22px; }
+    .nav__toggle-input { display: none; }
+    .nav__toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      color: var(--color-warm-white);
+      font-size: 22px;
+    }
+
+    @media (max-width: 1024px) {
+      .nav__brand span { font-size: 1.05rem; }
+      .nav__bar { padding-left: 16px; padding-right: 16px; }
+    }
+
+    @media (max-width: 767px) {
+      .nav__links { display: none; }
+      .nav__toggle { display: inline-flex; }
+      .nav__toggle-input:checked ~ .nav__bar .nav__links {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--color-primary);
+        padding: 16px 24px 24px;
+      }
+      .nav__toggle-input:checked ~ .nav__bar .nav__links a { padding: 12px 0; width: 100%; min-height: 44px; }
+      .nav { position: relative; }
+      .nav__toggle-input:checked ~ .nav__bar { position: relative; }
+      /* No no-js override needed here: the checkbox + label pattern
+         above is pure CSS and works identically whether or not JS
+         (or GSAP) ever loads. */
+    }
+
+    /* ==========================================================
+       HERO
+       ========================================================== */
+    .hero {
+      position: relative;
+      background: var(--color-primary);
+      padding: 64px 0 96px;
+      overflow: hidden;
+    }
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .hero__eyebrow { background: var(--surface-white-92); }
+    .hero__headline {
+      color: var(--color-warm-white);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-top: 20px;
+    }
+    .hero__headline .word { display: inline-block; }
+    .hero__subhead {
+      color: var(--text-on-primary-70);
+      font-size: 1.1rem;
+      margin-top: 20px;
+      max-width: 480px;
+    }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 32px; }
+    .hero__trust {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 28px;
+      color: var(--color-warm-white);
+      font-size: 14px;
+    }
+    .hero__trust .stars { color: var(--color-gold); letter-spacing: 2px; }
+
+    .hero__sidebar { display: flex; flex-direction: column; gap: 16px; }
+    .hero__card {
+      background: var(--color-warm-white);
+      border-radius: var(--radius-card);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .hero__card i { font-size: 28px; color: var(--color-aqua); }
+    .hero__card--rating .stars { color: var(--color-gold); font-size: 18px; letter-spacing: 2px; }
+    .hero__card strong { display: block; font-family: var(--font-display); font-size: 1.1rem; }
+    .hero__card small { color: var(--border-primary-25); font-size: 12px; }
+    .hero__card--phone a { font-family: var(--font-display); font-size: 1.35rem; font-weight: 900; color: var(--color-primary); }
+    .hero__card--hours strong { font-size: 1rem; }
+
+    @media (max-width: 900px) {
+      .hero__grid { grid-template-columns: 1fr; }
+      .hero__headline { font-size: clamp(2rem, 8vw, 2.75rem); }
+    }
+
+    /* ==========================================================
+       SOCIAL PROOF BAR
+       ========================================================== */
+    .proof-bar {
+      background: var(--color-warm-white);
+      border-top: 1px solid var(--border-primary-15);
+      border-bottom: 1px solid var(--border-primary-15);
+      padding: 24px 0;
+    }
+    .proof-bar__row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .proof-bar__item { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; }
+    .proof-bar__item i { color: var(--color-accent); font-size: 20px; }
+
+    /* ==========================================================
+       ABOUT
+       ========================================================== */
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about h2 { margin-top: 16px; font-size: clamp(2rem, 4vw, 2.75rem); }
+    .about p.about__intro { margin-top: 20px; font-size: 1.05rem; }
+    .about__checklist { margin-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+    .about__checklist li { display: flex; align-items: center; gap: 12px; font-weight: 700; }
+    .about__checklist i { color: var(--color-aqua); font-size: 22px; flex-shrink: 0; }
+    .about__media { position: relative; }
+    .about__media img { border-radius: var(--radius-card); width: 100%; }
+    .about__stat-card {
+      position: absolute;
+      bottom: -28px;
+      left: -28px;
+      background: var(--color-primary);
+      color: var(--color-warm-white);
+      border-radius: var(--radius-card);
+      padding: 20px 24px;
+      max-width: 220px;
+    }
+    .about__stat-card strong { display: block; font-family: var(--font-display); font-size: 2rem; color: var(--color-gold); }
+    .about__stat-card span { font-size: 13px; }
+
+    @media (max-width: 900px) {
+      .about__grid { grid-template-columns: 1fr; }
+      .about__media { margin-top: 24px; }
+      .about__stat-card { left: 16px; bottom: -20px; }
+    }
+
+    /* ==========================================================
+       SERVICES
+       ========================================================== */
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--surface-sky-15);
+      border-radius: var(--radius-card);
+      padding: 32px 24px;
+    }
+    .service-card__icon {
+      width: 56px; height: 56px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      background: var(--color-warm-white);
+      margin-bottom: 20px;
+    }
+    .service-card__icon i { font-size: 26px; color: var(--color-aqua); }
+    .service-card__title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 900; }
+    .service-card__desc { margin-top: 10px; font-size: 14px; }
+    .service-card__link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 18px; font-weight: 700; font-size: 14px; color: var(--color-accent);
+      min-height: 44px; align-items: center;
+    }
+
+    @media (max-width: 900px) { .services__grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .services__grid { grid-template-columns: 1fr; } }
+
+    /* ==========================================================
+       TEAM
+       ========================================================== */
+    .team__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 72px;
+    }
+    .team-card { text-align: center; }
+    .team-card__photo { border-radius: var(--radius-card); width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+    .team-card__name { margin-top: 18px; font-family: var(--font-display); font-size: 1.15rem; font-weight: 900; }
+    .team-card__credentials { margin-top: 4px; font-size: 13px; color: var(--border-primary-25); }
+    .team-card__socials { display: flex; justify-content: center; gap: 12px; margin-top: 12px; }
+    .team-card__socials a {
+      width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; background: var(--surface-sky-15); color: var(--color-primary);
+    }
+
+    @media (max-width: 900px) { .team__grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .team__grid { grid-template-columns: 1fr; } }
+
+    .stats-strip {
+      background: var(--color-primary);
+      border-radius: var(--radius-card);
+      padding: 48px 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .stats-strip__value {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      color: var(--color-gold);
+    }
+    .stats-strip__label { color: var(--color-warm-white); font-size: 13px; margin-top: 8px; }
+
+    @media (max-width: 700px) { .stats-strip { grid-template-columns: 1fr 1fr; } }
+
+    /* ==========================================================
+       FAQ
+       ========================================================== */
+    .faq__list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 4px; }
+    .faq__item { border-bottom: 1px solid var(--border-primary-15); }
+    .faq__question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 4px;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.05rem;
+      min-height: 44px;
+    }
+    .faq__question i { color: var(--color-accent); font-size: 20px; flex-shrink: 0; transition: transform .3s ease; }
+    .faq__item.is-open .faq__question i { transform: rotate(180deg); }
+    .faq__answer { padding: 0 4px 22px; font-size: 15px; }
+    /* Base state: fully visible, no JS required. JS adds inline
+       height styles for the accordion interaction only once GSAP
+       has successfully initialized. */
+
+    /* ==========================================================
+       TESTIMONIALS
+       ========================================================== */
+    .testimonials { overflow: hidden; }
+    .testimonial-track {
+      display: flex;
+      gap: 24px;
+      width: max-content;
+      animation: marquee 40s linear infinite;
+    }
+    .testimonial-track.gsap-active { animation: none; }
+    .testimonials:hover .testimonial-track:not(.gsap-active) { animation-play-state: paused; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .testimonial-card {
+      flex: 0 0 340px;
+      background: var(--surface-sky-15);
+      border-radius: var(--radius-card);
+      padding: 28px;
+    }
+    .testimonial-card__stars { color: var(--color-gold); letter-spacing: 2px; font-size: 16px; }
+    .testimonial-card__quote { margin-top: 14px; font-size: 15px; line-height: 1.7; }
+    .testimonial-card__name { margin-top: 18px; font-weight: 700; font-family: var(--font-display); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .testimonial-track { animation: none; }
+    }
+
+    /* ==========================================================
+       FINAL CTA
+       ========================================================== */
+    .final-cta {
+      position: relative;
+      background: var(--color-primary);
+      padding: 96px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+    .final-cta__headline { color: var(--color-warm-white); font-size: clamp(2rem, 5vw, 3rem); }
+    .final-cta__sub { color: var(--text-on-primary-70); margin-top: 16px; font-size: 1.1rem; }
+    .final-cta .btn--primary { margin-top: 32px; }
+    .final-cta__glyph { position: absolute; width: 64px; height: 64px; opacity: .9; }
+    .final-cta__glyph--tl { top: 24px; left: 5%; color: var(--color-gold); }
+    .final-cta__glyph--br { bottom: 24px; right: 5%; color: var(--color-aqua); }
+    .final-cta__glyph--tr { top: 40px; right: 12%; width: 36px; height: 36px; color: var(--color-aqua); }
+    .final-cta__glyph--bl { bottom: 40px; left: 12%; width: 36px; height: 36px; color: var(--color-gold); }
+
+    /* ==========================================================
+       FOOTER
+       ========================================================== */
+    .footer { background: var(--primary-dark-10); color: var(--color-warm-white); padding: 72px 0 24px; }
+    .footer__grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; }
+    .footer__brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 1.25rem; font-weight: 900; }
+    .footer__logo { width: 36px; height: 36px; border-radius: 50%; }
+    .footer__tagline { margin-top: 14px; font-size: 14px; color: var(--text-on-primary-70); max-width: 280px; }
+    .footer__socials { display: flex; gap: 12px; margin-top: 20px; }
+    .footer__socials a {
+      width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; border: 1.5px solid var(--text-on-primary-70);
+    }
+    .footer h3 { font-family: var(--font-body); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--color-gold); }
+    .footer__services { margin-top: 20px; display: flex; flex-direction: column; gap: 12px; font-size: 14px; }
+    .footer__contact { margin-top: 20px; display: flex; flex-direction: column; gap: 12px; font-size: 14px; }
+    .footer__contact a, .footer__contact address { font-style: normal; }
+    .footer__bottom {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--text-on-primary-70);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-on-primary-70);
+    }
+    .footer__bottom a { margin-left: 16px; }
+
+    @media (max-width: 900px) { .footer__grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ==========================================================
+       MOBILE STICKY BAR
+       In WordPress: implement as an Elementor section with
+       Sticky > Stick to Bottom enabled, visible on the mobile
+       breakpoint only, in place of this fixed-position bar.
+       ========================================================== */
+    .mobile-sticky-bar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 200;
+      background: var(--color-primary);
+      padding: 10px 16px;
+      gap: 12px;
+    }
+    .mobile-sticky-bar__btn {
+      flex: 1;
+      min-height: 44px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      border-radius: var(--radius-pill);
+      font-weight: 700; font-size: 14px;
+    }
+    .mobile-sticky-bar__btn--call { background: transparent; border: 1.5px solid var(--color-warm-white); color: var(--color-warm-white); }
+    .mobile-sticky-bar__btn--book { background: var(--color-accent); color: var(--color-warm-white); }
+
+    @media (max-width: 768px) {
+      .mobile-sticky-bar { display: flex; }
+      body { padding-bottom: 72px; }
+      .section { padding: 64px 0; }
+    }
+
+    /* generic section reveal targets used by JS */
+    .reveal { }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+       <!-- CLIENT: logo, nav links, CTA label, CTA URL -->
+       ============================================================ -->
+  <header class="nav" id="siteNav">
+    <input type="checkbox" id="navToggleInput" class="nav__toggle-input" />
+    <div class="nav__bar container">
+      <!-- CLIENT: Replace with practice logo -->
+      <a href="#top" class="nav__brand">
+        <img class="nav__logo" src="https://placehold.co/80x80/f7f3ef/054d66?text=M" alt="Meridian Orthodontics logo" width="40" height="40" />
+        <!-- CLIENT: Practice name -->
+        <span>Meridian Orthodontics</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#team">Team</a>
+        <a href="#faq">FAQ</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#schedule" class="btn btn--primary nav__cta">Book a Consult</a>
+      </nav>
+      <label for="navToggleInput" class="nav__toggle" aria-label="Open menu">
+        <i class="ti ti-menu-2" aria-hidden="true"></i>
+      </label>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============================================================
+         HERO
+         <!-- CLIENT: tagline, subhead, phone, hours, rating, review count, hero image -->
+         ============================================================ -->
+    <section class="hero" aria-label="Introduction">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <span class="eyebrow hero__eyebrow">Orthodontics</span>
+          <!-- CLIENT: Tagline -->
+          <h1 class="hero__headline gsap-fade" data-gsap-headline data-gsap="pending">
+            <span class="word">Straighter</span> <span class="word">Smiles,</span>
+            <span class="word">Simpler</span> <span class="word">Journey.</span>
+          </h1>
+          <p class="hero__subhead">
+            Braces, Invisalign, and early orthodontic care for kids, teens, and
+            adults — delivered with a friendly team and flexible scheduling
+            that fits real life.
+          </p>
+          <div class="hero__actions">
+            <a href="#schedule" class="btn btn--primary">Book a Free Consult</a>
+            <a href="#services" class="btn btn--secondary btn--on-dark">Explore Treatments</a>
+          </div>
+          <div class="hero__trust">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <!-- CLIENT: rating, review count -->
+            <span>4.9 out of 5 · 380+ Google reviews</span>
+          </div>
+        </div>
+
+        <div class="hero__sidebar">
+          <div class="hero__card hero__card--rating">
+            <i class="ti ti-brand-google" aria-hidden="true"></i>
+            <div>
+              <span class="stars" aria-hidden="true">★★★★★</span>
+              <!-- CLIENT: rating, review count -->
+              <strong>4.9 / 5.0</strong>
+              <small>Based on 380+ Google reviews</small>
+            </div>
+          </div>
+          <div class="hero__card hero__card--phone">
+            <i class="ti ti-phone" aria-hidden="true"></i>
+            <div>
+              <small>Call our office</small>
+              <!-- CLIENT: Primary phone number -->
+              <a href="tel:+15551234567">(555) 123-4567</a>
+            </div>
+          </div>
+          <div class="hero__card hero__card--hours">
+            <i class="ti ti-clock" aria-hidden="true"></i>
+            <div>
+              <small>Office hours</small>
+              <!-- CLIENT: hours -->
+              <strong>Mon–Thu 8am–5pm · Fri 8am–1pm</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SOCIAL PROOF BAR
+         <!-- CLIENT: provider badges relevant to practice -->
+         ============================================================ -->
+    <section class="proof-bar" aria-label="Credentials">
+      <div class="container proof-bar__row">
+        <span class="proof-bar__item"><i class="ti ti-award" aria-hidden="true"></i> Invisalign Premier Provider</span>
+        <span class="proof-bar__item"><i class="ti ti-certificate" aria-hidden="true"></i> AAO Member</span>
+        <span class="proof-bar__item"><i class="ti ti-star-filled" aria-hidden="true"></i> 5★ Google Rating</span>
+        <span class="proof-bar__item"><i class="ti ti-shield-check" aria-hidden="true"></i> BBB Accredited</span>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT
+         <!-- CLIENT: practice name, intro copy, checklist items, image, stat -->
+         ============================================================ -->
+    <section class="section about" id="about">
+      <div class="container about__grid">
+        <div class="about__content gsap-fade reveal" data-gsap="pending">
+          <span class="eyebrow">About Our Practice</span>
+          <!-- CLIENT: Practice name -->
+          <h2>Care built around your family, not just your teeth.</h2>
+          <p class="about__intro">
+            For over 15 years, Meridian Orthodontics has helped families throughout
+            the area achieve confident smiles. Our doctors combine modern
+            technology with a genuinely warm, unhurried approach to every visit.
+          </p>
+          <ul class="about__checklist">
+            <li><i class="ti ti-circle-check" aria-hidden="true"></i> Free consultations for new patients</li>
+            <li><i class="ti ti-circle-check" aria-hidden="true"></i> In-house financing &amp; flexible payment plans</li>
+            <li><i class="ti ti-circle-check" aria-hidden="true"></i> Same-week emergency appointments</li>
+            <li><i class="ti ti-circle-check" aria-hidden="true"></i> Board-certified orthodontists on every case</li>
+          </ul>
+        </div>
+        <div class="about__media gsap-fade reveal" data-gsap="pending">
+          <!-- CLIENT: Hero background image / About image -->
+          <img src="https://placehold.co/700x800/72cfd4/054d66?text=Practice+Photo" alt="Meridian Orthodontics treatment room" loading="lazy" width="700" height="800" />
+          <div class="about__stat-card">
+            <!-- CLIENT: stat -->
+            <strong>12,000+</strong>
+            <span>Smiles transformed since 2009</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SERVICES
+         <!-- CLIENT: service names, descriptions, icons, link URLs -->
+         ============================================================ -->
+    <section class="section services" id="services">
+      <div class="section-head">
+        <span class="eyebrow">What We Offer</span>
+        <h2>Treatment options for every smile</h2>
+        <p>From first checkups to final retainers, we tailor every plan to the patient in front of us.</p>
+      </div>
+      <div class="container services__grid">
+        <article class="service-card gsap-fade reveal" data-gsap="pending">
+          <div class="service-card__icon"><i class="ti ti-tooth" aria-hidden="true"></i></div>
+          <h3 class="service-card__title">Traditional Braces</h3>
+          <p class="service-card__desc">Reliable, affordable, and more comfortable than ever with low-profile brackets.</p>
+          <a href="#schedule" class="service-card__link">Learn more <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        </article>
+        <article class="service-card gsap-fade reveal" data-gsap="pending">
+          <div class="service-card__icon"><i class="ti ti-sparkles" aria-hidden="true"></i></div>
+          <h3 class="service-card__title">Invisalign &amp; Clear Aligners</h3>
+          <p class="service-card__desc">Straighten discreetly with custom, removable aligners built around your life.</p>
+          <a href="#schedule" class="service-card__link">Learn more <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        </article>
+        <article class="service-card gsap-fade reveal" data-gsap="pending">
+          <div class="service-card__icon"><i class="ti ti-users" aria-hidden="true"></i></div>
+          <h3 class="service-card__title">Early &amp; Interceptive Care</h3>
+          <p class="service-card__desc">Age-appropriate guidance for kids to head off bigger issues down the road.</p>
+          <a href="#schedule" class="service-card__link">Learn more <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        </article>
+        <article class="service-card gsap-fade reveal" data-gsap="pending">
+          <div class="service-card__icon"><i class="ti ti-refresh" aria-hidden="true"></i></div>
+          <h3 class="service-card__title">Retainers &amp; Post-Treatment</h3>
+          <p class="service-card__desc">Protect your results long-term with custom retainers and follow-up care.</p>
+          <a href="#schedule" class="service-card__link">Learn more <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TEAM
+         <!-- CLIENT: doctor names, credentials, photos, stat values and labels -->
+         ============================================================ -->
+    <section class="section team" id="team">
+      <div class="section-head">
+        <span class="eyebrow">Meet the Team</span>
+        <h2>Doctors patients actually trust</h2>
+        <p>Two board-certified orthodontists, one shared philosophy: honest treatment plans and real relationships.</p>
+      </div>
+      <div class="container">
+        <div class="team__grid">
+          <article class="team-card gsap-fade reveal" data-gsap="pending">
+            <!-- CLIENT: doctor photo -->
+            <img class="team-card__photo" src="https://placehold.co/450x600/1aada7/f7f3ef?text=Dr.+Reyes" alt="Dr. Ashley Reyes" loading="lazy" width="450" height="600" />
+            <!-- CLIENT: Doctor name + credentials -->
+            <h3 class="team-card__name">Dr. Ashley Reyes</h3>
+            <p class="team-card__credentials">DDS, MS · Lead Orthodontist</p>
+            <div class="team-card__socials">
+              <a href="#" aria-label="Dr. Reyes on Instagram"><i class="ti ti-brand-instagram" aria-hidden="true"></i></a>
+              <a href="#" aria-label="Dr. Reyes on LinkedIn"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></a>
+            </div>
+          </article>
+          <article class="team-card gsap-fade reveal" data-gsap="pending">
+            <img class="team-card__photo" src="https://placehold.co/450x600/72cfd4/054d66?text=Dr.+Chen" alt="Dr. Marcus Chen" loading="lazy" width="450" height="600" />
+            <h3 class="team-card__name">Dr. Marcus Chen</h3>
+            <p class="team-card__credentials">DMD · Orthodontist</p>
+            <div class="team-card__socials">
+              <a href="#" aria-label="Dr. Chen on Instagram"><i class="ti ti-brand-instagram" aria-hidden="true"></i></a>
+              <a href="#" aria-label="Dr. Chen on LinkedIn"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></a>
+            </div>
+          </article>
+          <article class="team-card gsap-fade reveal" data-gsap="pending">
+            <img class="team-card__photo" src="https://placehold.co/450x600/ffca5e/054d66?text=Team" alt="Meridian Orthodontics treatment coordinator" loading="lazy" width="450" height="600" />
+            <h3 class="team-card__name">Priya Nandan</h3>
+            <p class="team-card__credentials">Treatment Coordinator</p>
+            <div class="team-card__socials">
+              <a href="#" aria-label="Priya on Instagram"><i class="ti ti-brand-instagram" aria-hidden="true"></i></a>
+              <a href="#" aria-label="Priya on LinkedIn"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></a>
+            </div>
+          </article>
+          <article class="team-card gsap-fade reveal" data-gsap="pending">
+            <img class="team-card__photo" src="https://placehold.co/450x600/ff7d5c/f7f3ef?text=Team" alt="Meridian Orthodontics clinical assistant" loading="lazy" width="450" height="600" />
+            <h3 class="team-card__name">Jordan Blake</h3>
+            <p class="team-card__credentials">Lead Clinical Assistant</p>
+            <div class="team-card__socials">
+              <a href="#" aria-label="Jordan on Instagram"><i class="ti ti-brand-instagram" aria-hidden="true"></i></a>
+              <a href="#" aria-label="Jordan on LinkedIn"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></a>
+            </div>
+          </article>
+        </div>
+
+        <!-- <!-- CLIENT: stat values and labels --> -->
+        <div class="stats-strip" id="statsStrip">
+          <div class="stats-strip__item">
+            <div class="stats-strip__value" data-count-to="12000" data-suffix="+">0</div>
+            <div class="stats-strip__label">Smiles Treated</div>
+          </div>
+          <div class="stats-strip__item">
+            <div class="stats-strip__value" data-count-to="15" data-suffix="+">0</div>
+            <div class="stats-strip__label">Years in Practice</div>
+          </div>
+          <div class="stats-strip__item">
+            <div class="stats-strip__value" data-count-to="98" data-suffix="%">0</div>
+            <div class="stats-strip__label">Patient Satisfaction</div>
+          </div>
+          <div class="stats-strip__item">
+            <div class="stats-strip__value" data-count-to="2" data-suffix="">0</div>
+            <div class="stats-strip__label">Convenient Locations</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FAQ
+         <!-- CLIENT: questions and answers -->
+         ============================================================ -->
+    <section class="section faq" id="faq">
+      <div class="section-head">
+        <span class="eyebrow">Questions</span>
+        <h2>Frequently asked questions</h2>
+        <p>Can't find what you're looking for? Give our office a call — we're happy to help.</p>
+      </div>
+      <div class="container">
+        <dl class="faq__list" id="faqList">
+          <div class="faq__item is-open">
+            <dt class="faq__question"><span>How do I know if I need braces or Invisalign?</span><i class="ti ti-chevron-down" aria-hidden="true"></i></dt>
+            <dd class="faq__answer">Every treatment plan starts with a free consultation, where one of our doctors evaluates your bite, spacing, and goals to recommend the best option for your lifestyle and budget.</dd>
+          </div>
+          <div class="faq__item">
+            <dt class="faq__question"><span>What age should my child first see an orthodontist?</span><i class="ti ti-chevron-down" aria-hidden="true"></i></dt>
+            <dd class="faq__answer">The American Association of Orthodontists recommends an first evaluation by age 7, even if treatment isn't needed right away. Early screening lets us catch issues while there's still room to guide growth.</dd>
+          </div>
+          <div class="faq__item">
+            <dt class="faq__question"><span>Do you offer payment plans?</span><i class="ti ti-chevron-down" aria-hidden="true"></i></dt>
+            <dd class="faq__answer">Yes — we offer in-house financing with no interest, along with support filing insurance and HSA/FSA claims so treatment fits your budget.</dd>
+          </div>
+          <div class="faq__item">
+            <dt class="faq__question"><span>How long does treatment typically take?</span><i class="ti ti-chevron-down" aria-hidden="true"></i></dt>
+            <dd class="faq__answer">Most patients complete treatment in 12–24 months depending on the complexity of their case. We'll give you a personalized timeline at your consultation.</dd>
+          </div>
+          <div class="faq__item">
+            <dt class="faq__question"><span>Do you see adult patients?</span><i class="ti ti-chevron-down" aria-hidden="true"></i></dt>
+            <dd class="faq__answer">Absolutely — over a third of our patients are adults. We offer discreet options like clear aligners and ceramic braces designed for professional settings.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TESTIMONIALS
+         <!-- CLIENT: quotes, patient first names -->
+         ============================================================ -->
+    <section class="section testimonials" id="testimonials">
+      <div class="section-head">
+        <span class="eyebrow">Patient Stories</span>
+        <h2>Loved by families across the area</h2>
+      </div>
+      <div class="container" style="overflow: hidden;">
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars" aria-hidden="true">★★★★★</div>
+            <p class="testimonial-card__quote">"The whole team made my daughter feel so comfortable. Her smile — and confidence — completely transformed."</p>
+            <p class="testimonial-card__name">— Rachel</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars" aria-hidden="true">★★★★★</div>
+            <p class="testimonial-card__quote">"I got Invisalign as an adult and it was so much easier than I expected. Zero regrets."</p>
+            <p class="testimonial-card__name">— Marcus</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars" aria-hidden="true">★★★★★</div>
+            <p class="testimonial-card__quote">"Financing made braces for two kids actually affordable. The staff explained every step."</p>
+            <p class="testimonial-card__name">— Denise</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars" aria-hidden="true">★★★★★</div>
+            <p class="testimonial-card__quote">"Dr. Reyes is thorough and kind. Best orthodontist experience our family has ever had."</p>
+            <p class="testimonial-card__name">— Priya</p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars" aria-hidden="true">★★★★★</div>
+            <p class="testimonial-card__quote">"Same-week emergency appointment when a wire came loose. Truly appreciated the responsiveness."</p>
+            <p class="testimonial-card__name">— Tomas</p>
+          </div>
+          <!-- duplicate set below for seamless marquee loop (aria-hidden, decorative repeat) -->
+          <div class="testimonial-card" aria-hidden="true">
+            <div class="testimonial-card__stars" aria-hidden="true">★★★★★</div>
+            <p class="testimonial-card__quote">"The whole team made my daughter feel so comfortable. Her smile — and confidence — completely transformed."</p>
+            <p class="testimonial-card__name">— Rachel</p>
+          </div>
+          <div class="testimonial-card" aria-hidden="true">
+            <div class="testimonial-card__stars" aria-hidden="true">★★★★★</div>
+            <p class="testimonial-card__quote">"I got Invisalign as an adult and it was so much easier than I expected. Zero regrets."</p>
+            <p class="testimonial-card__name">— Marcus</p>
+          </div>
+          <div class="testimonial-card" aria-hidden="true">
+            <div class="testimonial-card__stars" aria-hidden="true">★★★★★</div>
+            <p class="testimonial-card__quote">"Financing made braces for two kids actually affordable. The staff explained every step."</p>
+            <p class="testimonial-card__name">— Denise</p>
+          </div>
+          <div class="testimonial-card" aria-hidden="true">
+            <div class="testimonial-card__stars" aria-hidden="true">★★★★★</div>
+            <p class="testimonial-card__quote">"Dr. Reyes is thorough and kind. Best orthodontist experience our family has ever had."</p>
+            <p class="testimonial-card__name">— Priya</p>
+          </div>
+          <div class="testimonial-card" aria-hidden="true">
+            <div class="testimonial-card__stars" aria-hidden="true">★★★★★</div>
+            <p class="testimonial-card__quote">"Same-week emergency appointment when a wire came loose. Truly appreciated the responsiveness."</p>
+            <p class="testimonial-card__name">— Tomas</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FINAL CTA BANNER
+         <!-- CLIENT: headline, subline, button label, URL -->
+         ============================================================ -->
+    <section class="final-cta" id="schedule">
+      <!-- decorative inline SVG starbursts -->
+      <svg class="final-cta__glyph final-cta__glyph--tl" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <path d="M32 0 L38 26 L64 32 L38 38 L32 64 L26 38 L0 32 L26 26 Z" fill="currentColor" />
+      </svg>
+      <svg class="final-cta__glyph final-cta__glyph--br" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <path d="M32 0 L38 26 L64 32 L38 38 L32 64 L26 38 L0 32 L26 26 Z" fill="currentColor" />
+      </svg>
+      <svg class="final-cta__glyph final-cta__glyph--tr" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <path d="M32 0 L38 26 L64 32 L38 38 L32 64 L26 38 L0 32 L26 26 Z" fill="currentColor" />
+      </svg>
+      <svg class="final-cta__glyph final-cta__glyph--bl" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <path d="M32 0 L38 26 L64 32 L38 38 L32 64 L26 38 L0 32 L26 26 Z" fill="currentColor" />
+      </svg>
+
+      <div class="container">
+        <h2 class="final-cta__headline">Ready for a smile you'll love?</h2>
+        <p class="final-cta__sub">Book your free consultation today — most patients are seen within the week.</p>
+        <a href="#schedule" class="btn btn--primary">Book a Free Consult</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       <!-- CLIENT: all contact details, social URLs, service links, legal page URLs -->
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand">
+          <img class="footer__logo" src="https://placehold.co/80x80/f7f3ef/054d66?text=M" alt="Meridian Orthodontics logo" width="36" height="36" />
+          <span>Meridian Orthodontics</span>
+        </div>
+        <p class="footer__tagline">Straighter smiles, simpler journey — for every age, every case.</p>
+        <div class="footer__socials">
+          <a href="#" aria-label="Facebook"><i class="ti ti-brand-facebook" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Instagram"><i class="ti ti-brand-instagram" aria-hidden="true"></i></a>
+          <a href="#" aria-label="YouTube"><i class="ti ti-brand-youtube" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h3>Services</h3>
+        <div class="footer__services">
+          <a href="#services">Traditional Braces</a>
+          <a href="#services">Invisalign &amp; Clear Aligners</a>
+          <a href="#services">Early &amp; Interceptive Care</a>
+          <a href="#services">Retainers &amp; Post-Treatment</a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h3>Contact</h3>
+        <div class="footer__contact">
+          <address>123 Main Street, Suite 200<br />Springfield, ST 00000</address>
+          <a href="tel:+15551234567">(555) 123-4567</a>
+          <a href="mailto:hello@meridianortho.com">hello@meridianortho.com</a>
+          <span>Mon–Thu 8am–5pm · Fri 8am–1pm</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <span>&copy; <span id="footerYear">2026</span> Meridian Orthodontics. All rights reserved.</span>
+      <span>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </span>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       MOBILE STICKY BAR (< 768px only)
+       <!-- CLIENT: Primary phone number, booking URL -->
+       ============================================================ -->
+  <div class="mobile-sticky-bar" aria-label="Quick actions">
+    <a href="tel:+15551234567" class="btn mobile-sticky-bar__btn mobile-sticky-bar__btn--call">
+      <i class="ti ti-phone" aria-hidden="true"></i> Call Now
+    </a>
+    <a href="#schedule" class="btn mobile-sticky-bar__btn mobile-sticky-bar__btn--book">
+      <i class="ti ti-calendar-event" aria-hidden="true"></i> Book Online
+    </a>
+  </div>
+
+  <!-- GSAP + ScrollTrigger — progressive enhancement only.
+       In WordPress: enqueue in functions.php with wp_enqueue_script(),
+       $in_footer = true. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <script>
+    (function () {
+      "use strict";
+
+      // Dynamic footer year
+      var yearEl = document.getElementById("footerYear");
+      if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
+
+      // Reads a brand color straight from the live CSS variables so JS-driven
+      // animation colors stay in sync with the same 6-variable swap mechanism
+      // used everywhere else in this template.
+      function cssVar(name) {
+        return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      }
+
+      function initEnhancements() {
+        if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
+          // GSAP failed to load (CDN down, ad blocker, offline, etc.).
+          // Deliberately leave html.no-js in place: base CSS already shows
+          // all content at full opacity, and the .no-js fallback rules
+          // (e.g. solid nav background) stay active since there is no JS
+          // scroll listener to drive them instead. Nothing to animate,
+          // nothing to hide — just stop here.
+          return;
+        }
+
+        gsap.registerPlugin(ScrollTrigger);
+        // Only drop no-js once GSAP + ScrollTrigger are confirmed working,
+        // since that's the only branch that takes over the nav-background
+        // and reveal behavior the .no-js CSS rules were standing in for.
+        document.documentElement.classList.remove("no-js");
+
+        var primary = cssVar("--color-primary");
+
+        // ---- Nav background transition on scroll (GSAP-driven, not CSS) ----
+        var nav = document.getElementById("siteNav");
+        if (nav) {
+          ScrollTrigger.create({
+            start: "top top",
+            end: 99999,
+            onUpdate: function (self) {
+              gsap.to(nav, { backgroundColor: self.scroll() > 40 ? primary : "transparent", duration: 0.3, overwrite: "auto" });
+            }
+          });
+        }
+
+        // ---- Hero headline: word stagger fade/slide ----
+        var heroWords = document.querySelectorAll("[data-gsap-headline] .word");
+        if (heroWords.length) {
+          gsap.set(heroWords, { opacity: 0, y: 24 });
+          gsap.to(heroWords, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: "power2.out", delay: 0.2 });
+        }
+        var heroHeadline = document.querySelector("[data-gsap-headline]");
+        if (heroHeadline) { heroHeadline.removeAttribute("data-gsap"); }
+
+        // ---- Generic section / card reveal on scroll ----
+        var revealEls = document.querySelectorAll(".gsap-fade[data-gsap='pending']:not([data-gsap-headline])");
+        revealEls.forEach(function (el, i) {
+          gsap.set(el, { opacity: 0, y: 24 });
+          ScrollTrigger.create({
+            trigger: el,
+            start: "top 85%",
+            onEnter: function () {
+              gsap.to(el, { opacity: 1, y: 0, duration: 0.6, delay: (i % 4) * 0.08, ease: "power2.out" });
+            },
+            once: true
+          });
+          el.removeAttribute("data-gsap");
+        });
+
+        // ---- Stat counters: count-up when strip enters viewport ----
+        var statsStrip = document.getElementById("statsStrip");
+        if (statsStrip) {
+          var counters = statsStrip.querySelectorAll("[data-count-to]");
+          ScrollTrigger.create({
+            trigger: statsStrip,
+            start: "top 85%",
+            once: true,
+            onEnter: function () {
+              counters.forEach(function (counter) {
+                var target = parseFloat(counter.getAttribute("data-count-to"));
+                var suffix = counter.getAttribute("data-suffix") || "";
+                var obj = { val: 0 };
+                gsap.to(obj, {
+                  val: target,
+                  duration: 1.6,
+                  ease: "power1.out",
+                  onUpdate: function () {
+                    counter.textContent = Math.round(obj.val).toLocaleString() + suffix;
+                  }
+                });
+              });
+            }
+          });
+        }
+
+        // ---- FAQ accordion (GSAP height tween) ----
+        var faqItems = document.querySelectorAll(".faq__item");
+        faqItems.forEach(function (item) {
+          var question = item.querySelector(".faq__question");
+          var answer = item.querySelector(".faq__answer");
+          if (!question || !answer) { return; }
+
+          if (!item.classList.contains("is-open")) {
+            gsap.set(answer, { height: 0, overflow: "hidden", paddingTop: 0, paddingBottom: 0 });
+          }
+
+          question.setAttribute("role", "button");
+          question.setAttribute("tabindex", "0");
+          question.setAttribute("aria-expanded", item.classList.contains("is-open") ? "true" : "false");
+
+          function toggle() {
+            var isOpen = item.classList.contains("is-open");
+            if (isOpen) {
+              gsap.to(answer, { height: 0, paddingTop: 0, paddingBottom: 0, duration: 0.35, ease: "power1.inOut" });
+              item.classList.remove("is-open");
+              question.setAttribute("aria-expanded", "false");
+            } else {
+              faqItems.forEach(function (other) {
+                if (other !== item && other.classList.contains("is-open")) {
+                  var otherAnswer = other.querySelector(".faq__answer");
+                  gsap.to(otherAnswer, { height: 0, paddingTop: 0, paddingBottom: 0, duration: 0.35, ease: "power1.inOut" });
+                  other.classList.remove("is-open");
+                  other.querySelector(".faq__question").setAttribute("aria-expanded", "false");
+                }
+              });
+              gsap.set(answer, { height: "auto", paddingTop: 0, paddingBottom: 22 });
+              gsap.from(answer, { height: 0, duration: 0.35, ease: "power1.inOut" });
+              item.classList.add("is-open");
+              question.setAttribute("aria-expanded", "true");
+            }
+          }
+
+          question.addEventListener("click", toggle);
+          question.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
+          });
+        });
+
+        // ---- Testimonial marquee: GSAP infinite loop, paused on hover ----
+        var track = document.getElementById("testimonialTrack");
+        if (track) {
+          track.classList.add("gsap-active");
+          var isMobile = window.matchMedia("(max-width: 768px)").matches;
+          var baseDuration = 32;
+          var duration = isMobile ? baseDuration / 0.6 : baseDuration; // 40% slower on mobile
+
+          var marqueeTween = gsap.to(track, {
+            xPercent: -50,
+            duration: duration,
+            ease: "none",
+            repeat: -1
+          });
+
+          var testimonialsSection = document.getElementById("testimonials");
+          if (testimonialsSection) {
+            testimonialsSection.addEventListener("mouseenter", function () { marqueeTween.pause(); });
+            testimonialsSection.addEventListener("mouseleave", function () { marqueeTween.play(); });
+          }
+        }
+
+        // ---- Service tiles / team cards staggered cascade on enter ----
+        gsap.utils.toArray(".services__grid .service-card").forEach(function (card, i) {
+          ScrollTrigger.create({
+            trigger: ".services__grid",
+            start: "top 85%",
+            once: true,
+            onEnter: function () {
+              gsap.fromTo(card, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, delay: i * 0.08, ease: "power2.out" });
+            }
+          });
+        });
+        gsap.utils.toArray(".team__grid .team-card").forEach(function (card, i) {
+          ScrollTrigger.create({
+            trigger: ".team__grid",
+            start: "top 85%",
+            once: true,
+            onEnter: function () {
+              gsap.fromTo(card, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, delay: i * 0.1, ease: "power2.out" });
+            }
+          });
+        });
+
+        ScrollTrigger.refresh();
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initEnhancements);
+      } else {
+        initEnhancements();
+      }
+    })();
+  </script>
+</body>
+</html>
