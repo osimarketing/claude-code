@@ -352,7 +352,7 @@
       var head = svgEl('text', { x: 0, y: cursor + 12, fill: MUTED,
         'font-family': '"Plus Jakarta Sans", system-ui, sans-serif', 'font-size': 11,
         'font-weight': 700, 'letter-spacing': '.09em' });
-      head.textContent = label.toUpperCase();
+      head.textContent = label;
       svg.appendChild(head);
       cursor += headH;
 

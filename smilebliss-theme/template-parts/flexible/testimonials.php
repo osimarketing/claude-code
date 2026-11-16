@@ -76,7 +76,7 @@ $sb_total = count( $sb_quotes );
 						<figure class="quote"<?php echo $sb_i ? ' hidden' : ''; ?>>
 							<blockquote class="quote__text">&ldquo;<?php echo esc_html( $sb_q['quote'] ); ?>&rdquo;</blockquote>
 							<figcaption class="quote__by">
-								&mdash; <?php echo esc_html( $sb_q['name'] ); ?>
+								<?php echo esc_html( $sb_q['name'] ); ?>
 								<span class="quote__loc"><?php echo esc_html( $sb_q['location'] ); ?></span>
 								<?php if ( $sb_q['sample'] ) : ?>
 									<span class="testi-tag"><?php esc_html_e( 'Sample Content', 'smilebliss' ); ?></span>

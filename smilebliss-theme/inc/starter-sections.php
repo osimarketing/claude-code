@@ -21,7 +21,7 @@ function smilebliss_starter_sections( callable $img ): array {
 			'acf_fc_layout' => 'hero',
 			'title'         => 'Follow Your Bliss.<br>',
 			'title_accent'  => 'Find More Success.',
-			'lead'          => 'Starting an orthodontic practice is tough. There are lots of things to do. Pick a name. Find a location. Hire the right people. Create marketing. Get equipment. Then, make sure you\'re all set up with the insurance companies so that you get paid. It\'s a lot — and that\'s not even half of it. We have over 30 years of experience creating successful practices. So we took that knowledge and created a ready-to-go practice model with everything done for you.',
+			'lead'          => 'Starting an orthodontic practice is tough. There are lots of things to do. Pick a name. Find a location. Hire the right people. Create marketing. Get equipment. Then, make sure you\'re all set up with the insurance companies so that you get paid. It\'s a lot, and that\'s not even half of it. We have over 30 years of experience creating successful practices. So we took that knowledge and created a ready-to-go practice model with everything done for you.',
 			'primary_cta'   => array( 'title' => "Let's Do This", 'url' => '#contact', 'target' => '' ),
 			'secondary_cta' => array( 'title' => 'See How It Works', 'url' => '#support', 'target' => '' ),
 			'image'         => $img( 'hero-practice-1600.webp' ),
@@ -34,9 +34,9 @@ function smilebliss_starter_sections( callable $img ): array {
 		array(
 			'acf_fc_layout' => 'trust_cards',
 			'cards'         => array(
-				array( 'icon' => $img( 'icon-together.webp' ), 'title' => 'You\'re Never Alone', 'text' => 'Marketing, RCM, procurement, and training — handled for you, every step of the way.', 'style' => 'coral' ),
+				array( 'icon' => $img( 'icon-together.webp' ), 'title' => 'You\'re Never Alone', 'text' => 'Marketing, RCM, procurement, and training, handled for you every step of the way.', 'style' => 'coral' ),
 				array( 'icon' => $img( 'icon-practice.webp' ), 'title' => 'A Proven Model', 'text' => '30+ years of experience building successful practices, packaged and ready to go.', 'style' => 'mint' ),
-				array( 'icon' => $img( 'icon-agreement.webp' ), 'title' => 'Billions Collected', 'text' => 'The secret to success is getting paid for the work you do — we make sure you do.', 'style' => 'ink' ),
+				array( 'icon' => $img( 'icon-agreement.webp' ), 'title' => 'Billions Collected', 'text' => 'The secret to success is getting paid for the work you do. We make sure you do.', 'style' => 'ink' ),
 			),
 		),
 		array(
@@ -46,7 +46,7 @@ function smilebliss_starter_sections( callable $img ): array {
 			'eyebrow'       => 'About Smilebliss',
 			'title'         => 'As a Smilebliss client,',
 			'title_muted'   => "you're never in it alone.",
-			'body'          => 'Here, we go out of our way to make your job — and that of your entire team — easier with support geared toward growing, successful practice needs. From marketing, training, and procurement to revenue cycle management, we handle the heavy lifting.',
+			'body'          => 'Here, we go out of our way to make your job, and that of your entire team, easier with support geared toward growing, successful practice needs. From marketing, training, and procurement to revenue cycle management, we handle the heavy lifting.',
 			'stats'         => array(
 				array( 'value' => 30, 'prefix' => '', 'suffix' => '+', 'label' => 'Years of experience building practices' ),
 				array( 'value' => 1, 'prefix' => '$', 'suffix' => 'B+', 'label' => 'Collected in revenue for clients' ),
@@ -58,7 +58,7 @@ function smilebliss_starter_sections( callable $img ): array {
 			'acf_fc_layout' => 'services',
 			'eyebrow'       => 'What We Handle',
 			'title'         => 'Five Ways We Carry the Load',
-			'intro'         => 'A proven support system built for growing practices — so you can focus on patients, not paperwork.',
+			'intro'         => 'A proven support system built for growing practices, so you can focus on patients, not paperwork.',
 			'pillars'       => array(
 				array(
 					'icon'  => $img( 'icon-rcm.webp' ),
@@ -87,7 +87,7 @@ function smilebliss_starter_sections( callable $img ): array {
 				array(
 					'icon'  => $img( 'icon-training.webp' ),
 					'title' => 'Training',
-					'text'  => 'Covering practice culture and brand, new patient process, scheduling, efficiencies, and adding patient value — for every role on your team.',
+					'text'  => 'Covering practice culture and brand, new patient process, scheduling, efficiencies, and adding patient value, for every role on your team.',
 					'link'  => array( 'title' => 'Talk to us about this', 'url' => '#contact', 'target' => '' ),
 				),
 			),
@@ -134,7 +134,7 @@ function smilebliss_starter_sections( callable $img ): array {
 				array(
 					'title' => 'New Practice',
 					'style' => 'new',
-					'text'  => 'Brand, training, site selection, financial modeling, and marketing support to launch your practice from scratch — with a proven playbook behind every decision.',
+					'text'  => 'Brand, training, site selection, financial modeling, and marketing support to launch your practice from scratch, with a proven playbook behind every decision.',
 					'link'  => array( 'title' => 'Explore New Practice', 'url' => '#contact', 'target' => '' ),
 				),
 				array(
@@ -150,7 +150,7 @@ function smilebliss_starter_sections( callable $img ): array {
 			'acf_fc_layout' => 'testimonials',
 			'eyebrow'       => 'Practice Owners',
 			'title'         => 'Hear From Our Practice Owners.',
-			'intro'         => 'Sample profiles — swap in your own client stories and headshots.',
+			'intro'         => 'Sample profiles. Swap in your own client stories and headshots.',
 			'rating_score'  => 4.92,
 			'rating_count'  => 5658,
 			'items'         => array(
@@ -184,7 +184,7 @@ function smilebliss_starter_sections( callable $img ): array {
 				array( 'text' => 'A proven, ready-to-go model' ),
 			),
 			'submit_label'  => "Let's Do This",
-			'success_title' => 'Thanks — we\'ve got it.',
+			'success_title' => 'Thanks, we\'ve got it.',
 			'success_text'  => 'A member of the Smilebliss team will be in touch shortly.',
 			'form_note'     => 'By submitting, you agree to be contacted by the Smilebliss team about this inquiry.',
 			'anchor'        => 'contact',

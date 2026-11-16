@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#f7f3ef" />
 <title>Smilebliss™ | Follow Your Bliss. Find More Success.</title>
-<meta name="description" content="A proven, ready-to-go orthodontic practice model. Marketing, revenue cycle management, procurement, peer support, and training — all done for you." />
+<meta name="description" content="A proven, ready-to-go orthodontic practice model. Marketing, revenue cycle management, procurement, peer support, and training, all done for you." />
 
-<meta property="og:title" content="Smilebliss™ — Follow Your Bliss. Find More Success." />
+<meta property="og:title" content="Smilebliss™: Follow Your Bliss. Find More Success." />
 <meta property="og:description" content="Introducing Smilebliss™, a proven, ready-to-go orthodontic practice model for doctors ready to start or convert a practice." />
 <meta property="og:type" content="website" />
 
@@ -60,6 +60,8 @@
   --radius-lg: 34px;
   --radius: 22px;
   --radius-sm: 14px;
+  --radius-control: 10px;   /* buttons, toggles, inputs */
+  --radius-badge: 8px;      /* eyebrows, tags, meta pills */
   --shadow-sm:   0 18px 40px -24px rgba(5,77,102,.22);
   --shadow-card: 0 30px 60px -28px rgba(5,77,102,.24);
   --ease: cubic-bezier(.22,1,.36,1);
@@ -95,7 +97,7 @@ h1,h2,h3{ text-wrap:balance; }
   display:inline-flex; align-items:center; gap:.5rem;
   font-family:var(--display); font-weight:700; font-size:.76rem;
   letter-spacing:.03em; color:var(--on-bright);
-  background:var(--gold-soft); padding:.5rem .95rem .5rem .7rem; border-radius:50px;
+  background:var(--gold-soft); padding:.5rem .95rem .5rem .7rem; border-radius:var(--radius-badge);
   margin-bottom:1.3rem;
 }
 .eyebrow--mint{ color:var(--on-bright); background:var(--sky-soft); }
@@ -123,11 +125,11 @@ h1,h2,h3{ text-wrap:balance; }
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
   font-family:var(--display); font-weight:700; font-size:1.18rem;   /* navy-on-coral is 3.69:1 — AA large-text */
-  padding:.95rem 1.9rem; border-radius:50px; cursor:pointer; border:2px solid transparent;
+  padding:.95rem 1.9rem; border-radius:var(--radius-control); cursor:pointer; border:2px solid transparent;
   transition:transform .25s var(--ease), background .25s, color .25s, border-color .25s, box-shadow .25s;
   white-space:nowrap;
 }
-.btn--coral{ background:var(--coral); color:var(--on-bright); box-shadow:0 16px 30px -14px rgba(255,125,92,.55); }
+.btn--coral{ background:var(--coral); color:var(--on-bright); box-shadow:0 16px 30px -14px rgba(5,77,102,.28); }
 .btn--coral:hover{ transform:translateY(-2px); background:var(--ink); color:var(--on-dark); }
 .btn--ink{ background:var(--ink); color:var(--on-dark); }
 .btn--ink:hover{ transform:translateY(-2px); background:var(--teal-deep); }
@@ -278,7 +280,7 @@ h1,h2,h3{ text-wrap:balance; }
 }
 @media (max-width:900px){ .about__grid, .benefits__grid{ grid-template-columns:1fr; } }
 .about__chip{
-  position:absolute; left:-5%; bottom:8%; background:var(--white); border-radius:50px; box-shadow:var(--shadow-sm);
+  position:absolute; left:-5%; bottom:8%; background:var(--white); border-radius:12px; box-shadow:var(--shadow-sm);
   padding:.75rem 1.25rem .75rem .75rem; display:flex; align-items:center; gap:.65rem; max-width:250px;
 }
 .about__chip-icon{ width:34px; height:34px; border-radius:50%; background:var(--gold-soft); display:flex; align-items:center; justify-content:center; flex:0 0 auto; }
@@ -343,15 +345,15 @@ h1,h2,h3{ text-wrap:balance; }
   box-shadow:0 10px 26px rgba(5,77,102,.28);
 }
 .chart-tip strong{ display:block; font-family:var(--display); font-weight:700;
-  font-size:.78rem; letter-spacing:.04em; text-transform:uppercase; margin-bottom:.15rem; }
+  font-size:.78rem; letter-spacing:.01em; margin-bottom:.15rem; }
 .chart-tip.is-on{ opacity:1; }
 @media (hover:none){ .chart-tip{ display:none; } }
 
-/* scenario switch — same pill language as the rest of the page */
+/* scenario switch: control radius, same as the buttons */
 .scenario{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.25rem; }
 .scenario__btn{
   font-family:var(--display); font-weight:700; font-size:.82rem; cursor:pointer;
-  padding:.5rem 1.1rem; border-radius:50px; border:1.5px solid var(--line);
+  padding:.5rem 1.1rem; border-radius:var(--radius-control); border:1.5px solid var(--line);
   background:var(--white); color:var(--navy); transition:.2s;
 }
 .scenario__btn:hover{ border-color:var(--navy); }
@@ -370,13 +372,13 @@ h1,h2,h3{ text-wrap:balance; }
 .figures__table{ width:100%; min-width:520px; border-collapse:collapse; font-size:.9rem; }
 .figures__table th, .figures__table td{ padding:.7rem .5rem; text-align:right; border-bottom:1px solid var(--line); }
 .figures__table th:first-child, .figures__table td:first-child{ text-align:left; }
-.figures__table thead th{ font-family:var(--display); font-size:.72rem; letter-spacing:.06em;
-                          text-transform:uppercase; color:var(--muted); font-weight:700; }
+.figures__table thead th{ font-family:var(--display); font-size:.74rem; letter-spacing:.01em;
+                          color:var(--muted); font-weight:700; }
 .figures__table tbody th{ font-weight:700; }
 .figures__table td{ font-variant-numeric:tabular-nums; }
 .revenue__disclaimer{ font-size:.76rem; color:var(--muted); margin-top:1.4rem; line-height:1.6; max-width:74ch; }
 .revenue__meta{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.4rem; }
-.meta-pill{ font-family:var(--display); font-size:.72rem; font-weight:700; padding:.4rem .8rem; border-radius:50px; background:var(--gold-soft); color:var(--on-bright); }
+.meta-pill{ font-family:var(--display); font-size:.72rem; font-weight:700; padding:.4rem .8rem; border-radius:var(--radius-badge); background:var(--gold-soft); color:var(--on-bright); }
 
 /* ---------- benefits ---------- */
 .benefits{ background:var(--white); }
@@ -423,8 +425,8 @@ h1,h2,h3{ text-wrap:balance; }
 .quote__by{ margin-top:1.5rem; font-family:var(--display); font-weight:700; font-size:.98rem; color:var(--ink); }
 .quote__loc{ font-weight:500; color:var(--muted); }
 .testi-tag{ display:block; width:max-content; margin:.9rem auto 0; font-family:var(--display); font-size:.66rem;
-  letter-spacing:.06em; text-transform:uppercase; color:var(--on-bright); background:var(--gold-soft);
-  padding:.3rem .7rem; border-radius:50px; font-weight:700; }
+  letter-spacing:.01em; color:var(--on-bright); background:var(--gold-soft);
+  padding:.3rem .7rem; border-radius:var(--radius-badge); font-weight:700; }
 
 .quotes__nav{ display:flex; align-items:center; justify-content:center; gap:1.1rem; margin-top:2.2rem; }
 .quotes__arrow{
@@ -437,7 +439,7 @@ h1,h2,h3{ text-wrap:balance; }
 .quotes__arrow:hover{ background:var(--mint-soft); border-color:var(--navy); }
 .quotes__dots{ display:flex; align-items:center; gap:.45rem; }
 .quotes__dot{
-  width:8px; height:8px; padding:0; border:0; border-radius:50px; cursor:pointer;
+  width:8px; height:8px; padding:0; border:0; border-radius:50px; cursor:pointer; /* indicator: half-height, not a pill */
   background:rgba(5,77,102,.28); transition:width .25s var(--ease), background .25s;
 }
 .quotes__dot.is-on{ width:28px; background:var(--navy); }
@@ -497,15 +499,15 @@ h1,h2,h3{ text-wrap:balance; }
 .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
 .field{ display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
 .field.full{ grid-column:1 / -1; }
-.field label{ font-family:var(--display); font-size:.72rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); }
+.field label{ font-family:var(--display); font-size:.78rem; font-weight:700; letter-spacing:.01em; color:var(--muted); }
 .field input, .field select{
-  border:1.5px solid var(--line); border-radius:12px; padding:.85rem 1rem; font-size:.96rem; font-family:var(--sans);
+  border:1.5px solid var(--line); border-radius:var(--radius-control); padding:.85rem 1rem; font-size:.96rem; font-family:var(--sans);
   color:var(--ink); background:var(--cream); transition:border-color .2s, box-shadow .2s;
 }
 .field input:focus, .field select:focus{ outline:none; border-color:var(--teal); box-shadow:0 0 0 4px rgba(26,173,167,.18); }
 .toggle-group{ display:flex; gap:.6rem; flex-wrap:wrap; }
 .toggle-pill{
-  border:1.5px solid var(--line); border-radius:50px; padding:.6rem 1.1rem; font-size:.86rem; font-weight:700; font-family:var(--display);
+  border:1.5px solid var(--line); border-radius:var(--radius-control); padding:.6rem 1.1rem; font-size:.86rem; font-weight:700; font-family:var(--display);
   cursor:pointer; background:var(--cream); color:var(--ink); transition:.2s;
 }
 .toggle-pill input{ display:none; }
@@ -535,7 +537,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
 .footer__grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:2.4rem; padding-bottom:2.6rem; border-bottom:1px solid rgba(247,243,239,.14); }
 .footer__logo-chip{ display:inline-flex; }   /* reversed lockup needs no white plate */
 .footer__brand p{ margin-top:1rem; font-size:.9rem; max-width:32ch; color:rgba(247,243,239,.7); }
-.footer__col h4{ font-family:var(--display); font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; }
+.footer__col h4{ font-family:var(--display); font-size:.82rem; font-weight:700; letter-spacing:.01em; color:var(--gold); margin-bottom:1rem; }
 /* placeholders until the real URLs are confirmed — deliberately not links,
    so nothing on the page looks clickable and goes nowhere */
 .footer__todo{ display:block; font-size:.9rem; color:rgba(247,243,239,.5); margin-bottom:.7rem; }
@@ -592,7 +594,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
   <div class="container hero__grid">
     <div class="hero__copy">
       <h1 class="hero__title">Follow Your Bliss.<br><span class="accent">Find More Success.</span></h1>
-      <p class="hero__lead">Starting an orthodontic practice is tough. There are lots of things to do. Pick a name. Find a location. Hire the right people. Create marketing. Get equipment. Then, make sure you're all set up with the insurance companies so that you get paid. It's a lot &mdash; and that's not even half of it. We have over 30 years of experience creating successful practices. So we took that knowledge and created a ready-to-go practice model with everything done for you.</p>
+      <p class="hero__lead">Starting an orthodontic practice is tough. There are lots of things to do. Pick a name. Find a location. Hire the right people. Create marketing. Get equipment. Then, make sure you're all set up with the insurance companies so that you get paid. It's a lot, and that's not even half of it. We have over 30 years of experience creating successful practices. So we took that knowledge and created a ready-to-go practice model with everything done for you.</p>
       <div class="hero__actions">
         <a href="#contact" class="btn btn--coral">Let's Do This</a>
         <a href="#support" class="btn btn--ghost-dark">See How It Works</a>
@@ -640,7 +642,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     <div class="trust-card trust-card--coral reveal">
       <img class="trust-card__icon" src="assets/img/icon-together.webp" width="168" height="168" alt="" loading="lazy" decoding="async">
       <h3>You're Never Alone</h3>
-      <p>Marketing, RCM, procurement, and training &mdash; handled for you, every step of the way.</p>
+      <p>Marketing, RCM, procurement, and training, handled for you every step of the way.</p>
     </div>
     <div class="trust-card trust-card--mint reveal">
       <img class="trust-card__icon" src="assets/img/icon-practice.webp" width="168" height="168" alt="" loading="lazy" decoding="async">
@@ -650,7 +652,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     <div class="trust-card trust-card--ink reveal">
       <img class="trust-card__icon" src="assets/img/icon-agreement.webp" width="168" height="168" alt="" loading="lazy" decoding="async">
       <h3>Billions Collected</h3>
-      <p>The secret to success is getting paid for the work you do &mdash; we make sure you do.</p>
+      <p>The secret to success is getting paid for the work you do. We make sure you do.</p>
     </div>
   </div>
 </section>
@@ -678,7 +680,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     <div class="about__copy">
       <span class="eyebrow eyebrow--mint">About Smilebliss</span>
       <h2 class="section-title reveal">As a Smilebliss client, <span class="muted">you're never in it alone.</span></h2>
-      <p class="reveal">Here, we go out of our way to make your job &mdash; and that of your entire team &mdash; easier with support geared toward growing, successful practice needs. From marketing, training, and procurement to revenue cycle management, we handle the heavy lifting.</p>
+      <p class="reveal">Here, we go out of our way to make your job, and that of your entire team, easier with support geared toward growing, successful practice needs. From marketing, training, and procurement to revenue cycle management, we handle the heavy lifting.</p>
       <div class="stat-cards">
         <div class="stat-card reveal">
           
@@ -706,7 +708,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     <div class="section-head center">
       <span class="eyebrow" style="margin-inline:auto;">What We Handle</span>
       <h2 class="section-title">Five Ways We Carry the Load</h2>
-      <p class="section-intro" style="margin-inline:auto;">A proven support system built for growing practices &mdash; so you can focus on patients, not paperwork.</p>
+      <p class="section-intro" style="margin-inline:auto;">A proven support system built for growing practices, so you can focus on patients, not paperwork.</p>
     </div>
     <div class="pillars__grid">
       <article class="pillar reveal">
@@ -736,7 +738,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
       <article class="pillar reveal">
         <img class="pillar__icon" src="assets/img/icon-training.webp" width="168" height="168" alt="" loading="lazy" decoding="async">
         <h3 class="pillar__title">Training</h3>
-        <p class="pillar__text">Covering practice culture and brand, new patient process, scheduling, efficiencies, and adding patient value &mdash; for every role on your team.</p>
+        <p class="pillar__text">Covering practice culture and brand, new patient process, scheduling, efficiencies, and adding patient value, for every role on your team.</p>
         <a href="#contact" class="pillar__link">Talk to us about this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
     </div>
@@ -833,7 +835,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     <div class="paths__grid">
       <div class="path-card path-card--new reveal">
         <h3 class="path-card__title">New Practice</h3>
-        <p class="path-card__text">Brand, training, site selection, financial modeling, and marketing support to launch your practice from scratch &mdash; with a proven playbook behind every decision.</p>
+        <p class="path-card__text">Brand, training, site selection, financial modeling, and marketing support to launch your practice from scratch, with a proven playbook behind every decision.</p>
         <a href="#contact" class="btn btn--sm btn--path">Explore New Practice</a>
       </div>
       <div class="path-card path-card--conv reveal">
@@ -867,7 +869,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
         </svg>
         <span class="rating__text"><b>4.9</b> stars from 5,658 reviews</span>
       </div>
-      <p class="section-intro" style="margin-inline:auto;">Sample profiles &mdash; swap in your own client stories.</p>
+      <p class="section-intro" style="margin-inline:auto;">Sample profiles. Swap in your own client stories.</p>
     </div>
 
     <div class="quotes reveal" aria-roledescription="carousel" aria-label="Practice owner testimonials">
@@ -875,21 +877,21 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
         <figure class="quote">
           <blockquote class="quote__text">&ldquo;Smilebliss handed us a marketing engine and a billing team on day one. We hit our Year 1 start goal three months early.&rdquo;</blockquote>
           <figcaption class="quote__by">
-            &mdash; Dr. Alicia Reyes <span class="quote__loc">Scottsdale, AZ</span>
+            Dr. Alicia Reyes <span class="quote__loc">Scottsdale, AZ</span>
             <span class="testi-tag">Sample Content</span>
           </figcaption>
         </figure>
         <figure class="quote" hidden>
           <blockquote class="quote__text">&ldquo;Converting to Smilebliss felt like exhaling. Procurement alone saved us more than the licensing fee in the first year.&rdquo;</blockquote>
           <figcaption class="quote__by">
-            &mdash; Dr. Marcus Kim <span class="quote__loc">Charlotte, NC</span>
+            Dr. Marcus Kim <span class="quote__loc">Charlotte, NC</span>
             <span class="testi-tag">Sample Content</span>
           </figcaption>
         </figure>
         <figure class="quote" hidden>
           <blockquote class="quote__text">&ldquo;The peer network is the real unlock. I've never once felt like I was figuring this out on my own.&rdquo;</blockquote>
           <figcaption class="quote__by">
-            &mdash; Dr. Jasmine Torres <span class="quote__loc">Round Rock, TX</span>
+            Dr. Jasmine Torres <span class="quote__loc">Round Rock, TX</span>
             <span class="testi-tag">Sample Content</span>
           </figcaption>
         </figure>
@@ -989,7 +991,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
       </form>
       <div class="form-success" id="formSuccess">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
-        <h3>Thanks &mdash; we've got it.</h3>
+        <h3>Thanks, we've got it.</h3>
         <p>A member of the Smilebliss team will be in touch shortly.</p>
       </div>
     </div>
@@ -1032,7 +1034,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
     </div>
     <div class="footer__bottom">
       <span>&copy; 2026 Smilebliss Orthodontics. All rights reserved.</span>
-      <span>Concept redesign &mdash; content sourced from joinsmilebliss.com</span>
+      <span>Concept redesign. Content sourced from joinsmilebliss.com</span>
     </div>
   </div>
 </footer>
@@ -1368,7 +1370,7 @@ footer{ background:var(--teal-deep); color:rgba(247,243,239,.85); padding:4rem 0
       var head = svgEl('text', { x: 0, y: cursor + 12, fill: MUTED,
         'font-family': '"Plus Jakarta Sans", system-ui, sans-serif', 'font-size': 11,
         'font-weight': 700, 'letter-spacing': '.09em' });
-      head.textContent = label.toUpperCase();
+      head.textContent = label;
       svg.appendChild(head);
       cursor += headH;
 

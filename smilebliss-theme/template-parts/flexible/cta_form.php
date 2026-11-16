@@ -91,7 +91,7 @@ $sb_succ_p  = (string) get_sub_field( 'success_text' );
 
 			<div class="form-success" id="formSuccess">
 				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
-				<h3><?php echo esc_html( $sb_success ?: __( "Thanks &mdash; we've got it.", 'smilebliss' ) ); ?></h3>
+				<h3><?php echo esc_html( $sb_success ?: __( "Thanks, we've got it.", 'smilebliss' ) ); ?></h3>
 				<p><?php echo esc_html( $sb_succ_p ?: __( 'A member of the Smilebliss team will be in touch shortly.', 'smilebliss' ) ); ?></p>
 			</div>
 		</div>
