@@ -2,9 +2,9 @@
 /**
  * Section: Hero.
  *
- * Asymmetric split: copy on the left, a real photo on the right with a
- * live hours card. One primary and one secondary action, nothing stacked
- * under them except the sourced review rating.
+ * Asymmetric split: copy on the left, a real photo on the right. One
+ * primary and one secondary action, nothing stacked under them except the
+ * sourced review rating.
  *
  * @package Archwire
  */
@@ -17,8 +17,6 @@ $p       = archwire_practice();
 $tag     = archwire_heading_tag();
 $primary = ! empty( $s['primary']['url'] ) ? archwire_link( $s['primary'], 'btn btn--primary btn--lg' ) : archwire_booking_button( 'btn btn--primary btn--lg' );
 $second  = $s['secondary'] ?? 'phone';
-$summary = archwire_hours_summary();
-$address = archwire_address_line( $p );
 
 archwire_section_open( 'hero', $s );
 ?>
@@ -80,33 +78,6 @@ archwire_section_open( 'hero', $s );
 				);
 				?>
 			</div>
-
-			<?php if ( ! empty( $s['show_hours'] ) && ( $summary || $address ) ) : ?>
-				<div class="visit-card" data-open-status>
-					<div class="visit-card__row">
-						<?php echo archwire_icon( 'clock', 18 ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-						<div>
-							<p class="visit-card__status" data-status-text><?php esc_html_e( 'Office hours', 'archwire' ); ?></p>
-							<p class="visit-card__meta" data-status-meta>
-								<?php echo esc_html( $summary ? $summary[0]['days'] . ' ' . $summary[0]['hours'] : '' ); ?>
-							</p>
-						</div>
-					</div>
-					<?php if ( $address ) : ?>
-						<div class="visit-card__row">
-							<?php echo archwire_icon( 'map-pin', 18 ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-							<div>
-								<p class="visit-card__status"><?php echo esc_html( $p['street'] ); ?></p>
-								<p class="visit-card__meta"><?php echo esc_html( trim( $p['city'] . ', ' . $p['state'] ) ); ?>
-									<?php if ( $p['directions'] ) : ?>
-										· <a href="<?php echo esc_url( $p['directions'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Directions', 'archwire' ); ?></a>
-									<?php endif; ?>
-								</p>
-							</div>
-						</div>
-					<?php endif; ?>
-				</div>
-			<?php endif; ?>
 		</div>
 	</div>
 </section>

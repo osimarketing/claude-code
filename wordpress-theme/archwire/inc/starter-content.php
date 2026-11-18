@@ -32,7 +32,6 @@ function archwire_starter_sections() {
 			'heading'       => 'Braces and Invisalign for kids, teens and adults in *{city}*',
 			'lead'          => 'Your first visit is free. You get a 3D scan, X-rays and a written plan with the timeline and full cost before you decide anything.',
 			'secondary'     => 'phone',
-			'show_hours'    => 1,
 			'show_rating'   => 1,
 		),
 		array(

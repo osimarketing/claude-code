@@ -200,8 +200,7 @@ add_action(
 						)
 					),
 					$image( $s, 'image', 'Photo (portrait, at least 960×1200)', array( 'instructions' => 'A real patient or your team in the office. Loaded first, so keep it under 250 KB.' ) ),
-					$f( $s, 'show_hours', 'true_false', 'Show hours card on the photo', array_merge( $w( 50 ), array( 'ui' => 1, 'default_value' => 1 ) ) ),
-					$f( $s, 'show_rating', 'true_false', 'Show review rating', array_merge( $w( 50 ), array( 'ui' => 1, 'default_value' => 1, 'instructions' => 'Uses Practice Settings → Reviews, with a link to the source.' ) ) ),
+					$f( $s, 'show_rating', 'true_false', 'Show review rating', array_merge( $w( 100 ), array( 'ui' => 1, 'default_value' => 1, 'instructions' => 'Uses Practice Settings → Reviews, with a link to the source.' ) ) ),
 				),
 				$settings( $s )
 			)

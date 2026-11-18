@@ -6,7 +6,7 @@
              consultations.
    Character Calm, exact, reassuring.
    World     A bright clinic: cool daylight, white surfaces, turquoise brand.
-   Moments   The hero photo with a live hours card; before/after sliders.
+   Moments   The hero photo; before/after sliders.
    Signature A thin smile arc under one word of the hero headline.
 
    Rules: 4px spacing grid, one tinted neutral ramp, one accent, weights
@@ -755,65 +755,6 @@ input:focus-visible {
 	aspect-ratio: 4 / 3;
 }
 
-.visit-card {
-	display: grid;
-	gap: 0;
-	margin: -64px 16px 0;
-	position: relative;
-	padding: 4px 20px;
-	background: var(--white);
-	border-radius: var(--r-card);
-	box-shadow: var(--shadow-float);
-}
-
-.visit-card__row {
-	display: flex;
-	gap: 12px;
-	padding-block: 16px;
-}
-
-.visit-card__row + .visit-card__row {
-	border-top: 1px solid var(--line);
-}
-
-.visit-card__row > .icon {
-	margin-top: 2px;
-	color: var(--brand-ink);
-}
-
-.visit-card__status {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	font-size: 16px;
-	line-height: 24px;
-	font-weight: 500;
-}
-
-.visit-card__status[data-open]::before {
-	content: "";
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background: var(--ink-3);
-}
-
-.visit-card__status[data-open="1"]::before {
-	background: var(--positive);
-}
-
-.visit-card__meta {
-	color: var(--ink-2);
-	font-size: 14px;
-	line-height: 20px;
-	font-variant-numeric: tabular-nums;
-}
-
-.visit-card__meta a {
-	color: var(--brand-ink);
-	font-weight: 500;
-}
-
 @media (min-width: 960px) {
 	.section--hero {
 		padding-top: 56px;
@@ -823,14 +764,6 @@ input:focus-visible {
 	.hero {
 		grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
 		gap: 64px;
-	}
-
-	.visit-card {
-		position: absolute;
-		left: -48px;
-		bottom: 40px;
-		width: 300px;
-		margin: 0;
 	}
 }
 

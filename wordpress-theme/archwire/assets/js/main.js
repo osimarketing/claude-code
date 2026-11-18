@@ -2,7 +2,7 @@
  * Archwire front-end. No dependencies, loaded with defer.
  *
  * 1. Mobile menu
- * 2. Open-now status and today's hours (computed in the practice's time
+ * 2. Today's row in the hours table (computed in the practice's time
  *    zone in the browser, so cached pages stay correct)
  * 3. Before/after compare sliders
  */
@@ -43,7 +43,7 @@
 		});
 	}
 
-	/* 2. Hours ------------------------------------------------------------ */
+	/* 2. Today's hours ------------------------------------------------------------ */
 	var data = window.archwireHours;
 
 	function nowInZone(tz) {
@@ -65,29 +65,8 @@
 		}
 	}
 
-	function toMinutes(hm) {
-		var p = hm.split(':');
-		return parseInt(p[0], 10) * 60 + parseInt(p[1], 10);
-	}
-
-	function formatTime(hm) {
-		var m = toMinutes(hm);
-		var h = Math.floor(m / 60);
-		var min = m % 60;
-		var twentyFour = data && /[GH]/.test(data.fmt || '');
-		if (twentyFour) {
-			return (h < 10 ? '0' : '') + h + ':' + (min < 10 ? '0' : '') + min;
-		}
-		var suffix = h >= 12 ? 'pm' : 'am';
-		var h12 = h % 12 || 12;
-		return h12 + ':' + (min < 10 ? '0' : '') + min + ' ' + suffix;
-	}
-
-	var dayNames = ['', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
 	if (data && data.hours && Object.keys(data.hours).length) {
 		var now = nowInZone(data.tz);
-		var today = data.hours[String(now.day)];
 
 		document.querySelectorAll('[data-hours-table] tr[data-day="' + now.day + '"]').forEach(function (row) {
 			row.classList.add('is-today');
@@ -97,38 +76,6 @@
 			}
 		});
 
-		var status;
-		var meta;
-		var open = false;
-		if (today && now.minutes >= toMinutes(today[0]) && now.minutes < toMinutes(today[1])) {
-			open = true;
-			status = 'Open now';
-			meta = 'Until ' + formatTime(today[1]) + ' today';
-		} else if (today && now.minutes < toMinutes(today[0])) {
-			status = 'Opens at ' + formatTime(today[0]);
-			meta = 'Today, ' + formatTime(today[0]) + ' – ' + formatTime(today[1]);
-		} else {
-			for (var i = 1; i <= 7; i++) {
-				var d = ((now.day - 1 + i) % 7) + 1;
-				if (data.hours[String(d)]) {
-					status = 'Closed now';
-					meta = 'Opens ' + (i === 1 ? 'tomorrow' : dayNames[d]) + ' at ' + formatTime(data.hours[String(d)][0]);
-					break;
-				}
-			}
-		}
-
-		document.querySelectorAll('[data-open-status]').forEach(function (card) {
-			var s = card.querySelector('[data-status-text]');
-			var m = card.querySelector('[data-status-meta]');
-			if (s && status) {
-				s.textContent = status;
-				s.setAttribute('data-open', open ? '1' : '0');
-			}
-			if (m && meta) {
-				m.textContent = meta;
-			}
-		});
 	}
 
 	/* 3. Compare sliders -------------------------------------------------- */

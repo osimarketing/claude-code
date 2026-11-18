@@ -49,7 +49,7 @@ and a hide switch.
 
 | Section | Use it for |
 | --- | --- |
-| Hero | Location line, h1, lead, booking + call buttons, photo with a live hours card, review rating with a source link |
+| Hero | Location line, h1, lead, booking + call buttons, photo, review rating with a source link |
 | Highlights strip | Up to four reasons to choose the practice |
 | Treatments | Cards linking to treatment pages |
 | Numbers band | Up to four figures, each with what it counts, plus a source note |
