@@ -66,7 +66,7 @@ foreach ( $sections as &$s ) {
 			unset( $t );
 			break;
 		case 'doctor':
-			$s['image'] = $img( 'doctor.svg', 'Dr. Ana Ruiz in the office', 960, 1200 );
+			$s['image'] = $img( 'doctor.jpg', 'Dr. Ana Ruiz in a treatment room', 768, 960 );
 			$s['link']  = array( 'title' => 'More about the team', 'url' => '#team' );
 			break;
 		case 'testimonials':
