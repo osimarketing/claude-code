@@ -2,6 +2,10 @@
 /**
  * Starter sections for a new client page.
  *
+ * The home page starter leaves out Cost and financing, Location and hours,
+ * and Key facts: those belong on their own pages (Cost, Contact, About),
+ * built from the same section layouts.
+ *
  * A "Load starter sections" button appears on any page that has no
  * sections yet. The copy uses tokens ({city}, {practice}, {doctor},
  * {phone}, {areas}) so it reads correctly once Practice Settings are
@@ -191,40 +195,6 @@ function archwire_starter_sections() {
 			'note'          => 'Photos of our patients, shared with permission. Results vary.',
 		),
 		array(
-			'acf_fc_layout'     => 'financing',
-			'label'             => 'Cost and financing',
-			'heading'           => 'Know your cost before you start',
-			'intro'             => 'Your written plan lists the full fee, what insurance covers and your monthly payment. Nothing is added later.',
-			'price'             => '$189',
-			'price_label'       => 'Monthly plans from, with $0 down',
-			'price_note'        => 'Example based on a 24-month plan. Your fee depends on your treatment.',
-			'items'             => array(
-				array(
-					'icon'  => 'wallet',
-					'title' => 'In-house payment plans',
-					'text'  => 'Interest-free monthly payments, set up at your consultation.',
-				),
-				array(
-					'icon'  => 'file-text',
-					'title' => 'Insurance filed for you',
-					'text'  => 'We check your orthodontic benefit and file every claim.',
-				),
-				array(
-					'icon'  => 'credit-card',
-					'title' => 'FSA and HSA',
-					'text'  => 'Use pre-tax dollars for any part of your fee.',
-				),
-				array(
-					'icon'  => 'users',
-					'title' => 'Family discount',
-					'text'  => 'A lower fee for each brother or sister in treatment at the same time.',
-				),
-			),
-			'insurance_heading' => 'We file with',
-			'use_insurance'     => 1,
-			'background'        => 'paper',
-		),
-		array(
 			'acf_fc_layout' => 'faq',
 			'label'         => 'Questions',
 			'heading'       => 'Questions {city} patients ask us',
@@ -255,55 +225,6 @@ function archwire_starter_sections() {
 				array(
 					'question' => 'Do you take my insurance?',
 					'answer'   => 'We work with most PPO plans that include an orthodontic benefit and file the claims for you. Call {phone} with your plan details and we will check your coverage before your visit.',
-				),
-			),
-		),
-		array(
-			'acf_fc_layout' => 'location',
-			'label'         => 'Visit us',
-			'heading'       => 'Find us in {city}',
-			'show_map'      => 1,
-			'show_areas'    => 1,
-			'areas_label'   => 'Patients visit us from',
-			'section_id'    => 'location',
-			'background'    => 'paper',
-		),
-		array(
-			'acf_fc_layout' => 'facts',
-			'label'         => 'At a glance',
-			'heading'       => '{practice} in brief',
-			'items'         => array(
-				array(
-					'term'  => 'Practice',
-					'value' => 'Orthodontic specialty practice in {city}, {state}',
-				),
-				array(
-					'term'  => 'Orthodontist',
-					'value' => '{doctor}',
-				),
-				array(
-					'term'  => 'Treatments',
-					'value' => 'Metal braces, clear braces, Invisalign, early treatment for children, retainers',
-				),
-				array(
-					'term'  => 'Ages treated',
-					'value' => 'Children from age 7, teens and adults',
-				),
-				array(
-					'term'  => 'First visit',
-					'value' => 'Free consultation with 3D scan, X-rays and a written plan',
-				),
-				array(
-					'term'  => 'Payment',
-					'value' => 'Interest-free monthly plans, insurance filing, FSA and HSA',
-				),
-				array(
-					'term'  => 'Areas served',
-					'value' => '{areas}',
-				),
-				array(
-					'term'  => 'Phone',
-					'value' => '{phone}',
 				),
 			),
 		),

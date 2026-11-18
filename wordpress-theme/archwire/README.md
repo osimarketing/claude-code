@@ -33,6 +33,9 @@ set of starter content works for every client.
 3. **Appearance → Customize → Site Identity**: upload the logo (SVG or PNG).
 4. Create a page called *Home*, save it, and click **Load starter sections**
    in the sidebar. Then set it as the homepage under **Settings → Reading**.
+   The home starter leaves out *Cost and financing*, *Location and hours* and
+   *Key facts*. Those go on their own pages (e.g. Cost, Contact, About), built
+   by adding the same sections there.
 5. Replace every photo slot, paste real reviews, and confirm every number
    and claim with the practice (see "Before launch").
 6. **Appearance → Menus**: assign *Primary*, *Footer* and *Legal links*.
