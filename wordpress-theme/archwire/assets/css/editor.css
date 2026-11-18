@@ -1,0 +1,23 @@
+/* Block editor: match the front-end type for posts. */
+@font-face {
+	font-family: "Figtree";
+	font-weight: 400 600;
+	font-display: swap;
+	src: url("../fonts/figtree-latin-var.woff2") format("woff2");
+}
+
+body {
+	color: #0F2730;
+	font-family: "Figtree", ui-sans-serif, system-ui, sans-serif;
+	font-size: 17px;
+	line-height: 28px;
+}
+
+h1, h2, h3, h4 {
+	font-weight: 500;
+	letter-spacing: -0.01em;
+}
+
+a {
+	color: #237086;
+}
