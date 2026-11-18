@@ -3,8 +3,8 @@
  * Starter sections for a new client page.
  *
  * The home page starter leaves out Cost and financing, Location and hours,
- * and Key facts: those belong on their own pages (Cost, Contact, About),
- * built from the same section layouts.
+ * Key facts and the Numbers band. The first three belong on their own pages
+ * (Cost, Contact, About), built from the same section layouts.
  *
  * A "Load starter sections" button appears on any page that has no
  * sections yet. The copy uses tokens ({city}, {practice}, {doctor},
@@ -91,28 +91,6 @@ function archwire_starter_sections() {
 					'link'  => array( 'url' => '/treatments/early-treatment/' ),
 				),
 			),
-		),
-		array(
-			'acf_fc_layout' => 'stats',
-			'items'         => array(
-				array(
-					'value' => '18',
-					'label' => 'Years treating patients in {city}',
-				),
-				array(
-					'value' => '6,400',
-					'label' => 'Patients who finished treatment',
-				),
-				array(
-					'value' => '2',
-					'label' => 'Orthodontists on the team',
-				),
-				array(
-					'value' => '0%',
-					'label' => 'Interest on in-house payment plans',
-				),
-			),
-			'note'          => 'Practice records, January 2026',
 		),
 		array(
 			'acf_fc_layout' => 'doctor',
