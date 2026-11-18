@@ -56,10 +56,10 @@ $sections = archwire_starter_sections();
 foreach ( $sections as &$s ) {
 	switch ( $s['acf_fc_layout'] ) {
 		case 'hero':
-			$s['image'] = $img( 'hero.svg', 'Patient smiling in the treatment chair', 960, 1200 );
+			$s['image'] = $img( 'hero.jpg', 'Orthodontist checking a patient in the treatment chair', 960, 1200 );
 			break;
 		case 'treatments':
-			$files = array( 't-braces.svg', 't-clear.svg', 't-invisalign.svg', 't-early.svg' );
+			$files = array( 't-braces.jpg', 't-clear.jpg', 't-invisalign.jpg', 't-early.jpg' );
 			foreach ( $s['items'] as $i => &$t ) {
 				$t['image'] = $img( $files[ $i ], '' );
 			}
@@ -96,9 +96,9 @@ unset( $s );
 $GLOBALS['__sections'] = $sections;
 
 $GLOBALS['__posts'] = array(
-	array( 'title' => 'What to eat in the first week of braces', 'date' => 'October 2, 2026', 'cat' => 'Braces', 'img' => $img( 'p1.svg', '' ) ),
-	array( 'title' => 'Is your child ready for an orthodontic check at 7?', 'date' => 'September 18, 2026', 'cat' => 'Kids', 'img' => $img( 'p2.svg', '' ) ),
-	array( 'title' => 'Invisalign or clear braces: how adults decide', 'date' => 'August 27, 2026', 'cat' => 'Invisalign', 'img' => $img( 'p3.svg', '' ) ),
+	array( 'title' => 'What to eat in the first week of braces', 'date' => 'October 2, 2026', 'cat' => 'Braces', 'img' => $img( 'p1.jpg', '' ) ),
+	array( 'title' => 'Is your child ready for an orthodontic check at 7?', 'date' => 'September 18, 2026', 'cat' => 'Kids', 'img' => $img( 'p2.jpg', '' ) ),
+	array( 'title' => 'Invisalign or clear braces: how adults decide', 'date' => 'August 27, 2026', 'cat' => 'Invisalign', 'img' => $img( 'p3.jpg', '' ) ),
 );
 
 do_action( 'after_setup_theme' );
