@@ -1498,7 +1498,7 @@ input:focus-visible {
 }
 
 @media (min-width: 1024px) {
-	.compare-grid:not([data-count="2"]):not([data-count="4"]) {
+	.compare-grid:not([data-count="1"]):not([data-count="2"]):not([data-count="4"]) {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 }
@@ -2261,5 +2261,22 @@ input:focus-visible {
 	.consult__actions .btn,
 	.cta__actions .btn {
 		flex: 1 1 100%;
+	}
+}
+
+/* One case: show it as a single wide slider instead of a lone grid cell. */
+.compare-grid[data-count="1"] {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 768px) {
+	.compare-grid[data-count="1"] .compare {
+		aspect-ratio: 2 / 1;
+		border-radius: var(--r-panel);
+	}
+
+	.compare-grid[data-count="1"] .case__caption {
+		font-size: 16px;
+		line-height: 24px;
 	}
 }

@@ -19,6 +19,8 @@ CROPS = [
     ('blog-teen-braces-meal.jpg', 'p1.jpg', 4 / 3, 0.5, 0.42, 1.0, 720),
     ('blog-child-first-visit.jpg', 'p2.jpg', 4 / 3, 0.5, 0.45, 1.0, 720),
     ('blog-invisalign-consult.jpg', 'p3.jpg', 4 / 3, 0.42, 0.5, 1.0, 720),
+    ('smile-before-crowding.jpg', 'case-before.jpg', 2 / 1, 0.5, 0.48, 1.0, 1264),
+    ('smile-after.jpg', 'case-after.jpg', 2 / 1, 0.5, 0.5, 1.0, 1264),
 ]
 
 here = os.path.dirname(os.path.abspath(__file__))

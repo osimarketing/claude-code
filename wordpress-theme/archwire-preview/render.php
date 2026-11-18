@@ -78,11 +78,9 @@ foreach ( $sections as &$s ) {
 			break;
 		case 'gallery':
 			$s['items'] = array(
-				array( 'before' => $img( 'b1.svg', 'Crowded teeth before treatment' ), 'after' => $img( 'a1.svg', 'Aligned teeth after treatment' ), 'title' => 'Invisalign', 'detail' => 'Crowding, 14 months' ),
-				array( 'before' => $img( 'b2.svg', 'Gap between front teeth before treatment' ), 'after' => $img( 'a2.svg', 'Gap closed after treatment' ), 'title' => 'Clear braces', 'detail' => 'Spacing, 9 months' ),
-				array( 'before' => $img( 'b3.svg', 'Rotated teeth before treatment' ), 'after' => $img( 'a3.svg', 'Straight teeth after treatment' ), 'title' => 'Metal braces', 'detail' => 'Rotations, 20 months' ),
+				array( 'before' => $img( 'case-before.jpg', 'Crowded, overlapping front teeth before treatment', 1264, 632 ), 'after' => $img( 'case-after.jpg', 'Evenly aligned front teeth after treatment', 1264, 632 ), 'title' => 'Invisalign', 'detail' => 'Crowding, 14 months' ),
 			);
-			$s['note']  = 'Illustrations for the preview. Real sites use patient photos shared with permission.';
+			$s['note']  = 'Sample photos for the preview. Real sites use patient photos shared with permission.';
 			break;
 		case 'financing':
 			$s['button'] = array( 'title' => 'See payment options', 'url' => '#financing' );
