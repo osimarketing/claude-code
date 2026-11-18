@@ -16,9 +16,9 @@ CROPS = [
     ('model-clear-braces.jpg', 't-clear.jpg', 4 / 3, 0.36, 0.55, 0.85, 720),
     ('aligner-smile.jpg', 't-invisalign.jpg', 4 / 3, 0.5, 0.45, 0.9, 720),
     ('office-operatory.jpg', 't-early.jpg', 4 / 3, 0.45, 0.5, 1.0, 720),
-    ('model-color-braces.jpg', 'p1.jpg', 4 / 3, 0.48, 0.7, 0.55, 720),
-    ('office-operatory.jpg', 'p2.jpg', 4 / 3, 0.38, 0.62, 0.6, 720),
-    ('model-clear-braces.jpg', 'p3.jpg', 4 / 3, 0.34, 0.56, 0.5, 720),
+    ('blog-teen-braces-meal.jpg', 'p1.jpg', 4 / 3, 0.5, 0.42, 1.0, 720),
+    ('blog-child-first-visit.jpg', 'p2.jpg', 4 / 3, 0.5, 0.45, 1.0, 720),
+    ('blog-invisalign-consult.jpg', 'p3.jpg', 4 / 3, 0.42, 0.5, 1.0, 720),
 ]
 
 here = os.path.dirname(os.path.abspath(__file__))
