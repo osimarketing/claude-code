@@ -78,7 +78,9 @@ foreach ( $sections as &$s ) {
 			break;
 		case 'gallery':
 			$s['items'] = array(
-				array( 'before' => $img( 'case-before.jpg', 'Crowded, overlapping front teeth before treatment', 1264, 632 ), 'after' => $img( 'case-after.jpg', 'Evenly aligned front teeth after treatment', 1264, 632 ), 'title' => 'Invisalign', 'detail' => 'Crowding, 14 months' ),
+				array( 'before' => $img( 'b1.jpg', 'Crowded, overlapping lower teeth before treatment' ), 'after' => $img( 'a1.jpg', 'Evenly aligned teeth after treatment' ), 'title' => 'Invisalign', 'detail' => 'Crowding, 14 months' ),
+				array( 'before' => $img( 'b2.jpg', 'Protruding front tooth before treatment' ), 'after' => $img( 'a2.jpg', 'Even front teeth after treatment' ), 'title' => 'Clear braces', 'detail' => 'Protruding front tooth, 12 months' ),
+				array( 'before' => $img( 'b3.jpg', 'Rotated, crowded teeth before treatment' ), 'after' => $img( 'a3.jpg', 'Straight teeth after treatment' ), 'title' => 'Metal braces', 'detail' => 'Rotations, 20 months' ),
 			);
 			$s['note']  = 'Sample photos for the preview. Real sites use patient photos shared with permission.';
 			break;
